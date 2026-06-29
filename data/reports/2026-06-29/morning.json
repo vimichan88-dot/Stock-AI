@@ -1,7 +1,7 @@
 {
   "report_type": "morning",
   "date": "2026-06-29",
-  "generated_at": "2026-06-29T13:50:31.369244",
+  "generated_at": "2026-06-29T13:55:51.888683",
   "title": "2026-06-29 盘前投研日报",
   "executive_summary": "盘前重点是判断昨夜外围市场和今日 A/H 股交易环境。 当前市场判断为：中性偏积极。市场结构仍有机会，但需要区分强势主线和补涨噪音。 本次共纳入 32 条新闻线索用于事件筛选，最高优先级事件是“全球风险偏好与 A/H 股交易环境更新”。 投资上优先关注“跟踪 AI 算力与半导体链条的订单验证”，同时严格跟踪失效条件和来源可信度。",
   "market_view": "中性偏积极。市场结构仍有机会，但需要区分强势主线和补涨噪音。",
@@ -20,14 +20,14 @@
     },
     {
       "name": "纳指 100 ETF",
-      "value": "716.21",
-      "change": "+1.37%",
+      "value": "715.10",
+      "change": "+1.21%",
       "interpretation": "观察美股科技和 AI 交易拥挤度，最新日期 2026-06-29。"
     },
     {
       "name": "黄金 ETF",
-      "value": "370.18",
-      "change": "-0.92%",
+      "value": "369.87",
+      "change": "-1.01%",
       "interpretation": "观察避险情绪和实际利率变化，最新日期 2026-06-29。"
     },
     {
@@ -38,38 +38,38 @@
     },
     {
       "name": "美债 10 年收益率",
-      "value": "4.38",
-      "change": "+0.09%",
+      "value": "4.37",
+      "change": "+0.05%",
       "interpretation": "观察全球折现率和成长股估值压力，最新日期 2026-06-29。"
     },
     {
       "name": "VIX 波动率",
-      "value": "18.22",
-      "change": "-1.03%",
+      "value": "18.24",
+      "change": "-0.92%",
       "interpretation": "观察美股风险偏好和避险需求，最新日期 2026-06-29。"
     },
     {
       "name": "WTI 原油",
-      "value": "70.05",
-      "change": "+1.18%",
+      "value": "70.06",
+      "change": "+1.20%",
       "interpretation": "观察通胀预期、能源链和地缘风险，最新日期 2026-06-29。"
     },
     {
       "name": "COMEX 铜",
       "value": "6.16",
-      "change": "+0.29%",
+      "change": "+0.33%",
       "interpretation": "观察全球制造业需求和顺周期预期，最新日期 2026-06-29。"
     },
     {
       "name": "比特币",
-      "value": "59277.74",
-      "change": "-0.43%",
+      "value": "59313.77",
+      "change": "-0.37%",
       "interpretation": "观察全球流动性和高风险资产偏好，最新日期 2026-06-29。"
     },
     {
       "name": "以太坊",
-      "value": "1564.16",
-      "change": "-0.39%",
+      "value": "1565.84",
+      "change": "-0.29%",
       "interpretation": "观察加密资产风险偏好，最新日期 2026-06-29。"
     }
   ],
@@ -166,9 +166,9 @@
       ]
     },
     {
-      "title": "AI五层蛋糕：谁在底层搭算力，谁在顶层做应用？“ETF华宝”AI投资地图来啦 - 新浪财经",
+      "title": "AI五层蛋糕：谁在底层搭算力，谁在顶层做应用？“ETF华宝”AI投资地图来啦 - Sina finance",
       "summary": "AI方向出现重要线索，需要结合原文与市场反应判断持续性。",
-      "reason": "该线索来自 新浪财经，属于“AI 算力”监控范围；标题涉及的主题可能影响相关行业风险偏好。",
+      "reason": "该线索来自 Sina finance，属于“AI 算力”监控范围；标题涉及的主题可能影响相关行业风险偏好。",
       "beneficiaries": [
         "服务器",
         "光模块",
@@ -184,7 +184,7 @@
       "importance": 77,
       "confidence": 79,
       "sources": [
-        "新浪财经",
+        "Sina finance",
         "https://news.google.com/rss/articles/CBMihgFBVV95cUxOd040U1ZEc0pQNURQcVR0TmNRVDlyZGJXMlRkZ0dvRjhFRzQ0c1ZIMHB4UXZ1M0hyLVhESmNXejNlZnhKU1NxTk9MSWsxMTJqa28zaVljTk9sWmFycVZnMHQ1OFNSYW92dEJzYm4wUDJLcVRzM3NyOGVfZUNsOGxiWmV3WmJHQQ?oc=5"
       ]
     },
