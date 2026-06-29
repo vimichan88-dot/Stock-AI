@@ -437,6 +437,7 @@ def render_page(title: str, body: str) -> str:
     .lock-panel {{ width: min(460px, 100%); padding: 24px; }}
     .token-input {{ width: 100%; height: 42px; border: 1px solid var(--line); border-radius: 6px; padding: 0 10px; font-size: 16px; }}
     .unlock-button {{ margin-top: 12px; height: 42px; border: 0; border-radius: 6px; padding: 0 14px; background: var(--accent); color: #fff; font-weight: 800; cursor: pointer; }}
+    .token-error {{ color: var(--danger); font-weight: 700; margin: 10px 0 0; }}
     .empty {{ color: var(--muted); }}
     .source-line {{ overflow-wrap: anywhere; }}
     @media (max-width: 860px) {{
@@ -464,6 +465,7 @@ def render_page(title: str, body: str) -> str:
       <p class="sub">请输入访问 token。也可以在链接后添加 <code>?token=...</code>。</p>
       <input id="tokenInput" class="token-input" type="password" placeholder="REPORT_ACCESS_TOKEN">
       <button id="unlockButton" class="unlock-button" type="button">打开报告</button>
+      <p id="tokenError" class="token-error" hidden>Token 不正确，请检查 GitHub Secret 里的 REPORT_ACCESS_TOKEN。</p>
     </div>
   </div>
 {body}
@@ -480,15 +482,18 @@ def token_script(access_token: str) -> str:
     const inputToken = params.get("token") || localStorage.getItem("report_token") || "";
     const app = document.getElementById("app");
     const locked = document.getElementById("locked");
-    function showApp(token) {{
+    const tokenError = document.getElementById("tokenError");
+    function showApp(token, showError = false) {{
       if (token === expectedToken) {{
         localStorage.setItem("report_token", token);
         app.hidden = false;
         locked.hidden = true;
+        tokenError.hidden = true;
         appendTokenToLinks();
       }} else {{
         app.hidden = true;
         locked.hidden = false;
+        tokenError.hidden = !showError;
       }}
     }}
     function appendTokenToLinks() {{
@@ -501,7 +506,7 @@ def token_script(access_token: str) -> str:
       }});
     }}
     document.getElementById("unlockButton").addEventListener("click", () => {{
-      showApp(document.getElementById("tokenInput").value.trim());
+      showApp(document.getElementById("tokenInput").value.trim(), true);
     }});
     showApp(inputToken);
     """
