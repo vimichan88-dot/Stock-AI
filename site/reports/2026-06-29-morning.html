@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-06-29 盘前投研日报</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fa;
+      --panel: #ffffff;
+      --text: #1f2933;
+      --muted: #64748b;
+      --line: #d8dee8;
+      --accent: #0f766e;
+      --accent-weak: #e5f3f1;
+      --warn: #b45309;
+      --danger: #b42318;
+      --shadow: 0 10px 28px rgba(15, 23, 42, 0.07);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .shell { max-width: 1180px; margin: 0 auto; padding: 28px 18px 64px; }
+    .topbar { display: flex; justify-content: space-between; gap: 24px; align-items: flex-end; padding: 18px 0 24px; border-bottom: 1px solid var(--line); }
+    .eyebrow { margin: 0 0 8px; color: var(--warn); font-size: 13px; font-weight: 800; letter-spacing: 0; }
+    h1 { margin: 0; font-size: 30px; line-height: 1.2; letter-spacing: 0; }
+    h2 { margin: 0 0 12px; font-size: 18px; line-height: 1.35; letter-spacing: 0; }
+    h3 { margin: 8px 0 10px; font-size: 17px; line-height: 1.35; letter-spacing: 0; }
+    p { line-height: 1.75; }
+    .sub { margin: 8px 0 0; color: var(--muted); }
+    .status-pill, .meta { color: var(--warn); font-size: 14px; font-weight: 800; }
+    .status-pill { color: #fff; background: var(--accent); padding: 8px 10px; border-radius: 6px; white-space: nowrap; }
+    .dashboard { display: grid; grid-template-columns: 1.4fr 1fr; gap: 14px; margin-top: 20px; }
+    .panel, .report-card, .item-block, .lock-panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow); }
+    .panel { padding: 18px; }
+    .hero-panel { grid-row: span 2; }
+    .hero-panel h2 { font-size: 23px; }
+    .primary-link, .report-link, .back-link { display: inline-flex; align-items: center; min-height: 36px; font-weight: 800; }
+    .signal-list, .plain-list { list-style: none; padding: 0; margin: 0; }
+    .signal-list li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+    .signal-list li:last-child { border-bottom: 0; }
+    .signal-list strong { color: var(--accent); white-space: nowrap; }
+    .plain-list li { padding: 7px 0; line-height: 1.55; }
+    .plain-list strong { color: var(--accent); margin-right: 6px; }
+    .history-head { display: flex; justify-content: space-between; gap: 18px; align-items: flex-end; margin-top: 30px; padding-top: 24px; border-top: 1px solid var(--line); }
+    .tools { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+    .tabs { display: flex; gap: 6px; }
+    .tab { height: 38px; border: 1px solid var(--line); background: #fff; color: var(--text); border-radius: 6px; padding: 0 12px; cursor: pointer; font-weight: 700; }
+    .tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .search { width: 220px; height: 38px; border: 1px solid var(--line); border-radius: 6px; padding: 0 10px; font-size: 15px; }
+    .report-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 14px; margin-top: 16px; }
+    .report-card { padding: 18px; display: flex; flex-direction: column; min-height: 260px; }
+    .report-card p { color: var(--muted); }
+    .report-card ul { padding-left: 18px; margin: 8px 0 12px; }
+    .report-card .report-link { margin-top: auto; }
+    .detail-layout { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 18px; margin-top: 20px; align-items: start; }
+    .report-body { display: grid; gap: 18px; }
+    .report-body > section { background: transparent; border-bottom: 1px solid var(--line); padding-bottom: 18px; }
+    .item-block { padding: 16px; margin: 12px 0; box-shadow: none; }
+    .score-line { display: flex; gap: 8px; flex-wrap: wrap; color: var(--warn); font-size: 13px; font-weight: 800; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+    table { width: 100%; border-collapse: collapse; min-width: 680px; }
+    th, td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; line-height: 1.55; }
+    th { background: var(--accent-weak); color: #134e4a; font-size: 14px; }
+    .idea-facts { display: grid; gap: 8px; margin: 12px 0 0; }
+    .idea-facts div { display: grid; grid-template-columns: 130px 1fr; gap: 10px; }
+    dt { color: var(--muted); font-weight: 800; }
+    dd { margin: 0; line-height: 1.55; }
+    .side-rail { position: sticky; top: 16px; display: grid; gap: 12px; }
+    .rail-block { border: 1px solid var(--line); border-radius: 8px; background: #fff; padding: 14px; }
+    .rail-block a, .muted-link { display: block; padding: 8px 0; line-height: 1.4; }
+    .muted-link { color: var(--muted); }
+    .locked { min-height: 100vh; display: grid; place-items: center; padding: 24px; }
+    .lock-panel { width: min(460px, 100%); padding: 24px; }
+    .token-input { width: 100%; height: 42px; border: 1px solid var(--line); border-radius: 6px; padding: 0 10px; font-size: 16px; }
+    .unlock-button { margin-top: 12px; height: 42px; border: 0; border-radius: 6px; padding: 0 14px; background: var(--accent); color: #fff; font-weight: 800; cursor: pointer; }
+    .empty { color: var(--muted); }
+    .source-line { overflow-wrap: anywhere; }
+    @media (max-width: 860px) {
+      .topbar, .history-head { display: block; }
+      .status-pill { display: inline-flex; margin-top: 14px; }
+      .dashboard, .detail-layout { grid-template-columns: 1fr; }
+      .side-rail { position: static; }
+      .tools { justify-content: flex-start; margin-top: 14px; }
+      .search { width: min(100%, 320px); }
+    }
+    @media (max-width: 560px) {
+      .shell { padding: 20px 14px 48px; }
+      h1 { font-size: 24px; }
+      .tabs { width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); }
+      .tab { padding: 0 6px; }
+      .search { width: 100%; }
+      .idea-facts div { grid-template-columns: 1fr; gap: 3px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="locked" class="locked" hidden>
+    <div class="lock-panel">
+      <h1>私人投研日报</h1>
+      <p class="sub">请输入访问 token。也可以在链接后添加 <code>?token=...</code>。</p>
+      <input id="tokenInput" class="token-input" type="password" placeholder="REPORT_ACCESS_TOKEN">
+      <button id="unlockButton" class="unlock-button" type="button">打开报告</button>
+    </div>
+  </div>
+
+  <main id="app" class="shell detail-shell" hidden>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">2026-06-29 · 盘前</p>
+        <h1>2026-06-29 盘前投研日报</h1>
+        <p class="sub">中性偏积极。市场结构仍有机会，但需要区分强势主线和补涨噪音。</p>
+      </div>
+      <a class="back-link" href="../index.html">返回首页</a>
+    </header>
+
+    <section class="detail-layout">
+      <article class="report-body">
+        <section>
+          <h2>今日核心结论</h2>
+          <p>盘前重点是判断昨夜外围市场和今日 A/H 股交易环境。 当前市场判断为：中性偏积极。市场结构仍有机会，但需要区分强势主线和补涨噪音。 本次共纳入 32 条新闻线索用于事件筛选，最高优先级事件是“全球风险偏好与 A/H 股交易环境更新”。 投资上优先关注“跟踪 AI 算力与半导体链条的订单验证”，同时严格跟踪失效条件和来源可信度。</p>
+        </section>
+        
+        <section>
+          <h2>市场信号</h2>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>指标</th><th>数值</th><th>变化</th><th>解读</th></tr></thead>
+              <tbody>
+          <tr>
+            <td>上证指数</td>
+            <td>4073.90</td>
+            <td>+1.16%</td>
+            <td>观察 A 股整体风险偏好和成交主线，最新日期 2026-06-29。</td>
+          </tr>
+        
+
+          <tr>
+            <td>恒生指数</td>
+            <td>23026.68</td>
+            <td>+1.57%</td>
+            <td>观察港股风险偏好、南向资金和美元流动性压力，最新日期 2026-06-29。</td>
+          </tr>
+        
+
+          <tr>
+            <td>纳指 100 ETF</td>
+            <td>706.52</td>
+            <td>-1.38%</td>
+            <td>观察美股科技和 AI 交易拥挤度，最新日期 2026-06-26。</td>
+          </tr>
+        
+
+          <tr>
+            <td>黄金 ETF</td>
+            <td>373.63</td>
+            <td>+1.13%</td>
+            <td>观察避险情绪和实际利率变化，最新日期 2026-06-26。</td>
+          </tr>
+        
+
+          <tr>
+            <td>美元/离岸人民币</td>
+            <td>6.80</td>
+            <td>-0.05%</td>
+            <td>观察人民币汇率和外资风险偏好，最新日期 2026-06-29。</td>
+          </tr>
+        
+
+          <tr>
+            <td>美债 10 年收益率</td>
+            <td>4.38</td>
+            <td>+0.23%</td>
+            <td>观察全球折现率和成长股估值压力，最新日期 2026-06-29。</td>
+          </tr>
+        
+
+          <tr>
+            <td>VIX 波动率</td>
+            <td>18.38</td>
+            <td>-0.16%</td>
+            <td>观察美股风险偏好和避险需求，最新日期 2026-06-29。</td>
+          </tr>
+        
+
+          <tr>
+            <td>WTI 原油</td>
+            <td>70.06</td>
+            <td>+1.20%</td>
+            <td>观察通胀预期、能源链和地缘风险，最新日期 2026-06-29。</td>
+          </tr>
+        
+
+          <tr>
+            <td>COMEX 铜</td>
+            <td>6.19</td>
+            <td>+0.77%</td>
+            <td>观察全球制造业需求和顺周期预期，最新日期 2026-06-29。</td>
+          </tr>
+        
+
+          <tr>
+            <td>比特币</td>
+            <td>59926.55</td>
+            <td>+0.66%</td>
+            <td>观察全球流动性和高风险资产偏好，最新日期 2026-06-29。</td>
+          </tr>
+        
+
+          <tr>
+            <td>以太坊</td>
+            <td>1576.42</td>
+            <td>+0.39%</td>
+            <td>观察加密资产风险偏好，最新日期 2026-06-29。</td>
+          </tr>
+        </tbody>
+            </table>
+          </div>
+        </section>
+    
+        <section id="events"><h2>今日核心事件</h2>
+          <article class="item-block">
+            <div class="score-line"><span>重要程度 86 / 100</span><span>置信度 72 / 100</span></div>
+            <h3>1. 全球风险偏好与 A/H 股交易环境更新</h3>
+            <p>恒生指数波动居前，需结合 A 股、港股、美股科技、黄金和汇率判断今日风险偏好。</p>
+            <p><strong>核心原因：</strong>跨市场行情是判断资金环境和主题持续性的基础输入，能帮助区分指数驱动与行业事件驱动。</p>
+            <p><strong>受益方向：</strong>A 股核心资产、港股科技、AI 算力、黄金与避险资产</p>
+            <p><strong>风险：</strong>外部流动性收紧、汇率波动、主题拥挤、单日行情误读</p>
+            <p class="source-line"><strong>来源：</strong>Yahoo Finance chart</p>
+          </article>
+        
+
+          <article class="item-block">
+            <div class="score-line"><span>重要程度 84 / 100</span><span>置信度 79 / 100</span></div>
+            <h3>2. 6月29日华工科技（000988）涨停分析：800G光模块中标、AI算力政策驱动_短线策略 - 证券之星</h3>
+            <p>AI方向出现重要线索，需要结合原文与市场反应判断持续性。</p>
+            <p><strong>核心原因：</strong>该线索来自 证券之星，属于“AI 算力”监控范围；标题涉及的主题可能影响相关行业风险偏好。</p>
+            <p><strong>受益方向：</strong>服务器、光模块、半导体、云计算、IDC</p>
+            <p><strong>风险：</strong>消息反转、市场已充分定价、来源细节需复核</p>
+            <p class="source-line"><strong>来源：</strong>证券之星、<a href="https://news.google.com/rss/articles/CBMiYkFVX3lxTE4ydWNrSFlvd0VWeGVXVk1FNFZCQVVwbTlsNzVfZmFsRXhSQ0RGN1VWdmlBYTJLNERTOXk3LWkzUG9haGp5SVdnT2x1cFNwekRybUVEQkpCemZOQ1dqZnRpVGZB?oc=5" target="_blank" rel="noreferrer">原文链接</a></p>
+          </article>
+        
+
+          <article class="item-block">
+            <div class="score-line"><span>重要程度 77 / 100</span><span>置信度 79 / 100</span></div>
+            <h3>3. 多氟多一字涨停，半导体级氢氟酸现有产能4万吨！电池ETF汇添富(159796)涨近2%，盘中吸金超3700万元！重磅政策接连加码，储能强催化！ - 东方财富</h3>
+            <p>AI方向出现重要线索，需要结合原文与市场反应判断持续性。</p>
+            <p><strong>核心原因：</strong>该线索来自 东方财富，属于“A 股政策与市场”监控范围；标题涉及的主题可能影响相关行业风险偏好。</p>
+            <p><strong>受益方向：</strong>服务器、光模块、半导体、云计算、IDC</p>
+            <p><strong>风险：</strong>消息反转、市场已充分定价、来源细节需复核</p>
+            <p class="source-line"><strong>来源：</strong>东方财富、<a href="https://news.google.com/rss/articles/CBMiZkFVX3lxTFBWNmZhNTV1UE96VlA3WjJFeGN4Z3ZGRWhWcWRfNkpRb2YyUmhnal9tb1ZVck9HMFRod015N1Ewem1NZERuVFV2cGIyM1ptRFJaQWlFZ0VNemtaTnlTMVhCbjA2QTVBdw?oc=5" target="_blank" rel="noreferrer">原文链接</a></p>
+          </article>
+        
+
+          <article class="item-block">
+            <div class="score-line"><span>重要程度 77 / 100</span><span>置信度 79 / 100</span></div>
+            <h3>4. 年内涨超123%，华工科技177元涨停创历史新高，AI光模块的狂欢还能持续多久？_证券要闻 - 中金在线</h3>
+            <p>AI方向出现重要线索，需要结合原文与市场反应判断持续性。</p>
+            <p><strong>核心原因：</strong>该线索来自 中金在线，属于“AI 算力”监控范围；标题涉及的主题可能影响相关行业风险偏好。</p>
+            <p><strong>受益方向：</strong>服务器、光模块、半导体、云计算、IDC</p>
+            <p><strong>风险：</strong>消息反转、市场已充分定价、来源细节需复核</p>
+            <p class="source-line"><strong>来源：</strong>中金在线、<a href="https://news.google.com/rss/articles/CBMibkFVX3lxTFBSOUFiYnZqN2FsMWd5Z1NvVXpsSDgxM1hDNGx3TGR3cTBlTmE0VndaaXRRNGhmdzRuSG1rcmdDQkdtempNYlB0aW0xeGJkbHhJZWRkQmlqeWY3NThubWQ0NkdnOEtMdWxEeHQyeGFR?oc=5" target="_blank" rel="noreferrer">原文链接</a></p>
+          </article>
+        
+
+          <article class="item-block">
+            <div class="score-line"><span>重要程度 77 / 100</span><span>置信度 79 / 100</span></div>
+            <h3>5. AI五层蛋糕：谁在底层搭算力，谁在顶层做应用？“ETF华宝”AI投资地图来啦 - 新浪财经</h3>
+            <p>AI方向出现重要线索，需要结合原文与市场反应判断持续性。</p>
+            <p><strong>核心原因：</strong>该线索来自 新浪财经，属于“AI 算力”监控范围；标题涉及的主题可能影响相关行业风险偏好。</p>
+            <p><strong>受益方向：</strong>服务器、光模块、半导体、云计算、IDC</p>
+            <p><strong>风险：</strong>消息反转、市场已充分定价、来源细节需复核</p>
+            <p class="source-line"><strong>来源：</strong>新浪财经、<a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxOd040U1ZEc0pQNURQcVR0TmNRVDlyZGJXMlRkZ0dvRjhFRzQ0c1ZIMHB4UXZ1M0hyLVhESmNXejNlZnhKU1NxTk9MSWsxMTJqa28zaVljTk9sWmFycVZnMHQ1OFNSYW92dEJzYm4wUDJLcVRzM3NyOGVfZUNsOGxiWmV3WmJHQQ?oc=5" target="_blank" rel="noreferrer">原文链接</a></p>
+          </article>
+        
+
+          <article class="item-block">
+            <div class="score-line"><span>重要程度 74 / 100</span><span>置信度 79 / 100</span></div>
+            <h3>6. A股四大指数开盘涨跌互现，市场近3000股下跌 - 第一财经</h3>
+            <p>A 股方向出现风险信号，需要结合原文与市场反应判断持续性。</p>
+            <p><strong>核心原因：</strong>该线索来自 第一财经，属于“A 股政策与市场”监控范围；标题涉及的主题可能影响相关行业风险偏好。</p>
+            <p><strong>受益方向：</strong>券商、核心资产、政策受益行业、成交活跃主题</p>
+            <p><strong>风险：</strong>风险继续扩散、盈利预期下修、流动性压力、消息反转</p>
+            <p class="source-line"><strong>来源：</strong>第一财经、<a href="https://news.google.com/rss/articles/CBMiU0FVX3lxTE1KaWhtZnhud0tEdExUYlp0S0F0YXE2QUZOY2x5WFJlTmNfSGphS3Nva0NjNDdJdkdHNVB1MU0wSmJCQzh3OU8zc25OWC1YcWtSQ3U4?oc=5" target="_blank" rel="noreferrer">原文链接</a></p>
+          </article>
+        
+
+          <article class="item-block">
+            <div class="score-line"><span>重要程度 74 / 100</span><span>置信度 79 / 100</span></div>
+            <h3>7. 五次港股回购潮历史昭示：当下52%跌幅是否科技指数反弹前兆？ - 新浪新闻_手机新浪网</h3>
+            <p>港股方向出现正面催化，需要结合原文与市场反应判断持续性。</p>
+            <p><strong>核心原因：</strong>该线索来自 新浪新闻_手机新浪网，属于“港股科技”监控范围；标题涉及的主题可能影响相关行业风险偏好。</p>
+            <p><strong>受益方向：</strong>港股科技、互联网平台、高股息、南向资金重仓</p>
+            <p><strong>风险：</strong>消息反转、市场已充分定价、来源细节需复核</p>
+            <p class="source-line"><strong>来源：</strong>新浪新闻_手机新浪网、<a href="https://news.google.com/rss/articles/CBMigwFBVV95cUxOWXJtaDM0UXhYT2pmckEwZHJWVlRWT0VhdGh0TzhiTUJDdnFGdkJkQWZ4bDllRGh0bF9hejRpYXItbC1NQ3J5QVJDZmQxUHhOZEdqNFZ6WTZYekg4RzlsVnVocUh3NHBSdHpZeEgwWkt1VU5NUldtVWswRTg3VTZKNWxBbw?oc=5" target="_blank" rel="noreferrer">原文链接</a></p>
+          </article>
+        
+
+          <article class="item-block">
+            <div class="score-line"><span>重要程度 74 / 100</span><span>置信度 79 / 100</span></div>
+            <h3>8. 绝地反攻！恒生科技暴涨超4%，兆易创新股价再创新高！南向重返净流入 - 新浪财经</h3>
+            <p>港股方向出现正面催化，需要结合原文与市场反应判断持续性。</p>
+            <p><strong>核心原因：</strong>该线索来自 新浪财经，属于“港股科技”监控范围；标题涉及的主题可能影响相关行业风险偏好。</p>
+            <p><strong>受益方向：</strong>港股科技、互联网平台、高股息、南向资金重仓</p>
+            <p><strong>风险：</strong>消息反转、市场已充分定价、来源细节需复核</p>
+            <p class="source-line"><strong>来源：</strong>新浪财经、<a href="https://news.google.com/rss/articles/CBMib0FVX3lxTE10a01Ic1QyUloxMWdDRHRpYXAyWE9PbkNkM3lXRFBLNmc5VmtRSDhnTkdENW5PR0sxdkdjb1UzRkpuTGpiQ0hxbGRvakxnLXBjOVFYMEdNYUh6QWF6aEdvUGFFSGVudkUyVHM1TzdrUQ?oc=5" target="_blank" rel="noreferrer">原文链接</a></p>
+          </article>
+        
+
+          <article class="item-block">
+            <div class="score-line"><span>重要程度 70 / 100</span><span>置信度 79 / 100</span></div>
+            <h3>9. 港股收盘 | 科技指数涨超3% 科技医药股表现居前 - 财联社</h3>
+            <p>港股方向出现重要线索，需要结合原文与市场反应判断持续性。</p>
+            <p><strong>核心原因：</strong>该线索来自 财联社，属于“A 股政策与市场”监控范围；标题涉及的主题可能影响相关行业风险偏好。</p>
+            <p><strong>受益方向：</strong>港股科技、互联网平台、高股息、南向资金重仓</p>
+            <p><strong>风险：</strong>消息反转、市场已充分定价、来源细节需复核</p>
+            <p class="source-line"><strong>来源：</strong>财联社、<a href="https://news.google.com/rss/articles/CBMiSEFVX3lxTE1wYy1laXpwSWpfQXhsbERwMjZuQ2tVcmNpZHVldTdvRUF4WGFTVFg3bWpNMVFNcUM5WDQ0c0FYTjJQNlRkTUhybw?oc=5" target="_blank" rel="noreferrer">原文链接</a></p>
+          </article>
+        </section>
+        <section id="ideas"><h2>投资机会</h2>
+          <article class="item-block">
+            <div class="score-line"><span>可分批关注</span><span>约 60%-70%</span><span>置信度 68 / 100</span></div>
+            <h3>跟踪 AI 算力与半导体链条的订单验证</h3>
+            <p>AI 相关消息密度和美股科技风险偏好仍是 A/H 成长主线的重要映射，适合优先观察有业绩验证的环节。</p>
+            <dl class="idea-facts">
+              <div><dt>周期</dt><dd>1-3 个月</dd></div>
+              <div><dt>风险等级</dt><dd>中</dd></div>
+              <div><dt>核心催化剂</dt><dd>AI 资本开支、光模块订单、国产算力政策、半导体周期回升</dd></div>
+              <div><dt>代表行业/ETF/公司</dt><dd>光模块、服务器、半导体 ETF、云计算</dd></div>
+              <div><dt>定价状态</dt><dd>热门环节已有较多定价，优先等待订单和业绩兑现。</dd></div>
+              <div><dt>适合仓位</dt><dd>轻仓到标准仓</dd></div>
+              <div><dt>失效条件</dt><dd>云厂商资本开支预期下修，核心公司订单低于预期，或纳指科技资产连续走弱。</dd></div>
+              <div><dt>观察指标</dt><dd>纳指 100 ETF、AI 新闻密度、半导体订单、光模块价格</dd></div>
+            </dl>
+          </article>
+        
+
+          <article class="item-block">
+            <div class="score-line"><span>等待确认</span><span>约 55%-65%</span><span>置信度 62 / 100</span></div>
+            <h3>新能源从总量交易转向结构筛选</h3>
+            <p>新能源新闻仍有催化，但产能和价格压力未完全解除，应优先看储能、电网等盈利更稳定的分支。</p>
+            <dl class="idea-facts">
+              <div><dt>周期</dt><dd>3-12 个月</dd></div>
+              <div><dt>风险等级</dt><dd>中</dd></div>
+              <div><dt>核心催化剂</dt><dd>储能项目投运、电网投资加速、政策消纳约束、海外需求恢复</dd></div>
+              <div><dt>代表行业/ETF/公司</dt><dd>储能、电网设备、电池 ETF、光伏逆变器</dd></div>
+              <div><dt>定价状态</dt><dd>分支差异较大，储能和电网优于产能过剩环节。</dd></div>
+              <div><dt>适合仓位</dt><dd>轻仓观察</dd></div>
+              <div><dt>失效条件</dt><dd>产业链价格继续快速下行，招标低于预期，或龙头盈利继续下修。</dd></div>
+              <div><dt>观察指标</dt><dd>储能招标、电网投资、组件价格、锂价</dd></div>
+            </dl>
+          </article>
+        
+
+          <article class="item-block">
+            <div class="score-line"><span>持有观察</span><span>约 55%-65%</span><span>置信度 60 / 100</span></div>
+            <h3>港股科技关注南向资金与美元环境共振</h3>
+            <p>港股弹性取决于美元流动性、平台经济预期和南向资金，适合用趋势确认而非单日波动做决策。</p>
+            <dl class="idea-facts">
+              <div><dt>周期</dt><dd>1 个月</dd></div>
+              <div><dt>风险等级</dt><dd>中</dd></div>
+              <div><dt>核心催化剂</dt><dd>美元走弱、南向资金回流、互联网平台业绩修复、政策预期改善</dd></div>
+              <div><dt>代表行业/ETF/公司</dt><dd>恒生科技、港股互联网 ETF、平台经济龙头</dd></div>
+              <div><dt>定价状态</dt><dd>修复交易已有启动，仍需资金持续性确认。</dd></div>
+              <div><dt>适合仓位</dt><dd>轻仓到标准仓</dd></div>
+              <div><dt>失效条件</dt><dd>美元重新走强，恒生科技放量下破，或互联网龙头业绩指引转弱。</dd></div>
+              <div><dt>观察指标</dt><dd>恒生指数、美元/离岸人民币、南向资金、港股科技成交额</dd></div>
+            </dl>
+          </article>
+        </section>
+        <section id=""><h2>我的行动清单</h2><ul class="plain-list detail-list"><li>先确认今天交易的是流动性、政策、业绩还是产业催化。</li>
+<li>只把重要性高且来源可复核的事件放入重点跟踪列表。</li>
+<li>可分批关注：跟踪 AI 算力与半导体链条的订单验证，观察 纳指 100 ETF、AI 新闻密度、半导体订单。</li>
+<li>等待确认：新能源从总量交易转向结构筛选，观察 储能招标、电网投资、组件价格。</li>
+<li>持有观察：港股科技关注南向资金与美元环境共振，观察 恒生指数、美元/离岸人民币、南向资金。</li>
+<li>优先复核最高分事件：全球风险偏好与 A/H 股交易环境更新。</li></ul></section>
+        <section id="risks"><h2>风险提示</h2><ul class="plain-list detail-list"><li>免费行情和 RSS 聚合源可能延迟或缺失，关键结论需要回看原始来源。</li>
+<li>AI 或规则生成观点不能替代独立判断，所有建议都必须结合仓位和失效条件。</li></ul></section>
+        <section>
+          <h2>数据来源与可信度说明</h2>
+          <p>市场信号来自 Yahoo Finance chart 免费接口，可能存在延迟、缺口或临时不可用；投资判断仍需结合交易所、公司公告和券商数据复核。</p>
+<p>宏观代理指标来自 Yahoo Finance 免费接口，覆盖美债、波动率、商品和加密资产；这些是资金环境代理变量，不等同于官方宏观统计。</p>
+<p>新闻线索来自 Google News RSS 免费聚合源，标题和来源用于事件筛选，重要事实需回看原文复核。</p>
+<p>公告线索来自 Google News 对巨潮资讯、交易所、港交所披露易和 SEC 的公开索引；当前阶段只用于发现线索，正式判断必须打开公告原文复核。</p>
+<p>质量检查：通过基础完整性检查。</p>
+        </section>
+      </article>
+      <aside class="side-rail">
+        <div class="rail-block">
+          <h2>报告导航</h2>
+          <a href="#events">核心事件</a>
+          <a href="#ideas">投资机会</a>
+          <a href="#risks">风险提示</a>
+        </div>
+        <div class="rail-block">
+          <h2>切换报告</h2>
+          <span class="muted-link">上一篇：无</span>
+          <a class="report-link" href="2026-06-29-noon.html">下一篇：2026-06-29 午盘快报</a>
+        </div>
+      </aside>
+    </section>
+  </main>
+  <script>
+    
+    const expectedToken = "dev-token";
+    const params = new URLSearchParams(window.location.search);
+    const inputToken = params.get("token") || localStorage.getItem("report_token") || "";
+    const app = document.getElementById("app");
+    const locked = document.getElementById("locked");
+    function showApp(token) {
+      if (token === expectedToken) {
+        localStorage.setItem("report_token", token);
+        app.hidden = false;
+        locked.hidden = true;
+        appendTokenToLinks();
+      } else {
+        app.hidden = true;
+        locked.hidden = false;
+      }
+    }
+    function appendTokenToLinks() {
+      const token = localStorage.getItem("report_token") || params.get("token") || "";
+      if (!token) return;
+      document.querySelectorAll("a.report-link, a.back-link").forEach((link) => {
+        const url = new URL(link.getAttribute("href"), window.location.href);
+        url.searchParams.set("token", token);
+        link.setAttribute("href", url.pathname.split("/").pop() === "index.html" ? url.href : url.href);
+      });
+    }
+    document.getElementById("unlockButton").addEventListener("click", () => {
+      showApp(document.getElementById("tokenInput").value.trim());
+    });
+    showApp(inputToken);
+    
+    appendTokenToLinks();
+  </script>
+
+</body>
+</html>
