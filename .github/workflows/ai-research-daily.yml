@@ -75,7 +75,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: generate AI research report"
-          file_pattern: "data/reports/** site/**"
+          file_pattern: "data/reports site"
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
