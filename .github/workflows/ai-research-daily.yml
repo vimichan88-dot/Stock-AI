@@ -1,0 +1,90 @@
+name: AI Research Daily
+
+on:
+  workflow_dispatch:
+    inputs:
+      report_type:
+        description: Report type
+        required: true
+        default: morning
+        type: choice
+        options:
+          - morning
+          - noon
+          - close
+  schedule:
+    # China market time: 08:00, 12:30, 17:30 Monday-Friday.
+    - cron: "0 0 * * 1-5"
+    - cron: "30 4 * * 1-5"
+    - cron: "30 9 * * 1-5"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Resolve report type
+        id: report-type
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "value=${{ inputs.report_type }}" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.schedule }}" = "0 0 * * 1-5" ]; then
+            echo "value=morning" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.schedule }}" = "30 4 * * 1-5" ]; then
+            echo "value=noon" >> "$GITHUB_OUTPUT"
+          else
+            echo "value=close" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Generate report
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
+          REPORT_ACCESS_TOKEN: ${{ secrets.REPORT_ACCESS_TOKEN }}
+          PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
+          SERVER_CHAN_KEY: ${{ secrets.SERVER_CHAN_KEY }}
+          EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
+          EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          REPORT_BASE_URL: ${{ vars.REPORT_BASE_URL }}
+          TIMEZONE: Asia/Shanghai
+        run: python -m src.airesearch.main --report-type "${{ steps.report-type.outputs.value }}"
+
+      - name: Commit generated reports
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: generate AI research report"
+          file_pattern: "data/reports/** site/**"
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
