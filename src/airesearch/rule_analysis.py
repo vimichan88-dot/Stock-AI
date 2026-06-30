@@ -6,9 +6,9 @@ from .models import AnalysisSection, CoreEvent, InvestmentIdea, MarketSignal
 from .news_data import NewsItem
 
 
-POSITIVE_WORDS = ["上涨", "反弹", "创新高", "增持", "获批", "订单", "扩产", "突破", "利好", "增长"]
-NEGATIVE_WORDS = ["下跌", "回落", "风险", "调查", "制裁", "亏损", "降价", "减持", "违约", "放缓"]
-HIGH_IMPACT_WORDS = ["政策", "央行", "美联储", "业绩", "订单", "出口", "并购", "监管", "关税", "AI", "芯片"]
+POSITIVE_WORDS = ["上涨", "反弹", "创新高", "增持", "获批", "订单", "扩产", "突破", "利好", "增长", "回流", "中标", "上修", "降息", "放量"]
+NEGATIVE_WORDS = ["下跌", "回落", "风险", "调查", "制裁", "亏损", "降价", "减持", "违约", "放缓", "下修", "暴跌", "监管", "关税", "冲突"]
+HIGH_IMPACT_WORDS = ["政策", "央行", "美联储", "业绩", "订单", "出口", "并购", "监管", "关税", "AI", "芯片", "算力", "半导体", "南向资金", "人民币", "美债", "黄金", "原油"]
 
 
 def build_market_view(signals: list[MarketSignal]) -> str:
@@ -261,11 +261,20 @@ def event_from_news(item: NewsItem) -> CoreEvent:
     importance = score_news(item)
     direction = "正面催化" if sentiment > 0 else "风险信号" if sentiment < 0 else "重要线索"
     bullish_stocks, bearish_stocks = stock_impact_for(item)
+    published = f"发布时间 {item.published_at}；" if item.published_at else ""
+    impact_path = impact_path_for(item)
+    verification = verification_points_for(item)
 
     return CoreEvent(
         title=item.title,
-        summary=f"{item.category}方向出现{direction}，需要结合原文与市场反应判断持续性。",
-        reason=f"该线索来自 {item.source}，属于“{item.query_name}”监控范围；标题涉及的主题可能影响相关行业风险偏好。",
+        summary=(
+            f"{item.category}方向出现{direction}。{published}来源为 {item.source}，属于“{item.query_name}”监控范围。"
+            f"这条信息首先影响的是市场对相关产业景气、资金风险偏好和短线交易拥挤度的判断。"
+        ),
+        reason=(
+            f"影响链条：{impact_path}。可参考信息不在于标题本身，而在于后续能否看到"
+            f"{verification}。若只有情绪扩散而没有价格、成交、订单或政策细节确认，交易价值需要打折。"
+        ),
         beneficiaries=beneficiaries_for(item),
         risks=risks_for(item, sentiment),
         importance=importance,
@@ -274,6 +283,30 @@ def event_from_news(item: NewsItem) -> CoreEvent:
         bullish_stocks=bullish_stocks,
         bearish_stocks=bearish_stocks,
     )
+
+
+def impact_path_for(item: NewsItem) -> str:
+    mapping = {
+        "AI": "海外 AI 资本开支或国产算力预期 -> 光模块、服务器、半导体、IDC 等环节订单预期 -> A/H 科技成长风险偏好",
+        "新能源": "政策、招标或价格变化 -> 储能、电网、电池、光伏盈利预期 -> 产业链分化而非板块普涨",
+        "港股": "美元流动性和南向资金 -> 平台经济、港股科技和高股息资产估值修复 -> 港股成交持续性",
+        "A 股": "政策预期和成交量 -> 券商、核心资产、主题成长的弹性 -> 指数能否从反弹转为趋势",
+        "宏观": "美元、美债、黄金、原油和人民币变化 -> 全球风险偏好与贴现率 -> A/H 股估值和行业轮动",
+        "公告": "公司公告或业绩线索 -> 订单、利润率、现金流或资本开支变化 -> 同产业链估值重估",
+    }
+    return mapping.get(item.category, "新闻线索 -> 行业预期变化 -> 资金关注度和估值弹性变化")
+
+
+def verification_points_for(item: NewsItem) -> str:
+    mapping = {
+        "AI": "云厂商资本开支、订单落地、龙头公司公告、光模块价格和美股 AI 链表现",
+        "新能源": "招标规模、组件/电池价格、库存去化、龙头毛利率和海外政策细节",
+        "港股": "南向资金净流入、恒生科技成交额、美元指数、平台龙头业绩指引",
+        "A 股": "成交额放大、政策细则、北向或机构资金、龙头股相对强弱",
+        "宏观": "美债收益率、美元/人民币、黄金原油价格、VIX 和主要股指共振",
+        "公告": "公告原文、财务口径、订单金额、履约周期和利润率影响",
+    }
+    return mapping.get(item.category, "原文细节、成交量、行业龙头反应和后续公告")
 
 
 def market_event(signals: list[MarketSignal]) -> CoreEvent:
@@ -324,36 +357,92 @@ def stock_impact_for(item: NewsItem) -> tuple[list[str], list[str]]:
             ["同业竞争弱势公司", "订单被替代公司", "高估值无业绩公司"],
         ),
     }
-    bullish, bearish = mapping.get(
-        item.category,
-        (["相关行业龙头", "产业链ETF", "高景气细分龙头"], ["同业弱势公司", "高估值题材股", "基本面承压公司"]),
-    )
+    bullish, bearish = mapping.get(item.category, stock_impact_from_title(item.title))
     if sentiment < 0:
         return bearish[:4], bullish[:4]
     return bullish[:5], bearish[:4]
 
 
+def stock_impact_from_title(title: str) -> tuple[list[str], list[str]]:
+    lowered = title.lower()
+    keyword_map = [
+        (
+            ["ai", "算力", "芯片", "光模块", "半导体", "服务器"],
+            ["中际旭创(300308)", "新易盛(300502)", "工业富联(601138)", "寒武纪(688256)", "中芯国际(688981)"],
+            ["高估值无订单AI题材股", "算力租赁弱现金流公司", "传统低端服务器代工"],
+        ),
+        (
+            ["新能源", "储能", "光伏", "电池", "电网", "锂"],
+            ["宁德时代(300750)", "阳光电源(300274)", "亿纬锂能(300014)", "国电南瑞(600406)", "特变电工(600089)"],
+            ["低效光伏组件企业", "高成本落后电池产能", "高负债新能源小票"],
+        ),
+        (
+            ["港股", "恒生", "南向", "阿里", "腾讯", "美团", "小米"],
+            ["腾讯控股(00700.HK)", "阿里巴巴-W(09988.HK)", "美团-W(03690.HK)", "小米集团-W(01810.HK)"],
+            ["高杠杆地产链港股", "成交低迷券商股", "弱基本面小市值港股"],
+        ),
+        (
+            ["黄金", "原油", "美元", "人民币", "美债", "宏观"],
+            ["紫金矿业(601899)", "山东黄金(600547)", "中国海油(600938)", "高股息红利ETF(515180)"],
+            ["航空股", "高外债房企", "高估值成长股"],
+        ),
+    ]
+    for keywords, bullish, bearish in keyword_map:
+        if any(keyword in lowered for keyword in keywords):
+            return bullish, bearish
+    return ["相关行业龙头", "产业链ETF", "高景气细分龙头"], ["同业弱势公司", "高估值题材股", "基本面承压公司"]
+
+
 def score_news(item: NewsItem) -> int:
-    score = 58
+    score = 50
     title = item.title
-    score += sum(7 for word in HIGH_IMPACT_WORDS if word.lower() in title.lower())
-    if item.category in {"AI", "A 股", "港股", "新能源"}:
-        score += 8
+    lowered = title.lower()
+    score += sum(5 for word in HIGH_IMPACT_WORDS if word.lower() in lowered)
+    category_weight = {
+        "宏观": 12,
+        "A 股": 11,
+        "港股": 10,
+        "AI": 10,
+        "公告": 9,
+        "新能源": 8,
+    }.get(item.category, 5)
+    score += category_weight
     if item.source not in {"Google News", ""}:
-        score += 4
-    score += abs(sentiment_score(title)) * 4
+        score += 3
+    if item.link:
+        score += 2
+    if any(word in lowered for word in ["突发", "重磅", "首次", "新高", "大涨", "大跌", "暴跌", "监管", "制裁"]):
+        score += 7
+    score += min(abs(sentiment_score(title)) * 5, 15)
+    score += stable_title_variation(title, 9)
     return max(0, min(score, 95))
 
 
 def confidence_for(item: NewsItem) -> int:
-    confidence = 58
+    confidence = 50
     if item.link:
         confidence += 8
     if item.source not in {"Google News", ""}:
-        confidence += 8
+        confidence += source_confidence_bonus(item.source)
     if item.published_at:
-        confidence += 5
-    return min(confidence, 82)
+        confidence += 6
+    if any(word in item.title for word in ["据", "称", "传", "或", "可能"]):
+        confidence -= 5
+    confidence += stable_title_variation(item.title + item.source, 7)
+    return max(35, min(confidence, 88))
+
+
+def source_confidence_bonus(source: str) -> int:
+    trusted_keywords = ["财联社", "证券时报", "上海证券报", "中国证券报", "证券日报", "新华社", "央视", "交易所", "公告", "新浪财经"]
+    if any(keyword in source for keyword in trusted_keywords):
+        return 14
+    return 8
+
+
+def stable_title_variation(text: str, span: int) -> int:
+    if span <= 0:
+        return 0
+    return sum(ord(ch) for ch in text) % span
 
 
 def sentiment_score(text: str) -> int:

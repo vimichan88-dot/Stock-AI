@@ -23,9 +23,20 @@ class MarketSnapshot:
 
 
 INSTRUMENTS = [
-    MarketInstrument("上证指数", "000001.SS", "观察 A 股整体风险偏好和成交主线"),
-    MarketInstrument("恒生指数", "^HSI", "观察港股风险偏好、南向资金和美元流动性压力"),
-    MarketInstrument("纳指 100 ETF", "QQQ", "观察美股科技和 AI 交易拥挤度"),
+    MarketInstrument("上证指数", "000001.SS", "中国大陆市场基准，观察 A 股整体风险偏好和成交主线"),
+    MarketInstrument("沪深300", "000300.SS", "中国大陆核心资产基准，观察权重股和北向/机构风险偏好"),
+    MarketInstrument("创业板指", "399006.SZ", "中国大陆成长股基准，观察新能源、医药和科技成长方向"),
+    MarketInstrument("科创50", "000688.SS", "中国大陆科创板代表指数，观察硬科技、半导体和高端制造成长风格"),
+    MarketInstrument("恒生指数", "^HSI", "香港市场基准，观察港股风险偏好、南向资金和美元流动性压力"),
+    MarketInstrument("恒生科技", "3033.HK", "香港科技资产代理，观察平台经济和港股成长风格"),
+    MarketInstrument("标普500", "^GSPC", "美国大盘基准，观察全球风险资产定价"),
+    MarketInstrument("纳斯达克100", "^NDX", "美国科技基准，观察 AI、半导体和高估值成长股映射"),
+    MarketInstrument("道琼斯工业指数", "^DJI", "美国蓝筹基准，观察传统周期和防守资产表现"),
+    MarketInstrument("日经225", "^N225", "日本市场基准，观察亚洲风险偏好和日元相关交易"),
+    MarketInstrument("韩国KOSPI", "^KS11", "韩国市场基准，观察半导体、出口链和亚洲科技风险偏好"),
+    MarketInstrument("欧洲STOXX 600", "^STOXX", "欧洲市场基准，观察全球周期和欧洲风险偏好"),
+    MarketInstrument("德国DAX", "^GDAXI", "欧洲制造业和出口链代理，观察全球工业周期"),
+    MarketInstrument("英国富时100", "^FTSE", "欧洲高股息和资源股代理，观察防守与商品链偏好"),
     MarketInstrument("黄金 ETF", "GLD", "观察避险情绪和实际利率变化"),
     MarketInstrument("美元/离岸人民币", "CNH=X", "观察人民币汇率和外资风险偏好"),
 ]

@@ -133,7 +133,7 @@ class ReportPipelineTests(unittest.TestCase):
         self.assertIn("历史报告", index_html)
         self.assertIn("reports/2026-06-29-morning.html", index_html)
         self.assertIn("全球市场速览", detail_html)
-        self.assertIn("主要股指", detail_html)
+        self.assertIn("中国大陆", detail_html)
         self.assertIn("今日核心事件", detail_html)
         self.assertIn("最新动态", detail_html)
         self.assertIn("市场影响", detail_html)

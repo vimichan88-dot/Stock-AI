@@ -41,7 +41,8 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
     settings = Settings.from_env()
-    date_text = args.date or current_date_text(settings.timezone)
+    generated_at = current_datetime(settings.timezone)
+    date_text = args.date or generated_at.strftime("%Y-%m-%d")
 
     market_signals = None
     market_source_note = None
@@ -83,7 +84,15 @@ def main() -> None:
     except Exception as exc:
         print(f"Announcement data fallback used: {exc}")
 
-    report = build_report(args.report_type, date_text, market_signals, market_source_note, news_items, news_source_note)
+    report = build_report(
+        args.report_type,
+        date_text,
+        market_signals,
+        market_source_note,
+        news_items,
+        news_source_note,
+        generated_at=generated_at,
+    )
     if settings.openai_api_key:
         try:
             report = enhance_report_with_openai(report, settings, news_items or [])
@@ -136,14 +145,18 @@ def main() -> None:
 
 
 def current_date_text(timezone_name: str) -> str:
+    return current_datetime(timezone_name).strftime("%Y-%m-%d")
+
+
+def current_datetime(timezone_name: str) -> datetime:
     fixed_timezone = fixed_timezone_for(timezone_name)
     if fixed_timezone is not None:
-        return datetime.now(fixed_timezone).strftime("%Y-%m-%d")
+        return datetime.now(fixed_timezone)
     try:
-        return datetime.now(ZoneInfo(timezone_name)).strftime("%Y-%m-%d")
+        return datetime.now(ZoneInfo(timezone_name))
     except ZoneInfoNotFoundError:
         print(f"Invalid TIMEZONE configured: {timezone_name}. Falling back to local time.")
-        return datetime.now().strftime("%Y-%m-%d")
+        return datetime.now()
 
 
 def fixed_timezone_for(timezone_name: str) -> timezone | None:

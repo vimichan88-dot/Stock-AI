@@ -191,6 +191,7 @@ def merge_ai_payload(report: Report, payload: dict[str, Any]) -> Report:
 
 
 def coerce_core_event(item: dict[str, Any]) -> CoreEvent:
+    bullish_fallback, bearish_fallback = fallback_stock_lists(item)
     return CoreEvent(
         title=coerce_text(item.get("title"), "未命名事件"),
         summary=coerce_text(item.get("summary"), ""),
@@ -200,8 +201,8 @@ def coerce_core_event(item: dict[str, Any]) -> CoreEvent:
         importance=coerce_score(item.get("importance"), 60),
         confidence=coerce_score(item.get("confidence"), 60),
         sources=coerce_text_list(item.get("sources")),
-        bullish_stocks=coerce_text_list(item.get("bullish_stocks")) or ["待复核"],
-        bearish_stocks=coerce_text_list(item.get("bearish_stocks")) or ["待复核"],
+        bullish_stocks=coerce_text_list(item.get("bullish_stocks")) or bullish_fallback,
+        bearish_stocks=coerce_text_list(item.get("bearish_stocks")) or bearish_fallback,
     )
 
 
@@ -231,6 +232,43 @@ def coerce_analysis_section(item: dict[str, Any]) -> AnalysisSection:
         risks=coerce_text_list(item.get("risks")),
         watch=coerce_text_list(item.get("watch")),
     )
+
+
+def fallback_stock_lists(item: dict[str, Any]) -> tuple[list[str], list[str]]:
+    text = " ".join(
+        [
+            str(item.get("title", "")),
+            str(item.get("summary", "")),
+            " ".join(coerce_text_list(item.get("beneficiaries"))),
+            " ".join(coerce_text_list(item.get("risks"))),
+        ]
+    ).lower()
+    mappings = [
+        (
+            ["ai", "算力", "芯片", "光模块", "半导体", "服务器"],
+            ["中际旭创(300308)", "新易盛(300502)", "工业富联(601138)", "寒武纪(688256)", "中芯国际(688981)"],
+            ["高估值无订单AI题材股", "算力租赁弱现金流公司", "传统低端服务器代工"],
+        ),
+        (
+            ["新能源", "储能", "光伏", "电池", "电网"],
+            ["宁德时代(300750)", "阳光电源(300274)", "亿纬锂能(300014)", "国电南瑞(600406)"],
+            ["低效光伏组件企业", "高成本落后电池产能", "高负债新能源小票"],
+        ),
+        (
+            ["港股", "恒生", "南向", "互联网", "平台"],
+            ["腾讯控股(00700.HK)", "阿里巴巴-W(09988.HK)", "美团-W(03690.HK)", "小米集团-W(01810.HK)"],
+            ["高杠杆地产链港股", "成交低迷券商股", "弱基本面小市值港股"],
+        ),
+        (
+            ["黄金", "原油", "美元", "人民币", "美债", "宏观"],
+            ["紫金矿业(601899)", "山东黄金(600547)", "中国海油(600938)", "高股息红利ETF(515180)"],
+            ["航空股", "高外债房企", "高估值成长股"],
+        ),
+    ]
+    for keywords, bullish, bearish in mappings:
+        if any(keyword in text for keyword in keywords):
+            return bullish, bearish
+    return ["相关行业龙头", "产业链ETF", "高景气细分龙头"], ["同业弱势公司", "高估值题材股", "基本面承压公司"]
 
 
 def coerce_text(value: Any, fallback: str) -> str:

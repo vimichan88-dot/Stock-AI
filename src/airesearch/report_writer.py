@@ -11,7 +11,7 @@ def report_to_markdown(report: Report) -> str:
     lines: list[str] = []
     lines.append(f"# {report.title}")
     lines.append("")
-    lines.append(f"生成时间：{report.generated_at.isoformat(timespec='seconds')}")
+    lines.append(f"生成时间：{report.generated_at.strftime('%Y-%m-%d %H:%M:%S')} 北京时间")
     lines.append("")
     lines.append("## 今日核心结论")
     lines.append("")

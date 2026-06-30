@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from datetime import datetime
 import html
 import json
 import re
@@ -122,6 +123,7 @@ def render_report_detail(report: dict, reports: list[dict], access_token: str) -
         <p class="eyebrow">{escape(report.get("date", ""))} · {escape(label)}</p>
         <h1>{escape(report.get("title", "AI 投研报告"))}</h1>
         <p class="sub">{escape(report.get("market_view", ""))}</p>
+        <p class="sub time-line">生成时间：{escape(format_generated_at(report.get("generated_at", "")))}</p>
       </div>
       <a class="back-link" href="../index.html">返回首页</a>
     </header>
@@ -237,6 +239,7 @@ def render_report_card(report: dict) -> str:
       <article class="report-card" data-type="{escape(report.get("report_type", ""))}" data-search="{escape(search_text.lower())}">
         <div class="meta">{escape(report.get("date", ""))} · {escape(label)}</div>
         <h3>{escape(report.get("title", "AI 投研报告"))}</h3>
+        <p class="generated-line">生成时间：{escape(format_generated_at(report.get("generated_at", "")))}</p>
         <p>{escape(report.get("executive_summary", ""))}</p>
         <ul>{idea_html}</ul>
         <a class="report-link" href="reports/{report_filename(report)}">打开报告</a>
@@ -246,7 +249,11 @@ def render_report_card(report: dict) -> str:
 
 def render_market_overview(signals: list[dict]) -> str:
     groups = [
-        ("主要股指", [item for item in signals if market_signal_group(item) == "index"]),
+        ("中国大陆", [item for item in signals if market_signal_group(item) == "mainland"]),
+        ("香港市场", [item for item in signals if market_signal_group(item) == "hongkong"]),
+        ("美国市场", [item for item in signals if market_signal_group(item) == "us"]),
+        ("日韩市场", [item for item in signals if market_signal_group(item) == "jp_kr"]),
+        ("欧洲市场", [item for item in signals if market_signal_group(item) == "europe"]),
         ("大宗商品与外汇", [item for item in signals if market_signal_group(item) == "commodity_fx"]),
         ("债券与风险偏好", [item for item in signals if market_signal_group(item) == "rates_risk"]),
     ]
@@ -256,6 +263,16 @@ def render_market_overview(signals: list[dict]) -> str:
 
 def market_signal_group(signal: dict) -> str:
     name = str(signal.get("name", ""))
+    if any(keyword in name for keyword in ["上证", "沪深", "创业板", "深证", "科创"]):
+        return "mainland"
+    if any(keyword in name for keyword in ["恒生", "香港"]):
+        return "hongkong"
+    if any(keyword in name for keyword in ["标普", "纳斯达克", "纳指", "道琼", "道指"]):
+        return "us"
+    if any(keyword in name for keyword in ["日经", "韩国", "KOSPI"]):
+        return "jp_kr"
+    if any(keyword in name for keyword in ["欧洲", "STOXX", "德国", "DAX", "英国", "富时"]):
+        return "europe"
     commodity_keywords = ["油", "黄金", "金", "铜", "美元", "人民币", "比特", "以太"]
     rates_keywords = ["债", "收益率", "VIX", "波动"]
     if any(keyword in name for keyword in commodity_keywords):
@@ -292,6 +309,16 @@ def render_signal_table(title: str, signals: list[dict]) -> str:
 
 def render_events_section(events: list[dict]) -> str:
     rows = "\n".join(
+        render_event_block(idx, event)
+        for idx, event in enumerate(events, start=1)
+    )
+    return f"<section id=\"events\"><h2>今日核心事件</h2>{rows}</section>"
+
+
+def render_event_block(idx: int, event: dict) -> str:
+    bullish = event.get("bullish_stocks", []) or fallback_stock_list(event, "bullish")
+    bearish = event.get("bearish_stocks", []) or fallback_stock_list(event, "bearish")
+    return (
         f"""
           <article class="item-block">
             <div class="score-line"><span>重要程度 {escape(str(event.get('importance', '')))} / 100</span><span>置信度 {escape(str(event.get('confidence', '')))} / 100</span></div>
@@ -309,15 +336,13 @@ def render_events_section(events: list[dict]) -> str:
             <p><strong>受益方向：</strong>{escape(join_items(event.get('beneficiaries', [])))}</p>
             <p><strong>风险观察：</strong>{escape(join_items(event.get('risks', [])))}</p>
             <div class="stock-impact">
-              <div><strong>利好股票清单</strong><span>{escape(join_items(event.get('bullish_stocks', [])) or '待复核')}</span></div>
-              <div><strong>利空股票清单</strong><span>{escape(join_items(event.get('bearish_stocks', [])) or '待复核')}</span></div>
+              <div><strong>利好股票清单</strong><span>{escape(join_items(bullish) or '待复核')}</span></div>
+              <div><strong>利空股票清单</strong><span>{escape(join_items(bearish) or '待复核')}</span></div>
             </div>
             <p class="source-line"><strong>来源：</strong>{render_sources(event.get('sources', []))}</p>
           </article>
         """.strip()
-        for idx, event in enumerate(events, start=1)
     )
-    return f"<section id=\"events\"><h2>今日核心事件</h2>{rows}</section>"
 
 
 def render_analysis_sections(sections: list[dict]) -> str:
@@ -404,6 +429,56 @@ def render_sources(sources: list[str]) -> str:
     return "、".join(rendered)
 
 
+def fallback_stock_list(event: dict, side: str) -> list[str]:
+    text = " ".join(
+        [
+            str(event.get("title", "")),
+            str(event.get("summary", "")),
+            join_items(event.get("beneficiaries", [])),
+            join_items(event.get("risks", [])),
+        ]
+    ).lower()
+    stock_map = [
+        (
+            ["ai", "算力", "芯片", "光模块", "半导体", "服务器"],
+            ["中际旭创(300308)", "新易盛(300502)", "工业富联(601138)", "寒武纪(688256)", "中芯国际(688981)"],
+            ["高估值无订单AI题材股", "算力租赁弱现金流公司", "传统低端服务器代工"],
+        ),
+        (
+            ["新能源", "储能", "光伏", "电池", "电网"],
+            ["宁德时代(300750)", "阳光电源(300274)", "亿纬锂能(300014)", "国电南瑞(600406)"],
+            ["低效光伏组件企业", "高成本落后电池产能", "高负债新能源小票"],
+        ),
+        (
+            ["港股", "恒生", "南向", "互联网平台", "平台经济"],
+            ["腾讯控股(00700.HK)", "阿里巴巴-W(09988.HK)", "美团-W(03690.HK)", "小米集团-W(01810.HK)"],
+            ["高杠杆地产链港股", "成交低迷券商股", "弱基本面小市值港股"],
+        ),
+        (
+            ["黄金", "美元", "原油", "避险", "宏观"],
+            ["紫金矿业(601899)", "山东黄金(600547)", "中国海油(600938)", "高股息红利ETF(515180)"],
+            ["航空股", "高外债房企", "高估值成长股"],
+        ),
+    ]
+    for keywords, bullish, bearish in stock_map:
+        if any(keyword in text for keyword in keywords):
+            return bullish if side == "bullish" else bearish
+    return ["相关行业龙头", "产业链ETF", "高景气细分龙头"] if side == "bullish" else ["同业弱势公司", "高估值题材股", "基本面承压公司"]
+
+
+def format_generated_at(value: object) -> str:
+    text = str(value or "").strip()
+    if not text:
+        return "暂无生成时间"
+    try:
+        dt = datetime.fromisoformat(text)
+    except ValueError:
+        return text
+    if dt.tzinfo is None:
+        return f"{dt.strftime('%Y-%m-%d %H:%M:%S')} 北京时间"
+    return f"{dt.strftime('%Y-%m-%d %H:%M:%S')} 北京时间"
+
+
 def detail_nav_link(label: str, report: dict | None) -> str:
     if not report:
         return f"<span class=\"muted-link\">{escape(label)}：无</span>"
@@ -456,10 +531,11 @@ def render_page(title: str, body: str) -> str:
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }}
     * {{ box-sizing: border-box; }}
+    html, body {{ max-width: 100%; overflow-x: hidden; }}
     body {{ margin: 0; background: var(--bg); color: var(--text); }}
     a {{ color: var(--accent); text-decoration: none; }}
     a:hover {{ text-decoration: underline; }}
-    .shell {{ max-width: 1180px; margin: 0 auto; padding: 28px 18px 64px; }}
+    .shell {{ width: 100%; max-width: 1180px; margin: 0 auto; padding: 28px 18px 64px; }}
     .topbar {{ display: flex; justify-content: space-between; gap: 24px; align-items: flex-end; padding: 18px 0 24px; border-bottom: 1px solid var(--line); }}
     .eyebrow {{ margin: 0 0 8px; color: var(--warn); font-size: 13px; font-weight: 800; letter-spacing: 0; }}
     h1 {{ margin: 0; font-size: 30px; line-height: 1.2; letter-spacing: 0; }}
@@ -489,13 +565,14 @@ def render_page(title: str, body: str) -> str:
     .search {{ width: 220px; height: 38px; border: 1px solid var(--line); border-radius: 6px; padding: 0 10px; font-size: 15px; }}
     .report-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 14px; margin-top: 16px; }}
     .report-card {{ padding: 18px; display: flex; flex-direction: column; min-height: 260px; }}
+    .generated-line {{ margin: 6px 0 0; color: var(--muted); font-size: 13px; }}
     .report-card p {{ color: var(--muted); }}
     .report-card ul {{ padding-left: 18px; margin: 8px 0 12px; }}
     .report-card .report-link {{ margin-top: auto; }}
     .detail-layout {{ display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 18px; margin-top: 20px; align-items: start; }}
-    .report-body {{ display: grid; gap: 18px; }}
+    .report-body {{ display: grid; gap: 18px; min-width: 0; }}
     .report-body > section {{ background: transparent; border-bottom: 1px solid var(--line); padding-bottom: 18px; }}
-    .item-block {{ padding: 16px; margin: 12px 0; box-shadow: none; }}
+    .item-block {{ padding: 16px; margin: 12px 0; box-shadow: none; min-width: 0; overflow-wrap: anywhere; }}
     .score-line {{ display: flex; gap: 8px; flex-wrap: wrap; color: var(--warn); font-size: 13px; font-weight: 800; }}
     .event-grid {{ display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }}
     .event-grid div {{ border-left: 4px solid var(--accent); background: #fff; padding: 10px 12px; }}
@@ -509,9 +586,9 @@ def render_page(title: str, body: str) -> str:
     .stock-impact span {{ line-height: 1.55; }}
     .read-block {{ margin: 12px 0; padding: 12px 14px; border-left: 5px solid var(--line); background: #fff; color: var(--text); }}
     .read-block h3 {{ margin-top: 0; }}
-    .table-wrap {{ overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: #fff; }}
-    table {{ width: 100%; border-collapse: collapse; min-width: 680px; }}
-    th, td {{ padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; line-height: 1.55; }}
+    .table-wrap {{ max-width: 100%; overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: #fff; }}
+    table {{ width: 100%; border-collapse: collapse; table-layout: fixed; }}
+    th, td {{ padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; line-height: 1.55; overflow-wrap: anywhere; word-break: break-word; }}
     th {{ background: var(--accent-weak); color: #134e4a; font-size: 14px; }}
     .idea-facts {{ display: grid; gap: 8px; margin: 12px 0 0; }}
     .idea-facts div {{ display: grid; grid-template-columns: 130px 1fr; gap: 10px; }}
@@ -540,6 +617,8 @@ def render_page(title: str, body: str) -> str:
       .idea-facts div {{ grid-template-columns: 1fr; gap: 3px; }}
       .event-grid {{ grid-template-columns: 1fr; }}
       .stock-impact {{ grid-template-columns: 1fr; }}
+      th, td {{ padding: 8px 7px; font-size: 13px; }}
+      .score-line span {{ width: 100%; }}
     }}
   </style>
 </head>

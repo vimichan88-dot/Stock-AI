@@ -22,6 +22,7 @@ def build_report(
     market_source_note: str | None = None,
     news_items: list[NewsItem] | None = None,
     news_source_note: str | None = None,
+    generated_at: datetime | None = None,
 ) -> Report:
     if not market_signals and not news_items:
         return build_sample_report(report_type, date_text)
@@ -45,7 +46,7 @@ def build_report(
     return Report(
         report_type=report_type,
         date=date_text,
-        generated_at=datetime.now(),
+        generated_at=generated_at or datetime.now(),
         title=baseline.title,
         executive_summary=build_executive_summary(report_type, market_view, core_events, ideas, len(news)),
         market_view=market_view,
