@@ -28,13 +28,15 @@ jobs:
     runs-on: ubuntu-latest
     concurrency:
       group: ai-research-daily
-      cancel-in-progress: false
+      cancel-in-progress: true
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -89,10 +91,33 @@ jobs:
         run: python -m src.airesearch.main --report-type "${{ steps.report-type.outputs.value }}"
 
       - name: Commit generated reports
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "chore: generate AI research report"
-          file_pattern: "data/reports site"
+        shell: bash
+        run: |
+          set -euo pipefail
+          branch="${GITHUB_REF_NAME:-main}"
+          archive_path="${RUNNER_TEMP}/generated-report.tgz"
+
+          git add data/reports site
+          if git diff --cached --quiet; then
+            echo "No generated report changes to commit."
+            exit 0
+          fi
+
+          tar -czf "$archive_path" data/reports site
+          git fetch origin "$branch"
+          git reset --hard "origin/$branch"
+          tar -xzf "$archive_path"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/reports site
+          if git diff --cached --quiet; then
+            echo "Generated report changes already exist on $branch."
+            exit 0
+          fi
+
+          git commit -m "chore: generate AI research report"
+          git push origin "HEAD:$branch"
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
