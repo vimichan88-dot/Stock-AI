@@ -486,6 +486,8 @@ def token_script(access_token: str) -> str:
     const app = document.getElementById("app");
     const locked = document.getElementById("locked");
     const tokenStatus = document.getElementById("tokenStatus");
+    const tokenInput = document.getElementById("tokenInput");
+    tokenInput.value = inputToken;
     function setTokenStatus(message, isError = true) {{
       tokenStatus.textContent = message;
       tokenStatus.hidden = false;
@@ -505,6 +507,7 @@ def token_script(access_token: str) -> str:
       }} else {{
         app.hidden = true;
         locked.hidden = false;
+        localStorage.removeItem("report_token");
         if (showError) {{
           setTokenStatus("Token 不正确。请检查输入值是否和 GitHub Secret 里的 REPORT_ACCESS_TOKEN 完全一致。");
         }} else {{
@@ -524,9 +527,9 @@ def token_script(access_token: str) -> str:
     document.getElementById("unlockForm").addEventListener("submit", (event) => {{
       event.preventDefault();
       setTokenStatus("正在校验 token...", false);
-      showApp(document.getElementById("tokenInput").value.trim(), true);
+      showApp(tokenInput.value.trim(), true);
     }});
-    showApp(inputToken);
+    showApp(inputToken, Boolean(inputToken));
     """
 
 

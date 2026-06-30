@@ -147,6 +147,19 @@ class ReportPipelineTests(unittest.TestCase):
         self.assertIn("const hasExpectedToken = expectedToken.trim().length > 0;", index_html)
         self.assertIn("REPORT_ACCESS_TOKEN", index_html)
 
+    def test_token_script_shows_error_for_invalid_url_token(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            reports_root = root / "data" / "reports"
+            site_dir = root / "site"
+            build_site(reports_root, site_dir, "test-token")
+
+            index_html = (site_dir / "index.html").read_text(encoding="utf-8")
+
+        self.assertIn("tokenInput.value = inputToken;", index_html)
+        self.assertIn("localStorage.removeItem(\"report_token\");", index_html)
+        self.assertIn("showApp(inputToken, Boolean(inputToken));", index_html)
+
     def test_settings_treats_blank_environment_values_as_unset(self) -> None:
         with patch.dict(
             "os.environ",
