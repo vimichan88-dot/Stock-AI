@@ -1,6 +1,6 @@
 # 2026-06-30 盘前投研日报
 
-生成时间：2026-06-30T14:20:33
+生成时间：2026-06-30T11:09:22
 
 ## 今日核心结论
 
@@ -12,23 +12,23 @@
 
 | 指标 | 数值 | 变化 | 解读 |
 |---|---|---|---|
-| 上证指数 | 4073.90 | +1.16% | 观察 A 股整体风险偏好和成交主线，最新日期 2026-06-30。 |
+| 上证指数 | 4094.40 | +0.50% | 观察 A 股整体风险偏好和成交主线，最新日期 2026-06-30。 |
 | 恒生指数 | 22881.02 | -0.63% | 观察港股风险偏好、南向资金和美元流动性压力，最新日期 2026-06-30。 |
 | 纳指 100 ETF | 724.08 | +2.49% | 观察美股科技和 AI 交易拥挤度，最新日期 2026-06-29。 |
 | 黄金 ETF | 368.58 | -1.35% | 观察避险情绪和实际利率变化，最新日期 2026-06-29。 |
-| 美元/离岸人民币 | 6.79 | -0.10% | 观察人民币汇率和外资风险偏好，最新日期 2026-06-30。 |
+| 美元/离岸人民币 | 6.79 | -0.11% | 观察人民币汇率和外资风险偏好，最新日期 2026-06-30。 |
 | 美债 10 年收益率 | 4.37 | -0.46% | 观察全球折现率和成长股估值压力，最新日期 2026-06-29。 |
-| VIX 波动率 | 17.44 | -1.19% | 观察美股风险偏好和避险需求，最新日期 2026-06-30。 |
+| VIX 波动率 | 17.51 | -0.79% | 观察美股风险偏好和避险需求，最新日期 2026-06-30。 |
 | WTI 原油 | 70.70 | -0.07% | 观察通胀预期、能源链和地缘风险，最新日期 2026-06-30。 |
-| COMEX 铜 | 6.25 | +2.47% | 观察全球制造业需求和顺周期预期，最新日期 2026-06-30。 |
-| 比特币 | 59235.20 | -1.50% | 观察全球流动性和高风险资产偏好，最新日期 2026-06-30。 |
-| 以太坊 | 1579.14 | -1.93% | 观察加密资产风险偏好，最新日期 2026-06-30。 |
+| COMEX 铜 | 6.25 | +2.53% | 观察全球制造业需求和顺周期预期，最新日期 2026-06-30。 |
+| 比特币 | 59293.10 | -1.41% | 观察全球流动性和高风险资产偏好，最新日期 2026-06-30。 |
+| 以太坊 | 1582.83 | -1.70% | 观察加密资产风险偏好，最新日期 2026-06-30。 |
 
 ## 今日核心事件
 
 ### 1. 全球风险偏好与 A/H 股交易环境更新
 
-- 一句话总结：纳指 100 ETF波动居前，需结合 A 股、港股、美股科技、黄金和汇率判断今日风险偏好。
+- 一句话总结：COMEX 铜波动居前，需结合 A 股、港股、美股科技、黄金和汇率判断今日风险偏好。
 - 核心原因：跨市场行情是判断资金环境和主题持续性的基础输入，能帮助区分指数驱动与行业事件驱动。
 - 受益方向：A 股核心资产、港股科技、AI 算力、黄金与避险资产
 - 风险：外部流动性收紧、汇率波动、主题拥挤、单日行情误读
@@ -36,7 +36,17 @@
 - 置信度：72/100
 - 来源：Yahoo Finance chart
 
-### 2. A股和港股IPO全球占三成份额，新质生产力政策如何加速资本市场资源配置效率？ - 新浪新闻_手机新浪网
+### 2. 南向资金追踪｜6月净流入约271亿港元 重仓AI硬件赛道减持红利资产 港美股资讯 - hstong.com
+
+- 一句话总结：AI方向出现风险信号，需要结合原文与市场反应判断持续性。
+- 核心原因：该线索来自 hstong.com，属于“港股科技”监控范围；标题涉及的主题可能影响相关行业风险偏好。
+- 受益方向：服务器、光模块、半导体、云计算、IDC
+- 风险：风险继续扩散、盈利预期下修、流动性压力、消息反转
+- 重要程度：81/100
+- 置信度：79/100
+- 来源：hstong.com、https://news.google.com/rss/articles/CBMiYkFVX3lxTE1jSzQwRElYaTBUdXBuOVJqaUltbXN1RzA5dkYzb2tuU1o5Z0lEajB0S1pxQ3N0MmZ6QXI1MlB6clBhVHByNC10SHdTZjBIWnNFdFlwUDhUY1dYSnpVbGZ6Ylln?oc=5
+
+### 3. A股和港股IPO全球占三成份额，新质生产力政策如何加速资本市场资源配置效率？ - 新浪新闻_手机新浪网
 
 - 一句话总结：港股方向出现重要线索，需要结合原文与市场反应判断持续性。
 - 核心原因：该线索来自 新浪新闻_手机新浪网，属于“A 股政策与市场”监控范围；标题涉及的主题可能影响相关行业风险偏好。
@@ -46,17 +56,17 @@
 - 置信度：79/100
 - 来源：新浪新闻_手机新浪网、https://news.google.com/rss/articles/CBMiigFBVV95cUxQdC1oT0pvVTZwZ1BaY3g2ZVAzYUx1TTMzSU5BUlplTGdDMGhsVEZrX3d5SndXUVRyVjdXY2I2YVVPQkwxYkxwTVNjOUQ2ZWlIbzRrdE9qQW5QQXpUUlpUbWFobmtuRl9zYmdHdTBscGVJMUNKLTRGaUxndFBCVWNzUGFCVXpMR3AtbVE?oc=5
 
-### 3. A股定价逻辑：基本面、一致预期、资金结构、市场情绪与政策制度五大因子协同作用 - 虎嗅
+### 4. A股定价逻辑：基本面、一致预期、资金结构、市场情绪与政策制度五大因子协同作用 - 虎嗅网
 
 - 一句话总结：A 股方向出现重要线索，需要结合原文与市场反应判断持续性。
-- 核心原因：该线索来自 虎嗅，属于“A 股政策与市场”监控范围；标题涉及的主题可能影响相关行业风险偏好。
+- 核心原因：该线索来自 虎嗅网，属于“A 股政策与市场”监控范围；标题涉及的主题可能影响相关行业风险偏好。
 - 受益方向：券商、核心资产、政策受益行业、成交活跃主题
 - 风险：消息反转、市场已充分定价、来源细节需复核
 - 重要程度：77/100
 - 置信度：79/100
-- 来源：虎嗅、https://news.google.com/rss/articles/CBMiYkFVX3lxTFBUX1dYWm1wNi0xVUlOZXROTV9xcFVZVkwteHlLNDR0eHZJeDVzZ2pXNFcyRUhQWGItX0JZOXJlcGZMWndEUUZWcUZtZGVaX0pROW96bEVYb0lUMGlHbFZGN25R?oc=5
+- 来源：虎嗅网、https://news.google.com/rss/articles/CBMiYkFVX3lxTFBUX1dYWm1wNi0xVUlOZXROTV9xcFVZVkwteHlLNDR0eHZJeDVzZ2pXNFcyRUhQWGItX0JZOXJlcGZMWndEUUZWcUZtZGVaX0pROW96bEVYb0lUMGlHbFZGN25R?oc=5
 
-### 4. 港股上半年收官：三大指数均跌超10% AI硬件错配引发“流动性双轨虹吸” - 财联社
+### 5. 港股上半年收官：三大指数均跌超10% AI硬件错配引发“流动性双轨虹吸” - 财联社
 
 - 一句话总结：AI方向出现重要线索，需要结合原文与市场反应判断持续性。
 - 核心原因：该线索来自 财联社，属于“港股科技”监控范围；标题涉及的主题可能影响相关行业风险偏好。
@@ -66,7 +76,7 @@
 - 置信度：79/100
 - 来源：财联社、https://news.google.com/rss/articles/CBMiSEFVX3lxTE5wNmF1WjRHRlVtRU13ZElyTExCbWFzQm0zWU1oR0ExS0Q5ZmlIeVdfSGtFUDg1UDdFM3lZOXN3ejREYzBuUlRRcQ?oc=5
 
-### 5. WorkBuddy成为国内DAU第一办公智能体！腾讯控股午后拉升！港股AI含量最高的恒生互联网受关注 - 新浪财经
+### 6. WorkBuddy成为国内DAU第一办公智能体！腾讯控股午后拉升！港股AI含量最高的恒生互联网受关注 - 新浪财经
 
 - 一句话总结：AI方向出现重要线索，需要结合原文与市场反应判断持续性。
 - 核心原因：该线索来自 新浪财经，属于“港股科技”监控范围；标题涉及的主题可能影响相关行业风险偏好。
@@ -76,7 +86,7 @@
 - 置信度：79/100
 - 来源：新浪财经、https://news.google.com/rss/articles/CBMib0FVX3lxTE9Ra3A3bHFxY1pvdDAwYmw5TGlqT3Zpc1Z1Y2pPNFdBNEJycXo3TEJVTTJVSkhWZmxub2RhOTIydE16S2ctbFdaME8wMW9BekxkU1l2UDFxMHQ2NGwtRnRqVHdHU1BlRHZGN2VLc01VUQ?oc=5
 
-### 6. AI算力超级周期，双创资产迎来黄金配置机遇 - 新浪网
+### 7. AI算力超级周期，双创资产迎来黄金配置机遇 - 新浪网
 
 - 一句话总结：AI方向出现重要线索，需要结合原文与市场反应判断持续性。
 - 核心原因：该线索来自 新浪网，属于“AI 算力”监控范围；标题涉及的主题可能影响相关行业风险偏好。
@@ -86,7 +96,7 @@
 - 置信度：79/100
 - 来源：新浪网、https://news.google.com/rss/articles/CBMigwFBVV95cUxOc0ZCQy1yLUt0a2dsLVlHa0MteUVTdUxzN2VjWmxXV3RfWUozQUI5VVJ1bllLZy1JQmNrbFZxdkUwWHpuR0JsS184cVdsbHZzRWVteHlhX2NpYmlBVE85dzlqMFFPRkZsZk13eWh3WkdDNmp4a290SFRiNmdNRkNJcVRRMA?oc=5
 
-### 7. AI五层蛋糕：谁在底层搭算力，谁在顶层做应用？“ETF华宝”AI投资地图来啦 - 新浪财经
+### 8. AI五层蛋糕：谁在底层搭算力，谁在顶层做应用？“ETF华宝”AI投资地图来啦 - 新浪财经
 
 - 一句话总结：AI方向出现重要线索，需要结合原文与市场反应判断持续性。
 - 核心原因：该线索来自 新浪财经，属于“AI 算力”监控范围；标题涉及的主题可能影响相关行业风险偏好。
@@ -96,7 +106,7 @@
 - 置信度：79/100
 - 来源：新浪财经、https://news.google.com/rss/articles/CBMiigJBVV95cUxQZ0Z5Z3Jram5PdEM2QnBfSGNSa3kteWV3ajYxS3pQdm9wSml0eUpMWUpGYVNMdUE4TTBvcDJPWHAyUS1xcWwxeWVUcC1IZE05QTZ5MzdhanpFbGJtYmpZbDJmc0RSeF83bHN6bFh4V0kzYURiRkVraEZyTmltWkM1Vy1nWHNhLVNmbTBld0dPOEhOWXRmRmJwdnpFNmR4RTI3RXlvMU0xTDN5cFZuUW9QeWxPZ3FocGEwWU5CcldlSlpDZ2FwMGxWZHE5eXU3bjFkeW16M0FwLTUzbkVxY2tCVFhXelZEeHk3ZVRmWHpXTzFCYmY4MkJaaUctaTVvUmpBSlVUbVB0d09NUQ?oc=5
 
-### 8. AI算力的隐形瓶颈：马斯克也开始出手「光模块」 - 富途牛牛
+### 9. AI算力的隐形瓶颈：马斯克也开始出手「光模块」 - 富途牛牛
 
 - 一句话总结：AI方向出现重要线索，需要结合原文与市场反应判断持续性。
 - 核心原因：该线索来自 富途牛牛，属于“AI 算力”监控范围；标题涉及的主题可能影响相关行业风险偏好。
@@ -105,16 +115,6 @@
 - 重要程度：77/100
 - 置信度：79/100
 - 来源：富途牛牛、https://news.google.com/rss/articles/CBMingFBVV95cUxNZUNRTnlnaDJuaF92dU9jQzBzUUNWYkl5bmoyd3M5ejhsOHpEcmxOTXhfNW5uMXV6cURuTDZad01zRlhpUnpXbzJzbVBlcl9mbXJvVnRveGltRDg1RUJxQldxRGhpQk1fb0lSR2tZRkNTdWJqMFRicWxyaGFYYWdteWYzY3pvMGctbXVlU0JzWlJETkpjdUg2UnlIbnBHdw?oc=5
-
-### 9. AI景气周期确立，国产AI龙头价值重塑 - 证券市场周刊
-
-- 一句话总结：AI方向出现重要线索，需要结合原文与市场反应判断持续性。
-- 核心原因：该线索来自 证券市场周刊，属于“AI 算力”监控范围；标题涉及的主题可能影响相关行业风险偏好。
-- 受益方向：服务器、光模块、半导体、云计算、IDC
-- 风险：消息反转、市场已充分定价、来源细节需复核
-- 重要程度：77/100
-- 置信度：79/100
-- 来源：证券市场周刊、https://news.google.com/rss/articles/CBMiZkFVX3lxTE9uM1h0ZV9BQ0RBTlkyUGtEbGdtazhBUC1MOUdlQkFTazMyWUVYM3c5LTlSM2lfc2M2QUFMWVAtbzRkWUlHcjA3TUZOMktwcTV6M3Z0cGxCMlZaU2l3Y2pXTjVRWTN6UQ?oc=5
 
 ## 投资机会
 
