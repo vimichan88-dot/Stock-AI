@@ -157,7 +157,9 @@ class ReportPipelineTests(unittest.TestCase):
             index_html = (site_dir / "index.html").read_text(encoding="utf-8")
 
         self.assertIn("tokenInput.value = inputToken;", index_html)
+        self.assertIn("unlockButton.addEventListener(\"click\"", index_html)
         self.assertIn("localStorage.removeItem(\"report_token\");", index_html)
+        self.assertIn("输入长度", index_html)
         self.assertIn("showApp(inputToken, Boolean(inputToken));", index_html)
 
     def test_settings_treats_blank_environment_values_as_unset(self) -> None:
