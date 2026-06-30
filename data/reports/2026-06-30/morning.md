@@ -1,6 +1,6 @@
 # 2026-06-30 盘前投研日报
 
-生成时间：2026-06-30T11:28:38
+生成时间：2026-06-30T11:34:32
 
 ## 今日核心结论
 
@@ -19,16 +19,16 @@
 | 美元/离岸人民币 | 6.79 | -0.10% | 观察人民币汇率和外资风险偏好，最新日期 2026-06-30。 |
 | 美债 10 年收益率 | 4.37 | -0.46% | 观察全球折现率和成长股估值压力，最新日期 2026-06-29。 |
 | VIX 波动率 | 17.43 | -1.25% | 观察美股风险偏好和避险需求，最新日期 2026-06-30。 |
-| WTI 原油 | 70.65 | -0.14% | 观察通胀预期、能源链和地缘风险，最新日期 2026-06-30。 |
-| COMEX 铜 | 6.25 | +2.44% | 观察全球制造业需求和顺周期预期，最新日期 2026-06-30。 |
-| 比特币 | 59153.99 | -1.64% | 观察全球流动性和高风险资产偏好，最新日期 2026-06-30。 |
-| 以太坊 | 1577.46 | -2.03% | 观察加密资产风险偏好，最新日期 2026-06-30。 |
+| WTI 原油 | 70.64 | -0.16% | 观察通胀预期、能源链和地缘风险，最新日期 2026-06-30。 |
+| COMEX 铜 | 6.25 | +2.50% | 观察全球制造业需求和顺周期预期，最新日期 2026-06-30。 |
+| 比特币 | 59020.62 | -1.86% | 观察全球流动性和高风险资产偏好，最新日期 2026-06-30。 |
+| 以太坊 | 1573.89 | -2.26% | 观察加密资产风险偏好，最新日期 2026-06-30。 |
 
 ## 今日核心事件
 
 ### 1. 全球风险偏好与 A/H 股交易环境更新
 
-- 一句话总结：纳指 100 ETF波动居前，需结合 A 股、港股、美股科技、黄金和汇率判断今日风险偏好。
+- 一句话总结：COMEX 铜波动居前，需结合 A 股、港股、美股科技、黄金和汇率判断今日风险偏好。
 - 核心原因：跨市场行情是判断资金环境和主题持续性的基础输入，能帮助区分指数驱动与行业事件驱动。
 - 受益方向：A 股核心资产、港股科技、AI 算力、黄金与避险资产
 - 风险：外部流动性收紧、汇率波动、主题拥挤、单日行情误读
@@ -36,25 +36,25 @@
 - 置信度：72/100
 - 来源：Yahoo Finance chart
 
-### 2. 南向资金追踪｜6月净流入约271亿港元 重仓AI硬件赛道减持红利资产 港美股资讯 - hstong.com
+### 2. A股和港股IPO全球占三成份额，新质生产力政策如何加速资本市场资源配置效率？ - 新浪新闻_手机新浪网
 
-- 一句话总结：AI方向出现风险信号，需要结合原文与市场反应判断持续性。
-- 核心原因：该线索来自 hstong.com，属于“港股科技”监控范围；标题涉及的主题可能影响相关行业风险偏好。
-- 受益方向：服务器、光模块、半导体、云计算、IDC
-- 风险：风险继续扩散、盈利预期下修、流动性压力、消息反转
-- 重要程度：81/100
-- 置信度：79/100
-- 来源：hstong.com、https://news.google.com/rss/articles/CBMiYkFVX3lxTE1jSzQwRElYaTBUdXBuOVJqaUltbXN1RzA5dkYzb2tuU1o5Z0lEajB0S1pxQ3N0MmZ6QXI1MlB6clBhVHByNC10SHdTZjBIWnNFdFlwUDhUY1dYSnpVbGZ6Ylln?oc=5
-
-### 3. 招商证券A股2026年中期策略展望：板块分化会进一步加剧 AI仍是最大的主线 - 凤凰网
-
-- 一句话总结：AI方向出现重要线索，需要结合原文与市场反应判断持续性。
-- 核心原因：该线索来自 凤凰网，属于“A 股政策与市场”监控范围；标题涉及的主题可能影响相关行业风险偏好。
-- 受益方向：服务器、光模块、半导体、云计算、IDC
+- 一句话总结：港股方向出现重要线索，需要结合原文与市场反应判断持续性。
+- 核心原因：该线索来自 新浪新闻_手机新浪网，属于“A 股政策与市场”监控范围；标题涉及的主题可能影响相关行业风险偏好。
+- 受益方向：港股科技、互联网平台、高股息、南向资金重仓
 - 风险：消息反转、市场已充分定价、来源细节需复核
 - 重要程度：77/100
 - 置信度：79/100
-- 来源：凤凰网、https://news.google.com/rss/articles/CBMiSEFVX3lxTE1EaU1iWEExb1JhbGFxTHJ1RW9LQ1FkWHVSZ3hxeGRwUkxVaklSbEJSZ3BETC1NRVkxS3ZkUDRJLVFDR0VFOUVEeQ?oc=5
+- 来源：新浪新闻_手机新浪网、https://news.google.com/rss/articles/CBMiigFBVV95cUxQdC1oT0pvVTZwZ1BaY3g2ZVAzYUx1TTMzSU5BUlplTGdDMGhsVEZrX3d5SndXUVRyVjdXY2I2YVVPQkwxYkxwTVNjOUQ2ZWlIbzRrdE9qQW5QQXpUUlpUbWFobmtuRl9zYmdHdTBscGVJMUNKLTRGaUxndFBCVWNzUGFCVXpMR3AtbVE?oc=5
+
+### 3. A股定价逻辑：基本面、一致预期、资金结构、市场情绪与政策制度五大因子协同作用 - 虎嗅网
+
+- 一句话总结：A 股方向出现重要线索，需要结合原文与市场反应判断持续性。
+- 核心原因：该线索来自 虎嗅网，属于“A 股政策与市场”监控范围；标题涉及的主题可能影响相关行业风险偏好。
+- 受益方向：券商、核心资产、政策受益行业、成交活跃主题
+- 风险：消息反转、市场已充分定价、来源细节需复核
+- 重要程度：77/100
+- 置信度：79/100
+- 来源：虎嗅网、https://news.google.com/rss/articles/CBMiYkFVX3lxTFBUX1dYWm1wNi0xVUlOZXROTV9xcFVZVkwteHlLNDR0eHZJeDVzZ2pXNFcyRUhQWGItX0JZOXJlcGZMWndEUUZWcUZtZGVaX0pROW96bEVYb0lUMGlHbFZGN25R?oc=5
 
 ### 4. 港股上半年收官：三大指数均跌超10% AI硬件错配引发“流动性双轨虹吸” - 财联社
 
@@ -106,15 +106,15 @@
 - 置信度：79/100
 - 来源：富途牛牛、https://news.google.com/rss/articles/CBMingFBVV95cUxNZUNRTnlnaDJuaF92dU9jQzBzUUNWYkl5bmoyd3M5ejhsOHpEcmxOTXhfNW5uMXV6cURuTDZad01zRlhpUnpXbzJzbVBlcl9mbXJvVnRveGltRDg1RUJxQldxRGhpQk1fb0lSR2tZRkNTdWJqMFRicWxyaGFYYWdteWYzY3pvMGctbXVlU0JzWlJETkpjdUg2UnlIbnBHdw?oc=5
 
-### 9. 涨到这么多，AI板块还能买吗？ - 搜狐网
+### 9. AI景气周期确立，国产AI龙头价值重塑 - 证券市场周刊
 
 - 一句话总结：AI方向出现重要线索，需要结合原文与市场反应判断持续性。
-- 核心原因：该线索来自 搜狐网，属于“AI 算力”监控范围；标题涉及的主题可能影响相关行业风险偏好。
+- 核心原因：该线索来自 证券市场周刊，属于“AI 算力”监控范围；标题涉及的主题可能影响相关行业风险偏好。
 - 受益方向：服务器、光模块、半导体、云计算、IDC
 - 风险：消息反转、市场已充分定价、来源细节需复核
 - 重要程度：77/100
 - 置信度：79/100
-- 来源：搜狐网、https://news.google.com/rss/articles/CBMijAFBVV95cUxOdE45UDVXeE8yOXZydDZfR3M3MF9ydzRnOEE4NmxvR2ZHa0wzdVVtM21QLXNkNDhCYlcyamxnQnpMb3RzZlNoUzNsS3pkdFpveFhvY3loeUFkS0owNHAxZ1NtZ3hnWDZ0LXpZeFAyLVIyMEZ2NGtMR2NmYVB4Vm1XWTUwdW5VcTZjaVlNXw?oc=5
+- 来源：证券市场周刊、https://news.google.com/rss/articles/CBMiZkFVX3lxTE9uM1h0ZV9BQ0RBTlkyUGtEbGdtazhBUC1MOUdlQkFTazMyWUVYM3c5LTlSM2lfc2M2QUFMWVAtbzRkWUlHcjA3TUZOMktwcTV6M3Z0cGxCMlZaU2l3Y2pXTjVRWTN6UQ?oc=5
 
 ## 投资机会
 
