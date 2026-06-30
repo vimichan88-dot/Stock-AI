@@ -263,7 +263,7 @@ def render_market_overview(signals: list[dict]) -> str:
 
 def market_signal_group(signal: dict) -> str:
     name = str(signal.get("name", ""))
-    if any(keyword in name for keyword in ["上证", "沪深", "创业板", "深证", "科创"]):
+    if any(keyword in name for keyword in ["上证", "沪深", "创业板", "深证", "深成", "科创"]):
         return "mainland"
     if any(keyword in name for keyword in ["恒生", "香港"]):
         return "hongkong"

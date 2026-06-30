@@ -264,13 +264,11 @@ def event_from_news(item: NewsItem) -> CoreEvent:
     published = f"发布时间 {item.published_at}；" if item.published_at else ""
     impact_path = impact_path_for(item)
     verification = verification_points_for(item)
+    event_summary = build_event_summary(item, direction, published)
 
     return CoreEvent(
         title=item.title,
-        summary=(
-            f"{item.category}方向出现{direction}。{published}来源为 {item.source}，属于“{item.query_name}”监控范围。"
-            f"这条信息首先影响的是市场对相关产业景气、资金风险偏好和短线交易拥挤度的判断。"
-        ),
+        summary=event_summary,
         reason=(
             f"影响链条：{impact_path}。可参考信息不在于标题本身，而在于后续能否看到"
             f"{verification}。若只有情绪扩散而没有价格、成交、订单或政策细节确认，交易价值需要打折。"
@@ -283,6 +281,24 @@ def event_from_news(item: NewsItem) -> CoreEvent:
         bullish_stocks=bullish_stocks,
         bearish_stocks=bearish_stocks,
     )
+
+
+def build_event_summary(item: NewsItem, direction: str, published: str) -> str:
+    title = item.title.strip()
+    category_context = {
+        "AI": "这类线索通常关系到算力资本开支、芯片/光模块订单、服务器出货和 A/H 科技成长股风险偏好。",
+        "新能源": "这类线索通常关系到储能、电网、电池、光伏或新能源车链条的订单、价格和盈利分化。",
+        "港股": "这类线索通常关系到南向资金、美元流动性、平台经济预期和港股科技估值修复。",
+        "A 股": "这类线索通常关系到政策预期、成交量、核心资产表现和题材轮动强弱。",
+        "宏观": "这类线索通常关系到美元、美债、人民币、黄金、原油和全球风险偏好的再定价。",
+        "公告": "这类线索通常需要回到公告原文，重点看订单金额、利润率、履约周期和现金流影响。",
+    }.get(item.category, "这类线索通常用于判断相关行业预期、资金关注度和估值弹性。")
+    source_line = f"{published}来源为 {item.source}，归入“{item.query_name}”监控范围。"
+    meaning = (
+        f"标题显示“{title}”，其可参考价值在于判断这是否只是短线消息刺激，"
+        "还是会继续传导到订单、价格、资金流或政策预期。"
+    )
+    return f"{item.category}方向出现{direction}。{source_line}{meaning}{category_context}"
 
 
 def impact_path_for(item: NewsItem) -> str:
@@ -314,10 +330,18 @@ def market_event(signals: list[MarketSignal]) -> CoreEvent:
     known_changes = [(name, value) for name, value in changes if value is not None]
     known_changes.sort(key=lambda pair: abs(pair[1]), reverse=True)
     leader = known_changes[0][0] if known_changes else "主要市场"
+    gainers = [f"{name}{value:+.2f}%" for name, value in known_changes if value > 0][:3]
+    losers = [f"{name}{value:+.2f}%" for name, value in known_changes if value < 0][:3]
+    gainer_text = "、".join(gainers) if gainers else "暂无明显上涨领先指标"
+    loser_text = "、".join(losers) if losers else "暂无明显下跌领先指标"
 
     return CoreEvent(
         title="全球风险偏好与 A/H 股交易环境更新",
-        summary=f"{leader}波动居前，需结合 A 股、港股、美股科技、黄金和汇率判断今日风险偏好。",
+        summary=(
+            f"跨市场行情显示，{leader}波动居前；上涨领先指标包括{gainer_text}，下跌或承压指标包括{loser_text}。"
+            "这条事件用于判断今天 A/H 股的外部交易环境：若大陆、港股、美股科技和商品风险资产同步走强，"
+            "说明资金风险偏好更友好；若 VIX、美元或美债收益率走强，同时成长指数回落，则需要降低追高。"
+        ),
         reason="跨市场行情是判断资金环境和主题持续性的基础输入，能帮助区分指数驱动与行业事件驱动。",
         beneficiaries=["A 股核心资产", "港股科技", "AI 算力", "黄金与避险资产"],
         risks=["外部流动性收紧", "汇率波动", "主题拥挤", "单日行情误读"],

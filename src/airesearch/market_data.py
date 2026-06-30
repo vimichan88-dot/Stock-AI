@@ -14,6 +14,7 @@ class MarketInstrument:
     name: str
     symbol: str
     interpretation: str
+    provider: str = "yahoo"
 
 
 @dataclass(frozen=True)
@@ -23,10 +24,11 @@ class MarketSnapshot:
 
 
 INSTRUMENTS = [
-    MarketInstrument("上证指数", "000001.SS", "中国大陆市场基准，观察 A 股整体风险偏好和成交主线"),
-    MarketInstrument("沪深300", "000300.SS", "中国大陆核心资产基准，观察权重股和北向/机构风险偏好"),
-    MarketInstrument("创业板指", "399006.SZ", "中国大陆成长股基准，观察新能源、医药和科技成长方向"),
-    MarketInstrument("科创50", "000688.SS", "中国大陆科创板代表指数，观察硬科技、半导体和高端制造成长风格"),
+    MarketInstrument("上证指数", "s_sh000001", "中国大陆市场基准，观察 A 股整体风险偏好和成交主线", "sina"),
+    MarketInstrument("深成指数", "s_sz399001", "中国大陆深市基准，观察成长制造、科技和消费电子主线", "sina"),
+    MarketInstrument("沪深300", "s_sh000300", "中国大陆核心资产基准，观察权重股和北向/机构风险偏好", "sina"),
+    MarketInstrument("创业板指", "s_sz399006", "中国大陆成长股基准，观察新能源、医药和科技成长方向", "sina"),
+    MarketInstrument("科创50", "s_sh000688", "中国大陆科创板代表指数，观察硬科技、半导体和高端制造成长风格", "sina"),
     MarketInstrument("恒生指数", "^HSI", "香港市场基准，观察港股风险偏好、南向资金和美元流动性压力"),
     MarketInstrument("恒生科技", "3033.HK", "香港科技资产代理，观察平台经济和港股成长风格"),
     MarketInstrument("标普500", "^GSPC", "美国大盘基准，观察全球风险资产定价"),
@@ -56,7 +58,7 @@ def fetch_market_snapshot(timeout_seconds: int = 8) -> MarketSnapshot:
         raise RuntimeError("all market data sources failed: " + "; ".join(errors))
 
     source_note = (
-        "市场信号来自 Yahoo Finance chart 免费接口，可能存在延迟、缺口或临时不可用；"
+        "中国大陆指数优先来自新浪行情接口，海外市场、商品、汇率等来自 Yahoo Finance chart 免费接口，可能存在延迟、缺口或临时不可用；"
         "投资判断仍需结合交易所、公司公告和券商数据复核。"
     )
     if errors:
@@ -66,6 +68,9 @@ def fetch_market_snapshot(timeout_seconds: int = 8) -> MarketSnapshot:
 
 
 def fetch_yahoo_signal(instrument: MarketInstrument, timeout_seconds: int) -> MarketSignal:
+    if instrument.provider == "sina":
+        return fetch_sina_signal(instrument, timeout_seconds)
+
     encoded_symbol = quote(instrument.symbol, safe="")
     url = f"https://query1.finance.yahoo.com/v8/finance/chart/{encoded_symbol}?range=5d&interval=1d"
     response = requests.get(url, timeout=timeout_seconds, headers={"User-Agent": "Stock-AI/0.1"})
@@ -106,3 +111,54 @@ def fetch_yahoo_signal(instrument: MarketInstrument, timeout_seconds: int) -> Ma
         change=change_text,
         interpretation=f"{instrument.interpretation}{time_note}。",
     )
+
+
+def fetch_sina_signal(instrument: MarketInstrument, timeout_seconds: int) -> MarketSignal:
+    encoded_symbol = quote(instrument.symbol, safe="")
+    url = f"https://hq.sinajs.cn/list={encoded_symbol}"
+    response = requests.get(
+        url,
+        timeout=timeout_seconds,
+        headers={
+            "User-Agent": "Mozilla/5.0 Stock-AI/0.1",
+            "Referer": "https://finance.sina.com.cn/",
+        },
+    )
+    response.raise_for_status()
+    text = response.content.decode("gb18030", errors="ignore")
+    if '=""' in text or '"' not in text:
+        raise ValueError("empty Sina quote result")
+
+    quote_text = text.split('"', 2)[1]
+    parts = [part.strip() for part in quote_text.split(",")]
+    if len(parts) < 4:
+        raise ValueError("invalid Sina quote result")
+
+    latest = parse_float(parts[1])
+    change = parse_float(parts[2])
+    pct = parse_float(parts[3])
+    if latest is None:
+        raise ValueError("missing Sina latest value")
+
+    if pct is not None:
+        sign = "+" if pct >= 0 else ""
+        change_text = f"{sign}{pct:.2f}%"
+    elif change is not None:
+        sign = "+" if change >= 0 else ""
+        change_text = f"{sign}{change:.2f}"
+    else:
+        change_text = "暂无前值"
+
+    return MarketSignal(
+        name=instrument.name,
+        value=f"{latest:.2f}",
+        change=change_text,
+        interpretation=f"{instrument.interpretation}，数据源新浪行情。",
+    )
+
+
+def parse_float(value: str) -> float | None:
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return None

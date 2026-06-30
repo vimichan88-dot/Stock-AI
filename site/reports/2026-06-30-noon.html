@@ -20,10 +20,11 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
     * { box-sizing: border-box; }
+    html, body { max-width: 100%; overflow-x: hidden; }
     body { margin: 0; background: var(--bg); color: var(--text); }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
-    .shell { max-width: 1180px; margin: 0 auto; padding: 28px 18px 64px; }
+    .shell { width: 100%; max-width: 1180px; margin: 0 auto; padding: 28px 18px 64px; }
     .topbar { display: flex; justify-content: space-between; gap: 24px; align-items: flex-end; padding: 18px 0 24px; border-bottom: 1px solid var(--line); }
     .eyebrow { margin: 0 0 8px; color: var(--warn); font-size: 13px; font-weight: 800; letter-spacing: 0; }
     h1 { margin: 0; font-size: 30px; line-height: 1.2; letter-spacing: 0; }
@@ -53,13 +54,14 @@
     .search { width: 220px; height: 38px; border: 1px solid var(--line); border-radius: 6px; padding: 0 10px; font-size: 15px; }
     .report-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 14px; margin-top: 16px; }
     .report-card { padding: 18px; display: flex; flex-direction: column; min-height: 260px; }
+    .generated-line { margin: 6px 0 0; color: var(--muted); font-size: 13px; }
     .report-card p { color: var(--muted); }
     .report-card ul { padding-left: 18px; margin: 8px 0 12px; }
     .report-card .report-link { margin-top: auto; }
     .detail-layout { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 18px; margin-top: 20px; align-items: start; }
-    .report-body { display: grid; gap: 18px; }
+    .report-body { display: grid; gap: 18px; min-width: 0; }
     .report-body > section { background: transparent; border-bottom: 1px solid var(--line); padding-bottom: 18px; }
-    .item-block { padding: 16px; margin: 12px 0; box-shadow: none; }
+    .item-block { padding: 16px; margin: 12px 0; box-shadow: none; min-width: 0; overflow-wrap: anywhere; }
     .score-line { display: flex; gap: 8px; flex-wrap: wrap; color: var(--warn); font-size: 13px; font-weight: 800; }
     .event-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
     .event-grid div { border-left: 4px solid var(--accent); background: #fff; padding: 10px 12px; }
@@ -73,9 +75,9 @@
     .stock-impact span { line-height: 1.55; }
     .read-block { margin: 12px 0; padding: 12px 14px; border-left: 5px solid var(--line); background: #fff; color: var(--text); }
     .read-block h3 { margin-top: 0; }
-    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
-    table { width: 100%; border-collapse: collapse; min-width: 680px; }
-    th, td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; line-height: 1.55; }
+    .table-wrap { max-width: 100%; overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+    table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    th, td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; line-height: 1.55; overflow-wrap: anywhere; word-break: break-word; }
     th { background: var(--accent-weak); color: #134e4a; font-size: 14px; }
     .idea-facts { display: grid; gap: 8px; margin: 12px 0 0; }
     .idea-facts div { display: grid; grid-template-columns: 130px 1fr; gap: 10px; }
@@ -104,6 +106,8 @@
       .idea-facts div { grid-template-columns: 1fr; gap: 3px; }
       .event-grid { grid-template-columns: 1fr; }
       .stock-impact { grid-template-columns: 1fr; }
+      th, td { padding: 8px 7px; font-size: 13px; }
+      .score-line span { width: 100%; }
     }
   </style>
 </head>
@@ -115,6 +119,7 @@
         <p class="eyebrow">2026-06-30 · 午间</p>
         <h1>2026-06-30 午盘快报</h1>
         <p class="sub">中性偏谨慎。风险偏好有降温迹象，等待 A/H 股主线重新确认更稳妥。</p>
+        <p class="sub time-line">生成时间：2026-06-30 12:26:10 北京时间</p>
       </div>
       <a class="back-link" href="../index.html">返回首页</a>
     </header>
@@ -127,7 +132,7 @@
         </section>
         <section><h2>全球市场速览</h2>
         <div class="market-block">
-          <h3>主要股指</h3>
+          <h3>中国大陆</h3>
           <div class="table-wrap">
             <table>
               <thead><tr><th>指标</th><th>数值</th><th>变化</th><th>解读</th></tr></thead>
@@ -138,16 +143,36 @@
             <td>+0.50%</td>
             <td>观察 A 股整体风险偏好和成交主线，最新日期 2026-06-30。</td>
           </tr>
+        </tbody>
+            </table>
+          </div>
+        </div>
 
 
+        <div class="market-block">
+          <h3>香港市场</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>指标</th><th>数值</th><th>变化</th><th>解读</th></tr></thead>
+              <tbody>
           <tr>
             <td>恒生指数</td>
             <td>22881.02</td>
             <td>-0.63%</td>
             <td>观察港股风险偏好、南向资金和美元流动性压力，最新日期 2026-06-30。</td>
           </tr>
+        </tbody>
+            </table>
+          </div>
+        </div>
 
 
+        <div class="market-block">
+          <h3>美国市场</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>指标</th><th>数值</th><th>变化</th><th>解读</th></tr></thead>
+              <tbody>
           <tr>
             <td>纳指 100 ETF</td>
             <td>724.08</td>
@@ -259,8 +284,8 @@
             <p><strong>受益方向：</strong>A 股核心资产、港股科技、AI 算力、黄金与避险资产</p>
             <p><strong>风险观察：</strong>外部流动性收紧、汇率波动、主题拥挤、单日行情误读</p>
             <div class="stock-impact">
-              <div><strong>利好股票清单</strong><span>待复核</span></div>
-              <div><strong>利空股票清单</strong><span>待复核</span></div>
+              <div><strong>利好股票清单</strong><span>中际旭创(300308)、新易盛(300502)、工业富联(601138)、寒武纪(688256)、中芯国际(688981)</span></div>
+              <div><strong>利空股票清单</strong><span>高估值无订单AI题材股、算力租赁弱现金流公司、传统低端服务器代工</span></div>
             </div>
             <p class="source-line"><strong>来源：</strong>Yahoo Finance chart</p>
           </article>
@@ -280,8 +305,8 @@
             <p><strong>受益方向：</strong>港股科技、互联网平台、高股息、南向资金重仓</p>
             <p><strong>风险观察：</strong>消息反转、市场已充分定价、来源细节需复核</p>
             <div class="stock-impact">
-              <div><strong>利好股票清单</strong><span>待复核</span></div>
-              <div><strong>利空股票清单</strong><span>待复核</span></div>
+              <div><strong>利好股票清单</strong><span>腾讯控股(00700.HK)、阿里巴巴-W(09988.HK)、美团-W(03690.HK)、小米集团-W(01810.HK)</span></div>
+              <div><strong>利空股票清单</strong><span>高杠杆地产链港股、成交低迷券商股、弱基本面小市值港股</span></div>
             </div>
             <p class="source-line"><strong>来源：</strong>新浪新闻_手机新浪网、<a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxQdC1oT0pvVTZwZ1BaY3g2ZVAzYUx1TTMzSU5BUlplTGdDMGhsVEZrX3d5SndXUVRyVjdXY2I2YVVPQkwxYkxwTVNjOUQ2ZWlIbzRrdE9qQW5QQXpUUlpUbWFobmtuRl9zYmdHdTBscGVJMUNKLTRGaUxndFBCVWNzUGFCVXpMR3AtbVE?oc=5" target="_blank" rel="noreferrer">原文链接</a></p>
           </article>
@@ -301,8 +326,8 @@
             <p><strong>受益方向：</strong>券商、核心资产、政策受益行业、成交活跃主题</p>
             <p><strong>风险观察：</strong>消息反转、市场已充分定价、来源细节需复核</p>
             <div class="stock-impact">
-              <div><strong>利好股票清单</strong><span>待复核</span></div>
-              <div><strong>利空股票清单</strong><span>待复核</span></div>
+              <div><strong>利好股票清单</strong><span>相关行业龙头、产业链ETF、高景气细分龙头</span></div>
+              <div><strong>利空股票清单</strong><span>同业弱势公司、高估值题材股、基本面承压公司</span></div>
             </div>
             <p class="source-line"><strong>来源：</strong>虎嗅、<a href="https://news.google.com/rss/articles/CBMiYkFVX3lxTFBUX1dYWm1wNi0xVUlOZXROTV9xcFVZVkwteHlLNDR0eHZJeDVzZ2pXNFcyRUhQWGItX0JZOXJlcGZMWndEUUZWcUZtZGVaX0pROW96bEVYb0lUMGlHbFZGN25R?oc=5" target="_blank" rel="noreferrer">原文链接</a></p>
           </article>
@@ -322,8 +347,8 @@
             <p><strong>受益方向：</strong>服务器、光模块、半导体、云计算、IDC</p>
             <p><strong>风险观察：</strong>消息反转、市场已充分定价、来源细节需复核</p>
             <div class="stock-impact">
-              <div><strong>利好股票清单</strong><span>待复核</span></div>
-              <div><strong>利空股票清单</strong><span>待复核</span></div>
+              <div><strong>利好股票清单</strong><span>中际旭创(300308)、新易盛(300502)、工业富联(601138)、寒武纪(688256)、中芯国际(688981)</span></div>
+              <div><strong>利空股票清单</strong><span>高估值无订单AI题材股、算力租赁弱现金流公司、传统低端服务器代工</span></div>
             </div>
             <p class="source-line"><strong>来源：</strong>财联社、<a href="https://news.google.com/rss/articles/CBMiSEFVX3lxTE5wNmF1WjRHRlVtRU13ZElyTExCbWFzQm0zWU1oR0ExS0Q5ZmlIeVdfSGtFUDg1UDdFM3lZOXN3ejREYzBuUlRRcQ?oc=5" target="_blank" rel="noreferrer">原文链接</a></p>
           </article>
@@ -343,8 +368,8 @@
             <p><strong>受益方向：</strong>服务器、光模块、半导体、云计算、IDC</p>
             <p><strong>风险观察：</strong>消息反转、市场已充分定价、来源细节需复核</p>
             <div class="stock-impact">
-              <div><strong>利好股票清单</strong><span>待复核</span></div>
-              <div><strong>利空股票清单</strong><span>待复核</span></div>
+              <div><strong>利好股票清单</strong><span>中际旭创(300308)、新易盛(300502)、工业富联(601138)、寒武纪(688256)、中芯国际(688981)</span></div>
+              <div><strong>利空股票清单</strong><span>高估值无订单AI题材股、算力租赁弱现金流公司、传统低端服务器代工</span></div>
             </div>
             <p class="source-line"><strong>来源：</strong>新浪财经、<a href="https://news.google.com/rss/articles/CBMib0FVX3lxTE9Ra3A3bHFxY1pvdDAwYmw5TGlqT3Zpc1Z1Y2pPNFdBNEJycXo3TEJVTTJVSkhWZmxub2RhOTIydE16S2ctbFdaME8wMW9BekxkU1l2UDFxMHQ2NGwtRnRqVHdHU1BlRHZGN2VLc01VUQ?oc=5" target="_blank" rel="noreferrer">原文链接</a></p>
           </article>
@@ -364,8 +389,8 @@
             <p><strong>受益方向：</strong>服务器、光模块、半导体、云计算、IDC</p>
             <p><strong>风险观察：</strong>消息反转、市场已充分定价、来源细节需复核</p>
             <div class="stock-impact">
-              <div><strong>利好股票清单</strong><span>待复核</span></div>
-              <div><strong>利空股票清单</strong><span>待复核</span></div>
+              <div><strong>利好股票清单</strong><span>中际旭创(300308)、新易盛(300502)、工业富联(601138)、寒武纪(688256)、中芯国际(688981)</span></div>
+              <div><strong>利空股票清单</strong><span>高估值无订单AI题材股、算力租赁弱现金流公司、传统低端服务器代工</span></div>
             </div>
             <p class="source-line"><strong>来源：</strong>新浪财经、<a href="https://news.google.com/rss/articles/CBMiigJBVV95cUxQZ0Z5Z3Jram5PdEM2QnBfSGNSa3kteWV3ajYxS3pQdm9wSml0eUpMWUpGYVNMdUE4TTBvcDJPWHAyUS1xcWwxeWVUcC1IZE05QTZ5MzdhanpFbGJtYmpZbDJmc0RSeF83bHN6bFh4V0kzYURiRkVraEZyTmltWkM1Vy1nWHNhLVNmbTBld0dPOEhOWXRmRmJwdnpFNmR4RTI3RXlvMU0xTDN5cFZuUW9QeWxPZ3FocGEwWU5CcldlSlpDZ2FwMGxWZHE5eXU3bjFkeW16M0FwLTUzbkVxY2tCVFhXelZEeHk3ZVRmWHpXTzFCYmY4MkJaaUctaTVvUmpBSlVUbVB0d09NUQ?oc=5" target="_blank" rel="noreferrer">原文链接</a></p>
           </article>
@@ -385,8 +410,8 @@
             <p><strong>受益方向：</strong>服务器、光模块、半导体、云计算、IDC</p>
             <p><strong>风险观察：</strong>消息反转、市场已充分定价、来源细节需复核</p>
             <div class="stock-impact">
-              <div><strong>利好股票清单</strong><span>待复核</span></div>
-              <div><strong>利空股票清单</strong><span>待复核</span></div>
+              <div><strong>利好股票清单</strong><span>中际旭创(300308)、新易盛(300502)、工业富联(601138)、寒武纪(688256)、中芯国际(688981)</span></div>
+              <div><strong>利空股票清单</strong><span>高估值无订单AI题材股、算力租赁弱现金流公司、传统低端服务器代工</span></div>
             </div>
             <p class="source-line"><strong>来源：</strong>新浪网、<a href="https://news.google.com/rss/articles/CBMigwFBVV95cUxOc0ZCQy1yLUt0a2dsLVlHa0MteUVTdUxzN2VjWmxXV3RfWUozQUI5VVJ1bllLZy1JQmNrbFZxdkUwWHpuR0JsS184cVdsbHZzRWVteHlhX2NpYmlBVE85dzlqMFFPRkZsZk13eWh3WkdDNmp4a290SFRiNmdNRkNJcVRRMA?oc=5" target="_blank" rel="noreferrer">原文链接</a></p>
           </article>
@@ -406,8 +431,8 @@
             <p><strong>受益方向：</strong>服务器、光模块、半导体、云计算、IDC</p>
             <p><strong>风险观察：</strong>消息反转、市场已充分定价、来源细节需复核</p>
             <div class="stock-impact">
-              <div><strong>利好股票清单</strong><span>待复核</span></div>
-              <div><strong>利空股票清单</strong><span>待复核</span></div>
+              <div><strong>利好股票清单</strong><span>中际旭创(300308)、新易盛(300502)、工业富联(601138)、寒武纪(688256)、中芯国际(688981)</span></div>
+              <div><strong>利空股票清单</strong><span>高估值无订单AI题材股、算力租赁弱现金流公司、传统低端服务器代工</span></div>
             </div>
             <p class="source-line"><strong>来源：</strong>富途牛牛、<a href="https://news.google.com/rss/articles/CBMingFBVV95cUxNZUNRTnlnaDJuaF92dU9jQzBzUUNWYkl5bmoyd3M5ejhsOHpEcmxOTXhfNW5uMXV6cURuTDZad01zRlhpUnpXbzJzbVBlcl9mbXJvVnRveGltRDg1RUJxQldxRGhpQk1fb0lSR2tZRkNTdWJqMFRicWxyaGFYYWdteWYzY3pvMGctbXVlU0JzWlJETkpjdUg2UnlIbnBHdw?oc=5" target="_blank" rel="noreferrer">原文链接</a></p>
           </article>
@@ -427,8 +452,8 @@
             <p><strong>受益方向：</strong>服务器、光模块、半导体、云计算、IDC</p>
             <p><strong>风险观察：</strong>消息反转、市场已充分定价、来源细节需复核</p>
             <div class="stock-impact">
-              <div><strong>利好股票清单</strong><span>待复核</span></div>
-              <div><strong>利空股票清单</strong><span>待复核</span></div>
+              <div><strong>利好股票清单</strong><span>中际旭创(300308)、新易盛(300502)、工业富联(601138)、寒武纪(688256)、中芯国际(688981)</span></div>
+              <div><strong>利空股票清单</strong><span>高估值无订单AI题材股、算力租赁弱现金流公司、传统低端服务器代工</span></div>
             </div>
             <p class="source-line"><strong>来源：</strong>证券市场周刊、<a href="https://news.google.com/rss/articles/CBMiZkFVX3lxTE9uM1h0ZV9BQ0RBTlkyUGtEbGdtazhBUC1MOUdlQkFTazMyWUVYM3c5LTlSM2lfc2M2QUFMWVAtbzRkWUlHcjA3TUZOMktwcTV6M3Z0cGxCMlZaU2l3Y2pXTjVRWTN6UQ?oc=5" target="_blank" rel="noreferrer">原文链接</a></p>
           </article></section>
@@ -533,7 +558,7 @@
         <div class="rail-block">
           <h2>切换报告</h2>
           <a class="report-link" href="2026-06-30-morning.html">上一篇：2026-06-30 盘前投研日报</a>
-          <span class="muted-link">下一篇：无</span>
+          <a class="report-link" href="2026-07-01-morning.html">下一篇：2026-07-01 盘前投研日报</a>
         </div>
       </aside>
     </section>
