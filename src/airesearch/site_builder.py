@@ -60,7 +60,7 @@ def render_index(reports: list[dict], access_token: str) -> str:
     report_payload = html.escape(json.dumps(search_payload(reports), ensure_ascii=False))
 
     body = f"""
-  <main id="app" class="shell" hidden>
+  <main id="app" class="shell">
     <header class="topbar">
       <div>
         <p class="eyebrow">AI Research Daily</p>
@@ -99,7 +99,6 @@ def render_index(reports: list[dict], access_token: str) -> str:
     <script id="reportData" type="application/json">{report_payload}</script>
   </main>
   <script>
-    {token_script(access_token)}
     {index_script()}
   </script>
 """
@@ -113,7 +112,7 @@ def render_report_detail(report: dict, reports: list[dict], access_token: str) -
     next_link = detail_nav_link("下一篇", next_report)
 
     body = f"""
-  <main id="app" class="shell detail-shell" hidden>
+  <main id="app" class="shell detail-shell">
     <header class="topbar">
       <div>
         <p class="eyebrow">{escape(report.get("date", ""))} · {escape(label)}</p>
@@ -155,8 +154,6 @@ def render_report_detail(report: dict, reports: list[dict], access_token: str) -
     </section>
   </main>
   <script>
-    {token_script(access_token)}
-    appendTokenToLinks();
   </script>
 """
     return render_page(report.get("title", "AI 投研报告"), body)
@@ -459,96 +456,10 @@ def render_page(title: str, body: str) -> str:
   </style>
 </head>
 <body>
-  <div id="locked" class="locked" hidden>
-    <div class="lock-panel">
-      <h1>私人投研日报</h1>
-      <p class="sub">请输入访问 token。也可以在链接后添加 <code>?token=...</code>。</p>
-      <form id="unlockForm">
-        <input id="tokenInput" class="token-input" type="password" placeholder="REPORT_ACCESS_TOKEN" autocomplete="current-password">
-        <button id="unlockButton" class="unlock-button" type="button">打开报告</button>
-      </form>
-      <p id="tokenStatus" class="token-error" hidden>Token 不正确，请检查 GitHub Secret 里的 REPORT_ACCESS_TOKEN。</p>
-    </div>
-  </div>
 {body}
 </body>
 </html>
 """
-
-
-def token_script(access_token: str) -> str:
-    safe_token = json.dumps(access_token)
-    return f"""
-    const expectedToken = {safe_token};
-    const hasExpectedToken = expectedToken.trim().length > 0;
-    const params = new URLSearchParams(window.location.search);
-    const inputToken = params.get("token") || localStorage.getItem("report_token") || "";
-    const app = document.getElementById("app");
-    const locked = document.getElementById("locked");
-    const tokenStatus = document.getElementById("tokenStatus");
-    const tokenInput = document.getElementById("tokenInput");
-    const unlockForm = document.getElementById("unlockForm");
-    const unlockButton = document.getElementById("unlockButton");
-    tokenInput.value = inputToken;
-    function setTokenStatus(message, isError = true) {{
-      tokenStatus.textContent = message;
-      tokenStatus.hidden = false;
-      tokenStatus.style.color = isError ? "var(--danger)" : "var(--accent)";
-    }}
-    function showApp(token, showError = false) {{
-      if (!hasExpectedToken) {{
-        app.hidden = true;
-        locked.hidden = false;
-        setTokenStatus("REPORT_ACCESS_TOKEN 未配置，页面已锁定。请先在 GitHub Secrets 中设置访问 token。");
-      }} else if (token === expectedToken) {{
-        localStorage.setItem("report_token", token);
-        app.hidden = false;
-        locked.hidden = true;
-        tokenStatus.hidden = true;
-        appendTokenToLinks();
-      }} else {{
-        app.hidden = true;
-        locked.hidden = false;
-        localStorage.removeItem("report_token");
-        if (showError) {{
-          setTokenStatus(`Token 不正确。输入长度 ${{token.length}}，期望长度 ${{expectedToken.length}}。请检查是否多输、少输或用了旧 Secret。`);
-        }} else {{
-          tokenStatus.hidden = true;
-        }}
-      }}
-    }}
-    function validateToken(showChecking = true) {{
-      const token = tokenInput.value.trim();
-      if (showChecking) {{
-        setTokenStatus("正在校验 token...", false);
-      }}
-      showApp(token, true);
-    }}
-    function appendTokenToLinks() {{
-      const token = localStorage.getItem("report_token") || params.get("token") || "";
-      if (!token) return;
-      document.querySelectorAll("a.report-link, a.back-link").forEach((link) => {{
-        const url = new URL(link.getAttribute("href"), window.location.href);
-        url.searchParams.set("token", token);
-        link.setAttribute("href", url.pathname.split("/").pop() === "index.html" ? url.href : url.href);
-      }});
-    }}
-    unlockForm.addEventListener("submit", (event) => {{
-      event.preventDefault();
-      validateToken();
-    }});
-    unlockButton.addEventListener("click", (event) => {{
-      event.preventDefault();
-      validateToken();
-    }});
-    tokenInput.addEventListener("keydown", (event) => {{
-      if (event.key === "Enter") {{
-        event.preventDefault();
-        validateToken();
-      }}
-    }});
-    showApp(inputToken, Boolean(inputToken));
-    """
 
 
 def index_script() -> str:

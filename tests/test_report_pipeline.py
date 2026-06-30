@@ -134,7 +134,7 @@ class ReportPipelineTests(unittest.TestCase):
         self.assertIn("核心催化剂", detail_html)
         self.assertIn("https://example.com/news", detail_html)
 
-    def test_empty_report_access_token_does_not_unlock_site(self) -> None:
+    def test_site_renders_without_token_gate(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             reports_root = root / "data" / "reports"
@@ -143,24 +143,9 @@ class ReportPipelineTests(unittest.TestCase):
 
             index_html = (site_dir / "index.html").read_text(encoding="utf-8")
 
-        self.assertIn("const expectedToken = \"\";", index_html)
-        self.assertIn("const hasExpectedToken = expectedToken.trim().length > 0;", index_html)
-        self.assertIn("REPORT_ACCESS_TOKEN", index_html)
-
-    def test_token_script_shows_error_for_invalid_url_token(self) -> None:
-        with tempfile.TemporaryDirectory() as tmp:
-            root = Path(tmp)
-            reports_root = root / "data" / "reports"
-            site_dir = root / "site"
-            build_site(reports_root, site_dir, "test-token")
-
-            index_html = (site_dir / "index.html").read_text(encoding="utf-8")
-
-        self.assertIn("tokenInput.value = inputToken;", index_html)
-        self.assertIn("unlockButton.addEventListener(\"click\"", index_html)
-        self.assertIn("localStorage.removeItem(\"report_token\");", index_html)
-        self.assertIn("输入长度", index_html)
-        self.assertIn("showApp(inputToken, Boolean(inputToken));", index_html)
+        self.assertIn('<main id="app" class="shell">', index_html)
+        self.assertNotIn("unlockForm", index_html)
+        self.assertNotIn("REPORT_ACCESS_TOKEN", index_html)
 
     def test_settings_treats_blank_environment_values_as_unset(self) -> None:
         with patch.dict(
