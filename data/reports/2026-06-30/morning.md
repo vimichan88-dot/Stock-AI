@@ -1,10 +1,10 @@
 # 2026-06-30 盘前投研日报
 
-生成时间：2026-06-30T11:41:59
+生成时间：2026-06-30T11:49:52
 
 ## 今日核心结论
 
-盘前重点是判断昨夜外围市场和今日 A/H 股交易环境。 当前市场判断为：中性偏谨慎。风险偏好有降温迹象，等待 A/H 股主线重新确认更稳妥。 本次共纳入 32 条新闻线索用于事件筛选，最高优先级事件是“全球风险偏好与 A/H 股交易环境更新”。 投资上优先关注“跟踪 AI 算力与半导体链条的订单验证”，同时严格跟踪失效条件和来源可信度。
+盘前重点是判断昨夜外围市场和今日 A/H 股交易环境。 当前市场判断为：中性偏谨慎。风险偏好有降温迹象，等待 A/H 股主线重新确认更稳妥。 本次共纳入 31 条新闻线索用于事件筛选，最高优先级事件是“全球风险偏好与 A/H 股交易环境更新”。 投资上优先关注“跟踪 AI 算力与半导体链条的订单验证”，同时严格跟踪失效条件和来源可信度。
 
 市场判断：中性偏谨慎。风险偏好有降温迹象，等待 A/H 股主线重新确认更稳妥。
 
@@ -16,13 +16,13 @@
 | 恒生指数 | 22881.02 | -0.63% | 观察港股风险偏好、南向资金和美元流动性压力，最新日期 2026-06-30。 |
 | 纳指 100 ETF | 724.08 | +2.49% | 观察美股科技和 AI 交易拥挤度，最新日期 2026-06-29。 |
 | 黄金 ETF | 368.58 | -1.35% | 观察避险情绪和实际利率变化，最新日期 2026-06-29。 |
-| 美元/离岸人民币 | 6.79 | -0.09% | 观察人民币汇率和外资风险偏好，最新日期 2026-06-30。 |
+| 美元/离岸人民币 | 6.79 | -0.10% | 观察人民币汇率和外资风险偏好，最新日期 2026-06-30。 |
 | 美债 10 年收益率 | 4.37 | -0.46% | 观察全球折现率和成长股估值压力，最新日期 2026-06-29。 |
-| VIX 波动率 | 17.51 | -0.79% | 观察美股风险偏好和避险需求，最新日期 2026-06-30。 |
-| WTI 原油 | 70.75 | +0.00% | 观察通胀预期、能源链和地缘风险，最新日期 2026-06-30。 |
-| COMEX 铜 | 6.26 | +2.62% | 观察全球制造业需求和顺周期预期，最新日期 2026-06-30。 |
-| 比特币 | 59129.15 | -1.68% | 观察全球流动性和高风险资产偏好，最新日期 2026-06-30。 |
-| 以太坊 | 1577.66 | -2.02% | 观察加密资产风险偏好，最新日期 2026-06-30。 |
+| VIX 波动率 | 17.48 | -0.96% | 观察美股风险偏好和避险需求，最新日期 2026-06-30。 |
+| WTI 原油 | 70.82 | +0.10% | 观察通胀预期、能源链和地缘风险，最新日期 2026-06-30。 |
+| COMEX 铜 | 6.25 | +2.55% | 观察全球制造业需求和顺周期预期，最新日期 2026-06-30。 |
+| 比特币 | 59195.55 | -1.57% | 观察全球流动性和高风险资产偏好，最新日期 2026-06-30。 |
+| 以太坊 | 1579.30 | -1.92% | 观察加密资产风险偏好，最新日期 2026-06-30。 |
 
 ## 今日核心事件
 
@@ -46,15 +46,15 @@
 - 置信度：79/100
 - 来源：新浪新闻_手机新浪网、https://news.google.com/rss/articles/CBMiigFBVV95cUxQdC1oT0pvVTZwZ1BaY3g2ZVAzYUx1TTMzSU5BUlplTGdDMGhsVEZrX3d5SndXUVRyVjdXY2I2YVVPQkwxYkxwTVNjOUQ2ZWlIbzRrdE9qQW5QQXpUUlpUbWFobmtuRl9zYmdHdTBscGVJMUNKLTRGaUxndFBCVWNzUGFCVXpMR3AtbVE?oc=5
 
-### 3. A股定价逻辑：基本面、一致预期、资金结构、市场情绪与政策制度五大因子协同作用 - 虎嗅
+### 3. A股定价逻辑：基本面、一致预期、资金结构、市场情绪与政策制度五大因子协同作用 - 虎嗅网
 
 - 一句话总结：A 股方向出现重要线索，需要结合原文与市场反应判断持续性。
-- 核心原因：该线索来自 虎嗅，属于“A 股政策与市场”监控范围；标题涉及的主题可能影响相关行业风险偏好。
+- 核心原因：该线索来自 虎嗅网，属于“A 股政策与市场”监控范围；标题涉及的主题可能影响相关行业风险偏好。
 - 受益方向：券商、核心资产、政策受益行业、成交活跃主题
 - 风险：消息反转、市场已充分定价、来源细节需复核
 - 重要程度：77/100
 - 置信度：79/100
-- 来源：虎嗅、https://news.google.com/rss/articles/CBMiYkFVX3lxTFBUX1dYWm1wNi0xVUlOZXROTV9xcFVZVkwteHlLNDR0eHZJeDVzZ2pXNFcyRUhQWGItX0JZOXJlcGZMWndEUUZWcUZtZGVaX0pROW96bEVYb0lUMGlHbFZGN25R?oc=5
+- 来源：虎嗅网、https://news.google.com/rss/articles/CBMiYkFVX3lxTFBUX1dYWm1wNi0xVUlOZXROTV9xcFVZVkwteHlLNDR0eHZJeDVzZ2pXNFcyRUhQWGItX0JZOXJlcGZMWndEUUZWcUZtZGVaX0pROW96bEVYb0lUMGlHbFZGN25R?oc=5
 
 ### 4. 港股上半年收官：三大指数均跌超10% AI硬件错配引发“流动性双轨虹吸” - 财联社
 
@@ -106,15 +106,15 @@
 - 置信度：79/100
 - 来源：富途牛牛、https://news.google.com/rss/articles/CBMingFBVV95cUxNZUNRTnlnaDJuaF92dU9jQzBzUUNWYkl5bmoyd3M5ejhsOHpEcmxOTXhfNW5uMXV6cURuTDZad01zRlhpUnpXbzJzbVBlcl9mbXJvVnRveGltRDg1RUJxQldxRGhpQk1fb0lSR2tZRkNTdWJqMFRicWxyaGFYYWdteWYzY3pvMGctbXVlU0JzWlJETkpjdUg2UnlIbnBHdw?oc=5
 
-### 9. AI景气周期确立，国产AI龙头价值重塑 - 证券市场周刊
+### 9. 年中大类资产盘点：原油振幅超70%，高波动与分化是主旋律，美联储政策预期成下半年胜负手 - 新浪财经
 
-- 一句话总结：AI方向出现重要线索，需要结合原文与市场反应判断持续性。
-- 核心原因：该线索来自 证券市场周刊，属于“AI 算力”监控范围；标题涉及的主题可能影响相关行业风险偏好。
-- 受益方向：服务器、光模块、半导体、云计算、IDC
+- 一句话总结：宏观方向出现重要线索，需要结合原文与市场反应判断持续性。
+- 核心原因：该线索来自 新浪财经，属于“全球宏观”监控范围；标题涉及的主题可能影响相关行业风险偏好。
+- 受益方向：黄金、美元资产、高股息、出口链
 - 风险：消息反转、市场已充分定价、来源细节需复核
-- 重要程度：77/100
+- 重要程度：76/100
 - 置信度：79/100
-- 来源：证券市场周刊、https://news.google.com/rss/articles/CBMiZkFVX3lxTE9uM1h0ZV9BQ0RBTlkyUGtEbGdtazhBUC1MOUdlQkFTazMyWUVYM3c5LTlSM2lfc2M2QUFMWVAtbzRkWUlHcjA3TUZOMktwcTV6M3Z0cGxCMlZaU2l3Y2pXTjVRWTN6UQ?oc=5
+- 来源：新浪财经、https://news.google.com/rss/articles/CBMibkFVX3lxTFAzS2paU3hKaTZHc0w2RUJRRXcwQk5HQk40c21UWTRyb2M5Zll5QXJveGc3ems5MzI0aTRDQmt2TnE5d05kSF9BcVp4Y1B0dlg2QWFkTnJNSXBtaXlKZndXZzU0ZXR6VDB0MXQzSEdR?oc=5
 
 ## 投资机会
 
