@@ -13,9 +13,9 @@ on:
           - noon
           - close
   schedule:
-    # China market time: 08:00, 12:30, 17:30 Monday-Friday.
-    - cron: "0 0 * * 1-5"
-    - cron: "30 4 * * 1-5"
+    # China market time: 06:30, 12:00, 17:30 Monday-Friday.
+    - cron: "30 22 * * 0-4"
+    - cron: "0 4 * * 1-5"
     - cron: "30 9 * * 1-5"
 
 permissions:
@@ -52,9 +52,9 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "value=${{ inputs.report_type }}" >> "$GITHUB_OUTPUT"
-          elif [ "${{ github.event.schedule }}" = "0 0 * * 1-5" ]; then
+          elif [ "${{ github.event.schedule }}" = "30 22 * * 0-4" ]; then
             echo "value=morning" >> "$GITHUB_OUTPUT"
-          elif [ "${{ github.event.schedule }}" = "30 4 * * 1-5" ]; then
+          elif [ "${{ github.event.schedule }}" = "0 4 * * 1-5" ]; then
             echo "value=noon" >> "$GITHUB_OUTPUT"
           else
             echo "value=close" >> "$GITHUB_OUTPUT"

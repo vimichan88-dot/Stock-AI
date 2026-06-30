@@ -8,7 +8,7 @@ from typing import Any
 import requests
 
 from .config import Settings
-from .models import CoreEvent, InvestmentIdea, Report
+from .models import AnalysisSection, CoreEvent, InvestmentIdea, Report
 from .news_data import NewsItem
 
 
@@ -71,6 +71,8 @@ def build_input(report: Report, news_items: list[NewsItem]) -> str:
                 "reason": "string",
                 "beneficiaries": ["string"],
                 "risks": ["string"],
+                "bullish_stocks": ["string"],
+                "bearish_stocks": ["string"],
                 "importance": "integer 0-100",
                 "confidence": "integer 0-100",
                 "sources": ["string"],
@@ -93,6 +95,15 @@ def build_input(report: Report, news_items: list[NewsItem]) -> str:
                 "position_size": "轻仓|标准仓|偏重|观察",
             }
         ],
+        "analysis_sections": [
+            {
+                "title": "string",
+                "view": "string",
+                "opportunities": ["string"],
+                "risks": ["string"],
+                "watch": ["string"],
+            }
+        ],
         "action_checklist": ["string"],
         "risk_warnings": ["string"],
         "source_note_append": "string",
@@ -107,6 +118,8 @@ def build_input(report: Report, news_items: list[NewsItem]) -> str:
             "quality_rules": [
                 "保留可复核来源，不把单一传闻作为投资依据。",
                 "核心事件最多 10 条，按重要性排序。",
+                "每条核心事件必须分别给出 bullish_stocks 和 bearish_stocks，写具体 A/H 股、ETF 或明确的受益/承压股票类别。",
+                "analysis_sections 必须覆盖核心宏观变量、利率与固收、大宗商品与地缘、美国权益市场、中国与亚洲权益市场、机构研究精读等报告维度。",
                 "投资机会最多 5 条，必须有失效条件和观察指标。",
                 "如果输入证据不足，明确写等待确认，不要强行看多。",
             ],
@@ -152,6 +165,9 @@ def merge_ai_payload(report: Report, payload: dict[str, Any]) -> Report:
     investment_ideas = [
         coerce_investment_idea(item) for item in payload.get("investment_ideas", []) if isinstance(item, dict)
     ]
+    analysis_sections = [
+        coerce_analysis_section(item) for item in payload.get("analysis_sections", []) if isinstance(item, dict)
+    ]
     source_note_append = str(payload.get("source_note_append", "")).strip()
     source_note = report.source_note
     if source_note_append:
@@ -170,6 +186,7 @@ def merge_ai_payload(report: Report, payload: dict[str, Any]) -> Report:
         action_checklist=coerce_text_list(payload.get("action_checklist")) or report.action_checklist,
         risk_warnings=coerce_text_list(payload.get("risk_warnings")) or report.risk_warnings,
         source_note=source_note,
+        analysis_sections=analysis_sections or report.analysis_sections,
     )
 
 
@@ -183,6 +200,8 @@ def coerce_core_event(item: dict[str, Any]) -> CoreEvent:
         importance=coerce_score(item.get("importance"), 60),
         confidence=coerce_score(item.get("confidence"), 60),
         sources=coerce_text_list(item.get("sources")),
+        bullish_stocks=coerce_text_list(item.get("bullish_stocks")) or ["待复核"],
+        bearish_stocks=coerce_text_list(item.get("bearish_stocks")) or ["待复核"],
     )
 
 
@@ -201,6 +220,16 @@ def coerce_investment_idea(item: dict[str, Any]) -> InvestmentIdea:
         representative_assets=coerce_text_list(item.get("representative_assets")),
         pricing_status=coerce_text(item.get("pricing_status"), ""),
         position_size=coerce_text(item.get("position_size"), ""),
+    )
+
+
+def coerce_analysis_section(item: dict[str, Any]) -> AnalysisSection:
+    return AnalysisSection(
+        title=coerce_text(item.get("title"), "未命名分析段落"),
+        view=coerce_text(item.get("view"), ""),
+        opportunities=coerce_text_list(item.get("opportunities")),
+        risks=coerce_text_list(item.get("risks")),
+        watch=coerce_text_list(item.get("watch")),
     )
 
 

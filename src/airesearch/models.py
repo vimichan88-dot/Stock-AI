@@ -22,6 +22,8 @@ class CoreEvent:
     importance: int
     confidence: int
     sources: list[str] = field(default_factory=list)
+    bullish_stocks: list[str] = field(default_factory=list)
+    bearish_stocks: list[str] = field(default_factory=list)
 
 
 @dataclass
@@ -42,6 +44,15 @@ class InvestmentIdea:
 
 
 @dataclass
+class AnalysisSection:
+    title: str
+    view: str
+    opportunities: list[str]
+    risks: list[str]
+    watch: list[str]
+
+
+@dataclass
 class Report:
     report_type: str
     date: str
@@ -55,3 +66,4 @@ class Report:
     action_checklist: list[str]
     risk_warnings: list[str]
     source_note: str
+    analysis_sections: list[AnalysisSection] = field(default_factory=list)

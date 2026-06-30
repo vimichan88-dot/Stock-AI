@@ -88,6 +88,8 @@ class ReportPipelineTests(unittest.TestCase):
                     "reason": "测试原因",
                     "beneficiaries": ["AI"],
                     "risks": ["波动"],
+                    "bullish_stocks": ["中际旭创(300308)", "新易盛(300502)"],
+                    "bearish_stocks": ["高估值题材股"],
                     "importance": 86,
                     "confidence": 72,
                     "sources": ["测试源", "https://example.com/news"],
@@ -130,8 +132,15 @@ class ReportPipelineTests(unittest.TestCase):
 
         self.assertIn("历史报告", index_html)
         self.assertIn("reports/2026-06-29-morning.html", index_html)
+        self.assertIn("全球市场速览", detail_html)
+        self.assertIn("主要股指", detail_html)
         self.assertIn("今日核心事件", detail_html)
+        self.assertIn("最新动态", detail_html)
+        self.assertIn("市场影响", detail_html)
         self.assertIn("核心催化剂", detail_html)
+        self.assertIn("利好股票清单", detail_html)
+        self.assertIn("中际旭创(300308)", detail_html)
+        self.assertIn("机构视角摘要", detail_html)
         self.assertIn("https://example.com/news", detail_html)
 
     def test_site_renders_without_token_gate(self) -> None:
@@ -184,6 +193,8 @@ class ReportPipelineTests(unittest.TestCase):
                                             "reason": "事件原因",
                                             "beneficiaries": ["AI"],
                                             "risks": ["波动"],
+                                            "bullish_stocks": ["中际旭创(300308)"],
+                                            "bearish_stocks": ["高估值题材股"],
                                             "importance": 91,
                                             "confidence": 76,
                                             "sources": ["测试源"],
@@ -225,6 +236,8 @@ class ReportPipelineTests(unittest.TestCase):
         self.assertEqual(enhanced.executive_summary, "AI 增强摘要")
         self.assertEqual(enhanced.market_view, "AI 市场判断")
         self.assertEqual(enhanced.core_events[0].importance, 91)
+        self.assertEqual(enhanced.core_events[0].bullish_stocks, ["中际旭创(300308)"])
+        self.assertEqual(enhanced.core_events[0].bearish_stocks, ["高估值题材股"])
         self.assertEqual(enhanced.investment_ideas[0].title, "AI 投资机会")
         self.assertIn("AI 分析说明", enhanced.source_note)
 

@@ -6,6 +6,7 @@ from .models import MarketSignal, Report
 from .news_data import NewsItem
 from .rule_analysis import (
     build_action_checklist,
+    build_analysis_sections,
     build_core_events,
     build_investment_ideas,
     build_market_view,
@@ -31,6 +32,7 @@ def build_report(
     core_events = build_core_events(news, signals) if news else baseline.core_events
     ideas = build_investment_ideas(news, signals)
     market_view = build_market_view(signals)
+    analysis_sections = build_analysis_sections(market_view, signals, news, ideas)
 
     source_notes = []
     if market_source_note:
@@ -53,6 +55,7 @@ def build_report(
         action_checklist=build_action_checklist(ideas, core_events),
         risk_warnings=build_risk_warnings(signals, news),
         source_note="\n\n".join(source_notes),
+        analysis_sections=analysis_sections,
     )
 
 

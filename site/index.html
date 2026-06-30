@@ -34,7 +34,7 @@
     .status-pill, .meta { color: var(--warn); font-size: 14px; font-weight: 800; }
     .status-pill { color: #fff; background: var(--accent); padding: 8px 10px; border-radius: 6px; white-space: nowrap; }
     .dashboard { display: grid; grid-template-columns: 1.4fr 1fr; gap: 14px; margin-top: 20px; }
-    .panel, .report-card, .item-block, .lock-panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow); }
+    .panel, .report-card, .item-block { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow); }
     .panel { padding: 18px; }
     .hero-panel { grid-row: span 2; }
     .hero-panel h2 { font-size: 23px; }
@@ -61,6 +61,18 @@
     .report-body > section { background: transparent; border-bottom: 1px solid var(--line); padding-bottom: 18px; }
     .item-block { padding: 16px; margin: 12px 0; box-shadow: none; }
     .score-line { display: flex; gap: 8px; flex-wrap: wrap; color: var(--warn); font-size: 13px; font-weight: 800; }
+    .event-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
+    .event-grid div { border-left: 4px solid var(--accent); background: #fff; padding: 10px 12px; }
+    .event-grid strong { color: var(--warn); }
+    .event-grid p { margin: 6px 0 0; }
+    .market-block { margin: 12px 0 18px; }
+    .market-block h3 { margin: 0 0 8px; color: var(--warn); }
+    .stock-impact { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
+    .stock-impact div { border: 1px solid var(--line); border-radius: 8px; background: #fff; padding: 10px; }
+    .stock-impact strong { display: block; color: var(--warn); margin-bottom: 6px; }
+    .stock-impact span { line-height: 1.55; }
+    .read-block { margin: 12px 0; padding: 12px 14px; border-left: 5px solid var(--line); background: #fff; color: var(--text); }
+    .read-block h3 { margin-top: 0; }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
     table { width: 100%; border-collapse: collapse; min-width: 680px; }
     th, td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; line-height: 1.55; }
@@ -73,11 +85,6 @@
     .rail-block { border: 1px solid var(--line); border-radius: 8px; background: #fff; padding: 14px; }
     .rail-block a, .muted-link { display: block; padding: 8px 0; line-height: 1.4; }
     .muted-link { color: var(--muted); }
-    .locked { min-height: 100vh; display: grid; place-items: center; padding: 24px; }
-    .lock-panel { width: min(460px, 100%); padding: 24px; }
-    .token-input { width: 100%; height: 42px; border: 1px solid var(--line); border-radius: 6px; padding: 0 10px; font-size: 16px; }
-    .unlock-button { margin-top: 12px; height: 42px; border: 0; border-radius: 6px; padding: 0 14px; background: var(--accent); color: #fff; font-weight: 800; cursor: pointer; }
-    .token-error { color: var(--danger); font-weight: 700; margin: 10px 0 0; }
     .empty { color: var(--muted); }
     .source-line { overflow-wrap: anywhere; }
     @media (max-width: 860px) {
@@ -95,6 +102,8 @@
       .tab { padding: 0 6px; }
       .search { width: 100%; }
       .idea-facts div { grid-template-columns: 1fr; gap: 3px; }
+      .event-grid { grid-template-columns: 1fr; }
+      .stock-impact { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -111,34 +120,34 @@
     </header>
 
     <section class="dashboard">
-      
+
       <article class="panel hero-panel">
         <div class="meta">2026-06-30 · 盘前</div>
         <h2>2026-06-30 盘前投研日报</h2>
         <p>盘前重点是判断昨夜外围市场和今日 A/H 股交易环境。 当前市场判断为：中性偏谨慎。风险偏好有降温迹象，等待 A/H 股主线重新确认更稳妥。 本次共纳入 31 条新闻线索用于事件筛选，最高优先级事件是“全球风险偏好与 A/H 股交易环境更新”。 投资上优先关注“跟踪 AI 算力与半导体链条的订单验证”，同时严格跟踪失效条件和来源可信度。</p>
         <a class="primary-link report-link" href="reports/2026-06-30-morning.html">查看完整报告</a>
       </article>
-    
-      
+
+
       <article class="panel">
         <h2>市场情绪</h2>
         <p class="signal-view">中性偏谨慎。风险偏好有降温迹象，等待 A/H 股主线重新确认更稳妥。</p>
         <ul class="signal-list"><li><span>上证指数</span><strong>+0.50%</strong></li>
 <li><span>恒生指数</span><strong>-0.63%</strong></li>
-<li><span>纳指 100 ETF</span><strong>+2.49%</strong></li>
-<li><span>黄金 ETF</span><strong>-1.35%</strong></li>
-<li><span>美元/离岸人民币</span><strong>-0.10%</strong></li></ul>
+<li><span>纳指 100 ETF</span><strong>+1.22%</strong></li>
+<li><span>黄金 ETF</span><strong>+0.27%</strong></li>
+<li><span>美元/离岸人民币</span><strong>-0.11%</strong></li></ul>
       </article>
-    
-      
+
+
       <article class="panel">
         <h2>今日主线</h2>
         <ul class="plain-list"><li><strong>可分批关注</strong><span>跟踪 AI 算力与半导体链条的订单验证</span></li>
 <li><strong>等待确认</strong><span>新能源从总量交易转向结构筛选</span></li>
 <li><strong>持有观察</strong><span>港股科技关注南向资金与美元环境共振</span></li></ul>
       </article>
-    
-      
+
+
       <article class="panel">
         <h2>行动清单</h2>
         <ul class="plain-list"><li>先确认今天交易的是流动性、政策、业绩还是产业催化。</li>
@@ -146,7 +155,7 @@
 <li>可分批关注：跟踪 AI 算力与半导体链条的订单验证，观察 纳指 100 ETF、AI 新闻密度、半导体订单。</li>
 <li>等待确认：新能源从总量交易转向结构筛选，观察 储能招标、电网投资、组件价格。</li></ul>
       </article>
-    
+
     </section>
 
     <section class="history-head">
@@ -166,7 +175,7 @@
     </section>
 
     <section id="reportGrid" class="report-grid">
-      <article class="report-card" data-type="morning" data-search="2026-06-30 盘前投研日报 盘前重点是判断昨夜外围市场和今日 a/h 股交易环境。 当前市场判断为：中性偏谨慎。风险偏好有降温迹象，等待 a/h 股主线重新确认更稳妥。 本次共纳入 31 条新闻线索用于事件筛选，最高优先级事件是“全球风险偏好与 a/h 股交易环境更新”。 投资上优先关注“跟踪 ai 算力与半导体链条的订单验证”，同时严格跟踪失效条件和来源可信度。 中性偏谨慎。风险偏好有降温迹象，等待 a/h 股主线重新确认更稳妥。 全球风险偏好与 a/h 股交易环境更新 a股和港股ipo全球占三成份额，新质生产力政策如何加速资本市场资源配置效率？ - 新浪新闻_手机新浪网 a股定价逻辑：基本面、一致预期、资金结构、市场情绪与政策制度五大因子协同作用 - 虎嗅网 港股上半年收官：三大指数均跌超10% ai硬件错配引发“流动性双轨虹吸” - 财联社 workbuddy成为国内dau第一办公智能体！腾讯控股午后拉升！港股ai含量最高的恒生互联网受关注 - 新浪财经 ai算力超级周期，双创资产迎来黄金配置机遇 - 新浪网 ai五层蛋糕：谁在底层搭算力，谁在顶层做应用？“etf华宝”ai投资地图来啦 - 新浪财经 ai算力的隐形瓶颈：马斯克也开始出手「光模块」 - 富途牛牛 年中大类资产盘点：原油振幅超70%，高波动与分化是主旋律，美联储政策预期成下半年胜负手 - 新浪财经 跟踪 ai 算力与半导体链条的订单验证 新能源从总量交易转向结构筛选 港股科技关注南向资金与美元环境共振">
+      <article class="report-card" data-type="morning" data-search="2026-06-30 盘前投研日报 盘前重点是判断昨夜外围市场和今日 a/h 股交易环境。 当前市场判断为：中性偏谨慎。风险偏好有降温迹象，等待 a/h 股主线重新确认更稳妥。 本次共纳入 31 条新闻线索用于事件筛选，最高优先级事件是“全球风险偏好与 a/h 股交易环境更新”。 投资上优先关注“跟踪 ai 算力与半导体链条的订单验证”，同时严格跟踪失效条件和来源可信度。 中性偏谨慎。风险偏好有降温迹象，等待 a/h 股主线重新确认更稳妥。 全球风险偏好与 a/h 股交易环境更新 a股和港股ipo全球占三成份额，新质生产力政策如何加速资本市场资源配置效率？ - 新浪新闻_手机新浪网 港股上半年收官：三大指数均跌超10% ai硬件错配引发“流动性双轨虹吸” - 财联社 workbuddy成为国内dau第一办公智能体！腾讯控股午后拉升！港股ai含量最高的恒生互联网受关注 - 新浪财经 ai五层蛋糕：谁在底层搭算力，谁在顶层做应用？“etf华宝”ai投资地图来啦 - 新浪财经 ai算力超级周期，双创资产迎来黄金配置机遇 - 新浪网 ai景气周期确立，国产ai龙头价值重塑 - 证券市场周刊 ai热情驱动，美股指走高，太阳能板块普涨，日元创40年新低，金银油齐涨 - 华尔街见闻 年中大类资产盘点：原油振幅超70%，高波动与分化是主旋律，美联储政策预期成下半年胜负手 - 新浪财经 跟踪 ai 算力与半导体链条的订单验证 新能源从总量交易转向结构筛选 港股科技关注南向资金与美元环境共振">
         <div class="meta">2026-06-30 · 盘前</div>
         <h3>2026-06-30 盘前投研日报</h3>
         <p>盘前重点是判断昨夜外围市场和今日 A/H 股交易环境。 当前市场判断为：中性偏谨慎。风险偏好有降温迹象，等待 A/H 股主线重新确认更稳妥。 本次共纳入 31 条新闻线索用于事件筛选，最高优先级事件是“全球风险偏好与 A/H 股交易环境更新”。 投资上优先关注“跟踪 AI 算力与半导体链条的订单验证”，同时严格跟踪失效条件和来源可信度。</p>
@@ -198,7 +207,7 @@
     <script id="reportData" type="application/json">[{&quot;title&quot;: &quot;2026-06-30 盘前投研日报&quot;, &quot;type&quot;: &quot;morning&quot;, &quot;date&quot;: &quot;2026-06-30&quot;, &quot;href&quot;: &quot;reports/2026-06-30-morning.html&quot;}, {&quot;title&quot;: &quot;2026-06-29 收盘复盘与明日展望&quot;, &quot;type&quot;: &quot;close&quot;, &quot;date&quot;: &quot;2026-06-29&quot;, &quot;href&quot;: &quot;reports/2026-06-29-close.html&quot;}, {&quot;title&quot;: &quot;2026-06-29 午盘快报&quot;, &quot;type&quot;: &quot;noon&quot;, &quot;date&quot;: &quot;2026-06-29&quot;, &quot;href&quot;: &quot;reports/2026-06-29-noon.html&quot;}, {&quot;title&quot;: &quot;2026-06-29 盘前投研日报&quot;, &quot;type&quot;: &quot;morning&quot;, &quot;date&quot;: &quot;2026-06-29&quot;, &quot;href&quot;: &quot;reports/2026-06-29-morning.html&quot;}]</script>
   </main>
   <script>
-    
+
     const tabs = [...document.querySelectorAll(".tab")];
     const cards = [...document.querySelectorAll(".report-card")];
     const searchInput = document.getElementById("searchInput");
@@ -221,7 +230,7 @@
     });
     searchInput.addEventListener("input", applyFilters);
     applyFilters();
-    
+
   </script>
 
 </body>

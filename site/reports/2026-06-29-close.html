@@ -34,7 +34,7 @@
     .status-pill, .meta { color: var(--warn); font-size: 14px; font-weight: 800; }
     .status-pill { color: #fff; background: var(--accent); padding: 8px 10px; border-radius: 6px; white-space: nowrap; }
     .dashboard { display: grid; grid-template-columns: 1.4fr 1fr; gap: 14px; margin-top: 20px; }
-    .panel, .report-card, .item-block, .lock-panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow); }
+    .panel, .report-card, .item-block { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow); }
     .panel { padding: 18px; }
     .hero-panel { grid-row: span 2; }
     .hero-panel h2 { font-size: 23px; }
@@ -61,6 +61,18 @@
     .report-body > section { background: transparent; border-bottom: 1px solid var(--line); padding-bottom: 18px; }
     .item-block { padding: 16px; margin: 12px 0; box-shadow: none; }
     .score-line { display: flex; gap: 8px; flex-wrap: wrap; color: var(--warn); font-size: 13px; font-weight: 800; }
+    .event-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
+    .event-grid div { border-left: 4px solid var(--accent); background: #fff; padding: 10px 12px; }
+    .event-grid strong { color: var(--warn); }
+    .event-grid p { margin: 6px 0 0; }
+    .market-block { margin: 12px 0 18px; }
+    .market-block h3 { margin: 0 0 8px; color: var(--warn); }
+    .stock-impact { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
+    .stock-impact div { border: 1px solid var(--line); border-radius: 8px; background: #fff; padding: 10px; }
+    .stock-impact strong { display: block; color: var(--warn); margin-bottom: 6px; }
+    .stock-impact span { line-height: 1.55; }
+    .read-block { margin: 12px 0; padding: 12px 14px; border-left: 5px solid var(--line); background: #fff; color: var(--text); }
+    .read-block h3 { margin-top: 0; }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
     table { width: 100%; border-collapse: collapse; min-width: 680px; }
     th, td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; line-height: 1.55; }
@@ -73,11 +85,6 @@
     .rail-block { border: 1px solid var(--line); border-radius: 8px; background: #fff; padding: 14px; }
     .rail-block a, .muted-link { display: block; padding: 8px 0; line-height: 1.4; }
     .muted-link { color: var(--muted); }
-    .locked { min-height: 100vh; display: grid; place-items: center; padding: 24px; }
-    .lock-panel { width: min(460px, 100%); padding: 24px; }
-    .token-input { width: 100%; height: 42px; border: 1px solid var(--line); border-radius: 6px; padding: 0 10px; font-size: 16px; }
-    .unlock-button { margin-top: 12px; height: 42px; border: 0; border-radius: 6px; padding: 0 14px; background: var(--accent); color: #fff; font-weight: 800; cursor: pointer; }
-    .token-error { color: var(--danger); font-weight: 700; margin: 10px 0 0; }
     .empty { color: var(--muted); }
     .source-line { overflow-wrap: anywhere; }
     @media (max-width: 860px) {
@@ -95,6 +102,8 @@
       .tab { padding: 0 6px; }
       .search { width: 100%; }
       .idea-facts div { grid-template-columns: 1fr; gap: 3px; }
+      .event-grid { grid-template-columns: 1fr; }
+      .stock-impact { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -116,9 +125,9 @@
           <h2>今日核心结论</h2>
           <p>这是 MVP 骨架生成的示例报告。正式版本会接入行情、公告、新闻、宏观数据和 AI 分析链路，输出事实、预期、判断分离的个人投研报告。</p>
         </section>
-        
-        <section>
-          <h2>市场信号</h2>
+        <section><h2>全球市场速览</h2>
+        <div class="market-block">
+          <h3>主要股指</h3>
           <div class="table-wrap">
             <table>
               <thead><tr><th>指标</th><th>数值</th><th>变化</th><th>解读</th></tr></thead>
@@ -129,7 +138,7 @@
             <td>待接入</td>
             <td>关注政策预期、成交量和主线持续性。</td>
           </tr>
-        
+
 
           <tr>
             <td>港股</td>
@@ -137,7 +146,7 @@
             <td>待接入</td>
             <td>关注南向资金、美元和美债收益率变化。</td>
           </tr>
-        
+
 
           <tr>
             <td>美股科技</td>
@@ -145,8 +154,18 @@
             <td>待接入</td>
             <td>关注 AI 资本开支、半导体景气和估值拥挤度。</td>
           </tr>
-        
+        </tbody>
+            </table>
+          </div>
+        </div>
 
+
+        <div class="market-block">
+          <h3>大宗商品与外汇</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>指标</th><th>数值</th><th>变化</th><th>解读</th></tr></thead>
+              <tbody>
           <tr>
             <td>黄金/美元</td>
             <td>待接入</td>
@@ -156,30 +175,51 @@
         </tbody>
             </table>
           </div>
-        </section>
-    
-        <section id="events"><h2>今日核心事件</h2>
-          <article class="item-block">
+        </div>
+    </section>
+        <section id="events"><h2>今日核心事件</h2><article class="item-block">
             <div class="score-line"><span>重要程度 88 / 100</span><span>置信度 70 / 100</span></div>
             <h3>1. AI 算力链仍是重点观察主线</h3>
-            <p>正式版会从新闻、公告、行情和资金流中判断算力链是否继续强化。</p>
-            <p><strong>核心原因：</strong>AI 资本开支、国产替代、云厂商订单和光模块需求共同决定中期景气。</p>
+            <div class="event-grid">
+              <div>
+                <strong>最新动态</strong>
+                <p>正式版会从新闻、公告、行情和资金流中判断算力链是否继续强化。</p>
+              </div>
+              <div>
+                <strong>市场影响</strong>
+                <p>AI 资本开支、国产替代、云厂商订单和光模块需求共同决定中期景气。</p>
+              </div>
+            </div>
             <p><strong>受益方向：</strong>服务器、光模块、液冷、PCB、IDC</p>
-            <p><strong>风险：</strong>估值拥挤、资本开支低于预期、美债收益率上行压制成长股</p>
+            <p><strong>风险观察：</strong>估值拥挤、资本开支低于预期、美债收益率上行压制成长股</p>
+            <div class="stock-impact">
+              <div><strong>利好股票清单</strong><span>待复核</span></div>
+              <div><strong>利空股票清单</strong><span>待复核</span></div>
+            </div>
             <p class="source-line"><strong>来源：</strong>MVP 示例</p>
           </article>
-        
-
-          <article class="item-block">
+<article class="item-block">
             <div class="score-line"><span>重要程度 80 / 100</span><span>置信度 65 / 100</span></div>
             <h3>2. 新能源进入分化阶段</h3>
-            <p>正式版会区分光伏、储能、电网、锂电和新能源车的景气位置。</p>
-            <p><strong>核心原因：</strong>产能出清、政策催化和价格企稳的速度不同，不能笼统看多或看空。</p>
+            <div class="event-grid">
+              <div>
+                <strong>最新动态</strong>
+                <p>正式版会区分光伏、储能、电网、锂电和新能源车的景气位置。</p>
+              </div>
+              <div>
+                <strong>市场影响</strong>
+                <p>产能出清、政策催化和价格企稳的速度不同，不能笼统看多或看空。</p>
+              </div>
+            </div>
             <p><strong>受益方向：</strong>储能、电网设备、优质电池龙头</p>
-            <p><strong>风险：</strong>价格战、海外政策变化、库存去化慢于预期</p>
+            <p><strong>风险观察：</strong>价格战、海外政策变化、库存去化慢于预期</p>
+            <div class="stock-impact">
+              <div><strong>利好股票清单</strong><span>待复核</span></div>
+              <div><strong>利空股票清单</strong><span>待复核</span></div>
+            </div>
             <p class="source-line"><strong>来源：</strong>MVP 示例</p>
-          </article>
-        </section>
+          </article></section>
+
         <section id="ideas"><h2>投资机会</h2>
           <article class="item-block">
             <div class="score-line"><span>可分批关注</span><span>约 60%-70%</span><span>置信度 68 / 100</span></div>
@@ -196,7 +236,7 @@
               <div><dt>观察指标</dt><dd>AI capex、半导体订单、港股科技成交额、美债收益率</dd></div>
             </dl>
           </article>
-        
+
 
           <article class="item-block">
             <div class="score-line"><span>等待确认</span><span>约 55%-65%</span><span>置信度 62 / 100</span></div>
@@ -214,6 +254,22 @@
             </dl>
           </article>
         </section>
+
+        <section>
+          <h2>机构视角摘要</h2>
+          <p>中性偏积极。A 股和港股以结构性机会为主，美股与全球流动性作为风险偏好锚。</p>
+          <blockquote class="read-block">
+            <h3>分批关注 AI 算力链龙头与 ETF</h3>
+            <p>产业趋势较强，但短期受估值、拥挤度和海外利率影响。</p>
+            <p><strong>配置倾向：</strong>可分批关注；</p>
+          </blockquote>
+<blockquote class="read-block">
+            <h3>等待新能源主链出清确认，优先观察储能和电网</h3>
+            <p>新能源不是没有机会，而是需要从产能过剩环节切换到盈利更确定环节。</p>
+            <p><strong>配置倾向：</strong>等待确认；</p>
+          </blockquote>
+        </section>
+
         <section id=""><h2>我的行动清单</h2><ul class="plain-list detail-list"><li>每天先看市场真正交易的是流动性、政策还是产业景气。</li>
 <li>重点观察 AI 算力链是否有业绩和订单验证。</li>
 <li>新能源方向先做结构区分，避免把全产业链当作同一个交易。</li></ul></section>

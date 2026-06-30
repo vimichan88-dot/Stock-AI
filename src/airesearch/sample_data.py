@@ -44,6 +44,8 @@ def build_sample_report(
                 importance=88,
                 confidence=70,
                 sources=["MVP 示例"],
+                bullish_stocks=["中际旭创(300308)", "新易盛(300502)", "工业富联(601138)", "寒武纪(688256)"],
+                bearish_stocks=["高估值无订单AI题材股", "算力租赁弱现金流公司", "传统低端服务器代工"],
             ),
             CoreEvent(
                 title="新能源进入分化阶段",
@@ -54,6 +56,8 @@ def build_sample_report(
                 importance=80,
                 confidence=65,
                 sources=["MVP 示例"],
+                bullish_stocks=["宁德时代(300750)", "阳光电源(300274)", "国电南瑞(600406)", "特变电工(600089)"],
+                bearish_stocks=["低效光伏组件企业", "高成本落后电池产能", "高负债新能源小票"],
             ),
         ],
         investment_ideas=[

@@ -24,6 +24,10 @@ def validate_report(report: Report) -> list[str]:
             warnings.append(f"核心事件 {idx} 重要程度超出 0-100。")
         if event.confidence < 0 or event.confidence > 100:
             warnings.append(f"核心事件 {idx} 置信度超出 0-100。")
+        if not event.bullish_stocks:
+            warnings.append(f"核心事件 {idx} 缺少利好股票清单。")
+        if not event.bearish_stocks:
+            warnings.append(f"核心事件 {idx} 缺少利空股票清单。")
 
     for idx, idea in enumerate(report.investment_ideas, start=1):
         if not idea.invalidation:
