@@ -1,10 +1,10 @@
 {
   "report_type": "morning",
   "date": "2026-07-01",
-  "generated_at": "2026-07-01T01:34:17.015866+08:00",
+  "generated_at": "2026-07-01T02:29:53.044069+08:00",
   "title": "2026-07-01 盘前投研日报",
-  "executive_summary": "盘前重点是判断昨夜外围市场和今日 A/H 股交易环境。 当前市场判断为：中性偏积极。市场结构仍有机会，但需要区分强势主线和补涨噪音。 本次共纳入 31 条新闻线索用于事件筛选，最高优先级事件是“全球风险偏好与 A/H 股交易环境更新”。 投资上优先关注“跟踪 AI 算力与半导体链条的订单验证”，同时严格跟踪失效条件和来源可信度。",
-  "market_view": "中性偏积极。市场结构仍有机会，但需要区分强势主线和补涨噪音。",
+  "executive_summary": "盘前重点是把昨夜全球风险偏好、政策线索和今日A/H股可能交易的主线先排出优先级。 当前市场总判断为：结构分化。资金没有形成单一方向，今天更重要的是识别哪些板块由真实催化驱动，哪些只是情绪轮动。 本次共纳入 66 条新闻线索和公告线索，最高优先级事件是“全球风险偏好与 A/H 股交易环境更新”。 投资上优先关注“AI算力与半导体链条：从题材热度切到订单验证”，但所有股票清单都应先作为研究和复核池，只有在订单、资金流、价格反应或政策细则继续验证后才适合提高仓位。",
+  "market_view": "结构分化。资金没有形成单一方向，今天更重要的是识别哪些板块由真实催化驱动，哪些只是情绪轮动。",
   "market_signals": [
     {
       "name": "上证指数",
@@ -50,20 +50,20 @@
     },
     {
       "name": "标普500",
-      "value": "7494.97",
-      "change": "+0.73%",
+      "value": "7495.52",
+      "change": "+0.74%",
       "interpretation": "美国大盘基准，观察全球风险资产定价，最新日期 2026-06-30。"
     },
     {
       "name": "纳斯达克100",
-      "value": "30252.95",
-      "change": "+1.61%",
+      "value": "30260.47",
+      "change": "+1.63%",
       "interpretation": "美国科技基准，观察 AI、半导体和高估值成长股映射，最新日期 2026-06-30。"
     },
     {
       "name": "道琼斯工业指数",
-      "value": "52386.02",
-      "change": "+0.39%",
+      "value": "52329.02",
+      "change": "+0.28%",
       "interpretation": "美国蓝筹基准，观察传统周期和防守资产表现，最新日期 2026-06-30。"
     },
     {
@@ -98,63 +98,63 @@
     },
     {
       "name": "黄金 ETF",
-      "value": "369.56",
-      "change": "+0.27%",
+      "value": "369.94",
+      "change": "+0.37%",
       "interpretation": "观察避险情绪和实际利率变化，最新日期 2026-06-30。"
     },
     {
       "name": "美元/离岸人民币",
       "value": "6.79",
-      "change": "-0.10%",
+      "change": "-0.11%",
       "interpretation": "观察人民币汇率和外资风险偏好，最新日期 2026-06-30。"
     },
     {
       "name": "美债 10 年收益率",
       "value": "4.41",
-      "change": "+0.87%",
+      "change": "+0.96%",
       "interpretation": "观察全球折现率和成长股估值压力，最新日期 2026-06-30。"
     },
     {
       "name": "VIX 波动率",
-      "value": "16.66",
-      "change": "-5.61%",
+      "value": "16.59",
+      "change": "-6.01%",
       "interpretation": "观察美股风险偏好和避险需求，最新日期 2026-06-30。"
     },
     {
       "name": "WTI 原油",
-      "value": "69.72",
-      "change": "-1.46%",
+      "value": "69.46",
+      "change": "-1.82%",
       "interpretation": "观察通胀预期、能源链和地缘风险，最新日期 2026-06-30。"
     },
     {
       "name": "COMEX 铜",
-      "value": "6.25",
-      "change": "+2.56%",
+      "value": "6.26",
+      "change": "+2.67%",
       "interpretation": "观察全球制造业需求和顺周期预期，最新日期 2026-06-30。"
     },
     {
       "name": "比特币",
-      "value": "58351.45",
-      "change": "-2.97%",
+      "value": "58429.69",
+      "change": "-2.84%",
       "interpretation": "观察全球流动性和高风险资产偏好，最新日期 2026-06-30。"
     },
     {
       "name": "以太坊",
-      "value": "1569.91",
-      "change": "-2.50%",
+      "value": "1574.40",
+      "change": "-2.22%",
       "interpretation": "观察加密资产风险偏好，最新日期 2026-06-30。"
     }
   ],
   "core_events": [
     {
       "title": "全球风险偏好与 A/H 股交易环境更新",
-      "summary": "跨市场行情显示，VIX 波动率波动居前；上涨领先指标包括科创50+3.85%、恒生科技+3.06%、创业板指+2.99%，下跌或承压指标包括VIX 波动率-5.61%、比特币-2.97%、以太坊-2.50%。这条事件用于判断今天 A/H 股的外部交易环境：若大陆、港股、美股科技和商品风险资产同步走强，说明资金风险偏好更友好；若 VIX、美元或美债收益率走强，同时成长指数回落，则需要降低追高。",
-      "reason": "跨市场行情是判断资金环境和主题持续性的基础输入，能帮助区分指数驱动与行业事件驱动。",
+      "summary": "跨市场行情显示，VIX 波动率波动居前；上涨领先指标包括科创50+3.85%、恒生科技+3.06%、创业板指+2.99%、COMEX 铜+2.67%，下跌或承压指标包括VIX 波动率-6.01%、比特币-2.84%、以太坊-2.22%、WTI 原油-1.82%。这不是单纯的行情记录，而是用来判断今天资金更偏向成长、顺周期、防守还是避险。",
+      "reason": "市场影响分析：如果大陆、港股、美股科技和商品风险资产同步走强，说明资金风险偏好改善，A股更容易交易科技成长、券商和核心资产，港股更容易交易恒生科技和平台经济，美股则继续围绕AI盈利和利率预期定价。如果VIX、美元、美债收益率或黄金走强，同时成长指数回落，说明市场在交易避险或折现率上行，A/H高估值主题需要降低追高，资金可能转向高股息、黄金、能源和现金流稳定资产。后续验证重点是成交额是否放大、龙头股是否强于指数、人民币汇率是否稳定，以及海外科技股是否继续支撑A/H科技映射。",
       "beneficiaries": [
-        "A 股核心资产",
+        "A股核心资产",
         "港股科技",
-        "AI 算力",
-        "黄金与避险资产"
+        "AI算力",
+        "黄金与高股息资产"
       ],
       "risks": [
         "外部流动性收紧",
@@ -163,9 +163,9 @@
         "单日行情误读"
       ],
       "importance": 86,
-      "confidence": 72,
+      "confidence": 74,
       "sources": [
-        "Yahoo Finance chart"
+        "公开行情数据：Yahoo Finance / 新浪行情"
       ],
       "bullish_stocks": [
         "沪深300ETF(510300)",
@@ -181,267 +181,86 @@
       ]
     },
     {
-      "title": "AI算力超级周期，双创资产迎来黄金配置机遇 - 新浪网",
-      "summary": "AI方向出现重要线索。标题可见事实是：AI算力超级周期。进一步拆开看，标题还提到：双创资产迎来黄金配置机遇。这条消息的关键不是泛泛说 AI 热，而是看算力需求、硬件订单、应用层变现或科技指数表现有没有新的边际变化。",
-      "reason": "方向判断：偏利好，前提是后续能看到订单、资金流或价格表现继续确认。影响链条：海外 AI 资本开支或国产算力预期 -> 光模块、服务器、半导体、IDC 等环节订单预期 -> A/H 科技成长风险偏好。股票市场影响：如果消息指向算力需求扩张、硬件订单增加或应用加速落地，通常利好光模块、服务器、半导体、IDC、云计算；如果消息指向指数大跌、硬件错配或估值拥挤，则更偏利空高估值 AI 题材，资金会转向有真实订单和利润兑现的龙头。 后续需要验证：云厂商资本开支、订单落地、龙头公司公告、光模块价格和美股 AI 链表现。",
-      "beneficiaries": [
-        "服务器",
-        "光模块",
-        "半导体",
-        "云计算",
-        "IDC"
-      ],
-      "risks": [
-        "消息反转",
-        "市场已充分定价",
-        "来源细节需复核"
-      ],
-      "importance": 87,
-      "confidence": 73,
-      "sources": [
-        "消息来源：新浪网",
-        "发布时间：2026-06-30T10:24:41+00:00",
-        "检索主题：AI 算力",
-        "原始标题：AI算力超级周期，双创资产迎来黄金配置机遇 - 新浪网",
-        "https://news.google.com/rss/articles/CBMigwFBVV95cUxOc0ZCQy1yLUt0a2dsLVlHa0MteUVTdUxzN2VjWmxXV3RfWUozQUI5VVJ1bllLZy1JQmNrbFZxdkUwWHpuR0JsS184cVdsbHZzRWVteHlhX2NpYmlBVE85dzlqMFFPRkZsZk13eWh3WkdDNmp4a290SFRiNmdNRkNJcVRRMA?oc=5"
-      ],
-      "bullish_stocks": [
-        "中际旭创(300308)",
-        "新易盛(300502)",
-        "工业富联(601138)",
-        "寒武纪(688256)",
-        "中芯国际(688981)"
-      ],
-      "bearish_stocks": [
-        "高估值无订单AI题材股",
-        "算力租赁弱现金流公司",
-        "传统低端服务器代工"
-      ]
-    },
-    {
-      "title": "【焦点复盘】科创50指数放量跌超5%，半导体产业链遭深幅回调，地产产业链逆势大涨 - 财联社",
-      "summary": "AI方向出现正面催化。标题可见事实是：【焦点复盘】科创50指数放量跌超5%。进一步拆开看，标题还提到：半导体产业链遭深幅回调；地产产业链逆势大涨。量化信息包括：跌超5%。这条消息的关键不是泛泛说 AI 热，而是看算力需求、硬件订单、应用层变现或科技指数表现有没有新的边际变化。",
-      "reason": "方向判断：结构分化，不能简单看多或看空；需要区分受益方向和承压方向。影响链条：海外 AI 资本开支或国产算力预期 -> 光模块、服务器、半导体、IDC 等环节订单预期 -> A/H 科技成长风险偏好。股票市场影响：如果消息指向算力需求扩张、硬件订单增加或应用加速落地，通常利好光模块、服务器、半导体、IDC、云计算；如果消息指向指数大跌、硬件错配或估值拥挤，则更偏利空高估值 AI 题材，资金会转向有真实订单和利润兑现的龙头。 后续需要验证：云厂商资本开支、订单落地、龙头公司公告、光模块价格和美股 AI 链表现。",
-      "beneficiaries": [
-        "服务器",
-        "光模块",
-        "半导体",
-        "云计算",
-        "IDC"
-      ],
-      "risks": [
-        "消息反转",
-        "市场已充分定价",
-        "来源细节需复核"
-      ],
-      "importance": 85,
-      "confidence": 83,
-      "sources": [
-        "消息来源：财联社",
-        "发布时间：2026-06-30T09:37:24+00:00",
-        "检索主题：A 股政策与市场",
-        "原始标题：【焦点复盘】科创50指数放量跌超5%，半导体产业链遭深幅回调，地产产业链逆势大涨 - 财联社",
-        "https://news.google.com/rss/articles/CBMiSEFVX3lxTFBPak5jVHBRNTUxVmVSem9Jdm9lUVZrbmFFSXFiTjkwX2I2bXJkaEQ1bkZnSmpnTlNJbS1BeTFOM0FWT0FDUUh3Wg?oc=5"
-      ],
-      "bullish_stocks": [
-        "中际旭创(300308)",
-        "新易盛(300502)",
-        "工业富联(601138)",
-        "寒武纪(688256)",
-        "中芯国际(688981)"
-      ],
-      "bearish_stocks": [
-        "高估值无订单AI题材股",
-        "算力租赁弱现金流公司",
-        "传统低端服务器代工"
-      ]
-    },
-    {
-      "title": "AI五层蛋糕：谁在底层搭算力，谁在顶层做应用？“ETF华宝”AI投资地图来啦 - 新浪财经",
-      "summary": "AI方向出现重要线索。标题可见事实是：AI五层蛋糕。进一步拆开看，标题还提到：谁在底层搭算力；谁在顶层做应用？“ETF华宝”AI投资地图来啦。关键词包括：ETF华宝。这条消息的关键不是泛泛说 AI 热，而是看算力需求、硬件订单、应用层变现或科技指数表现有没有新的边际变化。",
-      "reason": "方向判断：偏中性，当前更适合作为观察线索，而不是直接交易信号。影响链条：海外 AI 资本开支或国产算力预期 -> 光模块、服务器、半导体、IDC 等环节订单预期 -> A/H 科技成长风险偏好。股票市场影响：如果消息指向算力需求扩张、硬件订单增加或应用加速落地，通常利好光模块、服务器、半导体、IDC、云计算；如果消息指向指数大跌、硬件错配或估值拥挤，则更偏利空高估值 AI 题材，资金会转向有真实订单和利润兑现的龙头。 后续需要验证：云厂商资本开支、订单落地、龙头公司公告、光模块价格和美股 AI 链表现。",
-      "beneficiaries": [
-        "服务器",
-        "光模块",
-        "半导体",
-        "云计算",
-        "IDC"
-      ],
-      "risks": [
-        "消息反转",
-        "市场已充分定价",
-        "来源细节需复核"
-      ],
-      "importance": 82,
-      "confidence": 78,
-      "sources": [
-        "消息来源：新浪财经",
-        "发布时间：2026-06-30T08:47:42+00:00",
-        "检索主题：AI 算力",
-        "原始标题：AI五层蛋糕：谁在底层搭算力，谁在顶层做应用？“ETF华宝”AI投资地图来啦 - 新浪财经",
-        "https://news.google.com/rss/articles/CBMiigJBVV95cUxQZ0Z5Z3Jram5PdEM2QnBfSGNSa3kteWV3ajYxS3pQdm9wSml0eUpMWUpGYVNMdUE4TTBvcDJPWHAyUS1xcWwxeWVUcC1IZE05QTZ5MzdhanpFbGJtYmpZbDJmc0RSeF83bHN6bFh4V0kzYURiRkVraEZyTmltWkM1Vy1nWHNhLVNmbTBld0dPOEhOWXRmRmJwdnpFNmR4RTI3RXlvMU0xTDN5cFZuUW9QeWxPZ3FocGEwWU5CcldlSlpDZ2FwMGxWZHE5eXU3bjFkeW16M0FwLTUzbkVxY2tCVFhXelZEeHk3ZVRmWHpXTzFCYmY4MkJaaUctaTVvUmpBSlVUbVB0d09NUQ?oc=5"
-      ],
-      "bullish_stocks": [
-        "中际旭创(300308)",
-        "新易盛(300502)",
-        "工业富联(601138)",
-        "寒武纪(688256)",
-        "中芯国际(688981)"
-      ],
-      "bearish_stocks": [
-        "高估值无订单AI题材股",
-        "算力租赁弱现金流公司",
-        "传统低端服务器代工"
-      ]
-    },
-    {
-      "title": "道明证券：金价年内下探3900美元筑底，2027年有望突破5300美元 - 新浪财经",
-      "summary": "宏观方向出现正面催化。标题可见事实是：金价年内下探3900美元筑底。进一步拆开看，标题还提到：道明证券；2027年有望突破5300美元。这条消息重点看美元、美债、人民币、黄金、原油、VIX 等宏观变量是否改变市场风险偏好和折现率。",
-      "reason": "方向判断：偏利好，前提是后续能看到订单、资金流或价格表现继续确认。影响链条：美元、美债、黄金、原油和人民币变化 -> 全球风险偏好与贴现率 -> A/H 股估值和行业轮动。股票市场影响：如果消息指向美元/美债上行，通常压制高估值成长股；如果黄金、原油或资源品波动加大，资金会在黄金、能源、高股息和出口链之间重新定价。 后续需要验证：美债收益率、美元/人民币、黄金原油价格、VIX 和主要股指共振。",
+      "title": "宏观：油价意外急跌缓解加息紧迫感！欧洲央行内部讨论曝光：7月行动概率下降，...",
+      "summary": "新浪财经在2026-06-30 17:06给出的线索是：油价意外急跌缓解加息紧迫感；同时提到欧洲央行内部讨论曝光; 7月行动概率下降；东方财富在2026-06-30 18:29给出的线索是：国际原油期货持续走低；财联社在2026-06-30 11:24给出的线索是：比特币大户Strategy企业价值首次跌破持仓价值 转向主动资本管理。这类信息要先判断它改变的是利率、美元、通胀、风险偏好还是避险需求。",
+      "reason": "方向判断：偏中性，更适合作为观察线索，不宜直接当成交易信号。 市场影响分析：宏观变量通过美元、美债、人民币、商品和风险偏好影响权益估值。利率下行通常利好成长股和港股科技；美元走强、油价或通胀压力上行，会压制高估值资产，并提高黄金、能源和高股息资产的配置价值。 A股关注映射链条和成交确认，港股关注美元/南向资金，美股关注盈利和估值是否匹配。",
       "beneficiaries": [
         "黄金",
-        "美元资产",
-        "高股息",
+        "能源",
+        "红利资产",
         "出口链"
       ],
       "risks": [
-        "消息反转",
-        "市场已充分定价",
-        "来源细节需复核"
+        "利率反向波动",
+        "汇率压力",
+        "地缘风险扩散",
+        "消息反转"
       ],
-      "importance": 80,
-      "confidence": 82,
+      "importance": 83,
+      "confidence": 88,
       "sources": [
-        "消息来源：新浪财经",
-        "发布时间：2026-06-30T04:30:00+00:00",
-        "检索主题：全球宏观",
-        "原始标题：道明证券：金价年内下探3900美元筑底，2027年有望突破5300美元 - 新浪财经",
-        "https://news.google.com/rss/articles/CBMipwFBVV95cUxNdnloR0ZMSlMzSjZWVE9QcUtqb0g5T1p5bEx0MU9BNk5PRk9Oc3djVXFtaFpkWXYxLWR4bHdnTWVoSzh1X3pUOFhJOGowRjYzeldQOXlOQ3ZfdFpsMWpXcTdjMzg0YlhvVHNtMHN2WkxtWHRvakhjNGtZTnZTU1g4MzV1aUE2XzZ6NUVXUHBKUFNsMGo2ODBDcWp0QXA5Z19VNnNqamNYaw?oc=5"
+        "消息来源：新浪财经；发布时间：2026-06-30T17:06:57+00:00；检索主题：全球宏观与央行；原始标题：油价意外急跌缓解加息紧迫感！欧洲央行内部讨论曝光：7月行动概率下降，通胀数据成关键 - 新浪财经",
+        "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQSVFTT3l0MXBTZ3lSaEJ6Rm02aFdtX0V5TG10dmRESVdLZWh0TERCSGRyUXNVR01qdlJFcWRHTjBxb3QzbUZFMkEwLXp3Z004OVVTM21abl83NG1yZ1lCbS1JT1ZxWWdTdHVKbFJWMGJBTzJDbzlrTUowWWwyQThfR1pwOXEteWVRclFmSHFvQTlESDRZS1RqMkxhcGZMRTA1eDJwMHVRY0Fadw?oc=5",
+        "消息来源：东方财富；发布时间：2026-06-30T18:29:12+00:00；检索主题：全球风险资产；原始标题：国际原油期货持续走低 - 东方财富",
+        "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBJc0V2dWZlVm9jODNPNTNkT09ScVlQQzdDUlplME1sY1pZQUNUVFRFOXROOWpLbUNvNThockJiNkFVelNkOHNQODJPWGYzZFhnWlBuTWxOV0UtemhLRlZKTXRYa25nZw?oc=5",
+        "消息来源：财联社；发布时间：2026-06-30T11:24:35+00:00；检索主题：全球风险资产；原始标题：比特币大户Strategy企业价值首次跌破持仓价值 转向主动资本管理 - 财联社",
+        "https://news.google.com/rss/articles/CBMiSEFVX3lxTE5BZGVjOW4wWVhfZDRrQ3h2OVlSNVYtZVRMQUlpdmtCTU1XQlpaZUV2SjJFQS1KYms3dlJBQTJrYXQwNnRrQTFmag?oc=5"
       ],
       "bullish_stocks": [
-        "紫金矿业(601899)",
+        "紫金矿业(601899/02899.HK)",
         "山东黄金(600547)",
-        "中国海油(600938)",
-        "高股息红利ETF(515180)"
+        "中国海油(600938/00883.HK)",
+        "红利ETF(515180)",
+        "黄金ETF(518880)"
       ],
       "bearish_stocks": [
         "航空股",
         "高外债房企",
-        "高估值成长股"
+        "高估值成长股",
+        "进口成本敏感公司"
       ]
     },
     {
-      "title": "等等再抄底？道明证券：黄金今年或跌破3900美元，明年再冲击5300美元 - 华尔街见闻",
-      "summary": "宏观方向出现重要线索。标题可见事实是：黄金今年或跌破3900美元。进一步拆开看，标题还提到：等等再抄底？道明证券；明年再冲击5300美元。这条消息重点看美元、美债、人民币、黄金、原油、VIX 等宏观变量是否改变市场风险偏好和折现率。",
-      "reason": "方向判断：偏利空或风险释放，短线需要先看相关板块是否继续放量承压。影响链条：美元、美债、黄金、原油和人民币变化 -> 全球风险偏好与贴现率 -> A/H 股估值和行业轮动。股票市场影响：如果消息指向美元/美债上行，通常压制高估值成长股；如果黄金、原油或资源品波动加大，资金会在黄金、能源、高股息和出口链之间重新定价。 后续需要验证：美债收益率、美元/人民币、黄金原油价格、VIX 和主要股指共振。",
-      "beneficiaries": [
-        "黄金",
-        "美元资产",
-        "高股息",
-        "出口链"
-      ],
-      "risks": [
-        "消息反转",
-        "市场已充分定价",
-        "来源细节需复核"
-      ],
-      "importance": 79,
-      "confidence": 68,
-      "sources": [
-        "消息来源：华尔街见闻",
-        "发布时间：2026-06-30T12:33:59+00:00",
-        "检索主题：全球宏观",
-        "原始标题：等等再抄底？道明证券：黄金今年或跌破3900美元，明年再冲击5300美元 - 华尔街见闻",
-        "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBZNEYtZnI2TUpRWkk2LVhBLUZ4RVhrS1ZqUmw1SjJQUFlGbTcxdlRIMXJ0dURwQ0h6dlFTanZURFQ5NDVoOFNPR3otbnEwdXA4c0xv?oc=5"
-      ],
-      "bullish_stocks": [
-        "紫金矿业(601899)",
-        "山东黄金(600547)",
-        "中国海油(600938)",
-        "高股息红利ETF(515180)"
-      ],
-      "bearish_stocks": [
-        "航空股",
-        "高外债房企",
-        "高估值成长股"
-      ]
-    },
-    {
-      "title": "港股上半年收官：三大指数均跌超10% AI硬件错配引发“流动性双轨虹吸” - 财联社",
-      "summary": "AI方向出现重要线索。标题可见事实是：港股上半年收官。进一步拆开看，标题还提到：三大指数均跌超10% AI硬件错配引发“流动性双轨虹吸”。量化信息包括：跌超10%。关键词包括：流动性双轨虹吸。这条消息的关键不是泛泛说 AI 热，而是看算力需求、硬件订单、应用层变现或科技指数表现有没有新的边际变化。",
-      "reason": "方向判断：偏利空或风险释放，短线需要先看相关板块是否继续放量承压。影响链条：海外 AI 资本开支或国产算力预期 -> 光模块、服务器、半导体、IDC 等环节订单预期 -> A/H 科技成长风险偏好。股票市场影响：如果消息指向算力需求扩张、硬件订单增加或应用加速落地，通常利好光模块、服务器、半导体、IDC、云计算；如果消息指向指数大跌、硬件错配或估值拥挤，则更偏利空高估值 AI 题材，资金会转向有真实订单和利润兑现的龙头。 后续需要验证：云厂商资本开支、订单落地、龙头公司公告、光模块价格和美股 AI 链表现。",
-      "beneficiaries": [
-        "服务器",
-        "光模块",
-        "半导体",
-        "云计算",
-        "IDC"
-      ],
-      "risks": [
-        "消息反转",
-        "市场已充分定价",
-        "来源细节需复核"
-      ],
-      "importance": 78,
-      "confidence": 84,
-      "sources": [
-        "消息来源：财联社",
-        "发布时间：2026-06-30T08:49:00+00:00",
-        "检索主题：港股科技",
-        "原始标题：港股上半年收官：三大指数均跌超10% AI硬件错配引发“流动性双轨虹吸” - 财联社",
-        "https://news.google.com/rss/articles/CBMiSEFVX3lxTE5wNmF1WjRHRlVtRU13ZElyTExCbWFzQm0zWU1oR0ExS0Q5ZmlIeVdfSGtFUDg1UDdFM3lZOXN3ejREYzBuUlRRcQ?oc=5"
-      ],
-      "bullish_stocks": [
-        "中际旭创(300308)",
-        "新易盛(300502)",
-        "工业富联(601138)",
-        "寒武纪(688256)",
-        "中芯国际(688981)"
-      ],
-      "bearish_stocks": [
-        "高估值无订单AI题材股",
-        "算力租赁弱现金流公司",
-        "传统低端服务器代工"
-      ]
-    },
-    {
-      "title": "中信证券股份有限公司关于上海维安电子股份有限公司首次公开发行股票并在主板上市之上市 - static.sse.com.cn",
-      "summary": "公告方向出现重要线索。标题可见事实是：中信证券股份有限公司关于上海维安电子股份有限公司首次公开发行股票并在主板上市之上市。这条消息重点看公告是否包含订单金额、利润率、履约周期、现金流或上市融资等可落地信息。",
-      "reason": "方向判断：偏中性，当前更适合作为观察线索，而不是直接交易信号。影响链条：公司公告或业绩线索 -> 订单、利润率、现金流或资本开支变化 -> 同产业链估值重估。股票市场影响：如果公告对应订单、利润或现金流改善，才可能形成实质利好；如果只是上市、流程或常规披露，对二级市场通常偏中性。 后续需要验证：公告原文、财务口径、订单金额、履约周期和利润率影响。",
+      "title": "公告：连续增持 新奥能源主席王玉锁逆势加仓",
+      "summary": "证券时报在2026-06-30 11:17给出的线索是：连续增持 新奥能源主席王玉锁逆势加仓；同花顺在2026-06-30 15:25给出的线索是：华安证券；同时提到股价大涨后; 股东拟减持不超5000万股；东方财富在2026-06-30 14:51给出的线索是：普门科技；同时提到控股股东拟增持1000万元至3000万元公司股份。公告类线索要重点看订单金额、利润率、现金流、履约周期和是否会改变公司未来几个季度的盈利预期。",
+      "reason": "方向判断：结构分化，说明同一主题内部同时存在受益链条和承压链条，需要按环节拆开。 市场影响分析：公司公告只有在改变未来收入、利润率、现金流或资本开支路径时才构成实质催化。重大合同、回购增持和业绩上修偏利好；减持、亏损扩大、订单取消和监管问询偏利空。 A股关注映射链条和成交确认，港股关注美元/南向资金，美股关注盈利和估值是否匹配。",
       "beneficiaries": [
         "公告涉及公司",
         "相关产业链",
         "同业龙头"
       ],
       "risks": [
-        "消息反转",
-        "市场已充分定价",
-        "来源细节需复核"
+        "公告细节不及预期",
+        "履约周期拉长",
+        "利润率低于市场预期",
+        "消息反转"
       ],
-      "importance": 78,
-      "confidence": 74,
+      "importance": 82,
+      "confidence": 88,
       "sources": [
-        "消息来源：static.sse.com.cn",
-        "发布时间：2026-06-30T09:27:33+00:00",
-        "检索主题：上交所公告",
-        "原始标题：中信证券股份有限公司关于上海维安电子股份有限公司首次公开发行股票并在主板上市之上市 - static.sse.com.cn",
-        "https://news.google.com/rss/articles/CBMikgFBVV95cUxPM1J6NTdGVk5rQjVtd3NhcnNwLWluV202dFhzNldSdWJSSklmMkhUci1iamEyVVZ6NktSMUlHU2hXMGtUbTh1d3VNSU1fOFB1XzlyYWlpQ0JxdHZ0NnVHbVJvbmtVMDFuNDQxdGxrOXk0cnZkcXA1Q0FTb0k5bHhpT2dGX1JmY0dRMVhXOTBOQ1BjZw?oc=5"
+        "消息来源：证券时报；发布时间：2026-06-30T11:17:00+00:00；检索主题：上市公司公告线索；原始标题：连续增持 新奥能源主席王玉锁逆势加仓 - 证券时报",
+        "https://news.google.com/rss/articles/CBMiXEFVX3lxTFAzRW90N1k1Z013OEZXcmNNeTZzclhkd3RFYmdRTEhOX20tZ3ZqQlp2bmExSTl4aEpMbEY3UG5vdmlNX0w2dWlHOVZMOVRlRzg5MmNvY0dWRU1XSUkx?oc=5",
+        "消息来源：同花顺；发布时间：2026-06-30T15:25:49+00:00；检索主题：上市公司公告线索；原始标题：华安证券：股价大涨后，股东拟减持不超5000万股 - 同花顺",
+        "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBPVnpXOWxtcjBpUDI0dnlpRjVRRWpJel9CWVN0SHliTjVvVzBvbnBxX0pNREN0QjhJZ200bS1EVGNlZ0lLb2VyUVowRmVVU0VqbUpwN3NtU0EyWDh2bHc?oc=5",
+        "消息来源：东方财富；发布时间：2026-06-30T14:51:21+00:00；检索主题：上市公司公告线索；原始标题：普门科技：控股股东拟增持1000万元至3000万元公司股份 - 东方财富",
+        "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBWUkw5OWRxd0U3MUVONGdGZXhtaUhTYVBCTV92ci0zNFRHMjlJOG1ZbE9NaVhQc1NoTU5FX0NLbkl0VXl4ZTlGREdLeDJBbnVLQndJZHZqelAzd282bkVZUA?oc=5"
       ],
       "bullish_stocks": [
-        "公告涉及公司",
-        "同产业链龙头",
-        "相关ETF"
+        "同业替代受益公司",
+        "订单外溢产业链龙头",
+        "高股息防守资产",
+        "相关行业ETF"
       ],
       "bearish_stocks": [
-        "同业竞争弱势公司",
         "订单被替代公司",
-        "高估值无业绩公司"
+        "同业竞争弱势公司",
+        "减持或业绩下修公司"
       ]
     },
     {
-      "title": "A股和港股IPO全球占三成份额，新质生产力政策如何加速资本市场资源配置效率？ - 新浪新闻_手机新浪网",
-      "summary": "港股方向出现重要线索。标题可见事实是：A股和港股IPO全球占三成份额。进一步拆开看，标题还提到：新质生产力政策如何加速资本市场资源配置效率？。这条消息重点看港股科技、南向资金、美元流动性和平台经济预期是否出现共振或背离。",
-      "reason": "方向判断：偏中性，当前更适合作为观察线索，而不是直接交易信号。影响链条：美元流动性和南向资金 -> 平台经济、港股科技和高股息资产估值修复 -> 港股成交持续性。股票市场影响：如果消息指向南向资金回流、美元走弱或平台经济预期改善，利好港股科技和互联网平台；如果指向指数收跌、流动性分化或美元走强，说明修复交易持续性不足。 后续需要验证：南向资金净流入、恒生科技成交额、美元指数、平台龙头业绩指引。",
+      "title": "港股：恒科反弹1.8%，科技主线大涨",
+      "summary": "同花顺在2026-06-30 13:59给出的线索是：恒科反弹1.8%；同时提到科技主线大涨，量化信息包括1.8%；东方财富在2026-06-30 08:12给出的线索是：6月30日港股收盘；同时提到恒指跌0.63% 恒生科技指数涨1.8%，量化信息包括0.63%、1.8%；华尔街见闻在2026-06-30 08:52给出的线索是：联特科技闯关港交所；同时提到港股投资者关注什么？。这类信息需要同时看美元流动性、南向资金、平台经济预期和恒生科技成交能否形成共振。",
+      "reason": "方向判断：偏利好，但需要继续用订单、资金流、价格反应或政策细则验证。 市场影响分析：港股对美元、美债和南向资金很敏感。若南向持续流入且美元走弱，平台经济、恒生科技和高股息资产更容易修复；若只是单日反弹而成交没有放大，港股科技的持续性不足，容易回到震荡。 A股关注映射链条和成交确认，港股关注美元/南向资金，美股关注盈利和估值是否匹配。",
       "beneficiaries": [
         "港股科技",
         "互联网平台",
@@ -449,240 +268,548 @@
         "南向资金重仓"
       ],
       "risks": [
-        "消息反转",
-        "市场已充分定价",
-        "来源细节需复核"
+        "美元走强",
+        "南向资金流入放缓",
+        "平台业绩指引转弱",
+        "消息反转"
       ],
-      "importance": 78,
-      "confidence": 73,
+      "importance": 82,
+      "confidence": 87,
       "sources": [
-        "消息来源：新浪新闻_手机新浪网",
-        "发布时间：2026-06-30T00:38:29+00:00",
-        "检索主题：A 股政策与市场",
-        "原始标题：A股和港股IPO全球占三成份额，新质生产力政策如何加速资本市场资源配置效率？ - 新浪新闻_手机新浪网",
-        "https://news.google.com/rss/articles/CBMiigFBVV95cUxQdC1oT0pvVTZwZ1BaY3g2ZVAzYUx1TTMzSU5BUlplTGdDMGhsVEZrX3d5SndXUVRyVjdXY2I2YVVPQkwxYkxwTVNjOUQ2ZWlIbzRrdE9qQW5QQXpUUlpUbWFobmtuRl9zYmdHdTBscGVJMUNKLTRGaUxndFBCVWNzUGFCVXpMR3AtbVE?oc=5"
+        "消息来源：同花顺；发布时间：2026-06-30T13:59:06+00:00；检索主题：港股科技与南向；原始标题：恒科反弹1.8%，科技主线大涨 - 同花顺",
+        "https://news.google.com/rss/articles/CBMiXkFVX3lxTE81b0J2aDAteEg5ang1LU5ST0hUTzZld1ZlVXZtSGdhZ1BLNnZYdUJ5RFpmTklrMHJJX0F3STkwbXFXYnN4UzVENTQ4aGs5RS00cEpURjlaOUhTcUd2eHc?oc=5",
+        "消息来源：东方财富；发布时间：2026-06-30T08:12:09+00:00；检索主题：港股科技与南向；原始标题：6月30日港股收盘：恒指跌0.63% 恒生科技指数涨1.8% - 东方财富",
+        "https://news.google.com/rss/articles/CBMiYEFVX3lxTFA1X1ZuUUNDRm5BVUJleDduUksyUG05M1QwVmJSWFdIQl9DWGgwbWczbS1MZEljakZCNnhTdDkwdkRTYmFOZUpoaEdXeWVqcnE1cF92Q3FjMXZVWmtSQTFXdA?oc=5",
+        "消息来源：华尔街见闻；发布时间：2026-06-30T08:52:52+00:00；检索主题：港股科技与南向；原始标题：联特科技闯关港交所，港股投资者关注什么？ - 华尔街见闻",
+        "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9yQ2tyQjU4NHhrdDA0NlRxUnFETUYxQUdKaXM3SDAyU3VVWmVUQ3pfUWZJbjJWeDVNdUE4eU45bEpueUt3aV9RQWZIX0dDRnJDb1Jz?oc=5"
       ],
       "bullish_stocks": [
         "腾讯控股(00700.HK)",
         "阿里巴巴-W(09988.HK)",
         "美团-W(03690.HK)",
-        "小米集团-W(01810.HK)"
+        "小米集团-W(01810.HK)",
+        "恒生科技ETF(513180)"
       ],
       "bearish_stocks": [
         "高杠杆地产链港股",
         "成交低迷券商股",
         "弱基本面小市值港股"
       ]
+    },
+    {
+      "title": "A股：八大科技股，“吸金”逾190亿元",
+      "summary": "同花顺在2026-06-30 15:30给出的线索是：八大科技股；同时提到“吸金”逾190亿元，量化信息包括190亿元；新京报在2026-06-30 13:07给出的线索是：暴涨280%；同时提到兆易创新高位预警; ETF投资者如何调仓，量化信息包括280%；金融界在2026-06-30 11:45给出的线索是：2026年上半年A股ETF涨跌幅榜TOP30。这类信息需要拆成政策预期、成交额、机构资金、行业主线和指数权重股五个变量。",
+      "reason": "方向判断：偏利好，但需要继续用订单、资金流、价格反应或政策细则验证。 市场影响分析：A股事件最重要的是看成交额和主线集中度。政策和资金共振时，券商、核心资产、科技成长和主题龙头会受益；如果只有题材轮动而没有成交配合，高位主题股容易分化，低位防守和红利资产相对占优。 A股关注映射链条和成交确认，港股关注美元/南向资金，美股关注盈利和估值是否匹配。",
+      "beneficiaries": [
+        "券商",
+        "核心资产",
+        "科技成长",
+        "政策受益行业"
+      ],
+      "risks": [
+        "成交额不足",
+        "政策预期落空",
+        "主题轮动过快",
+        "消息反转"
+      ],
+      "importance": 81,
+      "confidence": 87,
+      "sources": [
+        "消息来源：同花顺；发布时间：2026-06-30T15:30:04+00:00；检索主题：A股政策与资金；原始标题：八大科技股，“吸金”逾190亿元 - 同花顺",
+        "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9raElPdm9hMGNjTWd1Y0JlUVpHUzhSODNGNGU1UmtZdl84c1NLUEtqRWtVNW9NdE1wVUVVVUI0czBTMkZjSDR1blNXM29kLVdLY18yRjBVV3VxZklZQ3c?oc=5",
+        "消息来源：新京报；发布时间：2026-06-30T13:07:00+00:00；检索主题：A股政策与资金；原始标题：暴涨280%，兆易创新高位预警！ETF投资者如何调仓 - 新京报",
+        "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBTampvSG1EVTZfaGMydzRJbmpTellmNTZVZnE5VzAwQ0RjTGpQODhlYnJSeDBoZkVMWjdzazZmR2xibGlLVUs5bE03Wnk3UDRMNFpQbGdUaF84b3cxRzdMQkUwMmE?oc=5",
+        "消息来源：金融界；发布时间：2026-06-30T11:45:28+00:00；检索主题：A股政策与资金；原始标题：2026年上半年A股ETF涨跌幅榜TOP30 - 金融界",
+        "https://news.google.com/rss/articles/CBMidEFVX3lxTE1Tc3dEZVdHMy1YMENfOHhOUWNVamtMTGhsa2ptOEprNVhRTklwbHc4OVFGd1E4VEx6LWNCQTdDNmNVUGxiR3kxWVBQWE9SdmRTY3JUTmVXaWM5ZUtDWDhhR0VHdndCRnFHcm9vMEZ6N1YtYkJW?oc=5"
+      ],
+      "bullish_stocks": [
+        "东方财富(300059)",
+        "中信证券(600030)",
+        "沪深300ETF(510300)",
+        "科创50ETF(588000)",
+        "创业板ETF(159915)"
+      ],
+      "bearish_stocks": [
+        "高位题材股",
+        "业绩下修公司",
+        "高质押小盘股"
+      ]
+    },
+    {
+      "title": "公告：汇嘉时代：控股股东提前终止减持计划 期间未减持公司股份",
+      "summary": "东方财富在2026-06-30 14:42给出的线索是：汇嘉时代；同时提到控股股东提前终止减持计划 期间未减持公司股份；新京报在2026-06-30 13:29给出的线索是：龙湖再获大股东增持200万股 6月下旬累计增持约1100万股；static.sse.com.cn在2026-06-30 09:27给出的线索是：中信证券股份有限公司关于上海维安电子股份有限公司首次公开发行股票并在主板上市之上市。公告类线索要重点看订单金额、利润率、现金流、履约周期和是否会改变公司未来几个季度的盈利预期。",
+      "reason": "方向判断：结构分化，说明同一主题内部同时存在受益链条和承压链条，需要按环节拆开。 市场影响分析：公司公告只有在改变未来收入、利润率、现金流或资本开支路径时才构成实质催化。重大合同、回购增持和业绩上修偏利好；减持、亏损扩大、订单取消和监管问询偏利空。 A股关注映射链条和成交确认，港股关注美元/南向资金，美股关注盈利和估值是否匹配。",
+      "beneficiaries": [
+        "公告涉及公司",
+        "相关产业链",
+        "同业龙头"
+      ],
+      "risks": [
+        "公告细节不及预期",
+        "履约周期拉长",
+        "利润率低于市场预期",
+        "消息反转"
+      ],
+      "importance": 80,
+      "confidence": 87,
+      "sources": [
+        "消息来源：东方财富；发布时间：2026-06-30T14:42:23+00:00；检索主题：上市公司公告线索；原始标题：汇嘉时代：控股股东提前终止减持计划 期间未减持公司股份 - 东方财富",
+        "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9hS2J4WXc0Q0Q2ZHpDRGlMOTlQVzE1VnljNWpkWWJqdjFqNXM4cTd2UTJqdlVzaDdnV3VDTXpzdHQzcWZpb2gybTdQdkJ0OHd2ZUZCSkVKTVk1c251TFV3T2xkcWx4dw?oc=5",
+        "消息来源：新京报；发布时间：2026-06-30T13:29:00+00:00；检索主题：上市公司公告线索；原始标题：龙湖再获大股东增持200万股 6月下旬累计增持约1100万股 - 新京报",
+        "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9XMHFXWkNfbG02YnpoSEFFUWJtU0ZuWUEwbTVOZEZRcDhReWg2cm5IejlIRlcxWlQ3SW5wOFQwM1piY21lWU10dkl3aC12aDdxQlFyYWlZb053amxHME5VVjZYdzQ?oc=5",
+        "消息来源：static.sse.com.cn；发布时间：2026-06-30T09:27:33+00:00；检索主题：上交所公告；原始标题：中信证券股份有限公司关于上海维安电子股份有限公司首次公开发行股票并在主板上市之上市 - static.sse.com.cn",
+        "https://news.google.com/rss/articles/CBMikgFBVV95cUxPM1J6NTdGVk5rQjVtd3NhcnNwLWluV202dFhzNldSdWJSSklmMkhUci1iamEyVVZ6NktSMUlHU2hXMGtUbTh1d3VNSU1fOFB1XzlyYWlpQ0JxdHZ0NnVHbVJvbmtVMDFuNDQxdGxrOXk0cnZkcXA1Q0FTb0k5bHhpT2dGX1JmY0dRMVhXOTBOQ1BjZw?oc=5"
+      ],
+      "bullish_stocks": [
+        "同业替代受益公司",
+        "订单外溢产业链龙头",
+        "高股息防守资产",
+        "相关行业ETF"
+      ],
+      "bearish_stocks": [
+        "订单被替代公司",
+        "同业竞争弱势公司",
+        "减持或业绩下修公司"
+      ]
+    },
+    {
+      "title": "半导体：半年度收官：半导体ETF“包场”了，最牛涨超177%",
+      "summary": "东方财富在2026-06-30 12:21给出的线索是：半年度收官；同时提到半导体ETF“包场”了; 最牛涨超177%，量化信息包括超177%；证券时报在2026-06-30 11:57给出的线索是：半导体板块市值登上行业榜首；财联社在2026-06-30 03:39给出的线索是：运营商年报悉数出炉 中国移动称Token市场正快速打开 资本开支下降倒逼产业链转型。这类信息需要判断国产替代、设备材料、先进封装、存储周期和海外限制之间哪一个变量正在改变盈利预期。",
+      "reason": "方向判断：偏中性，更适合作为观察线索，不宜直接当成交易信号。 市场影响分析：半导体事件对A股映射很强，但必须区分周期复苏和国产替代。设备、材料、封测、存储和先进封装受益逻辑不同；若海外限制升级，短期可能压制情绪，中期反而强化国产替代订单，但只有公告和业绩验证后才算高置信。 A股关注映射链条和成交确认，港股关注美元/南向资金，美股关注盈利和估值是否匹配。",
+      "beneficiaries": [
+        "国产设备",
+        "材料",
+        "先进封装",
+        "晶圆制造",
+        "存储"
+      ],
+      "risks": [
+        "海外限制升级",
+        "库存周期反复",
+        "国产替代节奏低于预期",
+        "消息反转"
+      ],
+      "importance": 79,
+      "confidence": 88,
+      "sources": [
+        "消息来源：东方财富；发布时间：2026-06-30T12:21:08+00:00；检索主题：A股政策与资金；原始标题：半年度收官：半导体ETF“包场”了，最牛涨超177% - 东方财富",
+        "https://news.google.com/rss/articles/CBMibkFVX3lxTE1iZmtsYm8wQ2ZGNzJvZDVsaUIwUW5lNEdJeTZWWEZxTGJra2xabkpLVlNNbmlNSENvTDAxMXZjbWRTZThvRHdFd0xsb2NfSFV1UjFzdmZGclJqVGRfS3NpRk9QLU9aUV8zSTVRVkFR?oc=5",
+        "消息来源：证券时报；发布时间：2026-06-30T11:57:00+00:00；检索主题：中国科技与硬科技；原始标题：半导体板块市值登上行业榜首 - 证券时报",
+        "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9lemlQZXRGUWhoX0ZDczVWY3ctMlZoYkdQaS1PRHFTOGY4elZjT1B5SVNlaHI1c3hlUm1LbWQzay1XUnY2V1JMQ1p4SGdrWnE1WHFjXzdqZGtNTEJT?oc=5",
+        "消息来源：财联社；发布时间：2026-06-30T03:39:07+00:00；检索主题：AI算力产业链；原始标题：运营商年报悉数出炉 中国移动称Token市场正快速打开 资本开支下降倒逼产业链转型 - 财联社",
+        "https://news.google.com/rss/articles/CBMiSEFVX3lxTE5DRURod2hKa1E0OXc5ZG9YcnBoRDlOUDRCYnNMX3gyaXRObHFka3ZHQXZGdDJYVm1TeGpjYjRLR0UybEFSUEl5UA?oc=5"
+      ],
+      "bullish_stocks": [
+        "中芯国际(688981/00981.HK)",
+        "北方华创(002371)",
+        "中微公司(688012)",
+        "华虹半导体(01347.HK)",
+        "兆易创新(603986)"
+      ],
+      "bearish_stocks": [
+        "依赖海外先进制程的公司",
+        "高估值低盈利芯片设计股",
+        "库存压力较大的消费芯片公司"
+      ]
+    },
+    {
+      "title": "宏观：【早报】特朗普取消打击伊朗；黄金、白银大涨；世界杯开幕，墨西哥2比0...",
+      "summary": "财联社在2026-06-30 12:51给出的线索是：【早报】特朗普取消打击伊朗；同时提到黄金、白银大涨; 世界杯开幕；雪球在2026-06-30 10:01给出的线索是：黄金股ETF(SH517520)股票股价_股价行情_讨论_资讯_财报_数据报告；Sina finance在2026-06-30 09:19给出的线索是：汇丰：美元“爆发性”上涨将是下半年最大的痛苦交易之一。这类信息要先判断它改变的是利率、美元、通胀、风险偏好还是避险需求。",
+      "reason": "方向判断：偏利好，但需要继续用订单、资金流、价格反应或政策细则验证。 市场影响分析：宏观变量通过美元、美债、人民币、商品和风险偏好影响权益估值。利率下行通常利好成长股和港股科技；美元走强、油价或通胀压力上行，会压制高估值资产，并提高黄金、能源和高股息资产的配置价值。 A股关注映射链条和成交确认，港股关注美元/南向资金，美股关注盈利和估值是否匹配。",
+      "beneficiaries": [
+        "黄金",
+        "能源",
+        "红利资产",
+        "出口链"
+      ],
+      "risks": [
+        "利率反向波动",
+        "汇率压力",
+        "地缘风险扩散",
+        "消息反转"
+      ],
+      "importance": 78,
+      "confidence": 88,
+      "sources": [
+        "消息来源：财联社；发布时间：2026-06-30T12:51:01+00:00；检索主题：大宗商品与资源；原始标题：【早报】特朗普取消打击伊朗；黄金、白银大涨；世界杯开幕，墨西哥2比0战胜南非 - 财联社",
+        "https://news.google.com/rss/articles/CBMiSEFVX3lxTFBCNUJOYzJUMjNfLTl2VmN2cXotNlJyUjZHZldWdHZVY2g5c0hUam9ZNHAtdkh0SVVCaGVIMDhKbW51Y09BcmhSZA?oc=5",
+        "消息来源：雪球；发布时间：2026-06-30T10:01:11+00:00；检索主题：A股政策与资金；原始标题：黄金股ETF(SH517520)股票股价_股价行情_讨论_资讯_财报_数据报告 - 雪球",
+        "https://news.google.com/rss/articles/CBMiQ0FVX3lxTE9qcXRsZ0tlZmE2a0VRaFFxWUx0N0FoQU1wSlZndU5tVDk3YkdMWDRMTExwUEZJMWpMTl8wb2FrWm9EeGs?oc=5",
+        "消息来源：Sina finance；发布时间：2026-06-30T09:19:00+00:00；检索主题：全球宏观与央行；原始标题：汇丰：美元“爆发性”上涨将是下半年最大的痛苦交易之一 - Sina finance",
+        "https://news.google.com/rss/articles/CBMiekFVX3lxTFB4ZERpM3NUS3R5eUJNanBsNmp1c2p6Q20ybTAyQ3FZalQyM1ZXTENjN08zMzRINTV5RHdXSW15QV9qRk5ZQUR6dDVMenl6RlBLZkZFc25xTDFxaVcwTVA2d0ppMjBRWllCVXkzWkZrdDhnakVwelRucUJ3?oc=5"
+      ],
+      "bullish_stocks": [
+        "紫金矿业(601899/02899.HK)",
+        "山东黄金(600547)",
+        "中国海油(600938/00883.HK)",
+        "红利ETF(515180)",
+        "黄金ETF(518880)"
+      ],
+      "bearish_stocks": [
+        "航空股",
+        "高外债房企",
+        "高估值成长股",
+        "进口成本敏感公司"
+      ]
+    },
+    {
+      "title": "宏观：伯恩斯坦将闪迪目标价从1700美元上调至3000美元",
+      "summary": "东方财富在2026-06-30 13:44给出的线索是：伯恩斯坦将闪迪目标价从1700美元上调至3000美元；财联社在2026-06-30 10:37给出的线索是：地缘冲突冲击 中资美元债高收益债指数年内涨幅归零；Sina finance在2026-06-30 16:44给出的线索是：欧洲股市收创纪录新高 季度表现为2020年末以来最佳。这类信息要先判断它改变的是利率、美元、通胀、风险偏好还是避险需求。",
+      "reason": "方向判断：偏中性，更适合作为观察线索，不宜直接当成交易信号。 市场影响分析：宏观变量通过美元、美债、人民币、商品和风险偏好影响权益估值。利率下行通常利好成长股和港股科技；美元走强、油价或通胀压力上行，会压制高估值资产，并提高黄金、能源和高股息资产的配置价值。 A股关注映射链条和成交确认，港股关注美元/南向资金，美股关注盈利和估值是否匹配。",
+      "beneficiaries": [
+        "黄金",
+        "能源",
+        "红利资产",
+        "出口链"
+      ],
+      "risks": [
+        "利率反向波动",
+        "汇率压力",
+        "地缘风险扩散",
+        "消息反转"
+      ],
+      "importance": 77,
+      "confidence": 88,
+      "sources": [
+        "消息来源：东方财富；发布时间：2026-06-30T13:44:03+00:00；检索主题：全球宏观与央行；原始标题：伯恩斯坦将闪迪目标价从1700美元上调至3000美元 - 东方财富",
+        "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBEUkJDOVhtWUZNU3dVM2FEV0RxSDRRSXdvRDJNdi1aMGZzc3JqQk1sRENZOTNkVmV1NVVYNnVwTnREQ2NEQ2dEa1pDOHJQb0s3ZVNlWllCQzlSMjlYcHA4Ng?oc=5",
+        "消息来源：财联社；发布时间：2026-06-30T10:37:50+00:00；检索主题：全球宏观与央行；原始标题：地缘冲突冲击 中资美元债高收益债指数年内涨幅归零 - 财联社",
+        "https://news.google.com/rss/articles/CBMiSEFVX3lxTE9OQkRKX0lzTVpKOXhNeHdkS1ZDazNYbGxQQXJHMWpnTE1yTXhYdnJTWWx4bENGMnFJUUFTMTV0V2pRVGQyTmVnMA?oc=5",
+        "消息来源：Sina finance；发布时间：2026-06-30T16:44:00+00:00；检索主题：全球风险资产；原始标题：欧洲股市收创纪录新高 季度表现为2020年末以来最佳 - Sina finance",
+        "https://news.google.com/rss/articles/CBMihwFBVV95cUxQaDVabjNtVGdBSDZDWFFTeUJZdXFhQ05LYlRQTGlqcXIzNEwxblVVS3REOEphZGlCMWx1NVNFWGd6ejNkT2xnclhoMWh3OU1vOVBvRHBVMFhqX2U5bF85V202c2l3dVQ5bmlwY1VBa0V1bHM5UUE1djQwSld1aWdmNW1yTjBVTzQ?oc=5"
+      ],
+      "bullish_stocks": [
+        "紫金矿业(601899/02899.HK)",
+        "山东黄金(600547)",
+        "中国海油(600938/00883.HK)",
+        "红利ETF(515180)",
+        "黄金ETF(518880)"
+      ],
+      "bearish_stocks": [
+        "航空股",
+        "高外债房企",
+        "高估值成长股",
+        "进口成本敏感公司"
+      ]
+    },
+    {
+      "title": "AI：三大运营商齐推Token套餐 AI算力“大众化”时代要来了？",
+      "summary": "财联社在2026-06-30 12:47给出的线索是：三大运营商齐推Token套餐 AI算力“大众化”时代要来了？；新浪财经在2026-06-30 08:47给出的线索是：AI五层蛋糕；同时提到谁在底层搭算力; 谁在顶层做应用？“ETF华宝”AI投资地图来啦；thepaper.cn在2026-06-30 08:38给出的线索是：七月上海多展联动；同时提到聚焦人工智能、低空经济、时尚消费等赛道。这类信息需要重点判断云厂商资本开支、GPU/服务器/光模块订单、算力租赁需求和应用落地是否互相验证。",
+      "reason": "方向判断：偏中性，更适合作为观察线索，不宜直接当成交易信号。 市场影响分析：如果线索指向资本开支上修、订单兑现或AI应用加速，股票市场通常先交易光模块、服务器、PCB、液冷、IDC和半导体设备。如果线索指向指数大跌、估值拥挤或订单低于预期，则利空高估值、缺少真实订单的AI题材，资金会转向已有业绩兑现的龙头。 A股关注映射链条和成交确认，港股关注美元/南向资金，美股关注盈利和估值是否匹配。",
+      "beneficiaries": [
+        "光模块",
+        "服务器",
+        "AI芯片",
+        "IDC",
+        "云计算"
+      ],
+      "risks": [
+        "云厂商资本开支低于预期",
+        "订单无法兑现到利润",
+        "估值拥挤",
+        "消息反转"
+      ],
+      "importance": 77,
+      "confidence": 88,
+      "sources": [
+        "消息来源：财联社；发布时间：2026-06-30T12:47:08+00:00；检索主题：AI算力产业链；原始标题：三大运营商齐推Token套餐 AI算力“大众化”时代要来了？ - 财联社",
+        "https://news.google.com/rss/articles/CBMiSEFVX3lxTE5ZMGpPUGFlQVltd2tTZGRCWnNhQndzU1JqNmpuejFaMUNRODBhbTh4OHM0Q0wzZHRlMVNTM1R1WEhCTlo1VzJLbQ?oc=5",
+        "消息来源：新浪财经；发布时间：2026-06-30T08:47:42+00:00；检索主题：AI算力产业链；原始标题：AI五层蛋糕：谁在底层搭算力，谁在顶层做应用？“ETF华宝”AI投资地图来啦 - 新浪财经",
+        "https://news.google.com/rss/articles/CBMiigJBVV95cUxQZ0Z5Z3Jram5PdEM2QnBfSGNSa3kteWV3ajYxS3pQdm9wSml0eUpMWUpGYVNMdUE4TTBvcDJPWHAyUS1xcWwxeWVUcC1IZE05QTZ5MzdhanpFbGJtYmpZbDJmc0RSeF83bHN6bFh4V0kzYURiRkVraEZyTmltWkM1Vy1nWHNhLVNmbTBld0dPOEhOWXRmRmJwdnpFNmR4RTI3RXlvMU0xTDN5cFZuUW9QeWxPZ3FocGEwWU5CcldlSlpDZ2FwMGxWZHE5eXU3bjFkeW16M0FwLTUzbkVxY2tCVFhXelZEeHk3ZVRmWHpXTzFCYmY4MkJaaUctaTVvUmpBSlVUbVB0d09NUQ?oc=5",
+        "消息来源：thepaper.cn；发布时间：2026-06-30T08:38:00+00:00；检索主题：军工航天低空；原始标题：七月上海多展联动，聚焦人工智能、低空经济、时尚消费等赛道 - thepaper.cn",
+        "https://news.google.com/rss/articles/CBMiYEFVX3lxTE96SnBaRWtCVEZWTXBYc3EwMThobjh3aE5BS25lNklTN0l0YXV4V200Vm9tYWlya3kyR2FjWmNEZnp5MlJFVVVrZHgySXR2ZXltOXBGdWJNU0xPanRESXBCbA?oc=5"
+      ],
+      "bullish_stocks": [
+        "中际旭创(300308)",
+        "新易盛(300502)",
+        "工业富联(601138)",
+        "寒武纪(688256)",
+        "英伟达(NVDA)"
+      ],
+      "bearish_stocks": [
+        "高估值无订单AI题材股",
+        "算力租赁弱现金流公司",
+        "低端服务器代工企业"
+      ]
     }
   ],
   "investment_ideas": [
     {
-      "title": "跟踪 AI 算力与半导体链条的订单验证",
+      "title": "AI算力与半导体链条：从题材热度切到订单验证",
       "action": "可分批关注",
-      "horizon": "1-3 个月",
-      "success_probability": "约 60%-70%",
-      "confidence": 68,
+      "horizon": "1-3个月",
+      "success_probability": "约60%-70%",
+      "confidence": 70,
       "risk_level": "中",
-      "logic": "AI 相关消息密度和美股科技风险偏好仍是 A/H 成长主线的重要映射，适合优先观察有业绩验证的环节。",
-      "invalidation": "云厂商资本开支预期下修，核心公司订单低于预期，或纳指科技资产连续走弱。",
+      "logic": "AI主线能否继续扩散，关键不在标题热度，而在云厂商资本开支、服务器出货、光模块订单、国产算力政策和半导体设备订单能否互相验证。",
+      "invalidation": "海外AI龙头回调并伴随资本开支预期下修，或A/H相关公司公告与订单验证低于预期。",
       "watch_indicators": [
-        "纳指 100 ETF",
-        "AI 新闻密度",
-        "半导体订单",
-        "光模块价格"
+        "纳斯达克100",
+        "英伟达/博通走势",
+        "光模块订单",
+        "服务器出货",
+        "科创50"
       ],
       "catalysts": [
-        "AI 资本开支",
-        "光模块订单",
+        "云厂商资本开支上修",
         "国产算力政策",
-        "半导体周期回升"
+        "光模块订单",
+        "半导体设备国产替代"
       ],
       "representative_assets": [
-        "光模块",
-        "服务器",
-        "半导体 ETF",
-        "云计算"
+        "中际旭创",
+        "工业富联",
+        "寒武纪",
+        "中芯国际",
+        "半导体ETF"
       ],
-      "pricing_status": "热门环节已有较多定价，优先等待订单和业绩兑现。",
+      "pricing_status": "热门环节已有较多定价，后续要看订单和业绩能否兑现。",
       "position_size": "轻仓到标准仓"
     },
     {
-      "title": "新能源从总量交易转向结构筛选",
+      "title": "能源电力：优先电网、储能和盈利质量较稳的环节",
       "action": "等待确认",
-      "horizon": "3-12 个月",
-      "success_probability": "约 55%-65%",
-      "confidence": 62,
+      "horizon": "3-12个月",
+      "success_probability": "约55%-65%",
+      "confidence": 64,
       "risk_level": "中",
-      "logic": "新能源新闻仍有催化，但产能和价格压力未完全解除，应优先看储能、电网等盈利更稳定的分支。",
-      "invalidation": "产业链价格继续快速下行，招标低于预期，或龙头盈利继续下修。",
+      "logic": "新能源从总量扩张进入结构分化，电网投资、储能招标、核电审批和电力市场化比单纯光伏组件扩产更值得跟踪。",
+      "invalidation": "招标价格继续下行、设备毛利率承压，或项目投运进度明显低于预期。",
       "watch_indicators": [
         "储能招标",
         "电网投资",
         "组件价格",
-        "锂价"
+        "锂价",
+        "龙头毛利率"
       ],
       "catalysts": [
-        "储能项目投运",
         "电网投资加速",
-        "政策消纳约束",
-        "海外需求恢复"
+        "储能项目落地",
+        "核电审批",
+        "海外需求改善"
       ],
       "representative_assets": [
-        "储能",
-        "电网设备",
-        "电池 ETF",
-        "光伏逆变器"
+        "国电南瑞",
+        "特变电工",
+        "阳光电源",
+        "宁德时代",
+        "电力设备ETF"
       ],
-      "pricing_status": "分支差异较大，储能和电网优于产能过剩环节。",
+      "pricing_status": "电网和储能优于产能过剩环节，仍需等待价格和订单验证。",
       "position_size": "轻仓观察"
     },
     {
-      "title": "港股科技关注南向资金与美元环境共振",
+      "title": "港股科技：用美元、南向和成交额确认修复持续性",
       "action": "持有观察",
-      "horizon": "1 个月",
-      "success_probability": "约 55%-65%",
-      "confidence": 60,
+      "horizon": "1个月",
+      "success_probability": "约55%-65%",
+      "confidence": 62,
       "risk_level": "中",
-      "logic": "港股弹性取决于美元流动性、平台经济预期和南向资金，适合用趋势确认而非单日波动做决策。",
-      "invalidation": "美元重新走强，恒生科技放量下破，或互联网龙头业绩指引转弱。",
+      "logic": "港股科技的弹性来自美元流动性、南向资金和平台经济预期共振；若只有单日上涨而缺少成交和资金流确认，持续性会打折。",
+      "invalidation": "美元重新走强、恒生科技放量下破，或平台龙头业绩指引转弱。",
       "watch_indicators": [
-        "恒生指数",
-        "美元/离岸人民币",
+        "恒生科技",
         "南向资金",
-        "港股科技成交额"
+        "美元/离岸人民币",
+        "平台龙头成交额"
       ],
       "catalysts": [
         "美元走弱",
         "南向资金回流",
-        "互联网平台业绩修复",
-        "政策预期改善"
+        "平台经济业绩修复",
+        "回购增持"
       ],
       "representative_assets": [
-        "恒生科技",
-        "港股互联网 ETF",
-        "平台经济龙头"
+        "腾讯控股",
+        "阿里巴巴-W",
+        "美团-W",
+        "小米集团-W",
+        "恒生科技ETF"
       ],
-      "pricing_status": "修复交易已有启动，仍需资金持续性确认。",
+      "pricing_status": "修复交易已经启动时更要看资金持续性，而不是只看估值低。",
+      "position_size": "轻仓到标准仓"
+    },
+    {
+      "title": "宏观对冲：保留黄金、红利和能源作为组合稳定器",
+      "action": "持有观察",
+      "horizon": "1-6个月",
+      "success_probability": "约55%-60%",
+      "confidence": 60,
+      "risk_level": "中低",
+      "logic": "当美元、利率、地缘和商品价格存在不确定性时，黄金、能源和高股息资产可以对冲成长股波动，也能在风险偏好下降时提供组合缓冲。",
+      "invalidation": "实际利率快速上行且黄金跌破关键支撑，或红利资产拥挤导致估值明显透支。",
+      "watch_indicators": [
+        "美债10年收益率",
+        "美元/离岸人民币",
+        "黄金",
+        "WTI原油",
+        "VIX"
+      ],
+      "catalysts": [
+        "降息预期升温",
+        "地缘风险",
+        "油价上行",
+        "避险资金流入"
+      ],
+      "representative_assets": [
+        "黄金ETF",
+        "紫金矿业",
+        "中国海油",
+        "红利ETF",
+        "高股息央国企"
+      ],
+      "pricing_status": "属于组合底仓和对冲仓，不适合按短线题材方式追高。",
       "position_size": "轻仓到标准仓"
     }
   ],
   "action_checklist": [
-    "先确认今天交易的是流动性、政策、业绩还是产业催化。",
-    "只把重要性高且来源可复核的事件放入重点跟踪列表。",
-    "可分批关注：跟踪 AI 算力与半导体链条的订单验证，观察 纳指 100 ETF、AI 新闻密度、半导体订单。",
-    "等待确认：新能源从总量交易转向结构筛选，观察 储能招标、电网投资、组件价格。",
-    "持有观察：港股科技关注南向资金与美元环境共振，观察 恒生指数、美元/离岸人民币、南向资金。",
-    "优先复核最高分事件：全球风险偏好与 A/H 股交易环境更新。"
+    "先判断今天资金交易的是利率、美元、政策、AI盈利，还是单纯情绪修复。",
+    "把最高重要程度的3条核心事件回看原文，确认是否有量化信息、公告细节或权威来源。",
+    "每个股票清单只作为研究池，先看订单、业绩、成交额和龙头相对强弱是否验证。",
+    "可分批关注：AI算力与半导体链条：从题材热度切到订单验证；重点观察纳斯达克100、英伟达/博通走势、光模块订单。",
+    "等待确认：能源电力：优先电网、储能和盈利质量较稳的环节；重点观察储能招标、电网投资、组件价格。",
+    "持有观察：港股科技：用美元、南向和成交额确认修复持续性；重点观察恒生科技、南向资金、美元/离岸人民币。",
+    "今天最需要复核的事件：全球风险偏好与 A/H 股交易环境更新。"
   ],
   "risk_warnings": [
-    "免费行情和 RSS 聚合源可能延迟或缺失，关键结论需要回看原始来源。",
-    "AI 或规则生成观点不能替代独立判断，所有建议都必须结合仓位和失效条件。",
-    "部分资产单日跌幅较大，短线风险偏好可能低于新闻标题呈现的乐观程度。"
+    "免费行情和RSS聚合源可能延迟或缺失，关键结论需要回看原始来源、交易所公告和公司披露。",
+    "AI或规则生成观点不能替代独立判断，所有建议都必须结合仓位、止损和失效条件。",
+    "股票清单代表受益/受损方向，不等同于买卖指令。",
+    "部分资产单日跌幅较大，说明风险偏好可能低于新闻标题呈现的乐观程度。"
   ],
-  "source_note": "中国大陆指数优先来自新浪行情接口，海外市场、商品、汇率等来自 Yahoo Finance chart 免费接口，可能存在延迟、缺口或临时不可用；投资判断仍需结合交易所、公司公告和券商数据复核。\n\n宏观代理指标来自 Yahoo Finance 免费接口，覆盖美债、波动率、商品和加密资产；这些是资金环境代理变量，不等同于官方宏观统计。\n\n新闻线索来自 Google News RSS 免费聚合源，标题和来源用于事件筛选，重要事实需回看原文复核。\n\n公告线索来自 Google News 对巨潮资讯、交易所、港交所披露易和 SEC 的公开索引；当前阶段只用于发现线索，正式判断必须打开公告原文复核。\n\n质量检查：通过基础完整性检查。",
+  "source_note": "中国大陆指数优先来自新浪行情接口，海外市场、商品、汇率等来自 Yahoo Finance chart 免费接口，可能存在延迟、缺口或临时不可用；投资判断仍需结合交易所、公司公告和券商数据复核。\n\n宏观代理指标来自 Yahoo Finance 免费接口，覆盖美债、波动率、商品和加密资产；这些是资金环境代理变量，不等同于官方宏观统计。\n\n新闻证据包来自 Google News RSS 的多主题检索矩阵，覆盖全球宏观、A股、港股、美股科技、AI算力、半导体、能源电力、资源品、公告和未来事件日历。报告会把标题、来源、发布时间、检索主题作为可复核证据；涉及投资结论时仍需回看原文和公司公告。\n\n公告线索来自 Google News 对巨潮资讯、交易所、港交所披露易和 SEC 的公开索引；当前阶段只用于发现线索，正式判断必须打开公告原文复核。\n\n质量检查：通过基础完整性检查。",
   "analysis_sections": [
     {
-      "title": "核心宏观变量",
-      "view": "当前总判断为：中性偏积极。市场结构仍有机会，但需要区分强势主线和补涨噪音。 需要把美元、人民币、VIX、黄金和主要股指放在同一张表里看，避免只依据单一新闻标题做方向判断。",
+      "title": "今日十大核心事件筛选逻辑",
+      "view": "本次筛选重点不是罗列新闻，而是把 66 条线索按宏观、资金、产业、公告和日历归类，再按可验证性排序。当前市场判断：结构分化。资金没有形成单一方向，今天更重要的是识别哪些板块由真实催化驱动，哪些只是情绪轮动。",
       "opportunities": [
-        "若风险偏好改善，优先观察 A 股核心资产、港股互联网平台和 AI 算力龙头的资金承接。",
-        "若避险升温，黄金、高股息和现金流稳定资产相对更容易获得资金防守配置。"
+        "优先研究同时具备新闻催化、市场价格反应和公司/产业链验证的主题。",
+        "同一主题内区分真正受益者与情绪扩散对象，避免把板块上涨简单等同于基本面改善。"
       ],
       "risks": [
-        "美元或美债收益率重新走强会压制高估值成长股。",
-        "单日指数反弹若缺少成交量配合，容易变成补涨而非趋势切换。"
+        "单一标题可能遗漏关键上下文。",
+        "免费聚合源可能延迟，需回看原文和公告。"
+      ],
+      "watch": [
+        "油价意外急跌缓解加息紧迫感！欧洲央行内部讨论曝光：7月行动概率下降，通胀数据成关键",
+        "华安证券：股价大涨后，股东拟减持不超5000万股",
+        "黄金股ETF(SH517520)股票股价_股价行情_讨论_资讯_财报_数据报告",
+        "暴涨280%，兆易创新高位预警！ETF投资者如何调仓"
+      ]
+    },
+    {
+      "title": "全球资本市场复盘",
+      "view": "观察美国、中国、欧洲、日本和港股时，重点回答资金到底在交易利率、AI盈利、政策预期、汇率，还是避险需求。",
+      "opportunities": [
+        "若美股科技与A/H科技同时走强，AI和半导体链条的跨市场映射价值提高。",
+        "若欧洲、日本和资源品同步偏强，顺周期和出口链可以进入观察池。"
+      ],
+      "risks": [
+        "单日指数涨跌可能只是情绪修复。",
+        "美元和美债反向波动会快速压制成长股估值。"
       ],
       "watch": [
         "VIX 波动率",
         "科创50",
         "恒生科技",
-        "创业板指"
-      ]
-    },
-    {
-      "title": "利率与固收",
-      "view": "固收信号用于判断权益估值压力和防守资产吸引力；当收益率上行与风险资产走弱同时出现时，需要降低追高力度。",
-      "opportunities": [
-        "收益率下行时，高股息、核心资产和长久期成长板块的估值压力通常缓和。",
-        "信用风险没有扩散时，红利 ETF、央国企和现金流稳定资产可作为组合底仓观察。"
-      ],
-      "risks": [
-        "收益率快速上行会冲击科技成长和高估值主题。",
-        "信用利差或地产链压力扩散时，弱现金流小盘股和高杠杆公司承压更明显。"
-      ],
-      "watch": [
-        "美债 10 年收益率",
-        "VIX 波动率"
-      ]
-    },
-    {
-      "title": "大宗商品与地缘",
-      "view": "商品和汇率线索用于识别通胀、避险和出口链变化。黄金、原油、铜和人民币的组合变化，比单个价格更重要。",
-      "opportunities": [
-        "黄金走强时，黄金矿业、贵金属 ETF 和高股息资产更适合进入观察池。",
-        "油价走强时，上游资源、油服和高股息能源股可能受益。"
-      ],
-      "risks": [
-        "油价或航运成本上行会压缩航空、化工下游和部分制造业利润。",
-        "人民币波动放大时，高外债房企、进口成本敏感公司和高估值成长股风险上升。"
-      ],
-      "watch": [
-        "黄金 ETF",
-        "美元/离岸人民币",
-        "WTI 原油",
-        "COMEX 铜"
-      ]
-    },
-    {
-      "title": "美国权益市场",
-      "view": "美股科技和纳指是 A/H 成长风格的重要外部锚，尤其影响 AI 算力、半导体、云计算和港股科技定价。",
-      "opportunities": [
-        "纳指或费半维持强势时，A/H 的 AI 算力、光模块、服务器和半导体链条更容易获得映射。",
-        "若美股上涨由盈利和订单驱动，而非单纯估值扩张，相关产业链的可持续性更高。"
-      ],
-      "risks": [
-        "美股科技高位回落会传导到高估值 AI 题材。",
-        "若海外云厂商资本开支预期下修，光模块、服务器和算力租赁链条需要快速降温。"
-      ],
-      "watch": [
-        "标普500"
-      ]
-    },
-    {
-      "title": "中国与亚洲权益市场",
-      "view": "新闻主题分布显示：AI 9 条、港股 6 条、A 股 4 条、新能源 6 条。需要区分指数修复、政策催化和产业订单三类驱动。",
-      "opportunities": [
-        "港股科技关注南向资金、美元环境和平台经济预期的共振。",
-        "A 股优先看有订单验证或政策落地的方向，避免只追逐标题热度。"
-      ],
-      "risks": [
-        "成交量不足时，主题轮动速度会加快，追高容错率下降。",
-        "若政策预期没有后续细则，券商、地产链和高弹性题材容易回吐。"
-      ],
-      "watch": [
-        "沪深300",
         "创业板指",
-        "恒生科技",
-        "南向资金"
+        "比特币"
       ]
     },
     {
-      "title": "机构研究精读",
-      "view": "把机构视角压缩成可执行问题：哪条主线有订单或政策验证，哪条主线只是情绪扩散，什么时候必须承认判断失效。",
+      "title": "今日最重要产业趋势",
+      "view": "新闻主题分布显示：AI 11 条、半导体 5 条、能源电力 3 条、新能源 6 条。重点看产业链哪一环真的能赚钱。",
       "opportunities": [
-        "跟踪 AI 算力与半导体链条的订单验证",
-        "新能源从总量交易转向结构筛选",
-        "港股科技关注南向资金与美元环境共振"
+        "AI算力与半导体链条：从题材热度切到订单验证",
+        "能源电力：优先电网、储能和盈利质量较稳的环节",
+        "港股科技：用美元、南向和成交额确认修复持续性"
       ],
       "risks": [
-        "报告中的股票清单是受益/承压观察池，不等同于买卖指令。",
-        "缺少原文细节或财务验证时，个股只能进入复核清单，不能直接提高仓位。"
+        "只看概念容易忽略价格、库存和毛利率。",
+        "产业链中上游和下游的受益方向可能完全相反。"
       ],
       "watch": [
-        "订单验证",
-        "成交量",
-        "资金流向",
-        "失效条件"
+        "订单金额",
+        "招标价格",
+        "库存去化",
+        "龙头毛利率",
+        "资本开支"
+      ]
+    },
+    {
+      "title": "全球资金流向",
+      "view": "资金流向用美元、人民币、黄金、原油、美债、纳斯达克、恒生科技、沪深300和创业板来交叉验证。单一资产上涨不能说明全部风险偏好改善。",
+      "opportunities": [
+        "美元走弱且美债收益率下行时，港股科技、A股成长和黄金更容易同时受益。",
+        "商品走强且股市不弱时，资源品和顺周期资产的胜率提高。"
+      ],
+      "risks": [
+        "美元突然走强会压缩新兴市场和高估值成长股估值。",
+        "VIX抬升时主题交易容易快速降温。"
+      ],
+      "watch": [
+        "美元/离岸人民币",
+        "美债10年收益率",
+        "黄金",
+        "WTI原油",
+        "VIX"
+      ]
+    },
+    {
+      "title": "政策与公告解读",
+      "view": "政策和公告要看真实目的：稳增长、促消费、扩投资、科技自主、能源安全或资本市场活跃。不同目的对应完全不同的受益公司。",
+      "opportunities": [
+        "稳增长偏利好基建、电网、央国企和高股息。",
+        "科技自主偏利好半导体设备材料、国产算力和工业软件。"
+      ],
+      "risks": [
+        "政策预期如果没有细则和资金配套，容易兑现后回落。",
+        "公司公告若没有利润率和现金流改善，利好强度有限。"
+      ],
+      "watch": [
+        "证监会/央行/财政部文件",
+        "交易所公告",
+        "重大合同",
+        "回购增持",
+        "业绩预告"
+      ]
+    },
+    {
+      "title": "未来7天重要事件",
+      "view": "未来一周的经济数据、央行表态、财报、政策会议和产业大会，主要通过预期差影响市场，而不是通过事件本身机械利好利空。",
+      "opportunities": [
+        "数据低于预期但带来降息预期时，成长和黄金可能受益。",
+        "财报超预期且指引上修时，龙头公司比概念股更有持续性。"
+      ],
+      "risks": [
+        "预期过满时，利好兑现也可能下跌。",
+        "重要会议前后波动会放大，仓位不宜过度集中。"
+      ],
+      "watch": [
+        "经济数据",
+        "央行会议",
+        "美股科技财报",
+        "行业大会",
+        "新品发布"
+      ]
+    },
+    {
+      "title": "投资机会与行动清单",
+      "view": "从基金经理视角看，当前更适合把机会分成1个月事件交易、3个月产业验证和1年主线配置三层，而不是把所有事件都变成买入建议。",
+      "opportunities": [
+        "1个月：关注有明确催化和价格确认的AI、港股科技、政策受益方向。",
+        "3个月：关注订单和业绩能持续验证的半导体、储能、电网。",
+        "1年：持续跟踪AI算力国产化、能源安全和高股息资产重估。"
+      ],
+      "risks": [
+        "没有失效条件的机会不应提高仓位。",
+        "报告中的股票清单是研究池，不是直接买卖指令。"
+      ],
+      "watch": [
+        "今天最强主线",
+        "最值得研究的一家公司",
+        "三大风险",
+        "未来一年主线"
       ]
     }
   ]
