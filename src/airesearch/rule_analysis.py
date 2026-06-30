@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from collections import Counter
+import re
 
 from .models import AnalysisSection, CoreEvent, InvestmentIdea, MarketSignal
 from .news_data import NewsItem
@@ -335,6 +336,77 @@ def verification_points_for(item: NewsItem) -> str:
         "公告": "公告原文、财务口径、订单金额、履约周期和利润率影响",
     }
     return mapping.get(item.category, "原文细节、成交量、行业龙头反应和后续公告")
+
+
+def build_event_summary(item: NewsItem, direction: str) -> str:
+    category_context = {
+        "AI": "这条消息的关键不是泛泛说 AI 热，而是看算力需求、硬件订单、应用层变现或科技指数表现有没有新的边际变化。",
+        "新能源": "这条消息需要拆到储能、电网、电池、光伏或整车分支，看订单、价格、库存、招标或政策是否发生变化。",
+        "港股": "这条消息重点看港股科技、南向资金、美元流动性和平台经济预期是否出现共振或背离。",
+        "A 股": "这条消息重点看政策、成交量、产业催化和板块轮动之间的关系，尤其是强势方向是否有龙头确认。",
+        "宏观": "这条消息重点看美元、美债、人民币、黄金、原油、VIX 等宏观变量是否改变市场风险偏好和折现率。",
+        "公告": "这条消息重点看公告是否包含订单金额、利润率、履约周期、现金流或上市融资等可落地信息。",
+    }.get(item.category, "这条消息需要判断是否改变行业预期、资金关注度和估值弹性。")
+    return f"{item.category}方向出现{direction}。{extract_title_facts(item.title)}{category_context}"
+
+
+def extract_title_facts(title: str) -> str:
+    clean_title = clean_news_title(title)
+    metrics = list(dict.fromkeys(re.findall(r"(?:涨超|跌超|超|近|约|逾|超过)?\d+(?:\.\d+)?%", clean_title)))
+    quoted = list(dict.fromkeys(re.findall(r"[“\"]([^”\"]{2,40})[”\"]", clean_title)))
+    clauses = split_title_clauses(clean_title)
+    main_clause = clauses[0] if clauses else clean_title
+    detail_clauses = [clause for clause in clauses[1:4] if clause != main_clause]
+
+    parts = [f"标题可见事实是：{main_clause}。"]
+    if detail_clauses:
+        parts.append(f"进一步拆开看，标题还提到：{'；'.join(detail_clauses)}。")
+    if metrics:
+        parts.append(f"量化信息包括：{'、'.join(metrics)}。")
+    if quoted:
+        parts.append(f"关键词包括：{'、'.join(quoted[:3])}。")
+    return "".join(parts)
+
+
+def clean_news_title(title: str) -> str:
+    title = re.sub(r"\s+-\s+[^-]{2,30}$", "", title.strip())
+    return re.sub(r"\s+", " ", title)
+
+
+def split_title_clauses(title: str) -> list[str]:
+    parts = re.split(r"[：:，,；;。|｜]", title)
+    clauses = [part.strip(" -_") for part in parts if len(part.strip(" -_")) >= 4]
+    if len(clauses) >= 2 and re.search(r"(证券|财经|新闻|日报|时报|见闻)$", clauses[0]) and len(clauses[1]) > len(clauses[0]):
+        return [clauses[1], clauses[0], *clauses[2:]]
+    return clauses
+
+
+def build_market_impact(item: NewsItem, impact_path: str, verification: str) -> str:
+    direction_text = assess_event_direction(item)
+    opportunity = {
+        "AI": "如果消息指向算力需求扩张、硬件订单增加或应用加速落地，通常利好光模块、服务器、半导体、IDC、云计算；如果消息指向指数大跌、硬件错配或估值拥挤，则更偏利空高估值 AI 题材，资金会转向有真实订单和利润兑现的龙头。",
+        "新能源": "如果消息指向招标增加、价格企稳或政策支持，利好储能、电网设备和盈利稳定的电池龙头；如果指向降价、库存或产能压力，则利空低效光伏组件、高成本电池产能和高负债公司。",
+        "港股": "如果消息指向南向资金回流、美元走弱或平台经济预期改善，利好港股科技和互联网平台；如果指向指数收跌、流动性分化或美元走强，说明修复交易持续性不足。",
+        "A 股": "如果消息指向成交放大、政策落地或产业催化，利好券商、核心资产和强主题龙头；如果消息指向放量下跌或热门板块回调，短线更偏风险释放，资金可能切到低位或防守方向。",
+        "宏观": "如果消息指向美元/美债上行，通常压制高估值成长股；如果黄金、原油或资源品波动加大，资金会在黄金、能源、高股息和出口链之间重新定价。",
+        "公告": "如果公告对应订单、利润或现金流改善，才可能形成实质利好；如果只是上市、流程或常规披露，对二级市场通常偏中性。",
+    }.get(item.category, "机会需要结合价格反应、成交量和龙头股强弱确认。")
+    return f"方向判断：{direction_text}影响链条：{impact_path}。股票市场影响：{opportunity} 后续需要验证：{verification}。"
+
+
+def assess_event_direction(item: NewsItem) -> str:
+    text = item.title.lower()
+    negative_hits = ["跌", "下跌", "回调", "承压", "收跌", "流动性", "错配", "风险", "放缓", "降价", "制裁"]
+    positive_hits = ["涨", "大涨", "回流", "机遇", "订单", "增长", "突破", "获批", "中标", "上修", "扩产"]
+    has_negative = any(word in text for word in negative_hits)
+    has_positive = any(word in text for word in positive_hits)
+    if has_positive and has_negative:
+        return "结构分化，不能简单看多或看空；需要区分受益方向和承压方向。"
+    if has_negative:
+        return "偏利空或风险释放，短线需要先看相关板块是否继续放量承压。"
+    if has_positive:
+        return "偏利好，前提是后续能看到订单、资金流或价格表现继续确认。"
+    return "偏中性，当前更适合作为观察线索，而不是直接交易信号。"
 
 
 def market_event(signals: list[MarketSignal]) -> CoreEvent:
