@@ -1,0 +1,388 @@
+{
+  "report_type": "morning",
+  "date": "2026-06-30",
+  "generated_at": "2026-06-30T11:09:22.625938",
+  "title": "2026-06-30 盘前投研日报",
+  "executive_summary": "盘前重点是判断昨夜外围市场和今日 A/H 股交易环境。 当前市场判断为：中性偏谨慎。风险偏好有降温迹象，等待 A/H 股主线重新确认更稳妥。 本次共纳入 32 条新闻线索用于事件筛选，最高优先级事件是“全球风险偏好与 A/H 股交易环境更新”。 投资上优先关注“跟踪 AI 算力与半导体链条的订单验证”，同时严格跟踪失效条件和来源可信度。",
+  "market_view": "中性偏谨慎。风险偏好有降温迹象，等待 A/H 股主线重新确认更稳妥。",
+  "market_signals": [
+    {
+      "name": "上证指数",
+      "value": "4094.40",
+      "change": "+0.50%",
+      "interpretation": "观察 A 股整体风险偏好和成交主线，最新日期 2026-06-30。"
+    },
+    {
+      "name": "恒生指数",
+      "value": "22881.02",
+      "change": "-0.63%",
+      "interpretation": "观察港股风险偏好、南向资金和美元流动性压力，最新日期 2026-06-30。"
+    },
+    {
+      "name": "纳指 100 ETF",
+      "value": "724.08",
+      "change": "+2.49%",
+      "interpretation": "观察美股科技和 AI 交易拥挤度，最新日期 2026-06-29。"
+    },
+    {
+      "name": "黄金 ETF",
+      "value": "368.58",
+      "change": "-1.35%",
+      "interpretation": "观察避险情绪和实际利率变化，最新日期 2026-06-29。"
+    },
+    {
+      "name": "美元/离岸人民币",
+      "value": "6.79",
+      "change": "-0.11%",
+      "interpretation": "观察人民币汇率和外资风险偏好，最新日期 2026-06-30。"
+    },
+    {
+      "name": "美债 10 年收益率",
+      "value": "4.37",
+      "change": "-0.46%",
+      "interpretation": "观察全球折现率和成长股估值压力，最新日期 2026-06-29。"
+    },
+    {
+      "name": "VIX 波动率",
+      "value": "17.51",
+      "change": "-0.79%",
+      "interpretation": "观察美股风险偏好和避险需求，最新日期 2026-06-30。"
+    },
+    {
+      "name": "WTI 原油",
+      "value": "70.70",
+      "change": "-0.07%",
+      "interpretation": "观察通胀预期、能源链和地缘风险，最新日期 2026-06-30。"
+    },
+    {
+      "name": "COMEX 铜",
+      "value": "6.25",
+      "change": "+2.53%",
+      "interpretation": "观察全球制造业需求和顺周期预期，最新日期 2026-06-30。"
+    },
+    {
+      "name": "比特币",
+      "value": "59293.10",
+      "change": "-1.41%",
+      "interpretation": "观察全球流动性和高风险资产偏好，最新日期 2026-06-30。"
+    },
+    {
+      "name": "以太坊",
+      "value": "1582.83",
+      "change": "-1.70%",
+      "interpretation": "观察加密资产风险偏好，最新日期 2026-06-30。"
+    }
+  ],
+  "core_events": [
+    {
+      "title": "全球风险偏好与 A/H 股交易环境更新",
+      "summary": "COMEX 铜波动居前，需结合 A 股、港股、美股科技、黄金和汇率判断今日风险偏好。",
+      "reason": "跨市场行情是判断资金环境和主题持续性的基础输入，能帮助区分指数驱动与行业事件驱动。",
+      "beneficiaries": [
+        "A 股核心资产",
+        "港股科技",
+        "AI 算力",
+        "黄金与避险资产"
+      ],
+      "risks": [
+        "外部流动性收紧",
+        "汇率波动",
+        "主题拥挤",
+        "单日行情误读"
+      ],
+      "importance": 86,
+      "confidence": 72,
+      "sources": [
+        "Yahoo Finance chart"
+      ]
+    },
+    {
+      "title": "南向资金追踪｜6月净流入约271亿港元 重仓AI硬件赛道减持红利资产 港美股资讯 - hstong.com",
+      "summary": "AI方向出现风险信号，需要结合原文与市场反应判断持续性。",
+      "reason": "该线索来自 hstong.com，属于“港股科技”监控范围；标题涉及的主题可能影响相关行业风险偏好。",
+      "beneficiaries": [
+        "服务器",
+        "光模块",
+        "半导体",
+        "云计算",
+        "IDC"
+      ],
+      "risks": [
+        "风险继续扩散",
+        "盈利预期下修",
+        "流动性压力",
+        "消息反转"
+      ],
+      "importance": 81,
+      "confidence": 79,
+      "sources": [
+        "hstong.com",
+        "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1jSzQwRElYaTBUdXBuOVJqaUltbXN1RzA5dkYzb2tuU1o5Z0lEajB0S1pxQ3N0MmZ6QXI1MlB6clBhVHByNC10SHdTZjBIWnNFdFlwUDhUY1dYSnpVbGZ6Ylln?oc=5"
+      ]
+    },
+    {
+      "title": "A股和港股IPO全球占三成份额，新质生产力政策如何加速资本市场资源配置效率？ - 新浪新闻_手机新浪网",
+      "summary": "港股方向出现重要线索，需要结合原文与市场反应判断持续性。",
+      "reason": "该线索来自 新浪新闻_手机新浪网，属于“A 股政策与市场”监控范围；标题涉及的主题可能影响相关行业风险偏好。",
+      "beneficiaries": [
+        "港股科技",
+        "互联网平台",
+        "高股息",
+        "南向资金重仓"
+      ],
+      "risks": [
+        "消息反转",
+        "市场已充分定价",
+        "来源细节需复核"
+      ],
+      "importance": 77,
+      "confidence": 79,
+      "sources": [
+        "新浪新闻_手机新浪网",
+        "https://news.google.com/rss/articles/CBMiigFBVV95cUxQdC1oT0pvVTZwZ1BaY3g2ZVAzYUx1TTMzSU5BUlplTGdDMGhsVEZrX3d5SndXUVRyVjdXY2I2YVVPQkwxYkxwTVNjOUQ2ZWlIbzRrdE9qQW5QQXpUUlpUbWFobmtuRl9zYmdHdTBscGVJMUNKLTRGaUxndFBCVWNzUGFCVXpMR3AtbVE?oc=5"
+      ]
+    },
+    {
+      "title": "A股定价逻辑：基本面、一致预期、资金结构、市场情绪与政策制度五大因子协同作用 - 虎嗅网",
+      "summary": "A 股方向出现重要线索，需要结合原文与市场反应判断持续性。",
+      "reason": "该线索来自 虎嗅网，属于“A 股政策与市场”监控范围；标题涉及的主题可能影响相关行业风险偏好。",
+      "beneficiaries": [
+        "券商",
+        "核心资产",
+        "政策受益行业",
+        "成交活跃主题"
+      ],
+      "risks": [
+        "消息反转",
+        "市场已充分定价",
+        "来源细节需复核"
+      ],
+      "importance": 77,
+      "confidence": 79,
+      "sources": [
+        "虎嗅网",
+        "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBUX1dYWm1wNi0xVUlOZXROTV9xcFVZVkwteHlLNDR0eHZJeDVzZ2pXNFcyRUhQWGItX0JZOXJlcGZMWndEUUZWcUZtZGVaX0pROW96bEVYb0lUMGlHbFZGN25R?oc=5"
+      ]
+    },
+    {
+      "title": "港股上半年收官：三大指数均跌超10% AI硬件错配引发“流动性双轨虹吸” - 财联社",
+      "summary": "AI方向出现重要线索，需要结合原文与市场反应判断持续性。",
+      "reason": "该线索来自 财联社，属于“港股科技”监控范围；标题涉及的主题可能影响相关行业风险偏好。",
+      "beneficiaries": [
+        "服务器",
+        "光模块",
+        "半导体",
+        "云计算",
+        "IDC"
+      ],
+      "risks": [
+        "消息反转",
+        "市场已充分定价",
+        "来源细节需复核"
+      ],
+      "importance": 77,
+      "confidence": 79,
+      "sources": [
+        "财联社",
+        "https://news.google.com/rss/articles/CBMiSEFVX3lxTE5wNmF1WjRHRlVtRU13ZElyTExCbWFzQm0zWU1oR0ExS0Q5ZmlIeVdfSGtFUDg1UDdFM3lZOXN3ejREYzBuUlRRcQ?oc=5"
+      ]
+    },
+    {
+      "title": "WorkBuddy成为国内DAU第一办公智能体！腾讯控股午后拉升！港股AI含量最高的恒生互联网受关注 - 新浪财经",
+      "summary": "AI方向出现重要线索，需要结合原文与市场反应判断持续性。",
+      "reason": "该线索来自 新浪财经，属于“港股科技”监控范围；标题涉及的主题可能影响相关行业风险偏好。",
+      "beneficiaries": [
+        "服务器",
+        "光模块",
+        "半导体",
+        "云计算",
+        "IDC"
+      ],
+      "risks": [
+        "消息反转",
+        "市场已充分定价",
+        "来源细节需复核"
+      ],
+      "importance": 77,
+      "confidence": 79,
+      "sources": [
+        "新浪财经",
+        "https://news.google.com/rss/articles/CBMib0FVX3lxTE9Ra3A3bHFxY1pvdDAwYmw5TGlqT3Zpc1Z1Y2pPNFdBNEJycXo3TEJVTTJVSkhWZmxub2RhOTIydE16S2ctbFdaME8wMW9BekxkU1l2UDFxMHQ2NGwtRnRqVHdHU1BlRHZGN2VLc01VUQ?oc=5"
+      ]
+    },
+    {
+      "title": "AI算力超级周期，双创资产迎来黄金配置机遇 - 新浪网",
+      "summary": "AI方向出现重要线索，需要结合原文与市场反应判断持续性。",
+      "reason": "该线索来自 新浪网，属于“AI 算力”监控范围；标题涉及的主题可能影响相关行业风险偏好。",
+      "beneficiaries": [
+        "服务器",
+        "光模块",
+        "半导体",
+        "云计算",
+        "IDC"
+      ],
+      "risks": [
+        "消息反转",
+        "市场已充分定价",
+        "来源细节需复核"
+      ],
+      "importance": 77,
+      "confidence": 79,
+      "sources": [
+        "新浪网",
+        "https://news.google.com/rss/articles/CBMigwFBVV95cUxOc0ZCQy1yLUt0a2dsLVlHa0MteUVTdUxzN2VjWmxXV3RfWUozQUI5VVJ1bllLZy1JQmNrbFZxdkUwWHpuR0JsS184cVdsbHZzRWVteHlhX2NpYmlBVE85dzlqMFFPRkZsZk13eWh3WkdDNmp4a290SFRiNmdNRkNJcVRRMA?oc=5"
+      ]
+    },
+    {
+      "title": "AI五层蛋糕：谁在底层搭算力，谁在顶层做应用？“ETF华宝”AI投资地图来啦 - 新浪财经",
+      "summary": "AI方向出现重要线索，需要结合原文与市场反应判断持续性。",
+      "reason": "该线索来自 新浪财经，属于“AI 算力”监控范围；标题涉及的主题可能影响相关行业风险偏好。",
+      "beneficiaries": [
+        "服务器",
+        "光模块",
+        "半导体",
+        "云计算",
+        "IDC"
+      ],
+      "risks": [
+        "消息反转",
+        "市场已充分定价",
+        "来源细节需复核"
+      ],
+      "importance": 77,
+      "confidence": 79,
+      "sources": [
+        "新浪财经",
+        "https://news.google.com/rss/articles/CBMiigJBVV95cUxQZ0Z5Z3Jram5PdEM2QnBfSGNSa3kteWV3ajYxS3pQdm9wSml0eUpMWUpGYVNMdUE4TTBvcDJPWHAyUS1xcWwxeWVUcC1IZE05QTZ5MzdhanpFbGJtYmpZbDJmc0RSeF83bHN6bFh4V0kzYURiRkVraEZyTmltWkM1Vy1nWHNhLVNmbTBld0dPOEhOWXRmRmJwdnpFNmR4RTI3RXlvMU0xTDN5cFZuUW9QeWxPZ3FocGEwWU5CcldlSlpDZ2FwMGxWZHE5eXU3bjFkeW16M0FwLTUzbkVxY2tCVFhXelZEeHk3ZVRmWHpXTzFCYmY4MkJaaUctaTVvUmpBSlVUbVB0d09NUQ?oc=5"
+      ]
+    },
+    {
+      "title": "AI算力的隐形瓶颈：马斯克也开始出手「光模块」 - 富途牛牛",
+      "summary": "AI方向出现重要线索，需要结合原文与市场反应判断持续性。",
+      "reason": "该线索来自 富途牛牛，属于“AI 算力”监控范围；标题涉及的主题可能影响相关行业风险偏好。",
+      "beneficiaries": [
+        "服务器",
+        "光模块",
+        "半导体",
+        "云计算",
+        "IDC"
+      ],
+      "risks": [
+        "消息反转",
+        "市场已充分定价",
+        "来源细节需复核"
+      ],
+      "importance": 77,
+      "confidence": 79,
+      "sources": [
+        "富途牛牛",
+        "https://news.google.com/rss/articles/CBMingFBVV95cUxNZUNRTnlnaDJuaF92dU9jQzBzUUNWYkl5bmoyd3M5ejhsOHpEcmxOTXhfNW5uMXV6cURuTDZad01zRlhpUnpXbzJzbVBlcl9mbXJvVnRveGltRDg1RUJxQldxRGhpQk1fb0lSR2tZRkNTdWJqMFRicWxyaGFYYWdteWYzY3pvMGctbXVlU0JzWlJETkpjdUg2UnlIbnBHdw?oc=5"
+      ]
+    }
+  ],
+  "investment_ideas": [
+    {
+      "title": "跟踪 AI 算力与半导体链条的订单验证",
+      "action": "可分批关注",
+      "horizon": "1-3 个月",
+      "success_probability": "约 60%-70%",
+      "confidence": 68,
+      "risk_level": "中",
+      "logic": "AI 相关消息密度和美股科技风险偏好仍是 A/H 成长主线的重要映射，适合优先观察有业绩验证的环节。",
+      "invalidation": "云厂商资本开支预期下修，核心公司订单低于预期，或纳指科技资产连续走弱。",
+      "watch_indicators": [
+        "纳指 100 ETF",
+        "AI 新闻密度",
+        "半导体订单",
+        "光模块价格"
+      ],
+      "catalysts": [
+        "AI 资本开支",
+        "光模块订单",
+        "国产算力政策",
+        "半导体周期回升"
+      ],
+      "representative_assets": [
+        "光模块",
+        "服务器",
+        "半导体 ETF",
+        "云计算"
+      ],
+      "pricing_status": "热门环节已有较多定价，优先等待订单和业绩兑现。",
+      "position_size": "轻仓到标准仓"
+    },
+    {
+      "title": "新能源从总量交易转向结构筛选",
+      "action": "等待确认",
+      "horizon": "3-12 个月",
+      "success_probability": "约 55%-65%",
+      "confidence": 62,
+      "risk_level": "中",
+      "logic": "新能源新闻仍有催化，但产能和价格压力未完全解除，应优先看储能、电网等盈利更稳定的分支。",
+      "invalidation": "产业链价格继续快速下行，招标低于预期，或龙头盈利继续下修。",
+      "watch_indicators": [
+        "储能招标",
+        "电网投资",
+        "组件价格",
+        "锂价"
+      ],
+      "catalysts": [
+        "储能项目投运",
+        "电网投资加速",
+        "政策消纳约束",
+        "海外需求恢复"
+      ],
+      "representative_assets": [
+        "储能",
+        "电网设备",
+        "电池 ETF",
+        "光伏逆变器"
+      ],
+      "pricing_status": "分支差异较大，储能和电网优于产能过剩环节。",
+      "position_size": "轻仓观察"
+    },
+    {
+      "title": "港股科技关注南向资金与美元环境共振",
+      "action": "持有观察",
+      "horizon": "1 个月",
+      "success_probability": "约 55%-65%",
+      "confidence": 60,
+      "risk_level": "中",
+      "logic": "港股弹性取决于美元流动性、平台经济预期和南向资金，适合用趋势确认而非单日波动做决策。",
+      "invalidation": "美元重新走强，恒生科技放量下破，或互联网龙头业绩指引转弱。",
+      "watch_indicators": [
+        "恒生指数",
+        "美元/离岸人民币",
+        "南向资金",
+        "港股科技成交额"
+      ],
+      "catalysts": [
+        "美元走弱",
+        "南向资金回流",
+        "互联网平台业绩修复",
+        "政策预期改善"
+      ],
+      "representative_assets": [
+        "恒生科技",
+        "港股互联网 ETF",
+        "平台经济龙头"
+      ],
+      "pricing_status": "修复交易已有启动，仍需资金持续性确认。",
+      "position_size": "轻仓到标准仓"
+    }
+  ],
+  "action_checklist": [
+    "先确认今天交易的是流动性、政策、业绩还是产业催化。",
+    "只把重要性高且来源可复核的事件放入重点跟踪列表。",
+    "可分批关注：跟踪 AI 算力与半导体链条的订单验证，观察 纳指 100 ETF、AI 新闻密度、半导体订单。",
+    "等待确认：新能源从总量交易转向结构筛选，观察 储能招标、电网投资、组件价格。",
+    "持有观察：港股科技关注南向资金与美元环境共振，观察 恒生指数、美元/离岸人民币、南向资金。",
+    "优先复核最高分事件：全球风险偏好与 A/H 股交易环境更新。"
+  ],
+  "risk_warnings": [
+    "免费行情和 RSS 聚合源可能延迟或缺失，关键结论需要回看原始来源。",
+    "AI 或规则生成观点不能替代独立判断，所有建议都必须结合仓位和失效条件。",
+    "部分资产单日跌幅较大，短线风险偏好可能低于新闻标题呈现的乐观程度。"
+  ],
+  "source_note": "市场信号来自 Yahoo Finance chart 免费接口，可能存在延迟、缺口或临时不可用；投资判断仍需结合交易所、公司公告和券商数据复核。\n\n宏观代理指标来自 Yahoo Finance 免费接口，覆盖美债、波动率、商品和加密资产；这些是资金环境代理变量，不等同于官方宏观统计。\n\n新闻线索来自 Google News RSS 免费聚合源，标题和来源用于事件筛选，重要事实需回看原文复核。\n\n公告线索来自 Google News 对巨潮资讯、交易所、港交所披露易和 SEC 的公开索引；当前阶段只用于发现线索，正式判断必须打开公告原文复核。\n\n质量检查：通过基础完整性检查。"
+}
