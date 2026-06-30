@@ -463,9 +463,11 @@ def render_page(title: str, body: str) -> str:
     <div class="lock-panel">
       <h1>私人投研日报</h1>
       <p class="sub">请输入访问 token。也可以在链接后添加 <code>?token=...</code>。</p>
-      <input id="tokenInput" class="token-input" type="password" placeholder="REPORT_ACCESS_TOKEN">
-      <button id="unlockButton" class="unlock-button" type="button">打开报告</button>
-      <p id="tokenError" class="token-error" hidden>Token 不正确，请检查 GitHub Secret 里的 REPORT_ACCESS_TOKEN。</p>
+      <form id="unlockForm">
+        <input id="tokenInput" class="token-input" type="password" placeholder="REPORT_ACCESS_TOKEN" autocomplete="current-password">
+        <button id="unlockButton" class="unlock-button" type="submit">打开报告</button>
+      </form>
+      <p id="tokenStatus" class="token-error" hidden>Token 不正确，请检查 GitHub Secret 里的 REPORT_ACCESS_TOKEN。</p>
     </div>
   </div>
 {body}
@@ -482,18 +484,27 @@ def token_script(access_token: str) -> str:
     const inputToken = params.get("token") || localStorage.getItem("report_token") || "";
     const app = document.getElementById("app");
     const locked = document.getElementById("locked");
-    const tokenError = document.getElementById("tokenError");
+    const tokenStatus = document.getElementById("tokenStatus");
+    function setTokenStatus(message, isError = true) {{
+      tokenStatus.textContent = message;
+      tokenStatus.hidden = false;
+      tokenStatus.style.color = isError ? "var(--danger)" : "var(--accent)";
+    }}
     function showApp(token, showError = false) {{
       if (token === expectedToken) {{
         localStorage.setItem("report_token", token);
         app.hidden = false;
         locked.hidden = true;
-        tokenError.hidden = true;
+        tokenStatus.hidden = true;
         appendTokenToLinks();
       }} else {{
         app.hidden = true;
         locked.hidden = false;
-        tokenError.hidden = !showError;
+        if (showError) {{
+          setTokenStatus("Token 不正确。请检查输入值是否和 GitHub Secret 里的 REPORT_ACCESS_TOKEN 完全一致。");
+        }} else {{
+          tokenStatus.hidden = true;
+        }}
       }}
     }}
     function appendTokenToLinks() {{
@@ -505,7 +516,9 @@ def token_script(access_token: str) -> str:
         link.setAttribute("href", url.pathname.split("/").pop() === "index.html" ? url.href : url.href);
       }});
     }}
-    document.getElementById("unlockButton").addEventListener("click", () => {{
+    document.getElementById("unlockForm").addEventListener("submit", (event) => {{
+      event.preventDefault();
+      setTokenStatus("正在校验 token...", false);
       showApp(document.getElementById("tokenInput").value.trim(), true);
     }});
     showApp(inputToken);

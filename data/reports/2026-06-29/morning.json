@@ -1,10 +1,10 @@
 {
   "report_type": "morning",
   "date": "2026-06-29",
-  "generated_at": "2026-06-29T16:02:00.669610",
+  "generated_at": "2026-06-29T17:11:40.219221",
   "title": "2026-06-29 盘前投研日报",
-  "executive_summary": "盘前重点是判断昨夜外围市场和今日 A/H 股交易环境。 当前市场判断为：中性偏积极。市场结构仍有机会，但需要区分强势主线和补涨噪音。 本次共纳入 32 条新闻线索用于事件筛选，最高优先级事件是“全球风险偏好与 A/H 股交易环境更新”。 投资上优先关注“跟踪 AI 算力与半导体链条的订单验证”，同时严格跟踪失效条件和来源可信度。",
-  "market_view": "中性偏积极。市场结构仍有机会，但需要区分强势主线和补涨噪音。",
+  "executive_summary": "盘前重点是判断昨夜外围市场和今日 A/H 股交易环境。 当前市场判断为：中性。市场方向暂不极端，适合以事件和业绩线索做结构筛选。 本次共纳入 32 条新闻线索用于事件筛选，最高优先级事件是“全球风险偏好与 A/H 股交易环境更新”。 投资上优先关注“跟踪 AI 算力与半导体链条的订单验证”，同时严格跟踪失效条件和来源可信度。",
+  "market_view": "中性。市场方向暂不极端，适合以事件和业绩线索做结构筛选。",
   "market_signals": [
     {
       "name": "上证指数",
@@ -20,56 +20,56 @@
     },
     {
       "name": "纳指 100 ETF",
-      "value": "706.52",
-      "change": "-1.38%",
-      "interpretation": "观察美股科技和 AI 交易拥挤度，最新日期 2026-06-26。"
+      "value": "709.54",
+      "change": "+0.43%",
+      "interpretation": "观察美股科技和 AI 交易拥挤度，最新日期 2026-06-29。"
     },
     {
       "name": "黄金 ETF",
-      "value": "373.63",
-      "change": "+1.13%",
-      "interpretation": "观察避险情绪和实际利率变化，最新日期 2026-06-26。"
+      "value": "368.25",
+      "change": "-1.44%",
+      "interpretation": "观察避险情绪和实际利率变化，最新日期 2026-06-29。"
     },
     {
       "name": "美元/离岸人民币",
       "value": "6.80",
-      "change": "-0.05%",
+      "change": "-0.03%",
       "interpretation": "观察人民币汇率和外资风险偏好，最新日期 2026-06-29。"
     },
     {
       "name": "美债 10 年收益率",
-      "value": "4.38",
-      "change": "+0.23%",
+      "value": "4.37",
+      "change": "+0.00%",
       "interpretation": "观察全球折现率和成长股估值压力，最新日期 2026-06-29。"
     },
     {
       "name": "VIX 波动率",
-      "value": "18.38",
-      "change": "-0.16%",
+      "value": "18.30",
+      "change": "-0.60%",
       "interpretation": "观察美股风险偏好和避险需求，最新日期 2026-06-29。"
     },
     {
       "name": "WTI 原油",
-      "value": "70.06",
-      "change": "+1.20%",
+      "value": "70.07",
+      "change": "+1.21%",
       "interpretation": "观察通胀预期、能源链和地缘风险，最新日期 2026-06-29。"
     },
     {
       "name": "COMEX 铜",
-      "value": "6.19",
-      "change": "+0.77%",
+      "value": "6.15",
+      "change": "+0.11%",
       "interpretation": "观察全球制造业需求和顺周期预期，最新日期 2026-06-29。"
     },
     {
       "name": "比特币",
-      "value": "59926.55",
-      "change": "+0.66%",
+      "value": "59014.02",
+      "change": "-0.87%",
       "interpretation": "观察全球流动性和高风险资产偏好，最新日期 2026-06-29。"
     },
     {
       "name": "以太坊",
-      "value": "1576.42",
-      "change": "+0.39%",
+      "value": "1559.36",
+      "change": "-0.70%",
       "interpretation": "观察加密资产风险偏好，最新日期 2026-06-29。"
     }
   ],
@@ -94,6 +94,29 @@
       "confidence": 72,
       "sources": [
         "Yahoo Finance chart"
+      ]
+    },
+    {
+      "title": "800G以上光模块出口暴涨百倍，订单排到2028 - 新浪财经",
+      "summary": "AI方向出现正面催化，需要结合原文与市场反应判断持续性。",
+      "reason": "该线索来自 新浪财经，属于“AI 算力”监控范围；标题涉及的主题可能影响相关行业风险偏好。",
+      "beneficiaries": [
+        "服务器",
+        "光模块",
+        "半导体",
+        "云计算",
+        "IDC"
+      ],
+      "risks": [
+        "消息反转",
+        "市场已充分定价",
+        "来源细节需复核"
+      ],
+      "importance": 88,
+      "confidence": 79,
+      "sources": [
+        "新浪财经",
+        "https://news.google.com/rss/articles/CBMigwFBVV95cUxNSXE1c3Z6Ql9zWlRkWU95ako0SEVpUWlyRjRpWEhpMVBLWGJrYVE0R0FjVEdXa2k0MkVGbUx2TS0wakpzaWY4RjRzOXNBQ0I4OGVZclBaTGY5X0o3V2x0RjJrdlpPWXRFZWlzZ2Ytb0dXWmN6bTVWMFJMWmhPamhEMHZ3WQ?oc=5"
       ]
     },
     {
@@ -143,6 +166,29 @@
       ]
     },
     {
+      "title": "AI五层蛋糕：谁在底层搭算力，谁在顶层做应用？“ETF华宝”AI投资地图来啦 - 新浪财经",
+      "summary": "AI方向出现重要线索，需要结合原文与市场反应判断持续性。",
+      "reason": "该线索来自 新浪财经，属于“AI 算力”监控范围；标题涉及的主题可能影响相关行业风险偏好。",
+      "beneficiaries": [
+        "服务器",
+        "光模块",
+        "半导体",
+        "云计算",
+        "IDC"
+      ],
+      "risks": [
+        "消息反转",
+        "市场已充分定价",
+        "来源细节需复核"
+      ],
+      "importance": 77,
+      "confidence": 79,
+      "sources": [
+        "新浪财经",
+        "https://news.google.com/rss/articles/CBMiogJBVV95cUxQNUJGbHR2VlFtYTUxX0MyNlRQTDA4X19CcDJrdGRVbl93MmhPLTQ1emRhc0tIc2x3SHVDdUx2R3oxVl9RSVkzX2VTeTRrbklnTDFRaEd0N1FTMThCeXNDXzBuUVQ5dFV4OTdLMFZBc05LLTdKdDQyVXlqUXptc1Iyd2xfRkNYUG1fdW9sZmpMa3ZqLUVGLU5Lc2dTMVd3UTl6R3lpNVY4SXZCcHJSeUd4d3c1MDltTVlSa1FZRDl5dWpfeXIxZXJab1Q3THkxbXBjOEF1bEhHczhmWW5wUl9XODllMG9LTEFWZEdMWTBYZjZpNHFHMzhIOFd6dG5UWFpxd21CcFdNa3E4UVprdVBFOXFJMVVzYlhXY2E4Y1dDVkZndw?oc=5"
+      ]
+    },
+    {
       "title": "年内涨超123%，华工科技177元涨停创历史新高，AI光模块的狂欢还能持续多久？_证券要闻 - 中金在线",
       "summary": "AI方向出现重要线索，需要结合原文与市场反应判断持续性。",
       "reason": "该线索来自 中金在线，属于“AI 算力”监控范围；标题涉及的主题可能影响相关行业风险偏好。",
@@ -163,29 +209,6 @@
       "sources": [
         "中金在线",
         "https://news.google.com/rss/articles/CBMibkFVX3lxTFBSOUFiYnZqN2FsMWd5Z1NvVXpsSDgxM1hDNGx3TGR3cTBlTmE0VndaaXRRNGhmdzRuSG1rcmdDQkdtempNYlB0aW0xeGJkbHhJZWRkQmlqeWY3NThubWQ0NkdnOEtMdWxEeHQyeGFR?oc=5"
-      ]
-    },
-    {
-      "title": "AI五层蛋糕：谁在底层搭算力，谁在顶层做应用？“ETF华宝”AI投资地图来啦 - 新浪财经",
-      "summary": "AI方向出现重要线索，需要结合原文与市场反应判断持续性。",
-      "reason": "该线索来自 新浪财经，属于“AI 算力”监控范围；标题涉及的主题可能影响相关行业风险偏好。",
-      "beneficiaries": [
-        "服务器",
-        "光模块",
-        "半导体",
-        "云计算",
-        "IDC"
-      ],
-      "risks": [
-        "消息反转",
-        "市场已充分定价",
-        "来源细节需复核"
-      ],
-      "importance": 77,
-      "confidence": 79,
-      "sources": [
-        "新浪财经",
-        "https://news.google.com/rss/articles/CBMihgFBVV95cUxOd040U1ZEc0pQNURQcVR0TmNRVDlyZGJXMlRkZ0dvRjhFRzQ0c1ZIMHB4UXZ1M0hyLVhESmNXejNlZnhKU1NxTk9MSWsxMTJqa28zaVljTk9sWmFycVZnMHQ1OFNSYW92dEJzYm4wUDJLcVRzM3NyOGVfZUNsOGxiWmV3WmJHQQ?oc=5"
       ]
     },
     {
@@ -253,28 +276,6 @@
       "sources": [
         "新浪财经",
         "https://news.google.com/rss/articles/CBMib0FVX3lxTE10a01Ic1QyUloxMWdDRHRpYXAyWE9PbkNkM3lXRFBLNmc5VmtRSDhnTkdENW5PR0sxdkdjb1UzRkpuTGpiQ0hxbGRvakxnLXBjOVFYMEdNYUh6QWF6aEdvUGFFSGVudkUyVHM1TzdrUQ?oc=5"
-      ]
-    },
-    {
-      "title": "港股收盘 | 科技指数涨超3% 科技医药股表现居前 - 财联社",
-      "summary": "港股方向出现重要线索，需要结合原文与市场反应判断持续性。",
-      "reason": "该线索来自 财联社，属于“A 股政策与市场”监控范围；标题涉及的主题可能影响相关行业风险偏好。",
-      "beneficiaries": [
-        "港股科技",
-        "互联网平台",
-        "高股息",
-        "南向资金重仓"
-      ],
-      "risks": [
-        "消息反转",
-        "市场已充分定价",
-        "来源细节需复核"
-      ],
-      "importance": 70,
-      "confidence": 79,
-      "sources": [
-        "财联社",
-        "https://news.google.com/rss/articles/CBMiSEFVX3lxTE1wYy1laXpwSWpfQXhsbERwMjZuQ2tVcmNpZHVldTdvRUF4WGFTVFg3bWpNMVFNcUM5WDQ0c0FYTjJQNlRkTUhybw?oc=5"
       ]
     }
   ],

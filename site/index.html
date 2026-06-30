@@ -77,6 +77,7 @@
     .lock-panel { width: min(460px, 100%); padding: 24px; }
     .token-input { width: 100%; height: 42px; border: 1px solid var(--line); border-radius: 6px; padding: 0 10px; font-size: 16px; }
     .unlock-button { margin-top: 12px; height: 42px; border: 0; border-radius: 6px; padding: 0 14px; background: var(--accent); color: #fff; font-weight: 800; cursor: pointer; }
+    .token-error { color: var(--danger); font-weight: 700; margin: 10px 0 0; }
     .empty { color: var(--muted); }
     .source-line { overflow-wrap: anywhere; }
     @media (max-width: 860px) {
@@ -102,8 +103,11 @@
     <div class="lock-panel">
       <h1>私人投研日报</h1>
       <p class="sub">请输入访问 token。也可以在链接后添加 <code>?token=...</code>。</p>
-      <input id="tokenInput" class="token-input" type="password" placeholder="REPORT_ACCESS_TOKEN">
-      <button id="unlockButton" class="unlock-button" type="button">打开报告</button>
+      <form id="unlockForm">
+        <input id="tokenInput" class="token-input" type="password" placeholder="REPORT_ACCESS_TOKEN" autocomplete="current-password">
+        <button id="unlockButton" class="unlock-button" type="submit">打开报告</button>
+      </form>
+      <p id="tokenStatus" class="token-error" hidden>Token 不正确，请检查 GitHub Secret 里的 REPORT_ACCESS_TOKEN。</p>
     </div>
   </div>
 
@@ -189,10 +193,10 @@
       </article>
     
 
-      <article class="report-card" data-type="morning" data-search="2026-06-29 盘前投研日报 盘前重点是判断昨夜外围市场和今日 a/h 股交易环境。 当前市场判断为：中性偏积极。市场结构仍有机会，但需要区分强势主线和补涨噪音。 本次共纳入 32 条新闻线索用于事件筛选，最高优先级事件是“全球风险偏好与 a/h 股交易环境更新”。 投资上优先关注“跟踪 ai 算力与半导体链条的订单验证”，同时严格跟踪失效条件和来源可信度。 中性偏积极。市场结构仍有机会，但需要区分强势主线和补涨噪音。 全球风险偏好与 a/h 股交易环境更新 6月29日华工科技（000988）涨停分析：800g光模块中标、ai算力政策驱动_短线策略 - 证券之星 多氟多一字涨停，半导体级氢氟酸现有产能4万吨！电池etf汇添富(159796)涨近2%，盘中吸金超3700万元！重磅政策接连加码，储能强催化！ - 东方财富 年内涨超123%，华工科技177元涨停创历史新高，ai光模块的狂欢还能持续多久？_证券要闻 - 中金在线 ai五层蛋糕：谁在底层搭算力，谁在顶层做应用？“etf华宝”ai投资地图来啦 - 新浪财经 a股四大指数开盘涨跌互现，市场近3000股下跌 - 第一财经 五次港股回购潮历史昭示：当下52%跌幅是否科技指数反弹前兆？ - 新浪新闻_手机新浪网 绝地反攻！恒生科技暴涨超4%，兆易创新股价再创新高！南向重返净流入 - 新浪财经 港股收盘 | 科技指数涨超3% 科技医药股表现居前 - 财联社 跟踪 ai 算力与半导体链条的订单验证 新能源从总量交易转向结构筛选 港股科技关注南向资金与美元环境共振">
+      <article class="report-card" data-type="morning" data-search="2026-06-29 盘前投研日报 盘前重点是判断昨夜外围市场和今日 a/h 股交易环境。 当前市场判断为：中性。市场方向暂不极端，适合以事件和业绩线索做结构筛选。 本次共纳入 32 条新闻线索用于事件筛选，最高优先级事件是“全球风险偏好与 a/h 股交易环境更新”。 投资上优先关注“跟踪 ai 算力与半导体链条的订单验证”，同时严格跟踪失效条件和来源可信度。 中性。市场方向暂不极端，适合以事件和业绩线索做结构筛选。 全球风险偏好与 a/h 股交易环境更新 800g以上光模块出口暴涨百倍，订单排到2028 - 新浪财经 6月29日华工科技（000988）涨停分析：800g光模块中标、ai算力政策驱动_短线策略 - 证券之星 多氟多一字涨停，半导体级氢氟酸现有产能4万吨！电池etf汇添富(159796)涨近2%，盘中吸金超3700万元！重磅政策接连加码，储能强催化！ - 东方财富 ai五层蛋糕：谁在底层搭算力，谁在顶层做应用？“etf华宝”ai投资地图来啦 - 新浪财经 年内涨超123%，华工科技177元涨停创历史新高，ai光模块的狂欢还能持续多久？_证券要闻 - 中金在线 a股四大指数开盘涨跌互现，市场近3000股下跌 - 第一财经 五次港股回购潮历史昭示：当下52%跌幅是否科技指数反弹前兆？ - 新浪新闻_手机新浪网 绝地反攻！恒生科技暴涨超4%，兆易创新股价再创新高！南向重返净流入 - 新浪财经 跟踪 ai 算力与半导体链条的订单验证 新能源从总量交易转向结构筛选 港股科技关注南向资金与美元环境共振">
         <div class="meta">2026-06-29 · 盘前</div>
         <h3>2026-06-29 盘前投研日报</h3>
-        <p>盘前重点是判断昨夜外围市场和今日 A/H 股交易环境。 当前市场判断为：中性偏积极。市场结构仍有机会，但需要区分强势主线和补涨噪音。 本次共纳入 32 条新闻线索用于事件筛选，最高优先级事件是“全球风险偏好与 A/H 股交易环境更新”。 投资上优先关注“跟踪 AI 算力与半导体链条的订单验证”，同时严格跟踪失效条件和来源可信度。</p>
+        <p>盘前重点是判断昨夜外围市场和今日 A/H 股交易环境。 当前市场判断为：中性。市场方向暂不极端，适合以事件和业绩线索做结构筛选。 本次共纳入 32 条新闻线索用于事件筛选，最高优先级事件是“全球风险偏好与 A/H 股交易环境更新”。 投资上优先关注“跟踪 AI 算力与半导体链条的订单验证”，同时严格跟踪失效条件和来源可信度。</p>
         <ul><li><strong>可分批关注</strong> 跟踪 AI 算力与半导体链条的订单验证</li><li><strong>等待确认</strong> 新能源从总量交易转向结构筛选</li><li><strong>持有观察</strong> 港股科技关注南向资金与美元环境共振</li></ul>
         <a class="report-link" href="reports/2026-06-29-morning.html">打开报告</a>
       </article>
@@ -207,15 +211,27 @@
     const inputToken = params.get("token") || localStorage.getItem("report_token") || "";
     const app = document.getElementById("app");
     const locked = document.getElementById("locked");
-    function showApp(token) {
+    const tokenStatus = document.getElementById("tokenStatus");
+    function setTokenStatus(message, isError = true) {
+      tokenStatus.textContent = message;
+      tokenStatus.hidden = false;
+      tokenStatus.style.color = isError ? "var(--danger)" : "var(--accent)";
+    }
+    function showApp(token, showError = false) {
       if (token === expectedToken) {
         localStorage.setItem("report_token", token);
         app.hidden = false;
         locked.hidden = true;
+        tokenStatus.hidden = true;
         appendTokenToLinks();
       } else {
         app.hidden = true;
         locked.hidden = false;
+        if (showError) {
+          setTokenStatus("Token 不正确。请检查输入值是否和 GitHub Secret 里的 REPORT_ACCESS_TOKEN 完全一致。");
+        } else {
+          tokenStatus.hidden = true;
+        }
       }
     }
     function appendTokenToLinks() {
@@ -227,8 +243,10 @@
         link.setAttribute("href", url.pathname.split("/").pop() === "index.html" ? url.href : url.href);
       });
     }
-    document.getElementById("unlockButton").addEventListener("click", () => {
-      showApp(document.getElementById("tokenInput").value.trim());
+    document.getElementById("unlockForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+      setTokenStatus("正在校验 token...", false);
+      showApp(document.getElementById("tokenInput").value.trim(), true);
     });
     showApp(inputToken);
     
