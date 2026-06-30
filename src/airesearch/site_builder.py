@@ -52,7 +52,7 @@ def safe_slug(value: str) -> str:
 
 def render_index(reports: list[dict], access_token: str) -> str:
     latest = reports[0] if reports else {}
-    report_cards = "\n".join(render_report_card(report) for report in reports)
+    report_cards = "\n".join(render_report_card(report).strip() for report in reports)
     latest_panel = render_latest_panel(latest) if latest else "<p class=\"empty\">暂无报告。首次运行 workflow 后会生成内容。</p>"
     market_panel = render_market_panel(latest)
     idea_panel = render_idea_panel(latest)
@@ -480,6 +480,7 @@ def token_script(access_token: str) -> str:
     safe_token = json.dumps(access_token)
     return f"""
     const expectedToken = {safe_token};
+    const hasExpectedToken = expectedToken.trim().length > 0;
     const params = new URLSearchParams(window.location.search);
     const inputToken = params.get("token") || localStorage.getItem("report_token") || "";
     const app = document.getElementById("app");
@@ -491,7 +492,11 @@ def token_script(access_token: str) -> str:
       tokenStatus.style.color = isError ? "var(--danger)" : "var(--accent)";
     }}
     function showApp(token, showError = false) {{
-      if (token === expectedToken) {{
+      if (!hasExpectedToken) {{
+        app.hidden = true;
+        locked.hidden = false;
+        setTokenStatus("REPORT_ACCESS_TOKEN 未配置，页面已锁定。请先在 GitHub Secrets 中设置访问 token。");
+      }} else if (token === expectedToken) {{
         localStorage.setItem("report_token", token);
         app.hidden = false;
         locked.hidden = true;

@@ -22,16 +22,24 @@ class Settings:
     @classmethod
     def from_env(cls) -> "Settings":
         return cls(
-            openai_api_key=os.getenv("OPENAI_API_KEY", ""),
-            openai_model=os.getenv("OPENAI_MODEL", "gpt-5.2"),
-            report_access_token=os.getenv("REPORT_ACCESS_TOKEN", "dev-token"),
-            pushplus_token=os.getenv("PUSHPLUS_TOKEN", ""),
-            server_chan_key=os.getenv("SERVER_CHAN_KEY", ""),
-            email_host=os.getenv("EMAIL_HOST", ""),
-            email_port=int(os.getenv("EMAIL_PORT", "587") or "587"),
-            email_user=os.getenv("EMAIL_USER", ""),
-            email_password=os.getenv("EMAIL_PASSWORD", ""),
-            email_to=os.getenv("EMAIL_TO", ""),
-            report_base_url=os.getenv("REPORT_BASE_URL", ""),
-            timezone=os.getenv("TIMEZONE", "Asia/Shanghai"),
+            openai_api_key=env_text("OPENAI_API_KEY"),
+            openai_model=env_text("OPENAI_MODEL", "gpt-5.2"),
+            report_access_token=env_text("REPORT_ACCESS_TOKEN", "dev-token"),
+            pushplus_token=env_text("PUSHPLUS_TOKEN"),
+            server_chan_key=env_text("SERVER_CHAN_KEY"),
+            email_host=env_text("EMAIL_HOST"),
+            email_port=int(env_text("EMAIL_PORT", "587")),
+            email_user=env_text("EMAIL_USER"),
+            email_password=env_text("EMAIL_PASSWORD"),
+            email_to=env_text("EMAIL_TO"),
+            report_base_url=env_text("REPORT_BASE_URL"),
+            timezone=env_text("TIMEZONE", "Asia/Shanghai"),
         )
+
+
+def env_text(name: str, default: str = "") -> str:
+    value = os.getenv(name)
+    if value is None:
+        return default
+    stripped = value.strip()
+    return stripped or default

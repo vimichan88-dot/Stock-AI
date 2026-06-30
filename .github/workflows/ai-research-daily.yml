@@ -26,6 +26,9 @@ permissions:
 jobs:
   generate:
     runs-on: ubuntu-latest
+    concurrency:
+      group: ai-research-daily
+      cancel-in-progress: false
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -40,6 +43,20 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
+
+      - name: Validate required configuration
+        shell: bash
+        env:
+          REPORT_ACCESS_TOKEN: ${{ secrets.REPORT_ACCESS_TOKEN }}
+        run: |
+          if [ -z "${REPORT_ACCESS_TOKEN}" ]; then
+            echo "::error::REPORT_ACCESS_TOKEN is required. Add it in GitHub repository Settings > Secrets and variables > Actions."
+            exit 1
+          fi
+          if [ "${REPORT_ACCESS_TOKEN}" = "change-me-long-random-token" ] || [ "${REPORT_ACCESS_TOKEN}" = "dev-token" ]; then
+            echo "::error::REPORT_ACCESS_TOKEN must be changed from the example/default value."
+            exit 1
+          fi
 
       - name: Resolve report type
         id: report-type

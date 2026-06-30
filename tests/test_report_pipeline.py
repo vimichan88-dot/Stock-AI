@@ -5,6 +5,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -12,6 +13,7 @@ sys.path.insert(0, str(ROOT))
 
 from src.airesearch.models import MarketSignal
 from src.airesearch.ai_analysis import extract_output_text, merge_ai_payload, parse_json_object
+from src.airesearch.config import Settings
 from src.airesearch.main import current_date_text
 from src.airesearch.news_data import NewsItem
 from src.airesearch.quality import append_quality_note, validate_report
@@ -131,6 +133,37 @@ class ReportPipelineTests(unittest.TestCase):
         self.assertIn("今日核心事件", detail_html)
         self.assertIn("核心催化剂", detail_html)
         self.assertIn("https://example.com/news", detail_html)
+
+    def test_empty_report_access_token_does_not_unlock_site(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            reports_root = root / "data" / "reports"
+            site_dir = root / "site"
+            build_site(reports_root, site_dir, "")
+
+            index_html = (site_dir / "index.html").read_text(encoding="utf-8")
+
+        self.assertIn("const expectedToken = \"\";", index_html)
+        self.assertIn("const hasExpectedToken = expectedToken.trim().length > 0;", index_html)
+        self.assertIn("REPORT_ACCESS_TOKEN", index_html)
+
+    def test_settings_treats_blank_environment_values_as_unset(self) -> None:
+        with patch.dict(
+            "os.environ",
+            {
+                "OPENAI_MODEL": "",
+                "REPORT_ACCESS_TOKEN": "   ",
+                "EMAIL_PORT": "",
+                "TIMEZONE": "",
+            },
+            clear=True,
+        ):
+            settings = Settings.from_env()
+
+        self.assertEqual(settings.openai_model, "gpt-5.2")
+        self.assertEqual(settings.report_access_token, "dev-token")
+        self.assertEqual(settings.email_port, 587)
+        self.assertEqual(settings.timezone, "Asia/Shanghai")
 
     def test_openai_payload_parsing_and_merge(self) -> None:
         report = build_report("morning", "2026-06-29")

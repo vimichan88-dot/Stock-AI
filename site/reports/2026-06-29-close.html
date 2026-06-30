@@ -246,7 +246,7 @@
         <div class="rail-block">
           <h2>切换报告</h2>
           <a class="report-link" href="2026-06-29-noon.html">上一篇：2026-06-29 午盘快报</a>
-          <span class="muted-link">下一篇：无</span>
+          <a class="report-link" href="2026-06-30-morning.html">下一篇：2026-06-30 盘前投研日报</a>
         </div>
       </aside>
     </section>
@@ -254,6 +254,7 @@
   <script>
     
     const expectedToken = "stock-ai-private-2026-84826206";
+    const hasExpectedToken = expectedToken.trim().length > 0;
     const params = new URLSearchParams(window.location.search);
     const inputToken = params.get("token") || localStorage.getItem("report_token") || "";
     const app = document.getElementById("app");
@@ -265,7 +266,11 @@
       tokenStatus.style.color = isError ? "var(--danger)" : "var(--accent)";
     }
     function showApp(token, showError = false) {
-      if (token === expectedToken) {
+      if (!hasExpectedToken) {
+        app.hidden = true;
+        locked.hidden = false;
+        setTokenStatus("REPORT_ACCESS_TOKEN 未配置，页面已锁定。请先在 GitHub Secrets 中设置访问 token。");
+      } else if (token === expectedToken) {
         localStorage.setItem("report_token", token);
         app.hidden = false;
         locked.hidden = true;
