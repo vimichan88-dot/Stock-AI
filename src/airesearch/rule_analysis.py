@@ -261,44 +261,56 @@ def event_from_news(item: NewsItem) -> CoreEvent:
     importance = score_news(item)
     direction = "正面催化" if sentiment > 0 else "风险信号" if sentiment < 0 else "重要线索"
     bullish_stocks, bearish_stocks = stock_impact_for(item)
-    published = f"发布时间 {item.published_at}；" if item.published_at else ""
     impact_path = impact_path_for(item)
     verification = verification_points_for(item)
-    event_summary = build_event_summary(item, direction, published)
+    event_summary = build_event_summary(item, direction)
+    event_reason = build_market_impact(item, impact_path, verification)
 
     return CoreEvent(
         title=item.title,
         summary=event_summary,
-        reason=(
-            f"影响链条：{impact_path}。可参考信息不在于标题本身，而在于后续能否看到"
-            f"{verification}。若只有情绪扩散而没有价格、成交、订单或政策细节确认，交易价值需要打折。"
-        ),
+        reason=event_reason,
         beneficiaries=beneficiaries_for(item),
         risks=risks_for(item, sentiment),
         importance=importance,
         confidence=confidence_for(item),
-        sources=[item.source, item.link],
+        sources=event_sources(item),
         bullish_stocks=bullish_stocks,
         bearish_stocks=bearish_stocks,
     )
 
 
-def build_event_summary(item: NewsItem, direction: str, published: str) -> str:
-    title = item.title.strip()
+def build_event_summary(item: NewsItem, direction: str) -> str:
     category_context = {
-        "AI": "这类线索通常关系到算力资本开支、芯片/光模块订单、服务器出货和 A/H 科技成长股风险偏好。",
-        "新能源": "这类线索通常关系到储能、电网、电池、光伏或新能源车链条的订单、价格和盈利分化。",
-        "港股": "这类线索通常关系到南向资金、美元流动性、平台经济预期和港股科技估值修复。",
-        "A 股": "这类线索通常关系到政策预期、成交量、核心资产表现和题材轮动强弱。",
-        "宏观": "这类线索通常关系到美元、美债、人民币、黄金、原油和全球风险偏好的再定价。",
-        "公告": "这类线索通常需要回到公告原文，重点看订单金额、利润率、履约周期和现金流影响。",
-    }.get(item.category, "这类线索通常用于判断相关行业预期、资金关注度和估值弹性。")
-    source_line = f"{published}来源为 {item.source}，归入“{item.query_name}”监控范围。"
-    meaning = (
-        f"标题显示“{title}”，其可参考价值在于判断这是否只是短线消息刺激，"
-        "还是会继续传导到订单、价格、资金流或政策预期。"
-    )
-    return f"{item.category}方向出现{direction}。{source_line}{meaning}{category_context}"
+        "AI": "AI 链条的有效信息主要集中在算力需求、云厂商资本开支、芯片/光模块订单、服务器出货和应用落地节奏；当前线索提示市场仍在围绕算力景气和硬件订单寻找定价锚。",
+        "新能源": "新能源线索需要拆成储能、电网、电池、光伏和整车几个分支看，重点不是板块普涨，而是订单、价格、库存和毛利率是否出现边际改善。",
+        "港股": "港股线索的核心在于美元流动性、南向资金和平台经济预期是否共振；如果只有指数反弹但成交和资金没有跟上，持续性要打折。",
+        "A 股": "A 股线索需要先判断是政策驱动、成交放大、产业催化还是单纯题材轮动；只有能带来资金聚焦和盈利预期变化的线索才值得提高优先级。",
+        "宏观": "宏观线索会通过美元、美债、人民币、黄金、原油和 VIX 影响风险偏好与估值折现率，进而改变 A/H 股成长、资源和高股息资产的相对吸引力。",
+        "公告": "公告线索的重点是原文里的订单金额、利润率、履约周期、现金流和可比公司映射，不能只看公告标题。",
+    }.get(item.category, "这条线索需要重点判断它是否会改变行业预期、资金关注度和估值弹性。")
+    return f"{item.category}方向出现{direction}。{category_context}"
+
+
+def build_market_impact(item: NewsItem, impact_path: str, verification: str) -> str:
+    opportunity = {
+        "AI": "机会主要在有订单验证和业绩兑现能力的光模块、服务器、半导体、IDC、云计算环节；风险在于高估值题材股已经提前反映预期。",
+        "新能源": "机会更偏向储能、电网设备和盈利稳定的电池龙头；产能过剩、价格战和高负债小票仍是主要风险。",
+        "港股": "机会集中在港股科技、互联网平台、高股息和南向资金重仓资产；若美元反弹或南向资金转弱，修复交易容易中断。",
+        "A 股": "机会在成交放大时的券商、核心资产、政策受益方向和强产业催化主题；如果缺少量能和政策细则，追高风险会明显上升。",
+        "宏观": "机会通常在黄金、能源、高股息和出口链之间切换；对高估值成长股而言，美债收益率和美元走强会形成压制。",
+        "公告": "机会取决于公告是否能转化为订单、利润或现金流改善；如果只是形式性公告，市场影响通常较弱。",
+    }.get(item.category, "机会需要结合价格反应、成交量和龙头股强弱确认。")
+    return f"影响链条：{impact_path}。股票市场影响：{opportunity} 后续需要验证：{verification}。"
+
+
+def event_sources(item: NewsItem) -> list[str]:
+    sources = [f"消息来源：{item.source}", f"检索主题：{item.query_name}", f"原始标题：{item.title}"]
+    if item.published_at:
+        sources.insert(1, f"发布时间：{item.published_at}")
+    if item.link:
+        sources.append(item.link)
+    return sources
 
 
 def impact_path_for(item: NewsItem) -> str:

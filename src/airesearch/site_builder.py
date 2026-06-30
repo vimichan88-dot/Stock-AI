@@ -289,7 +289,6 @@ def render_signal_table(title: str, signals: list[dict]) -> str:
             <td>{escape(item.get('name', ''))}</td>
             <td>{escape(item.get('value', ''))}</td>
             <td>{escape(item.get('change', ''))}</td>
-            <td>{escape(item.get('interpretation', ''))}</td>
           </tr>
         """
         for item in signals
@@ -299,7 +298,7 @@ def render_signal_table(title: str, signals: list[dict]) -> str:
           <h3>{escape(title)}</h3>
           <div class="table-wrap">
             <table>
-              <thead><tr><th>指标</th><th>数值</th><th>变化</th><th>解读</th></tr></thead>
+              <thead><tr><th>指标</th><th>数值</th><th>变化</th></tr></thead>
               <tbody>{rows}</tbody>
             </table>
           </div>

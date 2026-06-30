@@ -21,10 +21,10 @@ def report_to_markdown(report: Report) -> str:
     lines.append("")
     lines.append("## 全球市场速览")
     lines.append("")
-    lines.append("| 指标 | 数值 | 变化 | 解读 |")
-    lines.append("|---|---|---|---|")
+    lines.append("| 指标 | 数值 | 变化 |")
+    lines.append("|---|---|---|")
     for item in report.market_signals:
-        lines.append(f"| {item.name} | {item.value} | {item.change} | {item.interpretation} |")
+        lines.append(f"| {item.name} | {item.value} | {item.change} |")
     lines.append("")
     lines.append("## 今日核心事件")
     lines.append("")
