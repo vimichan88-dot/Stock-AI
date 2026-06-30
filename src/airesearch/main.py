@@ -6,7 +6,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 from zoneinfo import ZoneInfoNotFoundError
 
-from .ai_analysis import enhance_report_with_openai
+from .ai_analysis import configured_ai_model, configured_ai_provider, enhance_report_with_openai
 from .announcement_data import fetch_announcement_snapshot, save_announcement_snapshot
 from .config import Settings
 from .macro_data import fetch_macro_snapshot
@@ -93,14 +93,15 @@ def main() -> None:
         news_source_note,
         generated_at=generated_at,
     )
-    if settings.openai_api_key:
+    ai_provider = configured_ai_provider(settings)
+    if ai_provider != "none":
         try:
             report = enhance_report_with_openai(report, settings, news_items or [])
-            print(f"OpenAI analysis applied: {settings.openai_model}")
+            print(f"AI analysis applied: {ai_provider} / {configured_ai_model(settings)}")
         except Exception as exc:
-            print(f"OpenAI analysis fallback used: {exc}")
+            print(f"AI analysis fallback used: {ai_provider} / {configured_ai_model(settings)}: {exc}")
     else:
-        print("OpenAI analysis skipped: OPENAI_API_KEY is not configured.")
+        print("AI analysis skipped: no OPENAI_API_KEY or DEEPSEEK_API_KEY is configured.")
 
     quality_warnings = validate_report(report)
     report = append_quality_note(report, quality_warnings)

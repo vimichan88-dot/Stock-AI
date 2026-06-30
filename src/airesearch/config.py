@@ -6,8 +6,11 @@ from dataclasses import dataclass
 
 @dataclass(frozen=True)
 class Settings:
+    ai_provider: str
     openai_api_key: str
     openai_model: str
+    deepseek_api_key: str
+    deepseek_model: str
     report_access_token: str
     pushplus_token: str
     server_chan_key: str
@@ -22,8 +25,11 @@ class Settings:
     @classmethod
     def from_env(cls) -> "Settings":
         return cls(
+            ai_provider=env_text("AI_PROVIDER", "auto").lower(),
             openai_api_key=env_text("OPENAI_API_KEY"),
             openai_model=env_text("OPENAI_MODEL", "gpt-5.2"),
+            deepseek_api_key=env_text("DEEPSEEK_API_KEY"),
+            deepseek_model=env_text("DEEPSEEK_MODEL", "deepseek-chat"),
             report_access_token=env_text("REPORT_ACCESS_TOKEN", "dev-token"),
             pushplus_token=env_text("PUSHPLUS_TOKEN"),
             server_chan_key=env_text("SERVER_CHAN_KEY"),

@@ -7,7 +7,7 @@ def validate_report(report: Report) -> list[str]:
     warnings: list[str] = []
 
     if not report.market_signals:
-        warnings.append("缺少市场信号。")
+        warnings.append("缺少市场指标。")
     if len(report.core_events) < 3:
         warnings.append("核心事件少于 3 条。")
     if not report.investment_ideas:
@@ -16,6 +16,8 @@ def validate_report(report: Report) -> list[str]:
         warnings.append("缺少行动清单。")
     if not report.risk_warnings:
         warnings.append("缺少风险提示。")
+    if len(report.analysis_sections) < 6:
+        warnings.append("专题研究模块少于 6 个。")
 
     for idx, event in enumerate(report.core_events, start=1):
         if not event.sources:
@@ -28,6 +30,10 @@ def validate_report(report: Report) -> list[str]:
             warnings.append(f"核心事件 {idx} 缺少利好股票清单。")
         if not event.bearish_stocks:
             warnings.append(f"核心事件 {idx} 缺少利空股票清单。")
+        if len(event.summary) < 40:
+            warnings.append(f"核心事件 {idx} 最新动态过短。")
+        if len(event.reason) < 80:
+            warnings.append(f"核心事件 {idx} 市场影响分析过短。")
 
     for idx, idea in enumerate(report.investment_ideas, start=1):
         if not idea.invalidation:

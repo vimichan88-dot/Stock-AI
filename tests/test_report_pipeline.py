@@ -12,7 +12,14 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from src.airesearch.models import MarketSignal
-from src.airesearch.ai_analysis import extract_output_text, merge_ai_payload, parse_json_object
+from src.airesearch.ai_analysis import (
+    configured_ai_model,
+    configured_ai_provider,
+    extract_chat_completion_text,
+    extract_output_text,
+    merge_ai_payload,
+    parse_json_object,
+)
 from src.airesearch.config import Settings
 from src.airesearch.main import current_date_text
 from src.airesearch.news_data import NewsItem
@@ -170,9 +177,31 @@ class ReportPipelineTests(unittest.TestCase):
             settings = Settings.from_env()
 
         self.assertEqual(settings.openai_model, "gpt-5.2")
+        self.assertEqual(settings.ai_provider, "auto")
+        self.assertEqual(settings.deepseek_model, "deepseek-chat")
+        self.assertEqual(configured_ai_provider(settings), "none")
         self.assertEqual(settings.report_access_token, "dev-token")
         self.assertEqual(settings.email_port, 587)
         self.assertEqual(settings.timezone, "Asia/Shanghai")
+
+    def test_deepseek_provider_is_selected_when_configured(self) -> None:
+        with patch.dict(
+            "os.environ",
+            {
+                "AI_PROVIDER": "deepseek",
+                "DEEPSEEK_API_KEY": "test-key",
+                "DEEPSEEK_MODEL": "deepseek-chat",
+            },
+            clear=True,
+        ):
+            settings = Settings.from_env()
+
+        self.assertEqual(configured_ai_provider(settings), "deepseek")
+        self.assertEqual(configured_ai_model(settings), "deepseek-chat")
+
+    def test_chat_completion_text_extraction(self) -> None:
+        payload = {"choices": [{"message": {"content": "{\"executive_summary\":\"ok\"}"}}]}
+        self.assertEqual(extract_chat_completion_text(payload), "{\"executive_summary\":\"ok\"}")
 
     def test_openai_payload_parsing_and_merge(self) -> None:
         report = build_report("morning", "2026-06-29")

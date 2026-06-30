@@ -30,9 +30,9 @@ def build_report(
     baseline = build_sample_report(report_type, date_text, market_signals, market_source_note)
     signals = market_signals or baseline.market_signals
     news = news_items or []
+    market_view = build_market_view(signals)
     core_events = build_core_events(news, signals) if news else baseline.core_events
     ideas = build_investment_ideas(news, signals)
-    market_view = build_market_view(signals)
     analysis_sections = build_analysis_sections(market_view, signals, news, ideas)
 
     source_notes = []
@@ -62,15 +62,16 @@ def build_report(
 
 def build_executive_summary(report_type: str, market_view: str, core_events: list, ideas: list, news_count: int) -> str:
     report_context = {
-        "morning": "盘前重点是判断昨夜外围市场和今日 A/H 股交易环境。",
-        "noon": "午间重点是识别上午市场主线是否延续，以及下午是否需要调整策略。",
-        "close": "收盘后重点是复盘全天交易逻辑，并为下一交易日准备观察清单。",
+        "morning": "盘前重点是把昨夜全球风险偏好、政策线索和今日A/H股可能交易的主线先排出优先级。",
+        "noon": "午间重点是判断上午行情到底是资金主线、政策催化、产业催化，还是单纯情绪轮动。",
+        "close": "盘后重点是复盘全天资金真正交易的变量，并为下一个交易日准备观察清单。",
     }.get(report_type, "当前报告重点是识别市场主线、风险和可执行观察项。")
 
     top_event = core_events[0].title if core_events else "暂无高置信事件"
     top_idea = ideas[0].title if ideas else "保持观察"
     return (
-        f"{report_context} 当前市场判断为：{market_view} "
-        f"本次共纳入 {news_count} 条新闻线索用于事件筛选，最高优先级事件是“{top_event}”。"
-        f" 投资上优先关注“{top_idea}”，同时严格跟踪失效条件和来源可信度。"
+        f"{report_context} 当前市场总判断为：{market_view} "
+        f"本次共纳入 {news_count} 条新闻线索和公告线索，最高优先级事件是“{top_event}”。"
+        f" 投资上优先关注“{top_idea}”，但所有股票清单都应先作为研究和复核池，"
+        "只有在订单、资金流、价格反应或政策细则继续验证后才适合提高仓位。"
     )
