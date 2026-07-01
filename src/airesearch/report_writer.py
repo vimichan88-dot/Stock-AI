@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import asdict
 from pathlib import Path
 
@@ -12,6 +13,7 @@ def report_to_markdown(report: Report) -> str:
     lines.append(f"# {report.title}")
     lines.append("")
     lines.append(f"生成时间：{report.generated_at.strftime('%Y-%m-%d %H:%M:%S')} 北京时间")
+    lines.append(ai_status_line(report.source_note))
     lines.append("")
     lines.append("## 今日核心结论")
     lines.append("")
@@ -89,6 +91,24 @@ def report_to_markdown(report: Report) -> str:
     lines.append(report.source_note)
     lines.append("")
     return "\n".join(lines)
+
+
+def ai_status_line(source_note: str) -> str:
+    match = re.search(r"AI 模型调用状态：([^\n。]*(?:。|$))", source_note or "")
+    if not match:
+        return "AI增强：旧报告未记录调用状态"
+    detail = match.group(1).strip("。 ")
+    if "成功调用" in detail:
+        provider_match = re.search(r"成功调用\s+([^，]+)", detail)
+        provider = provider_match.group(1).strip() if provider_match else "AI模型"
+        return f"AI增强：{provider} 调用成功"
+    if "失败" in detail:
+        provider_match = re.search(r"调用\s+([^，]+)\s+失败", detail)
+        provider = provider_match.group(1).strip() if provider_match else "AI模型"
+        return f"AI增强：{provider} 调用失败，已使用规则版"
+    if "未调用" in detail:
+        return "AI增强：未调用，规则版生成"
+    return f"AI增强：{detail}"
 
 
 def save_report(report: Report, output_dir: Path) -> tuple[Path, Path]:

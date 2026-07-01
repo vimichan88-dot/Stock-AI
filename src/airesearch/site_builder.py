@@ -111,6 +111,7 @@ def render_index(reports: list[dict], access_token: str) -> str:
 
 
 def render_report_detail(report: dict, reports: list[dict], access_token: str) -> str:
+    ai_status = ai_status_label(report.get("source_note", ""))
     label = REPORT_LABELS.get(report.get("report_type", ""), report.get("report_type", "报告"))
     previous_report, next_report = adjacent_reports(report, reports)
     prev_link = detail_nav_link("上一篇", previous_report)
@@ -124,6 +125,7 @@ def render_report_detail(report: dict, reports: list[dict], access_token: str) -
         <h1>{escape(report.get("title", "AI 投研报告"))}</h1>
         <p class="sub">{escape(report.get("market_view", ""))}</p>
         <p class="sub time-line">生成时间：{escape(format_generated_at(report.get("generated_at", "")))}</p>
+        <p class="ai-status">{escape(ai_status)}</p>
       </div>
       <a class="back-link" href="../index.html">返回首页</a>
     </header>
@@ -168,11 +170,13 @@ def render_report_detail(report: dict, reports: list[dict], access_token: str) -
 
 
 def render_latest_panel(report: dict) -> str:
+    ai_status = ai_status_label(report.get("source_note", ""))
     label = REPORT_LABELS.get(report.get("report_type", ""), report.get("report_type", "报告"))
     return f"""
       <article class="panel hero-panel">
         <div class="meta">{escape(report.get("date", ""))} · {escape(label)}</div>
         <h2>{escape(report.get("title", "AI 投研报告"))}</h2>
+        <p class="ai-status compact">{escape(ai_status)}</p>
         <p>{escape(report.get("executive_summary", ""))}</p>
         <a class="primary-link report-link" href="reports/{report_filename(report)}">查看完整报告</a>
       </article>
@@ -220,6 +224,7 @@ def render_action_panel(report: dict) -> str:
 
 
 def render_report_card(report: dict) -> str:
+    ai_status = ai_status_label(report.get("source_note", ""))
     label = REPORT_LABELS.get(report.get("report_type", ""), report.get("report_type", "报告"))
     ideas = report.get("investment_ideas", [])
     idea_html = "".join(
@@ -240,6 +245,7 @@ def render_report_card(report: dict) -> str:
         <div class="meta">{escape(report.get("date", ""))} · {escape(label)}</div>
         <h3>{escape(report.get("title", "AI 投研报告"))}</h3>
         <p class="generated-line">生成时间：{escape(format_generated_at(report.get("generated_at", "")))}</p>
+        <p class="ai-status compact">{escape(ai_status)}</p>
         <p>{escape(report.get("executive_summary", ""))}</p>
         <ul>{idea_html}</ul>
         <a class="report-link" href="reports/{report_filename(report)}">打开报告</a>
@@ -473,9 +479,26 @@ def format_generated_at(value: object) -> str:
         dt = datetime.fromisoformat(text)
     except ValueError:
         return text
-    if dt.tzinfo is None:
-        return f"{dt.strftime('%Y-%m-%d %H:%M:%S')} 北京时间"
     return f"{dt.strftime('%Y-%m-%d %H:%M:%S')} 北京时间"
+
+
+def ai_status_label(source_note: object) -> str:
+    text = str(source_note or "")
+    match = re.search(r"AI 模型调用状态：([^\n。]*(?:。|$))", text)
+    if not match:
+        return "AI增强：旧报告未记录调用状态"
+    detail = match.group(1).strip("。 ")
+    if "成功调用" in detail:
+        provider_match = re.search(r"成功调用\s+([^，]+)", detail)
+        provider = provider_match.group(1).strip() if provider_match else "AI模型"
+        return f"AI增强：{provider} 调用成功"
+    if "失败" in detail:
+        provider_match = re.search(r"调用\s+([^，]+)\s+失败", detail)
+        provider = provider_match.group(1).strip() if provider_match else "AI模型"
+        return f"AI增强：{provider} 调用失败，已使用规则版"
+    if "未调用" in detail:
+        return "AI增强：未调用，规则版生成"
+    return f"AI增强：{detail}"
 
 
 def detail_nav_link(label: str, report: dict | None) -> str:
@@ -544,6 +567,8 @@ def render_page(title: str, body: str) -> str:
     .sub {{ margin: 8px 0 0; color: var(--muted); }}
     .status-pill, .meta {{ color: var(--warn); font-size: 14px; font-weight: 800; }}
     .status-pill {{ color: #fff; background: var(--accent); padding: 8px 10px; border-radius: 6px; white-space: nowrap; }}
+    .ai-status {{ display: inline-flex; width: fit-content; margin: 10px 0 0; padding: 7px 10px; border: 1px solid #b8d7d1; border-radius: 6px; background: #e7f5f1; color: #07594e; font-size: 14px; font-weight: 800; }}
+    .ai-status.compact {{ margin: 8px 0; padding: 5px 8px; font-size: 12px; }}
     .dashboard {{ display: grid; grid-template-columns: 1.4fr 1fr; gap: 14px; margin-top: 20px; }}
     .panel, .report-card, .item-block {{ background: var(--panel); border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow); }}
     .panel {{ padding: 18px; }}

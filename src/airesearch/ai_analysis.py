@@ -84,7 +84,7 @@ def enhance_report_with_deepseek(report: Report, settings: Settings, news_items:
         ],
         "response_format": {"type": "json_object"},
         "temperature": 0.2,
-        "max_tokens": 7000,
+        "max_tokens": 8192,
     }
     response = requests.post(
         DEEPSEEK_CHAT_COMPLETIONS_URL,
@@ -97,8 +97,59 @@ def enhance_report_with_deepseek(report: Report, settings: Settings, news_items:
     )
     response.raise_for_status()
     output_text = extract_chat_completion_text(response.json())
-    ai_payload = parse_json_object(output_text)
+    ai_payload = parse_json_object_with_deepseek_repair(output_text, settings)
     return merge_ai_payload(report, ai_payload)
+
+
+def parse_json_object_with_deepseek_repair(text: str, settings: Settings) -> dict[str, Any]:
+    try:
+        return parse_json_object(text)
+    except json.JSONDecodeError as first_error:
+        repaired_text = repair_json_with_deepseek(text, settings, str(first_error))
+        try:
+            return parse_json_object(repaired_text)
+        except json.JSONDecodeError as second_error:
+            raise ValueError(
+                f"DeepSeek returned invalid JSON and repair also failed. "
+                f"Original error: {first_error}; repair error: {second_error}"
+            ) from second_error
+
+
+def repair_json_with_deepseek(text: str, settings: Settings, error_message: str) -> str:
+    payload = {
+        "model": settings.deepseek_model,
+        "messages": [
+            {
+                "role": "system",
+                "content": (
+                    "你是 JSON 修复器。只输出一个合法 JSON 对象，不要 Markdown，不要解释。"
+                    "保留原文已有字段和内容；如果末尾被截断，合理补齐括号、引号、逗号和数组结构。"
+                ),
+            },
+            {
+                "role": "user",
+                "content": (
+                    f"下面 JSON 解析失败，错误是：{error_message}\n"
+                    "请修复为合法 JSON 对象：\n"
+                    f"{text}"
+                ),
+            },
+        ],
+        "response_format": {"type": "json_object"},
+        "temperature": 0,
+        "max_tokens": 8192,
+    }
+    response = requests.post(
+        DEEPSEEK_CHAT_COMPLETIONS_URL,
+        headers={
+            "Authorization": f"Bearer {settings.deepseek_api_key}",
+            "Content-Type": "application/json",
+        },
+        json=payload,
+        timeout=120,
+    )
+    response.raise_for_status()
+    return extract_chat_completion_text(response.json())
 
 
 def build_instructions(report_type: str) -> str:
@@ -240,6 +291,7 @@ def parse_json_object(text: str) -> dict[str, Any]:
     if clean_text.startswith("```"):
         clean_text = re.sub(r"^```(?:json)?\s*", "", clean_text)
         clean_text = re.sub(r"\s*```$", "", clean_text)
+    clean_text = clean_json_text(clean_text)
 
     try:
         parsed = json.loads(clean_text)
@@ -247,11 +299,18 @@ def parse_json_object(text: str) -> dict[str, Any]:
         match = re.search(r"\{.*\}", clean_text, flags=re.DOTALL)
         if not match:
             raise
-        parsed = json.loads(match.group(0))
+        parsed = json.loads(clean_json_text(match.group(0)))
 
     if not isinstance(parsed, dict):
         raise ValueError("AI response JSON must be an object")
     return parsed
+
+
+def clean_json_text(text: str) -> str:
+    text = text.strip().lstrip("\ufeff")
+    text = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f]", "", text)
+    text = re.sub(r",(\s*[}\]])", r"\1", text)
+    return text
 
 
 def merge_ai_payload(report: Report, payload: dict[str, Any]) -> Report:

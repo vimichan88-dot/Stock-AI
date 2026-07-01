@@ -25,6 +25,7 @@ from src.airesearch.main import append_source_note, current_date_text
 from src.airesearch.news_data import NewsItem
 from src.airesearch.quality import append_quality_note, validate_report
 from src.airesearch.report_builder import build_report
+from src.airesearch.report_writer import report_to_markdown
 from src.airesearch.site_builder import build_site
 
 
@@ -121,7 +122,7 @@ class ReportPipelineTests(unittest.TestCase):
             ],
             "action_checklist": ["测试行动"],
             "risk_warnings": ["测试风险"],
-            "source_note": "测试来源说明",
+            "source_note": "测试来源说明\n\nAI 模型调用状态：成功调用 deepseek / deepseek-chat，已对规则版报告进行投研增强。",
         }
 
         with tempfile.TemporaryDirectory() as tmp:
@@ -149,6 +150,8 @@ class ReportPipelineTests(unittest.TestCase):
         self.assertIn("中际旭创(300308)", detail_html)
         self.assertIn("机构视角摘要", detail_html)
         self.assertIn("https://example.com/news", detail_html)
+        self.assertIn("AI增强", detail_html)
+        self.assertIn("deepseek / deepseek-chat", detail_html)
 
     def test_site_renders_without_token_gate(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -213,6 +216,18 @@ class ReportPipelineTests(unittest.TestCase):
     def test_chat_completion_text_extraction(self) -> None:
         payload = {"choices": [{"message": {"content": "{\"executive_summary\":\"ok\"}"}}]}
         self.assertEqual(extract_chat_completion_text(payload), "{\"executive_summary\":\"ok\"}")
+
+    def test_markdown_places_ai_status_near_top(self) -> None:
+        report = build_report("morning", "2026-06-29")
+        report.source_note = "AI 模型调用状态：未调用 AI 模型。"
+        markdown = report_to_markdown(report)
+        top_lines = "\n".join(markdown.splitlines()[:5])
+        self.assertIn("AI增强：未调用", top_lines)
+
+    def test_json_parser_tolerates_trailing_commas(self) -> None:
+        parsed = parse_json_object('{"executive_summary":"ok","core_events":[{"title":"a",}],}')
+        self.assertEqual(parsed["executive_summary"], "ok")
+        self.assertEqual(parsed["core_events"][0]["title"], "a")
 
     def test_openai_payload_parsing_and_merge(self) -> None:
         report = build_report("morning", "2026-06-29")
