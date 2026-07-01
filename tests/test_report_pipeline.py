@@ -24,6 +24,7 @@ from src.airesearch.ai_analysis import (
 )
 from src.airesearch.config import Settings
 from src.airesearch.main import append_source_note, current_date_text
+from src.airesearch.market_data import INSTRUMENTS, validate_signal_value
 from src.airesearch.news_data import NewsItem
 from src.airesearch.quality import append_quality_note, validate_report
 from src.airesearch.report_builder import build_report
@@ -97,7 +98,7 @@ class ReportPipelineTests(unittest.TestCase):
             ],
         )
 
-        summary = report.core_events[1].summary
+        summary = report.core_events[0].summary
 
         self.assertIn("可复核事实", summary)
         self.assertIn("1000亿元", summary)
@@ -110,6 +111,13 @@ class ReportPipelineTests(unittest.TestCase):
 
         self.assertIn("108亿元", metrics)
         self.assertNotIn("2026年", metrics)
+
+    def test_market_value_validation_rejects_wrong_hstech_proxy_price(self) -> None:
+        hstech = next(item for item in INSTRUMENTS if item.name == "恒生科技")
+
+        with self.assertRaises(ValueError):
+            validate_signal_value(hstech, 4.39)
+        validate_signal_value(hstech, 4472.23)
 
     def test_build_site_creates_index_and_detail_pages(self) -> None:
         report_payload = {

@@ -22,6 +22,8 @@ class AIOutputError(ValueError):
 
 def configured_ai_provider(settings: Settings) -> str:
     provider = (settings.ai_provider or "auto").strip().lower()
+    if provider in {"none", "off", "disabled", "false", "0"}:
+        return "none"
     if provider == "deepseek":
         return "deepseek" if settings.deepseek_api_key else "none"
     if provider == "openai":

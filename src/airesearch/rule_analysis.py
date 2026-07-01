@@ -621,8 +621,7 @@ def build_core_events(news_items: list[NewsItem], signals: list[MarketSignal]) -
     grouped = cluster_news_items(news_items)
     events = [event_from_news_group(group) for group in grouped]
     events.sort(key=lambda event: (event.importance, event.confidence), reverse=True)
-    selected = [market_event(signals), *events[:9]]
-    return selected[:10]
+    return events[:10] or [market_event(signals)]
 
 
 def cluster_news_items(news_items: list[NewsItem]) -> list[list[NewsItem]]:
