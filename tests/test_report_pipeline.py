@@ -26,6 +26,7 @@ from src.airesearch.news_data import NewsItem
 from src.airesearch.quality import append_quality_note, validate_report
 from src.airesearch.report_builder import build_report
 from src.airesearch.report_writer import report_to_markdown
+from src.airesearch.rule_analysis import extract_metrics_from_text
 from src.airesearch.site_builder import build_site
 
 
@@ -77,6 +78,36 @@ class ReportPipelineTests(unittest.TestCase):
         self.assertTrue(report.investment_ideas[0].catalysts)
         self.assertIn("行情测试来源", report.source_note)
         self.assertIn("新闻测试来源", report.source_note)
+
+    def test_rule_summary_keeps_source_metadata_out_of_latest_update(self) -> None:
+        report = build_report(
+            "morning",
+            "2026-07-01",
+            news_items=[
+                NewsItem(
+                    title="央行开展1000亿元逆回购操作，A股成交额超400亿元",
+                    link="https://example.com/pboc",
+                    source="测试源",
+                    published_at="2026-07-01T09:00:00+08:00",
+                    category="宏观",
+                    query_name="央行流动性",
+                )
+            ],
+        )
+
+        summary = report.core_events[1].summary
+
+        self.assertIn("可复核事实", summary)
+        self.assertIn("1000亿元", summary)
+        self.assertNotIn("测试源", summary)
+        self.assertNotIn("2026-07-01T09:00:00", summary)
+        self.assertNotIn("原始标题", summary)
+
+    def test_metric_extraction_ignores_standalone_years(self) -> None:
+        metrics = extract_metrics_from_text("ETF月评（2026年6月）：资金净流出108亿元")
+
+        self.assertIn("108亿元", metrics)
+        self.assertNotIn("2026年", metrics)
 
     def test_build_site_creates_index_and_detail_pages(self) -> None:
         report_payload = {

@@ -685,43 +685,78 @@ def build_group_title(category: str, titles: list[str]) -> str:
 
 
 def build_group_summary(category: str, items: list[NewsItem]) -> str:
-    fact_lines = []
-    for item in items[:3]:
-        facts = extract_concrete_facts(item.title)
-        source = item.source or "公开来源"
-        when = item.published_at[:16].replace("T", " ") if item.published_at else "时间待复核"
-        fact_lines.append(f"{source}在{when}给出的线索是：{facts}")
-
-    category_question = {
-        "AI": "这类信息需要重点判断云厂商资本开支、GPU/服务器/光模块订单、算力租赁需求和应用落地是否互相验证。",
-        "半导体": "这类信息需要判断国产替代、设备材料、先进封装、存储周期和海外限制之间哪一个变量正在改变盈利预期。",
-        "能源电力": "这类信息需要区分储能、电网、特高压、核电和风光设备，核心是订单规模、招标价格和盈利质量。",
-        "新能源": "这类信息需要判断电池、整车、光伏和储能的价格压力是否缓和，以及需求是否足以消化产能。",
-        "港股": "这类信息需要同时看美元流动性、南向资金、平台经济预期和恒生科技成交能否形成共振。",
-        "A股": "这类信息需要拆成政策预期、成交额、机构资金、行业主线和指数权重股五个变量。",
-        "宏观": "这类信息要先判断它改变的是利率、美元、通胀、风险偏好还是避险需求。",
-        "公告": "公告类线索要重点看订单金额、利润率、现金流、履约周期和是否会改变公司未来几个季度的盈利预期。",
-        "日历": "日历类线索本身不是利好利空，关键是市场预期与实际结果之间可能产生多大预期差。",
-    }.get(category, "这类信息要判断它是否改变行业景气、资金关注度和估值弹性。")
-    return "；".join(fact_lines) + "。" + category_question
+    facts = [extract_concrete_facts(item.title) for item in items[:3]]
+    metrics = extract_metrics_from_text(" ".join(item.title for item in items))
+    metric_text = "、".join(metrics[:6]) if metrics else "暂无明确数值，先按可复核事件本身跟踪"
+    fact_text = "；".join(deduplicate_texts(facts)[:3])
+    implication = category_fact_implication(category)
+    return f"可复核事实：{fact_text}。量化线索：{metric_text}。投研解读：{implication}"
 
 
 def extract_concrete_facts(title: str) -> str:
     clean = clean_news_title_v2(title)
-    metrics = re.findall(r"(?:增长|下降|上涨|下跌|超|近|约|达|突破)?\s*\d+(?:\.\d+)?\s*(?:%|亿元|亿美元|万亿元|GW|GWh|万台|家|个|点)", clean)
+    metrics = extract_metrics_from_text(clean)
     clauses = split_title_clauses_v2(clean)
     if metrics:
-        metric_text = "，量化信息包括" + "、".join(dict.fromkeys(metric.strip() for metric in metrics[:4]))
+        metric_text = "，量化信息包括" + "、".join(metrics[:4])
     else:
         metric_text = ""
     if len(clauses) >= 2:
-        return f"{clauses[0]}；同时提到{'; '.join(clauses[1:3])}{metric_text}"
+        return f"{clauses[0]}；同时涉及{'；'.join(clauses[1:3])}{metric_text}"
     return f"{clean}{metric_text}"
+
+
+def extract_metrics_from_text(text: str) -> list[str]:
+    pattern = (
+        r"(?:增长|下降|上涨|下跌|大涨|大跌|回落|反弹|超|近|约|达|突破|跌破|升至|降至|净投放|净回笼)?\s*"
+        r"\d+(?:\.\d+)?\s*"
+        r"(?:%|bp|BP|亿元|亿美元|万亿元|万亿美元|元|美元|人民币|GW|GWh|MW|MWh|万台|万辆|万套|家|个|只|点|倍|年|个月|天)"
+    )
+    metrics = [metric.strip() for metric in re.findall(pattern, text)]
+    return deduplicate_texts([metric for metric in metrics if metric and not is_low_value_metric(metric)])
+
+
+def is_low_value_metric(metric: str) -> bool:
+    normalized = re.sub(r"\s+", "", metric)
+    year_match = re.fullmatch(r"(?:20\d{2}|19\d{2})年", normalized)
+    return bool(year_match)
+
+
+def deduplicate_texts(values: list[str]) -> list[str]:
+    seen: set[str] = set()
+    result: list[str] = []
+    for value in values:
+        normalized = re.sub(r"\s+", "", value)
+        if not normalized or normalized in seen:
+            continue
+        seen.add(normalized)
+        result.append(value)
+    return result
+
+
+def category_fact_implication(category: str) -> str:
+    return {
+        "AI": "重点不是题材热度，而是算力需求、云厂商资本开支、服务器/光模块订单和应用付费能否互相验证；只有订单和业绩跟上，估值扩张才有持续性。",
+        "半导体": "先区分周期复苏、国产替代和海外限制三条逻辑；设备材料、先进封装、存储和设计公司的受益顺序不同，交易上要看订单、库存和毛利率拐点。",
+        "能源电力": "若线索指向电网投资、储能招标、核电审批或电力市场化，优先看订单确定性和招标价格，避免只买概念不看利润率。",
+        "新能源": "核心是价格、库存和海外需求是否改善；如果只是产能扩张，二线高杠杆企业反而可能承压。",
+        "港股": "港股机会通常需要美元走弱、南向资金和平台经济预期共振；单条新闻只能作为触发，持续性要看恒生科技成交和龙头回购。",
+        "A股": "需要拆成政策、成交额、行业主线、机构资金和权重股贡献，只有多项共振时才适合提高仓位。",
+        "宏观": "先判断它影响利率、美元、通胀、商品还是风险偏好，再映射到成长、资源、高股息和港股科技。",
+        "公告": "公告只有改变未来收入、利润率、现金流或资本开支路径时才是实质催化，订单金额和履约周期比标题更重要。",
+        "日历": "日历事件交易的是预期差；要预先设定高于预期和低于预期时分别影响哪些资产。",
+    }.get(category, "判断重点是它是否改变行业景气、资金关注度、盈利预期或估值弹性。")
 
 
 def build_group_market_impact(category: str, items: list[NewsItem]) -> str:
     title_text = " ".join(item.title for item in items)
     direction = assess_event_direction_v2(title_text)
+    facts = deduplicate_texts([extract_concrete_facts(item.title) for item in items[:2]])
+    fact_text = "；".join(facts) if facts else clean_news_title_v2(items[0].title)
+    metrics = extract_metrics_from_text(title_text)
+    metric_text = "、".join(metrics[:5]) if metrics else "暂无直接数值，需用后续价格、订单、成交额或资金流验证"
+    watch_text = "、".join(watch_indicators_for_event(category, title_text))
+    action_text = action_suggestion_for_event(category, title_text)
     impact = {
         "AI": (
             "如果线索指向资本开支上修、订单兑现或AI应用加速，股票市场通常先交易光模块、服务器、PCB、液冷、IDC和半导体设备。"
@@ -759,7 +794,68 @@ def build_group_market_impact(category: str, items: list[NewsItem]) -> str:
             "未来事件日历影响的是预期差。若市场已经充分定价，符合预期未必继续上涨；真正的机会来自数据、财报、政策或发布会结果超出共识。"
         ),
     }.get(category, "市场影响要结合价格反应、成交量和龙头股强弱确认，不能只依据标题判断。")
-    return f"方向判断：{direction} 市场影响分析：{impact} A股关注映射链条和成交确认，港股关注美元/南向资金，美股关注盈利和估值是否匹配。"
+    return (
+        f"方向判断：{direction} 事件内容：{fact_text}。量化跟踪：{metric_text}。"
+        f"市场影响分析：{impact} 对股票市场的关键不是消息本身，而是它是否能带来盈利预期、估值折现率或资金流方向的变化。"
+        f"观察指标：{watch_text}。投资建议：{action_text}"
+    )
+
+
+def watch_indicators_for_event(category: str, text: str) -> list[str]:
+    base = {
+        "AI": ["云厂商资本开支指引", "GPU/服务器出货", "光模块订单与价格", "龙头成交额和相对强弱"],
+        "半导体": ["设备/材料订单", "晶圆厂资本开支", "存储价格", "国产替代公告"],
+        "能源电力": ["电网投资计划", "储能/特高压招标价格", "核电审批节奏", "设备龙头订单"],
+        "新能源": ["电池和组件价格", "库存天数", "海外装机/出口", "龙头毛利率"],
+        "港股": ["恒生科技成交额", "南向资金净流入", "美元指数", "平台龙头回购"],
+        "A股": ["沪深两市成交额", "北向/ETF资金", "主题龙头封单和换手", "政策细则落地"],
+        "宏观": ["美元指数", "美债10年收益率", "人民币汇率", "黄金/原油价格"],
+        "公告": ["订单金额占收入比例", "毛利率指引", "现金流", "履约周期"],
+        "日历": ["市场一致预期", "公布值与预期差", "相关资产开盘反应", "成交量变化"],
+    }.get(category, ["成交额", "龙头相对强弱", "资金流向", "后续公告验证"])
+    if "黄金" in text:
+        return ["现货黄金价格", "实际利率", "美元指数", "央行购金和ETF持仓"]
+    if "原油" in text or "油" in text:
+        return ["WTI/布伦特油价", "库存数据", "OPEC+供给", "航运和地缘风险"]
+    if "央行" in text or "逆回购" in text:
+        return ["逆回购规模", "DR007", "国债收益率", "A股成交额"]
+    return base
+
+
+def action_suggestion_for_event(category: str, text: str) -> str:
+    if any(word in text for word in NEGATIVE_WORDS):
+        return "先降低追高意愿，把相关股票清单作为风险排查池；只有龙头放量企稳且基本面未恶化时再考虑低吸。"
+    if any(word in text for word in POSITIVE_WORDS):
+        return "可先做研究池和小仓位观察，优先选择有订单、业绩或资金流验证的龙头，避免追逐没有基本面支撑的补涨股。"
+    return {
+        "宏观": "不直接据此买入，先观察利率、美元和商品价格是否同步确认，再决定成长、资源或高股息的配置倾斜。",
+        "日历": "提前列好超预期和低于预期两套交易预案，事件落地前避免过度集中仓位。",
+        "公告": "回看公告原文和财务口径，只有订单金额、毛利率或现金流能改变盈利预测时才提高关注。",
+    }.get(category, "作为跟踪线索处理，等待价格、成交额和后续权威信息形成三重确认。")
+
+
+def facts_by_focus_category(news_items: list[NewsItem]) -> list[str]:
+    focus_categories = {"AI", "半导体", "能源电力", "新能源", "创新药", "军工", "资源品"}
+    ranked = sorted(
+        [item for item in news_items if item.category in focus_categories],
+        key=lambda item: score_news_v2(item),
+        reverse=True,
+    )
+    return deduplicate_texts([extract_concrete_facts(item.title) for item in ranked[:8]])
+
+
+def policy_and_notice_facts(news_items: list[NewsItem]) -> list[str]:
+    ranked = sorted(
+        [
+            item
+            for item in news_items
+            if item.category in {"宏观", "公告", "A股", "日历"}
+            or any(keyword in item.title for keyword in ["政策", "央行", "财政", "证监会", "交易所", "公告", "回购", "增持", "减持", "中标"])
+        ],
+        key=lambda item: score_news_v2(item),
+        reverse=True,
+    )
+    return deduplicate_texts([extract_concrete_facts(item.title) for item in ranked[:8]])
 
 
 def assess_event_direction_v2(text: str) -> str:
@@ -1012,39 +1108,59 @@ def build_analysis_sections(
 ) -> list[AnalysisSection]:
     categories = Counter(item.category for item in news_items)
     strongest = strongest_signals(signals)
-    top_titles = [clean_news_title_v2(item.title) for item in news_items[:5]]
+    top_items = sorted(news_items, key=lambda item: score_news_v2(item), reverse=True)[:8]
+    top_facts = deduplicate_texts([extract_concrete_facts(item.title) for item in top_items])[:5]
+    top_metrics = extract_metrics_from_text(" ".join(item.title for item in top_items))[:8]
+    industry_facts = facts_by_focus_category(news_items)
+    policy_facts = policy_and_notice_facts(news_items)
+    metric_text = "、".join(top_metrics) if top_metrics else "新闻标题层面缺少明确数值，需回看原文、公告和行情确认"
 
     return [
         AnalysisSection(
             title="今日十大核心事件筛选逻辑",
-            view=f"本次筛选重点不是罗列新闻，而是把 {sum(categories.values())} 条线索按宏观、资金、产业、公告和日历归类，再按可验证性排序。当前市场判断：{market_view}",
+            view=(
+                f"本次筛选不是按媒体标题排序，而是把 {sum(categories.values())} 条线索拆成宏观、资金、产业、公告和日历，再按可验证性、量化信息和资产映射排序。"
+                f"当前市场判断：{market_view} 今日靠前的可复核事实包括：{'；'.join(top_facts[:3]) if top_facts else '暂无高置信具体事实'}。"
+                f"可直接跟踪的量化线索：{metric_text}。"
+            ),
             opportunities=[
-                "优先研究同时具备新闻催化、市场价格反应和公司/产业链验证的主题。",
-                "同一主题内区分真正受益者与情绪扩散对象，避免把板块上涨简单等同于基本面改善。",
+                "优先研究同时具备具体事件、量化指标、价格反应和公司/产业链验证的主题。",
+                "同一主题内区分真正受益者与情绪扩散对象，只有订单、价格、资金流或政策细则能继续验证时才提高仓位。",
             ],
             risks=["单一标题可能遗漏关键上下文。", "免费聚合源可能延迟，需回看原文和公告。"],
-            watch=top_titles[:4] or ["政策细则", "成交额", "龙头股强弱", "资金流向"],
+            watch=top_facts[:4] or ["政策细则", "成交额", "龙头股强弱", "资金流向"],
         ),
         AnalysisSection(
             title="全球资本市场复盘",
-            view="观察美国、中国、欧洲、日本和港股时，重点回答资金到底在交易利率、AI盈利、政策预期、汇率，还是避险需求。",
+            view=(
+                "全球市场复盘要把指数涨跌和消息线索合并看：若美股科技、港股科技和A股成长同步走强，资金通常在交易AI盈利和流动性改善；"
+                "若黄金、美元或能源强于权益，则说明避险、通胀或地缘变量仍在定价。"
+                f"今日市场信号中波动较大的指标是：{', '.join(strongest[:5]) if strongest else '暂无足够行情信号'}。"
+            ),
             opportunities=[
-                "若美股科技与A/H科技同时走强，AI和半导体链条的跨市场映射价值提高。",
-                "若欧洲、日本和资源品同步偏强，顺周期和出口链可以进入观察池。",
+                "若强势指标集中在美股科技和恒生科技，可优先看AI算力、半导体和互联网平台的跨市场映射。",
+                "若强势指标集中在资源、能源或欧洲日本顺周期，则把有价格弹性和出口订单的公司放入观察池。",
             ],
             risks=["单日指数涨跌可能只是情绪修复。", "美元和美债反向波动会快速压制成长股估值。"],
             watch=strongest[:5] or ["标普500", "纳斯达克100", "恒生科技", "沪深300", "日经225"],
         ),
         AnalysisSection(
             title="今日最重要产业趋势",
-            view=f"新闻主题分布显示：AI {categories.get('AI', 0)} 条、半导体 {categories.get('半导体', 0)} 条、能源电力 {categories.get('能源电力', 0)} 条、新能源 {categories.get('新能源', 0)} 条。重点看产业链哪一环真的能赚钱。",
+            view=(
+                f"今日产业线索分布：AI {categories.get('AI', 0)} 条、半导体 {categories.get('半导体', 0)} 条、能源电力 {categories.get('能源电力', 0)} 条、新能源 {categories.get('新能源', 0)} 条。"
+                f"需要优先研究的不是行业名称，而是具体催化：{'; '.join(industry_facts[:4]) if industry_facts else '今日产业新闻缺少明确高置信催化'}。"
+            ),
             opportunities=[idea.title for idea in ideas[:3]] or ["等待更明确的产业催化。"],
             risks=["只看概念容易忽略价格、库存和毛利率。", "产业链中上游和下游的受益方向可能完全相反。"],
             watch=["订单金额", "招标价格", "库存去化", "龙头毛利率", "资本开支"],
         ),
         AnalysisSection(
             title="全球资金流向",
-            view="资金流向用美元、人民币、黄金、原油、美债、纳斯达克、恒生科技、沪深300和创业板来交叉验证。单一资产上涨不能说明全部风险偏好改善。",
+            view=(
+                "资金流向必须用美元、人民币、黄金、原油、美债、纳斯达克、恒生科技、沪深300和创业板交叉验证。"
+                "如果权益和商品同涨，可能是增长预期；如果黄金和美元同强，往往是风险对冲。"
+                f"当前可观察指标：{', '.join(strongest[:6]) if strongest else '等待更多市场数据'}。"
+            ),
             opportunities=[
                 "美元走弱且美债收益率下行时，港股科技、A股成长和黄金更容易同时受益。",
                 "商品走强且股市不弱时，资源品和顺周期资产的胜率提高。",
@@ -1054,7 +1170,11 @@ def build_analysis_sections(
         ),
         AnalysisSection(
             title="政策与公告解读",
-            view="政策和公告要看真实目的：稳增长、促消费、扩投资、科技自主、能源安全或资本市场活跃。不同目的对应完全不同的受益公司。",
+            view=(
+                "政策和公告要看真实目的：稳增长、促消费、扩投资、科技自主、能源安全或资本市场活跃。"
+                f"今日政策/公告可复核线索：{'; '.join(policy_facts[:4]) if policy_facts else '暂无高置信政策/公告线索'}。"
+                "不同目的对应完全不同的受益公司，不能只按标题判断利好。"
+            ),
             opportunities=[
                 "稳增长偏利好基建、电网、央国企和高股息。",
                 "科技自主偏利好半导体设备材料、国产算力和工业软件。",
