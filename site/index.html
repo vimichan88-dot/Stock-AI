@@ -36,6 +36,10 @@
     .status-pill { color: #fff; background: var(--accent); padding: 8px 10px; border-radius: 6px; white-space: nowrap; }
     .ai-status { display: inline-flex; width: fit-content; margin: 10px 0 0; padding: 7px 10px; border: 1px solid #b8d7d1; border-radius: 6px; background: #e7f5f1; color: #07594e; font-size: 14px; font-weight: 800; }
     .ai-status.compact { margin: 8px 0; padding: 5px 8px; font-size: 12px; }
+    .schedule-status { display: inline-flex; width: fit-content; max-width: 100%; margin: 8px 0 0; padding: 6px 9px; border: 1px solid #b8d7d1; border-radius: 6px; background: #e7f5f1; color: #07594e; font-size: 13px; font-weight: 800; line-height: 1.45; overflow-wrap: anywhere; }
+    .schedule-status.compact { margin: 6px 0; padding: 4px 7px; font-size: 12px; }
+    .schedule-status.warning { border-color: #e0a3a3; background: #fff1f1; color: #9a3412; }
+    .schedule-status.manual { border-color: #c9d4e5; background: #f4f7fb; color: #4b647d; }
     .dashboard { display: grid; grid-template-columns: 1.4fr 1fr; gap: 14px; margin-top: 20px; }
     .panel, .report-card, .item-block { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow); }
     .panel { padding: 18px; }
@@ -128,17 +132,19 @@
     <section class="dashboard">
 
       <article class="panel hero-panel">
-        <div class="meta">2026-07-02 · 收盘</div>
-        <h2>2026-07-02 收盘复盘与明日展望</h2>
+        <div class="meta">2026-07-02 · 盘前</div>
+        <h2>2026-07-02 盘前投研日报</h2>
+        <p class="generated-line">生成时间：2026-07-02 03:04:11 北京时间</p>
+
         <p class="ai-status compact">AI增强：deepseek / deepseek-chat 调用成功</p>
-        <p>盘后复盘：A股结构分化，上证+0.44%但科创50-2.48%、创业板-1.89%，资金从科技成长向金融、消费、医药切换。港股恒生科技+1.90%但平台龙头尾盘回落。美股纳斯达克100-1.04%，芯片股全线大跌。宏观面新美联储主席讲话偏鸽，美债收益率+2.13%至4.47%，黄金+1.39%，原油-1.65%。核心矛盾：AI硬件估值压力与国产替代预期博弈，港股科技修复持续性待验证。投资上优先关注AI算力订单验证、能源电力电网储能、港股科技资金确认。</p>
-        <a class="primary-link report-link" href="reports/2026-07-02-close.html">查看完整报告</a>
+        <p>盘前重点是把昨夜全球风险偏好、政策线索和今日A/H股可能交易的主线先排出优先级。当前市场总判断为：结构分化。资金没有形成单一方向，今天更重要的是识别哪些板块由真实催化驱动，哪些只是情绪轮动。本次共纳入63条新闻线索和公告线索，最高优先级事件是“宏观：最新调查：更多央行计划减持美元，增持黄金与储备货币多元化”。投资上优先关注“AI算力与半导体链条：从题材热度切到订单验证”，但所有股票清单都应先作为研究和复核池，只有在订单、资金流、价格反应或政策细则继续验证后才适合提高仓位。</p>
+        <a class="primary-link report-link" href="reports/2026-07-02-morning.html">查看完整报告</a>
       </article>
 
 
       <article class="panel">
         <h2>市场情绪</h2>
-        <p class="signal-view">全球资本今天交易的是美联储政策预期边际转鸽与AI硬件估值回调的拉锯。美债收益率上行压制成长股，但黄金和比特币上涨显示风险偏好未全面恶化。A股资金从高估值科技向低估值金融、医药、消费切换，港股科技反弹但成交未放量。</p>
+        <p class="signal-view">结构分化。资金没有形成单一方向，今天更重要的是识别哪些板块由真实催化驱动，哪些只是情绪轮动。</p>
         <ul class="signal-list"><li><span>上证指数</span><strong>+0.44%</strong></li>
 <li><span>深成指数</span><strong>-0.53%</strong></li>
 <li><span>沪深300</span><strong>-0.41%</strong></li>
@@ -182,98 +188,108 @@
     </section>
 
     <section id="reportGrid" class="report-grid">
-      <article class="report-card" data-type="close" data-search="2026-07-02 收盘复盘与明日展望 盘后复盘：a股结构分化，上证+0.44%但科创50-2.48%、创业板-1.89%，资金从科技成长向金融、消费、医药切换。港股恒生科技+1.90%但平台龙头尾盘回落。美股纳斯达克100-1.04%，芯片股全线大跌。宏观面新美联储主席讲话偏鸽，美债收益率+2.13%至4.47%，黄金+1.39%，原油-1.65%。核心矛盾：ai硬件估值压力与国产替代预期博弈，港股科技修复持续性待验证。投资上优先关注ai算力订单验证、能源电力电网储能、港股科技资金确认。 全球资本今天交易的是美联储政策预期边际转鸽与ai硬件估值回调的拉锯。美债收益率上行压制成长股，但黄金和比特币上涨显示风险偏好未全面恶化。a股资金从高估值科技向低估值金融、医药、消费切换，港股科技反弹但成交未放量。 全球风险偏好与a/h股交易环境更新 公告：泰禾股份股东拟减持不超过1% 宏观：新美联储主席讲话偏鸽，美债收益率上行 港股：中科闻歌具备港股通条件，平台龙头集体下跌 半导体：美股芯片股全线大跌，a股半导体etf吸金 a股：etf放量普涨，行业高低切，京东方a创18年新高 宏观：美股、黄金、白银集体拉升，美国小非农低于预期 半导体：美股芯片股全线大跌，存储股领跌 公告：铁流股份控股股东拟减持不超过2% ai：大摩报告gpu与xpu之争，三大运营商推token套餐 ai算力与半导体链条：从题材热度切到订单验证 能源电力：优先电网、储能和盈利质量较稳的环节 港股科技：用美元、南向和成交额确认修复持续性 宏观对冲：保留黄金、红利和能源作为组合稳定器">
+      <article class="report-card" data-type="morning" data-search="2026-07-02 盘前投研日报 盘前重点是把昨夜全球风险偏好、政策线索和今日a/h股可能交易的主线先排出优先级。当前市场总判断为：结构分化。资金没有形成单一方向，今天更重要的是识别哪些板块由真实催化驱动，哪些只是情绪轮动。本次共纳入63条新闻线索和公告线索，最高优先级事件是“宏观：最新调查：更多央行计划减持美元，增持黄金与储备货币多元化”。投资上优先关注“ai算力与半导体链条：从题材热度切到订单验证”，但所有股票清单都应先作为研究和复核池，只有在订单、资金流、价格反应或政策细则继续验证后才适合提高仓位。 结构分化。资金没有形成单一方向，今天更重要的是识别哪些板块由真实催化驱动，哪些只是情绪轮动。 宏观：最新调查：更多央行计划减持美元，增持黄金与储备货币多元化 公告：四川科伦药业股份回购进展：截至6月末已回购35万股 占总股本0.02% 宏观：美联储主席沃什：不会给出前瞻性指引 通胀风险已经下降 宏观：布伦特原油期货日内大跌超3% 半导体：港股18c首添sic玩家：基本半导体三递表终闯关，idm模式迎业绩大考 ai：机构：ai算力基建资本开支向pcb倾斜，驱动下游“技术迭代”而非“内卷竞争” a股：a股千亿etf归零 ai：运营商年报悉数出炉 中国移动称token市场正快速打开 资本开支下降倒逼产业链转型 港股：阿里巴巴、腾讯、百度、美团，集体下跌 宏观：技术面风险不断积聚，金价或下探至3800美元？分析师这么解释…… ai算力与半导体链条：从题材热度切到订单验证 能源电力：优先电网、储能和盈利质量较稳的环节 港股科技：用美元、南向和成交额确认修复持续性 宏观对冲：保留黄金、红利和能源作为组合稳定器">
+        <div class="meta">2026-07-02 · 盘前</div>
+        <h3>2026-07-02 盘前投研日报</h3>
+        <p class="generated-line">生成时间：2026-07-02 03:04:11 北京时间</p>
+
+        <p class="ai-status compact">AI增强：deepseek / deepseek-chat 调用成功</p>
+        <p>盘前重点是把昨夜全球风险偏好、政策线索和今日A/H股可能交易的主线先排出优先级。当前市场总判断为：结构分化。资金没有形成单一方向，今天更重要的是识别哪些板块由真实催化驱动，哪些只是情绪轮动。本次共纳入63条新闻线索和公告线索，最高优先级事件是“宏观：最新调查：更多央行计划减持美元，增持黄金与储备货币多元化”。投资上优先关注“AI算力与半导体链条：从题材热度切到订单验证”，但所有股票清单都应先作为研究和复核池，只有在订单、资金流、价格反应或政策细则继续验证后才适合提高仓位。</p>
+        <ul><li><strong>可分批关注</strong> AI算力与半导体链条：从题材热度切到订单验证</li><li><strong>等待确认</strong> 能源电力：优先电网、储能和盈利质量较稳的环节</li><li><strong>持有观察</strong> 港股科技：用美元、南向和成交额确认修复持续性</li></ul>
+        <a class="report-link" href="reports/2026-07-02-morning.html">打开报告</a>
+      </article>
+<article class="report-card" data-type="close" data-search="2026-07-02 收盘复盘与明日展望 盘后复盘：a股结构分化，上证+0.44%但科创50-2.48%、创业板-1.89%，资金从科技成长向金融、消费、医药切换。港股恒生科技+1.90%但平台龙头尾盘回落。美股纳斯达克100-1.04%，芯片股全线大跌。宏观面新美联储主席讲话偏鸽，美债收益率+2.13%至4.47%，黄金+1.39%，原油-1.65%。核心矛盾：ai硬件估值压力与国产替代预期博弈，港股科技修复持续性待验证。投资上优先关注ai算力订单验证、能源电力电网储能、港股科技资金确认。 全球资本今天交易的是美联储政策预期边际转鸽与ai硬件估值回调的拉锯。美债收益率上行压制成长股，但黄金和比特币上涨显示风险偏好未全面恶化。a股资金从高估值科技向低估值金融、医药、消费切换，港股科技反弹但成交未放量。 全球风险偏好与a/h股交易环境更新 公告：泰禾股份股东拟减持不超过1% 宏观：新美联储主席讲话偏鸽，美债收益率上行 港股：中科闻歌具备港股通条件，平台龙头集体下跌 半导体：美股芯片股全线大跌，a股半导体etf吸金 a股：etf放量普涨，行业高低切，京东方a创18年新高 宏观：美股、黄金、白银集体拉升，美国小非农低于预期 半导体：美股芯片股全线大跌，存储股领跌 公告：铁流股份控股股东拟减持不超过2% ai：大摩报告gpu与xpu之争，三大运营商推token套餐 ai算力与半导体链条：从题材热度切到订单验证 能源电力：优先电网、储能和盈利质量较稳的环节 港股科技：用美元、南向和成交额确认修复持续性 宏观对冲：保留黄金、红利和能源作为组合稳定器">
         <div class="meta">2026-07-02 · 收盘</div>
         <h3>2026-07-02 收盘复盘与明日展望</h3>
         <p class="generated-line">生成时间：2026-07-02 01:25:40 北京时间</p>
+
         <p class="ai-status compact">AI增强：deepseek / deepseek-chat 调用成功</p>
         <p>盘后复盘：A股结构分化，上证+0.44%但科创50-2.48%、创业板-1.89%，资金从科技成长向金融、消费、医药切换。港股恒生科技+1.90%但平台龙头尾盘回落。美股纳斯达克100-1.04%，芯片股全线大跌。宏观面新美联储主席讲话偏鸽，美债收益率+2.13%至4.47%，黄金+1.39%，原油-1.65%。核心矛盾：AI硬件估值压力与国产替代预期博弈，港股科技修复持续性待验证。投资上优先关注AI算力订单验证、能源电力电网储能、港股科技资金确认。</p>
         <ul><li><strong>可分批关注</strong> AI算力与半导体链条：从题材热度切到订单验证</li><li><strong>等待确认</strong> 能源电力：优先电网、储能和盈利质量较稳的环节</li><li><strong>持有观察</strong> 港股科技：用美元、南向和成交额确认修复持续性</li></ul>
         <a class="report-link" href="reports/2026-07-02-close.html">打开报告</a>
       </article>
-<article class="report-card" data-type="morning" data-search="2026-07-02 盘前投研日报 盘前重点是把昨夜全球风险偏好、政策线索和今日a/h股可能交易的主线先排出优先级。当前市场总判断为：结构分化。资金没有形成单一方向，今天更重要的是识别哪些板块由真实催化驱动，哪些只是情绪轮动。本次共纳入65条新闻线索和公告线索，最高优先级事件是“宏观：最新调查：更多央行计划减持美元，增持黄金与储备货币多元化”。投资上优先关注“ai算力与半导体链条：从题材热度切到订单验证”，但所有股票清单都应先作为研究和复核池，只有在订单、资金流、价格反应或政策细则继续验证后才适合提高仓位。 结构分化。资金没有形成单一方向，今天更重要的是识别哪些板块由真实催化驱动，哪些只是情绪轮动。 宏观：最新调查：更多央行计划减持美元，增持黄金与储备货币多元化 公告：四川科伦药业股份回购进展：截至6月末已回购35万股 占总股本0.02% 宏观：美国3月cpi或“爆表”！暂时停火压不住通胀，能源冲击全面扩散？ 半导体：港股18c首添sic玩家：基本半导体三递表终闯关，idm模式迎业绩大考 ai：bytedance employee quits after making 30 million yuan from stock trading a股：a股千亿etf归零 ai：“大空头”再发声：继续做空ai、半导体 宏观：比特币支付：2026 年哪些商家接受比特币及其他加密货币 ai算力与半导体链条：从题材热度切到订单验证 能源电力：优先电网、储能和盈利质量较稳的环节 港股科技：用美元、南向和成交额确认修复持续性 宏观对冲：保留黄金、红利和能源作为组合稳定器">
-        <div class="meta">2026-07-02 · 盘前</div>
-        <h3>2026-07-02 盘前投研日报</h3>
-        <p class="generated-line">生成时间：2026-07-02 02:29:05 北京时间</p>
-        <p class="ai-status compact">AI增强：deepseek / deepseek-chat 调用成功</p>
-        <p>盘前重点是把昨夜全球风险偏好、政策线索和今日A/H股可能交易的主线先排出优先级。当前市场总判断为：结构分化。资金没有形成单一方向，今天更重要的是识别哪些板块由真实催化驱动，哪些只是情绪轮动。本次共纳入65条新闻线索和公告线索，最高优先级事件是“宏观：最新调查：更多央行计划减持美元，增持黄金与储备货币多元化”。投资上优先关注“AI算力与半导体链条：从题材热度切到订单验证”，但所有股票清单都应先作为研究和复核池，只有在订单、资金流、价格反应或政策细则继续验证后才适合提高仓位。</p>
-        <ul><li><strong>可分批关注</strong> AI算力与半导体链条：从题材热度切到订单验证</li><li><strong>等待确认</strong> 能源电力：优先电网、储能和盈利质量较稳的环节</li><li><strong>持有观察</strong> 港股科技：用美元、南向和成交额确认修复持续性</li></ul>
-        <a class="report-link" href="reports/2026-07-02-morning.html">打开报告</a>
-      </article>
-<article class="report-card" data-type="close" data-search="2026-07-01 收盘复盘与明日展望 收盘后重点是复盘全天交易逻辑，并为下一交易日准备观察清单。 当前市场判断为：中性偏积极。市场结构仍有机会，但需要区分强势主线和补涨噪音。 本次共纳入 31 条新闻线索用于事件筛选，最高优先级事件是“全球风险偏好与 a/h 股交易环境更新”。 投资上优先关注“跟踪 ai 算力与半导体链条的订单验证”，同时严格跟踪失效条件和来源可信度。 中性偏积极。市场结构仍有机会，但需要区分强势主线和补涨噪音。 全球风险偏好与 a/h 股交易环境更新 年中大类资产盘点：原油振幅超70%，高波动与分化是主旋律，美联储政策预期成下半年胜负手 - 新浪财经 ai算力超级周期，双创资产迎来黄金配置机遇 - 新浪网 ai五层蛋糕：谁在底层搭算力，谁在顶层做应用？“etf华宝”ai投资地图来啦 - 新浪财经 国际市场黄金原油价格走向何方？ - 湖南红网 等等再抄底？道明证券：黄金今年或跌破3900美元，明年再冲击5300美元 - 华尔街见闻 港股上半年收官：三大指数均跌超10% ai硬件错配引发“流动性双轨虹吸” - 财联社 中信证券股份有限公司关于上海维安电子股份有限公司首次公开发行股票并在主板上市之上市 - static.sse.com.cn a股和港股ipo全球占三成份额，新质生产力政策如何加速资本市场资源配置效率？ - 新浪新闻_手机新浪网 跟踪 ai 算力与半导体链条的订单验证 新能源从总量交易转向结构筛选 港股科技关注南向资金与美元环境共振">
-        <div class="meta">2026-07-01 · 收盘</div>
-        <h3>2026-07-01 收盘复盘与明日展望</h3>
-        <p class="generated-line">生成时间：2026-07-01 01:16:15 北京时间</p>
-        <p class="ai-status compact">AI增强：旧报告未记录调用状态</p>
-        <p>收盘后重点是复盘全天交易逻辑，并为下一交易日准备观察清单。 当前市场判断为：中性偏积极。市场结构仍有机会，但需要区分强势主线和补涨噪音。 本次共纳入 31 条新闻线索用于事件筛选，最高优先级事件是“全球风险偏好与 A/H 股交易环境更新”。 投资上优先关注“跟踪 AI 算力与半导体链条的订单验证”，同时严格跟踪失效条件和来源可信度。</p>
-        <ul><li><strong>可分批关注</strong> 跟踪 AI 算力与半导体链条的订单验证</li><li><strong>等待确认</strong> 新能源从总量交易转向结构筛选</li><li><strong>持有观察</strong> 港股科技关注南向资金与美元环境共振</li></ul>
-        <a class="report-link" href="reports/2026-07-01-close.html">打开报告</a>
-      </article>
-<article class="report-card" data-type="noon" data-search="2026-07-01 午盘快报 午间核心判断：结构分化。资金未形成单一方向，今日关键在于识别哪些板块由真实催化驱动，哪些仅为情绪轮动。宏观层面，央行减持美元增持黄金的趋势强化，人民币双向波动成主基调，利好黄金、红利及出口链。a股方面，定增规则收紧、科创板万亿市值诞生、etf资金向通信半导体集中，显示政策与资金向科技成长倾斜，但高位股分化明显。港股受三重约束与解禁潮影响，机构建议关注盈利拐点。ai算力与半导体链条从题材热度转向订单验证，需关注云厂商资本开支与光模块订单。能源电力优先关注电网、储能环节。整体上，建议保留黄金、红利作为组合稳定器，对ai算力、港股科技保持观察，等待订单、资金流或政策细则进一步确认。 结构分化。资金没有形成单一方向，今天更重要的是识别哪些板块由真实催化驱动，哪些只是情绪轮动。 全球风险偏好与a/h股交易环境更新 宏观：最新调查：更多央行计划减持美元，增持黄金与储备货币多元化 a股：a股定增迎变局：多家公司紧急改道，锁价定增套利空间收窄 半导体：上半年股票etf规模大洗牌：通信、半导体赛道狂吸金，千亿级宽基数量归零 公告：孚日股份：2026年半年度业绩预告 宏观：金价创13年来最大季度跌幅，牛市终结还是“黄金坑”？ a股：兆易创新a股成交额超400亿元 港股：港股三重约束与解禁潮来袭 机构建议关注盈利拐点三大方向 ai：康宁（glw）：三层价值拆解，100倍pe到底在为什么买单？ 宏观：美元/日元(usdjpy)汇率, 走势图, 实时行情 ai算力与半导体链条：从题材热度切到订单验证 能源电力：优先电网、储能和盈利质量较稳的环节 港股科技：用美元、南向和成交额确认修复持续性 宏观对冲：保留黄金、红利和能源作为组合稳定器">
-        <div class="meta">2026-07-01 · 午间</div>
-        <h3>2026-07-01 午盘快报</h3>
-        <p class="generated-line">生成时间：2026-07-01 21:40:12 北京时间</p>
-        <p class="ai-status compact">AI增强：deepseek / deepseek-chat 调用成功</p>
-        <p>午间核心判断：结构分化。资金未形成单一方向，今日关键在于识别哪些板块由真实催化驱动，哪些仅为情绪轮动。宏观层面，央行减持美元增持黄金的趋势强化，人民币双向波动成主基调，利好黄金、红利及出口链。A股方面，定增规则收紧、科创板万亿市值诞生、ETF资金向通信半导体集中，显示政策与资金向科技成长倾斜，但高位股分化明显。港股受三重约束与解禁潮影响，机构建议关注盈利拐点。AI算力与半导体链条从题材热度转向订单验证，需关注云厂商资本开支与光模块订单。能源电力优先关注电网、储能环节。整体上，建议保留黄金、红利作为组合稳定器，对AI算力、港股科技保持观察，等待订单、资金流或政策细则进一步确认。</p>
-        <ul><li><strong>可分批关注</strong> AI算力与半导体链条：从题材热度切到订单验证</li><li><strong>等待确认</strong> 能源电力：优先电网、储能和盈利质量较稳的环节</li><li><strong>持有观察</strong> 港股科技：用美元、南向和成交额确认修复持续性</li></ul>
-        <a class="report-link" href="reports/2026-07-01-noon.html">打开报告</a>
-      </article>
 <article class="report-card" data-type="morning" data-search="2026-07-01 盘前投研日报 盘前重点是把昨夜全球风险偏好、政策线索和今日a/h股可能交易的主线先排出优先级。当前市场总判断为：结构分化。资金没有形成单一方向，今天更重要的是识别哪些板块由真实催化驱动，哪些只是情绪轮动。本次共纳入63条新闻线索和公告线索，最高优先级事件是“全球风险偏好与a/h股交易环境更新”。投资上优先关注“ai算力与半导体链条：从题材热度切到订单验证”，但所有股票清单都应先作为研究和复核池，只有在订单、资金流、价格反应或政策细则继续验证后才适合提高仓位。 结构分化。资金没有形成单一方向，今天更重要的是识别哪些板块由真实催化驱动，哪些只是情绪轮动。 全球风险偏好与a/h股交易环境更新 宏观：最新调查：更多央行计划减持美元，增持黄金与储备货币多元化 公告：安乃达：宁波思辉拟减持不超3%股份 a股：a股定增迎变局：多家公司紧急改道，锁价定增套利空间收窄 半导体：上半年股票etf规模大洗牌：通信、半导体赛道狂吸金，千亿级宽基数量归零 港股：港股三重约束与解禁潮来袭 机构建议关注盈利拐点三大方向 宏观：金价创13年来最大季度跌幅，牛市终结还是“黄金坑”？ a股：兆易创新a股成交额超400亿元 ai：运营商年报悉数出炉 中国移动称token市场正快速打开 资本开支下降倒逼产业链转型 ai算力与半导体链条：从题材热度切到订单验证 能源电力：优先电网、储能和盈利质量较稳的环节 港股科技：用美元、南向和成交额确认修复持续性 宏观对冲：保留黄金、红利和能源作为组合稳定器">
         <div class="meta">2026-07-01 · 盘前</div>
         <h3>2026-07-01 盘前投研日报</h3>
         <p class="generated-line">生成时间：2026-07-01 19:40:44 北京时间</p>
+
         <p class="ai-status compact">AI增强：deepseek / deepseek-chat 调用成功</p>
         <p>盘前重点是把昨夜全球风险偏好、政策线索和今日A/H股可能交易的主线先排出优先级。当前市场总判断为：结构分化。资金没有形成单一方向，今天更重要的是识别哪些板块由真实催化驱动，哪些只是情绪轮动。本次共纳入63条新闻线索和公告线索，最高优先级事件是“全球风险偏好与A/H股交易环境更新”。投资上优先关注“AI算力与半导体链条：从题材热度切到订单验证”，但所有股票清单都应先作为研究和复核池，只有在订单、资金流、价格反应或政策细则继续验证后才适合提高仓位。</p>
         <ul><li><strong>可分批关注</strong> AI算力与半导体链条：从题材热度切到订单验证</li><li><strong>等待确认</strong> 能源电力：优先电网、储能和盈利质量较稳的环节</li><li><strong>持有观察</strong> 港股科技：用美元、南向和成交额确认修复持续性</li></ul>
         <a class="report-link" href="reports/2026-07-01-morning.html">打开报告</a>
       </article>
-<article class="report-card" data-type="noon" data-search="2026-06-30 午盘快报 午间重点是识别上午市场主线是否延续，以及下午是否需要调整策略。 当前市场判断为：中性偏谨慎。风险偏好有降温迹象，等待 a/h 股主线重新确认更稳妥。 本次共纳入 32 条新闻线索用于事件筛选，最高优先级事件是“全球风险偏好与 a/h 股交易环境更新”。 投资上优先关注“跟踪 ai 算力与半导体链条的订单验证”，同时严格跟踪失效条件和来源可信度。 中性偏谨慎。风险偏好有降温迹象，等待 a/h 股主线重新确认更稳妥。 全球风险偏好与 a/h 股交易环境更新 a股和港股ipo全球占三成份额，新质生产力政策如何加速资本市场资源配置效率？ - 新浪新闻_手机新浪网 a股定价逻辑：基本面、一致预期、资金结构、市场情绪与政策制度五大因子协同作用 - 虎嗅 港股上半年收官：三大指数均跌超10% ai硬件错配引发“流动性双轨虹吸” - 财联社 workbuddy成为国内dau第一办公智能体！腾讯控股午后拉升！港股ai含量最高的恒生互联网受关注 - 新浪财经 ai五层蛋糕：谁在底层搭算力，谁在顶层做应用？“etf华宝”ai投资地图来啦 - 新浪财经 ai算力超级周期，双创资产迎来黄金配置机遇 - 新浪网 ai算力的隐形瓶颈：马斯克也开始出手「光模块」 - 富途牛牛 ai景气周期确立，国产ai龙头价值重塑 - 证券市场周刊 跟踪 ai 算力与半导体链条的订单验证 新能源从总量交易转向结构筛选 港股科技关注南向资金与美元环境共振">
-        <div class="meta">2026-06-30 · 午间</div>
-        <h3>2026-06-30 午盘快报</h3>
-        <p class="generated-line">生成时间：2026-06-30 12:26:10 北京时间</p>
+<article class="report-card" data-type="noon" data-search="2026-07-01 午盘快报 午间核心判断：结构分化。资金未形成单一方向，今日关键在于识别哪些板块由真实催化驱动，哪些仅为情绪轮动。宏观层面，央行减持美元增持黄金的趋势强化，人民币双向波动成主基调，利好黄金、红利及出口链。a股方面，定增规则收紧、科创板万亿市值诞生、etf资金向通信半导体集中，显示政策与资金向科技成长倾斜，但高位股分化明显。港股受三重约束与解禁潮影响，机构建议关注盈利拐点。ai算力与半导体链条从题材热度转向订单验证，需关注云厂商资本开支与光模块订单。能源电力优先关注电网、储能环节。整体上，建议保留黄金、红利作为组合稳定器，对ai算力、港股科技保持观察，等待订单、资金流或政策细则进一步确认。 结构分化。资金没有形成单一方向，今天更重要的是识别哪些板块由真实催化驱动，哪些只是情绪轮动。 全球风险偏好与a/h股交易环境更新 宏观：最新调查：更多央行计划减持美元，增持黄金与储备货币多元化 a股：a股定增迎变局：多家公司紧急改道，锁价定增套利空间收窄 半导体：上半年股票etf规模大洗牌：通信、半导体赛道狂吸金，千亿级宽基数量归零 公告：孚日股份：2026年半年度业绩预告 宏观：金价创13年来最大季度跌幅，牛市终结还是“黄金坑”？ a股：兆易创新a股成交额超400亿元 港股：港股三重约束与解禁潮来袭 机构建议关注盈利拐点三大方向 ai：康宁（glw）：三层价值拆解，100倍pe到底在为什么买单？ 宏观：美元/日元(usdjpy)汇率, 走势图, 实时行情 ai算力与半导体链条：从题材热度切到订单验证 能源电力：优先电网、储能和盈利质量较稳的环节 港股科技：用美元、南向和成交额确认修复持续性 宏观对冲：保留黄金、红利和能源作为组合稳定器">
+        <div class="meta">2026-07-01 · 午间</div>
+        <h3>2026-07-01 午盘快报</h3>
+        <p class="generated-line">生成时间：2026-07-01 21:40:12 北京时间</p>
+
+        <p class="ai-status compact">AI增强：deepseek / deepseek-chat 调用成功</p>
+        <p>午间核心判断：结构分化。资金未形成单一方向，今日关键在于识别哪些板块由真实催化驱动，哪些仅为情绪轮动。宏观层面，央行减持美元增持黄金的趋势强化，人民币双向波动成主基调，利好黄金、红利及出口链。A股方面，定增规则收紧、科创板万亿市值诞生、ETF资金向通信半导体集中，显示政策与资金向科技成长倾斜，但高位股分化明显。港股受三重约束与解禁潮影响，机构建议关注盈利拐点。AI算力与半导体链条从题材热度转向订单验证，需关注云厂商资本开支与光模块订单。能源电力优先关注电网、储能环节。整体上，建议保留黄金、红利作为组合稳定器，对AI算力、港股科技保持观察，等待订单、资金流或政策细则进一步确认。</p>
+        <ul><li><strong>可分批关注</strong> AI算力与半导体链条：从题材热度切到订单验证</li><li><strong>等待确认</strong> 能源电力：优先电网、储能和盈利质量较稳的环节</li><li><strong>持有观察</strong> 港股科技：用美元、南向和成交额确认修复持续性</li></ul>
+        <a class="report-link" href="reports/2026-07-01-noon.html">打开报告</a>
+      </article>
+<article class="report-card" data-type="close" data-search="2026-07-01 收盘复盘与明日展望 收盘后重点是复盘全天交易逻辑，并为下一交易日准备观察清单。 当前市场判断为：中性偏积极。市场结构仍有机会，但需要区分强势主线和补涨噪音。 本次共纳入 31 条新闻线索用于事件筛选，最高优先级事件是“全球风险偏好与 a/h 股交易环境更新”。 投资上优先关注“跟踪 ai 算力与半导体链条的订单验证”，同时严格跟踪失效条件和来源可信度。 中性偏积极。市场结构仍有机会，但需要区分强势主线和补涨噪音。 全球风险偏好与 a/h 股交易环境更新 年中大类资产盘点：原油振幅超70%，高波动与分化是主旋律，美联储政策预期成下半年胜负手 - 新浪财经 ai算力超级周期，双创资产迎来黄金配置机遇 - 新浪网 ai五层蛋糕：谁在底层搭算力，谁在顶层做应用？“etf华宝”ai投资地图来啦 - 新浪财经 国际市场黄金原油价格走向何方？ - 湖南红网 等等再抄底？道明证券：黄金今年或跌破3900美元，明年再冲击5300美元 - 华尔街见闻 港股上半年收官：三大指数均跌超10% ai硬件错配引发“流动性双轨虹吸” - 财联社 中信证券股份有限公司关于上海维安电子股份有限公司首次公开发行股票并在主板上市之上市 - static.sse.com.cn a股和港股ipo全球占三成份额，新质生产力政策如何加速资本市场资源配置效率？ - 新浪新闻_手机新浪网 跟踪 ai 算力与半导体链条的订单验证 新能源从总量交易转向结构筛选 港股科技关注南向资金与美元环境共振">
+        <div class="meta">2026-07-01 · 收盘</div>
+        <h3>2026-07-01 收盘复盘与明日展望</h3>
+        <p class="generated-line">生成时间：2026-07-01 01:16:15 北京时间</p>
+
         <p class="ai-status compact">AI增强：旧报告未记录调用状态</p>
-        <p>午间重点是识别上午市场主线是否延续，以及下午是否需要调整策略。 当前市场判断为：中性偏谨慎。风险偏好有降温迹象，等待 A/H 股主线重新确认更稳妥。 本次共纳入 32 条新闻线索用于事件筛选，最高优先级事件是“全球风险偏好与 A/H 股交易环境更新”。 投资上优先关注“跟踪 AI 算力与半导体链条的订单验证”，同时严格跟踪失效条件和来源可信度。</p>
+        <p>收盘后重点是复盘全天交易逻辑，并为下一交易日准备观察清单。 当前市场判断为：中性偏积极。市场结构仍有机会，但需要区分强势主线和补涨噪音。 本次共纳入 31 条新闻线索用于事件筛选，最高优先级事件是“全球风险偏好与 A/H 股交易环境更新”。 投资上优先关注“跟踪 AI 算力与半导体链条的订单验证”，同时严格跟踪失效条件和来源可信度。</p>
         <ul><li><strong>可分批关注</strong> 跟踪 AI 算力与半导体链条的订单验证</li><li><strong>等待确认</strong> 新能源从总量交易转向结构筛选</li><li><strong>持有观察</strong> 港股科技关注南向资金与美元环境共振</li></ul>
-        <a class="report-link" href="reports/2026-06-30-noon.html">打开报告</a>
+        <a class="report-link" href="reports/2026-07-01-close.html">打开报告</a>
       </article>
 <article class="report-card" data-type="morning" data-search="2026-06-30 盘前投研日报 盘前重点是判断昨夜外围市场和今日 a/h 股交易环境。 当前市场判断为：中性偏谨慎。风险偏好有降温迹象，等待 a/h 股主线重新确认更稳妥。 本次共纳入 31 条新闻线索用于事件筛选，最高优先级事件是“全球风险偏好与 a/h 股交易环境更新”。 投资上优先关注“跟踪 ai 算力与半导体链条的订单验证”，同时严格跟踪失效条件和来源可信度。 中性偏谨慎。风险偏好有降温迹象，等待 a/h 股主线重新确认更稳妥。 全球风险偏好与 a/h 股交易环境更新 a股和港股ipo全球占三成份额，新质生产力政策如何加速资本市场资源配置效率？ - 新浪新闻_手机新浪网 港股上半年收官：三大指数均跌超10% ai硬件错配引发“流动性双轨虹吸” - 财联社 workbuddy成为国内dau第一办公智能体！腾讯控股午后拉升！港股ai含量最高的恒生互联网受关注 - 新浪财经 ai五层蛋糕：谁在底层搭算力，谁在顶层做应用？“etf华宝”ai投资地图来啦 - 新浪财经 ai算力超级周期，双创资产迎来黄金配置机遇 - 新浪网 ai应用落地加速，token调用持续高增，科创创业ai双轮驱动布局国产替代与出海龙头 - 腾讯新闻 ai热情驱动，美股指走高，太阳能板块普涨，日元创40年新低，金银油齐涨 - 华尔街见闻 年中大类资产盘点：原油振幅超70%，高波动与分化是主旋律，美联储政策预期成下半年胜负手 - 新浪财经 跟踪 ai 算力与半导体链条的订单验证 新能源从总量交易转向结构筛选 港股科技关注南向资金与美元环境共振">
         <div class="meta">2026-06-30 · 盘前</div>
         <h3>2026-06-30 盘前投研日报</h3>
         <p class="generated-line">生成时间：2026-06-30 15:33:03 北京时间</p>
+
         <p class="ai-status compact">AI增强：旧报告未记录调用状态</p>
         <p>盘前重点是判断昨夜外围市场和今日 A/H 股交易环境。 当前市场判断为：中性偏谨慎。风险偏好有降温迹象，等待 A/H 股主线重新确认更稳妥。 本次共纳入 31 条新闻线索用于事件筛选，最高优先级事件是“全球风险偏好与 A/H 股交易环境更新”。 投资上优先关注“跟踪 AI 算力与半导体链条的订单验证”，同时严格跟踪失效条件和来源可信度。</p>
         <ul><li><strong>可分批关注</strong> 跟踪 AI 算力与半导体链条的订单验证</li><li><strong>等待确认</strong> 新能源从总量交易转向结构筛选</li><li><strong>持有观察</strong> 港股科技关注南向资金与美元环境共振</li></ul>
         <a class="report-link" href="reports/2026-06-30-morning.html">打开报告</a>
       </article>
-<article class="report-card" data-type="close" data-search="2026-06-29 收盘复盘与明日展望 这是 mvp 骨架生成的示例报告。正式版本会接入行情、公告、新闻、宏观数据和 ai 分析链路，输出事实、预期、判断分离的个人投研报告。 中性偏积极。a 股和港股以结构性机会为主，美股与全球流动性作为风险偏好锚。 ai 算力链仍是重点观察主线 新能源进入分化阶段 分批关注 ai 算力链龙头与 etf 等待新能源主链出清确认，优先观察储能和电网">
-        <div class="meta">2026-06-29 · 收盘</div>
-        <h3>2026-06-29 收盘复盘与明日展望</h3>
-        <p class="generated-line">生成时间：2026-06-29 14:42:40 北京时间</p>
+<article class="report-card" data-type="noon" data-search="2026-06-30 午盘快报 午间重点是识别上午市场主线是否延续，以及下午是否需要调整策略。 当前市场判断为：中性偏谨慎。风险偏好有降温迹象，等待 a/h 股主线重新确认更稳妥。 本次共纳入 32 条新闻线索用于事件筛选，最高优先级事件是“全球风险偏好与 a/h 股交易环境更新”。 投资上优先关注“跟踪 ai 算力与半导体链条的订单验证”，同时严格跟踪失效条件和来源可信度。 中性偏谨慎。风险偏好有降温迹象，等待 a/h 股主线重新确认更稳妥。 全球风险偏好与 a/h 股交易环境更新 a股和港股ipo全球占三成份额，新质生产力政策如何加速资本市场资源配置效率？ - 新浪新闻_手机新浪网 a股定价逻辑：基本面、一致预期、资金结构、市场情绪与政策制度五大因子协同作用 - 虎嗅 港股上半年收官：三大指数均跌超10% ai硬件错配引发“流动性双轨虹吸” - 财联社 workbuddy成为国内dau第一办公智能体！腾讯控股午后拉升！港股ai含量最高的恒生互联网受关注 - 新浪财经 ai五层蛋糕：谁在底层搭算力，谁在顶层做应用？“etf华宝”ai投资地图来啦 - 新浪财经 ai算力超级周期，双创资产迎来黄金配置机遇 - 新浪网 ai算力的隐形瓶颈：马斯克也开始出手「光模块」 - 富途牛牛 ai景气周期确立，国产ai龙头价值重塑 - 证券市场周刊 跟踪 ai 算力与半导体链条的订单验证 新能源从总量交易转向结构筛选 港股科技关注南向资金与美元环境共振">
+        <div class="meta">2026-06-30 · 午间</div>
+        <h3>2026-06-30 午盘快报</h3>
+        <p class="generated-line">生成时间：2026-06-30 12:26:10 北京时间</p>
+
         <p class="ai-status compact">AI增强：旧报告未记录调用状态</p>
-        <p>这是 MVP 骨架生成的示例报告。正式版本会接入行情、公告、新闻、宏观数据和 AI 分析链路，输出事实、预期、判断分离的个人投研报告。</p>
-        <ul><li><strong>可分批关注</strong> 分批关注 AI 算力链龙头与 ETF</li><li><strong>等待确认</strong> 等待新能源主链出清确认，优先观察储能和电网</li></ul>
-        <a class="report-link" href="reports/2026-06-29-close.html">打开报告</a>
-      </article>
-<article class="report-card" data-type="noon" data-search="2026-06-29 午盘快报 这是 mvp 骨架生成的示例报告。正式版本会接入行情、公告、新闻、宏观数据和 ai 分析链路，输出事实、预期、判断分离的个人投研报告。 中性偏积极。a 股和港股以结构性机会为主，美股与全球流动性作为风险偏好锚。 ai 算力链仍是重点观察主线 新能源进入分化阶段 分批关注 ai 算力链龙头与 etf 等待新能源主链出清确认，优先观察储能和电网">
-        <div class="meta">2026-06-29 · 午间</div>
-        <h3>2026-06-29 午盘快报</h3>
-        <p class="generated-line">生成时间：2026-06-29 14:42:30 北京时间</p>
-        <p class="ai-status compact">AI增强：旧报告未记录调用状态</p>
-        <p>这是 MVP 骨架生成的示例报告。正式版本会接入行情、公告、新闻、宏观数据和 AI 分析链路，输出事实、预期、判断分离的个人投研报告。</p>
-        <ul><li><strong>可分批关注</strong> 分批关注 AI 算力链龙头与 ETF</li><li><strong>等待确认</strong> 等待新能源主链出清确认，优先观察储能和电网</li></ul>
-        <a class="report-link" href="reports/2026-06-29-noon.html">打开报告</a>
+        <p>午间重点是识别上午市场主线是否延续，以及下午是否需要调整策略。 当前市场判断为：中性偏谨慎。风险偏好有降温迹象，等待 A/H 股主线重新确认更稳妥。 本次共纳入 32 条新闻线索用于事件筛选，最高优先级事件是“全球风险偏好与 A/H 股交易环境更新”。 投资上优先关注“跟踪 AI 算力与半导体链条的订单验证”，同时严格跟踪失效条件和来源可信度。</p>
+        <ul><li><strong>可分批关注</strong> 跟踪 AI 算力与半导体链条的订单验证</li><li><strong>等待确认</strong> 新能源从总量交易转向结构筛选</li><li><strong>持有观察</strong> 港股科技关注南向资金与美元环境共振</li></ul>
+        <a class="report-link" href="reports/2026-06-30-noon.html">打开报告</a>
       </article>
 <article class="report-card" data-type="morning" data-search="2026-06-29 盘前投研日报 盘前重点是判断昨夜外围市场和今日 a/h 股交易环境。 当前市场判断为：中性偏积极。市场结构仍有机会，但需要区分强势主线和补涨噪音。 本次共纳入 32 条新闻线索用于事件筛选，最高优先级事件是“全球风险偏好与 a/h 股交易环境更新”。 投资上优先关注“跟踪 ai 算力与半导体链条的订单验证”，同时严格跟踪失效条件和来源可信度。 中性偏积极。市场结构仍有机会，但需要区分强势主线和补涨噪音。 全球风险偏好与 a/h 股交易环境更新 6月29日华工科技（000988）涨停分析：800g光模块中标、ai算力政策驱动_短线策略 - 证券之星 多氟多一字涨停，半导体级氢氟酸现有产能4万吨！电池etf汇添富(159796)涨近2%，盘中吸金超3700万元！重磅政策接连加码，储能强催化！ - 东方财富 年内涨超123%，华工科技177元涨停创历史新高，ai光模块的狂欢还能持续多久？_证券要闻 - 中金在线 ai五层蛋糕：谁在底层搭算力，谁在顶层做应用？“etf华宝”ai投资地图来啦 - 新浪财经 a股四大指数开盘涨跌互现，市场近3000股下跌 - 第一财经 五次港股回购潮历史昭示：当下52%跌幅是否科技指数反弹前兆？ - 新浪新闻_手机新浪网 绝地反攻！恒生科技暴涨超4%，兆易创新股价再创新高！南向重返净流入 - 新浪财经 港股收盘 | 科技指数涨超3% 科技医药股表现居前 - 财联社 跟踪 ai 算力与半导体链条的订单验证 新能源从总量交易转向结构筛选 港股科技关注南向资金与美元环境共振">
         <div class="meta">2026-06-29 · 盘前</div>
         <h3>2026-06-29 盘前投研日报</h3>
         <p class="generated-line">生成时间：2026-06-29 14:02:27 北京时间</p>
+
         <p class="ai-status compact">AI增强：旧报告未记录调用状态</p>
         <p>盘前重点是判断昨夜外围市场和今日 A/H 股交易环境。 当前市场判断为：中性偏积极。市场结构仍有机会，但需要区分强势主线和补涨噪音。 本次共纳入 32 条新闻线索用于事件筛选，最高优先级事件是“全球风险偏好与 A/H 股交易环境更新”。 投资上优先关注“跟踪 AI 算力与半导体链条的订单验证”，同时严格跟踪失效条件和来源可信度。</p>
         <ul><li><strong>可分批关注</strong> 跟踪 AI 算力与半导体链条的订单验证</li><li><strong>等待确认</strong> 新能源从总量交易转向结构筛选</li><li><strong>持有观察</strong> 港股科技关注南向资金与美元环境共振</li></ul>
         <a class="report-link" href="reports/2026-06-29-morning.html">打开报告</a>
       </article>
+<article class="report-card" data-type="noon" data-search="2026-06-29 午盘快报 这是 mvp 骨架生成的示例报告。正式版本会接入行情、公告、新闻、宏观数据和 ai 分析链路，输出事实、预期、判断分离的个人投研报告。 中性偏积极。a 股和港股以结构性机会为主，美股与全球流动性作为风险偏好锚。 ai 算力链仍是重点观察主线 新能源进入分化阶段 分批关注 ai 算力链龙头与 etf 等待新能源主链出清确认，优先观察储能和电网">
+        <div class="meta">2026-06-29 · 午间</div>
+        <h3>2026-06-29 午盘快报</h3>
+        <p class="generated-line">生成时间：2026-06-29 14:42:30 北京时间</p>
+
+        <p class="ai-status compact">AI增强：旧报告未记录调用状态</p>
+        <p>这是 MVP 骨架生成的示例报告。正式版本会接入行情、公告、新闻、宏观数据和 AI 分析链路，输出事实、预期、判断分离的个人投研报告。</p>
+        <ul><li><strong>可分批关注</strong> 分批关注 AI 算力链龙头与 ETF</li><li><strong>等待确认</strong> 等待新能源主链出清确认，优先观察储能和电网</li></ul>
+        <a class="report-link" href="reports/2026-06-29-noon.html">打开报告</a>
+      </article>
+<article class="report-card" data-type="close" data-search="2026-06-29 收盘复盘与明日展望 这是 mvp 骨架生成的示例报告。正式版本会接入行情、公告、新闻、宏观数据和 ai 分析链路，输出事实、预期、判断分离的个人投研报告。 中性偏积极。a 股和港股以结构性机会为主，美股与全球流动性作为风险偏好锚。 ai 算力链仍是重点观察主线 新能源进入分化阶段 分批关注 ai 算力链龙头与 etf 等待新能源主链出清确认，优先观察储能和电网">
+        <div class="meta">2026-06-29 · 收盘</div>
+        <h3>2026-06-29 收盘复盘与明日展望</h3>
+        <p class="generated-line">生成时间：2026-06-29 14:42:40 北京时间</p>
+
+        <p class="ai-status compact">AI增强：旧报告未记录调用状态</p>
+        <p>这是 MVP 骨架生成的示例报告。正式版本会接入行情、公告、新闻、宏观数据和 AI 分析链路，输出事实、预期、判断分离的个人投研报告。</p>
+        <ul><li><strong>可分批关注</strong> 分批关注 AI 算力链龙头与 ETF</li><li><strong>等待确认</strong> 等待新能源主链出清确认，优先观察储能和电网</li></ul>
+        <a class="report-link" href="reports/2026-06-29-close.html">打开报告</a>
+      </article>
     </section>
-    <script id="reportData" type="application/json">[{&quot;title&quot;: &quot;2026-07-02 收盘复盘与明日展望&quot;, &quot;type&quot;: &quot;close&quot;, &quot;date&quot;: &quot;2026-07-02&quot;, &quot;href&quot;: &quot;reports/2026-07-02-close.html&quot;}, {&quot;title&quot;: &quot;2026-07-02 盘前投研日报&quot;, &quot;type&quot;: &quot;morning&quot;, &quot;date&quot;: &quot;2026-07-02&quot;, &quot;href&quot;: &quot;reports/2026-07-02-morning.html&quot;}, {&quot;title&quot;: &quot;2026-07-01 收盘复盘与明日展望&quot;, &quot;type&quot;: &quot;close&quot;, &quot;date&quot;: &quot;2026-07-01&quot;, &quot;href&quot;: &quot;reports/2026-07-01-close.html&quot;}, {&quot;title&quot;: &quot;2026-07-01 午盘快报&quot;, &quot;type&quot;: &quot;noon&quot;, &quot;date&quot;: &quot;2026-07-01&quot;, &quot;href&quot;: &quot;reports/2026-07-01-noon.html&quot;}, {&quot;title&quot;: &quot;2026-07-01 盘前投研日报&quot;, &quot;type&quot;: &quot;morning&quot;, &quot;date&quot;: &quot;2026-07-01&quot;, &quot;href&quot;: &quot;reports/2026-07-01-morning.html&quot;}, {&quot;title&quot;: &quot;2026-06-30 午盘快报&quot;, &quot;type&quot;: &quot;noon&quot;, &quot;date&quot;: &quot;2026-06-30&quot;, &quot;href&quot;: &quot;reports/2026-06-30-noon.html&quot;}, {&quot;title&quot;: &quot;2026-06-30 盘前投研日报&quot;, &quot;type&quot;: &quot;morning&quot;, &quot;date&quot;: &quot;2026-06-30&quot;, &quot;href&quot;: &quot;reports/2026-06-30-morning.html&quot;}, {&quot;title&quot;: &quot;2026-06-29 收盘复盘与明日展望&quot;, &quot;type&quot;: &quot;close&quot;, &quot;date&quot;: &quot;2026-06-29&quot;, &quot;href&quot;: &quot;reports/2026-06-29-close.html&quot;}, {&quot;title&quot;: &quot;2026-06-29 午盘快报&quot;, &quot;type&quot;: &quot;noon&quot;, &quot;date&quot;: &quot;2026-06-29&quot;, &quot;href&quot;: &quot;reports/2026-06-29-noon.html&quot;}, {&quot;title&quot;: &quot;2026-06-29 盘前投研日报&quot;, &quot;type&quot;: &quot;morning&quot;, &quot;date&quot;: &quot;2026-06-29&quot;, &quot;href&quot;: &quot;reports/2026-06-29-morning.html&quot;}]</script>
+    <script id="reportData" type="application/json">[{&quot;title&quot;: &quot;2026-07-02 盘前投研日报&quot;, &quot;type&quot;: &quot;morning&quot;, &quot;date&quot;: &quot;2026-07-02&quot;, &quot;generated_at&quot;: &quot;2026-07-02T03:04:11.335405+08:00&quot;, &quot;planned_time&quot;: &quot;&quot;, &quot;schedule_status&quot;: &quot;&quot;, &quot;href&quot;: &quot;reports/2026-07-02-morning.html&quot;}, {&quot;title&quot;: &quot;2026-07-02 收盘复盘与明日展望&quot;, &quot;type&quot;: &quot;close&quot;, &quot;date&quot;: &quot;2026-07-02&quot;, &quot;generated_at&quot;: &quot;2026-07-02T01:25:40.846391+08:00&quot;, &quot;planned_time&quot;: &quot;&quot;, &quot;schedule_status&quot;: &quot;&quot;, &quot;href&quot;: &quot;reports/2026-07-02-close.html&quot;}, {&quot;title&quot;: &quot;2026-07-01 盘前投研日报&quot;, &quot;type&quot;: &quot;morning&quot;, &quot;date&quot;: &quot;2026-07-01&quot;, &quot;generated_at&quot;: &quot;2026-07-01T19:40:44.479383+08:00&quot;, &quot;planned_time&quot;: &quot;&quot;, &quot;schedule_status&quot;: &quot;&quot;, &quot;href&quot;: &quot;reports/2026-07-01-morning.html&quot;}, {&quot;title&quot;: &quot;2026-07-01 午盘快报&quot;, &quot;type&quot;: &quot;noon&quot;, &quot;date&quot;: &quot;2026-07-01&quot;, &quot;generated_at&quot;: &quot;2026-07-01T21:40:12.912029+08:00&quot;, &quot;planned_time&quot;: &quot;&quot;, &quot;schedule_status&quot;: &quot;&quot;, &quot;href&quot;: &quot;reports/2026-07-01-noon.html&quot;}, {&quot;title&quot;: &quot;2026-07-01 收盘复盘与明日展望&quot;, &quot;type&quot;: &quot;close&quot;, &quot;date&quot;: &quot;2026-07-01&quot;, &quot;generated_at&quot;: &quot;2026-07-01T01:16:15.867773+08:00&quot;, &quot;planned_time&quot;: &quot;&quot;, &quot;schedule_status&quot;: &quot;&quot;, &quot;href&quot;: &quot;reports/2026-07-01-close.html&quot;}, {&quot;title&quot;: &quot;2026-06-30 盘前投研日报&quot;, &quot;type&quot;: &quot;morning&quot;, &quot;date&quot;: &quot;2026-06-30&quot;, &quot;generated_at&quot;: &quot;2026-06-30T15:33:03.880760&quot;, &quot;planned_time&quot;: &quot;&quot;, &quot;schedule_status&quot;: &quot;&quot;, &quot;href&quot;: &quot;reports/2026-06-30-morning.html&quot;}, {&quot;title&quot;: &quot;2026-06-30 午盘快报&quot;, &quot;type&quot;: &quot;noon&quot;, &quot;date&quot;: &quot;2026-06-30&quot;, &quot;generated_at&quot;: &quot;2026-06-30T12:26:10.008421&quot;, &quot;planned_time&quot;: &quot;&quot;, &quot;schedule_status&quot;: &quot;&quot;, &quot;href&quot;: &quot;reports/2026-06-30-noon.html&quot;}, {&quot;title&quot;: &quot;2026-06-29 盘前投研日报&quot;, &quot;type&quot;: &quot;morning&quot;, &quot;date&quot;: &quot;2026-06-29&quot;, &quot;generated_at&quot;: &quot;2026-06-29T14:02:27.609239&quot;, &quot;planned_time&quot;: &quot;&quot;, &quot;schedule_status&quot;: &quot;&quot;, &quot;href&quot;: &quot;reports/2026-06-29-morning.html&quot;}, {&quot;title&quot;: &quot;2026-06-29 午盘快报&quot;, &quot;type&quot;: &quot;noon&quot;, &quot;date&quot;: &quot;2026-06-29&quot;, &quot;generated_at&quot;: &quot;2026-06-29T14:42:30.276049&quot;, &quot;planned_time&quot;: &quot;&quot;, &quot;schedule_status&quot;: &quot;&quot;, &quot;href&quot;: &quot;reports/2026-06-29-noon.html&quot;}, {&quot;title&quot;: &quot;2026-06-29 收盘复盘与明日展望&quot;, &quot;type&quot;: &quot;close&quot;, &quot;date&quot;: &quot;2026-06-29&quot;, &quot;generated_at&quot;: &quot;2026-06-29T14:42:40.212013&quot;, &quot;planned_time&quot;: &quot;&quot;, &quot;schedule_status&quot;: &quot;&quot;, &quot;href&quot;: &quot;reports/2026-06-29-close.html&quot;}]</script>
   </main>
   <script>
 
