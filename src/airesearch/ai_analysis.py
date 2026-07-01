@@ -18,8 +18,10 @@ DEEPSEEK_CHAT_COMPLETIONS_URL = "https://api.deepseek.com/chat/completions"
 
 def configured_ai_provider(settings: Settings) -> str:
     provider = (settings.ai_provider or "auto").strip().lower()
-    if provider in {"deepseek", "openai"}:
-        return provider
+    if provider == "deepseek":
+        return "deepseek" if settings.deepseek_api_key else "none"
+    if provider == "openai":
+        return "openai" if settings.openai_api_key else "none"
     if settings.deepseek_api_key:
         return "deepseek"
     if settings.openai_api_key:

@@ -21,7 +21,7 @@ from src.airesearch.ai_analysis import (
     parse_json_object,
 )
 from src.airesearch.config import Settings
-from src.airesearch.main import current_date_text
+from src.airesearch.main import append_source_note, current_date_text
 from src.airesearch.news_data import NewsItem
 from src.airesearch.quality import append_quality_note, validate_report
 from src.airesearch.report_builder import build_report
@@ -198,6 +198,17 @@ class ReportPipelineTests(unittest.TestCase):
 
         self.assertEqual(configured_ai_provider(settings), "deepseek")
         self.assertEqual(configured_ai_model(settings), "deepseek-chat")
+
+    def test_forced_deepseek_without_key_is_not_reported_as_ready(self) -> None:
+        with patch.dict("os.environ", {"AI_PROVIDER": "deepseek"}, clear=True):
+            settings = Settings.from_env()
+
+        self.assertEqual(configured_ai_provider(settings), "none")
+
+    def test_append_source_note_adds_ai_status(self) -> None:
+        note = append_source_note("数据来源说明", "AI 模型调用状态：未调用 AI 模型。")
+        self.assertIn("数据来源说明", note)
+        self.assertIn("AI 模型调用状态", note)
 
     def test_chat_completion_text_extraction(self) -> None:
         payload = {"choices": [{"message": {"content": "{\"executive_summary\":\"ok\"}"}}]}

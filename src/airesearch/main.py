@@ -94,14 +94,28 @@ def main() -> None:
         generated_at=generated_at,
     )
     ai_provider = configured_ai_provider(settings)
+    ai_status_note = ""
     if ai_provider != "none":
         try:
             report = enhance_report_with_openai(report, settings, news_items or [])
-            print(f"AI analysis applied: {ai_provider} / {configured_ai_model(settings)}")
+            ai_model = configured_ai_model(settings)
+            ai_status_note = f"AI 模型调用状态：成功调用 {ai_provider} / {ai_model}，已对规则版报告进行投研增强。"
+            print(f"AI analysis applied: {ai_provider} / {ai_model}")
         except Exception as exc:
-            print(f"AI analysis fallback used: {ai_provider} / {configured_ai_model(settings)}: {exc}")
+            ai_model = configured_ai_model(settings)
+            ai_status_note = (
+                f"AI 模型调用状态：调用 {ai_provider} / {ai_model} 失败，已自动退回规则版报告。"
+                f"失败原因：{exc}"
+            )
+            print(f"AI analysis fallback used: {ai_provider} / {ai_model}: {exc}")
     else:
+        ai_status_note = (
+            "AI 模型调用状态：未调用 AI 模型。未配置可用的 OPENAI_API_KEY 或 DEEPSEEK_API_KEY，"
+            "本报告使用行情、新闻、公告和规则引擎生成。"
+        )
         print("AI analysis skipped: no OPENAI_API_KEY or DEEPSEEK_API_KEY is configured.")
+
+    report.source_note = append_source_note(report.source_note, ai_status_note)
 
     quality_warnings = validate_report(report)
     report = append_quality_note(report, quality_warnings)
@@ -147,6 +161,14 @@ def main() -> None:
 
 def current_date_text(timezone_name: str) -> str:
     return current_datetime(timezone_name).strftime("%Y-%m-%d")
+
+
+def append_source_note(source_note: str, note: str) -> str:
+    if not note:
+        return source_note
+    if not source_note:
+        return note
+    return f"{source_note}\n\n{note}"
 
 
 def current_datetime(timezone_name: str) -> datetime:
