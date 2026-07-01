@@ -13,12 +13,14 @@ sys.path.insert(0, str(ROOT))
 
 from src.airesearch.models import MarketSignal
 from src.airesearch.ai_analysis import (
+    AIOutputError,
     configured_ai_model,
     configured_ai_provider,
     extract_chat_completion_text,
     extract_output_text,
     merge_ai_payload,
     parse_json_object,
+    parse_json_object_with_deepseek_repair,
 )
 from src.airesearch.config import Settings
 from src.airesearch.main import append_source_note, current_date_text
@@ -259,6 +261,15 @@ class ReportPipelineTests(unittest.TestCase):
         parsed = parse_json_object('{"executive_summary":"ok","core_events":[{"title":"a",}],}')
         self.assertEqual(parsed["executive_summary"], "ok")
         self.assertEqual(parsed["core_events"][0]["title"], "a")
+
+    def test_deepseek_invalid_json_does_not_trigger_paid_repair_call(self) -> None:
+        with patch.dict("os.environ", {"DEEPSEEK_API_KEY": "test-key"}, clear=True):
+            settings = Settings.from_env()
+        with patch("src.airesearch.ai_analysis.requests.post") as post:
+            with self.assertRaises(AIOutputError):
+                parse_json_object_with_deepseek_repair('{"executive_summary": "ok" "market_view": "bad"}', settings)
+
+        post.assert_not_called()
 
     def test_openai_payload_parsing_and_merge(self) -> None:
         report = build_report("morning", "2026-06-29")

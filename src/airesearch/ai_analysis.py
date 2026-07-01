@@ -16,6 +16,10 @@ OPENAI_RESPONSES_URL = "https://api.openai.com/v1/responses"
 DEEPSEEK_CHAT_COMPLETIONS_URL = "https://api.deepseek.com/chat/completions"
 
 
+class AIOutputError(ValueError):
+    """Raised when a model call returned text but the report JSON was unusable."""
+
+
 def configured_ai_provider(settings: Settings) -> str:
     provider = (settings.ai_provider or "auto").strip().lower()
     if provider == "deepseek":
@@ -105,14 +109,46 @@ def parse_json_object_with_deepseek_repair(text: str, settings: Settings) -> dic
     try:
         return parse_json_object(text)
     except json.JSONDecodeError as first_error:
-        repaired_text = repair_json_with_deepseek(text, settings, str(first_error))
+        repaired_text = repair_json_text_locally(text)
         try:
             return parse_json_object(repaired_text)
         except json.JSONDecodeError as second_error:
-            raise ValueError(
-                f"DeepSeek returned invalid JSON and repair also failed. "
-                f"Original error: {first_error}; repair error: {second_error}"
+            raise AIOutputError(
+                "DeepSeek 已返回内容，但内容不是可用的报告 JSON。"
+                f"原始解析错误：{first_error}；本地修复后仍失败：{second_error}"
             ) from second_error
+
+
+def repair_json_text_locally(text: str) -> str:
+    clean_text = clean_json_text(text)
+    match = re.search(r"\{.*", clean_text, flags=re.DOTALL)
+    if match:
+        clean_text = match.group(0)
+
+    if clean_text.count('"') % 2 == 1:
+        clean_text += '"'
+
+    stack: list[str] = []
+    in_string = False
+    escaped = False
+    for char in clean_text:
+        if escaped:
+            escaped = False
+            continue
+        if char == "\\" and in_string:
+            escaped = True
+            continue
+        if char == '"':
+            in_string = not in_string
+            continue
+        if in_string:
+            continue
+        if char in "{[":
+            stack.append("}" if char == "{" else "]")
+        elif char in "}]" and stack and char == stack[-1]:
+            stack.pop()
+
+    return clean_json_text(clean_text + "".join(reversed(stack)))
 
 
 def repair_json_with_deepseek(text: str, settings: Settings, error_message: str) -> str:

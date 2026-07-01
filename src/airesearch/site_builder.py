@@ -492,6 +492,10 @@ def ai_status_label(source_note: object) -> str:
         provider_match = re.search(r"成功调用\s+([^，]+)", detail)
         provider = provider_match.group(1).strip() if provider_match else "AI模型"
         return f"AI增强：{provider} 调用成功"
+    if "已收到" in detail and "无法解析" in detail:
+        provider_match = re.search(r"已收到\s+([^，]+)\s+响应", detail)
+        provider = provider_match.group(1).strip() if provider_match else "AI模型"
+        return f"AI增强：{provider} 已返回但解析失败，已使用规则版"
     if "失败" in detail:
         provider_match = re.search(r"调用\s+([^，]+)\s+失败", detail)
         provider = provider_match.group(1).strip() if provider_match else "AI模型"

@@ -6,7 +6,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 from zoneinfo import ZoneInfoNotFoundError
 
-from .ai_analysis import configured_ai_model, configured_ai_provider, enhance_report_with_openai
+from .ai_analysis import AIOutputError, configured_ai_model, configured_ai_provider, enhance_report_with_openai
 from .announcement_data import fetch_announcement_snapshot, save_announcement_snapshot
 from .config import Settings
 from .macro_data import fetch_macro_snapshot
@@ -101,6 +101,13 @@ def main() -> None:
             ai_model = configured_ai_model(settings)
             ai_status_note = f"AI 模型调用状态：成功调用 {ai_provider} / {ai_model}，已对规则版报告进行投研增强。"
             print(f"AI analysis applied: {ai_provider} / {ai_model}")
+        except AIOutputError as exc:
+            ai_model = configured_ai_model(settings)
+            ai_status_note = (
+                f"AI 模型调用状态：已收到 {ai_provider} / {ai_model} 响应，但输出无法解析为报告，"
+                f"已自动退回规则版。该请求可能已被平台计费。失败原因：{exc}"
+            )
+            print(f"AI analysis response unusable: {ai_provider} / {ai_model}: {exc}")
         except Exception as exc:
             ai_model = configured_ai_model(settings)
             ai_status_note = (
