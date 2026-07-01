@@ -618,7 +618,8 @@ def build_market_view(signals: list[MarketSignal]) -> str:
 
 
 def build_core_events(news_items: list[NewsItem], signals: list[MarketSignal]) -> list[CoreEvent]:
-    grouped = cluster_news_items(news_items)
+    filtered_items = [item for item in news_items if is_core_event_candidate(item)]
+    grouped = cluster_news_items(filtered_items)
     events = [event_from_news_group(group) for group in grouped]
     events.sort(key=lambda event: (event.importance, event.confidence), reverse=True)
     return events[:10] or [market_event(signals)]
@@ -643,6 +644,73 @@ def cluster_news_items(news_items: list[NewsItem]) -> list[list[NewsItem]]:
         for start in range(0, len(items), 3):
             groups.append(items[start : start + 3])
     return groups
+
+
+def cluster_news_items(news_items: list[NewsItem]) -> list[list[NewsItem]]:
+    buckets: dict[str, list[NewsItem]] = {}
+    for item in sorted(news_items, key=lambda news: news_rank_key_for_event(news), reverse=True):
+        key = f"{normalized_event_category(item)}:{topic_bucket_for_event(item)}"
+        buckets.setdefault(key, []).append(item)
+
+    groups: list[list[NewsItem]] = []
+    for items in buckets.values():
+        for start in range(0, len(items), 3):
+            groups.append(items[start : start + 3])
+    return groups
+
+
+def normalized_event_category(item: NewsItem) -> str:
+    category = item.category
+    if category in {"AI", "半导体"}:
+        return "AI与半导体"
+    if category in {"能源电力", "新能源", "资源品"}:
+        return "能源资源"
+    if category in {"宏观", "日历"}:
+        return "宏观与日历"
+    return category
+
+
+def topic_bucket_for_event(item: NewsItem) -> str:
+    text = f"{item.title} {item.query_name} {item.category}".lower()
+    buckets = [
+        ("ai_capex", ["ai", "算力", "gpu", "光模块", "服务器", "pcb", "idc", "token", "云厂商", "资本开支"]),
+        ("semiconductor", ["半导体", "芯片", "晶圆", "封装", "存储", "光刻", "eda", "sic", "hbm"]),
+        ("liquidity_rates", ["央行", "美联储", "利率", "降息", "加息", "逆回购", "mlf", "cpi", "非农", "pce", "通胀"]),
+        ("fx_gold_oil", ["美元", "人民币", "黄金", "白银", "原油", "布伦特", "wti", "opec", "天然气"]),
+        ("china_equity_flow", ["a股", "沪深", "科创", "创业板", "成交额", "etf", "北向", "南向", "涨停"]),
+        ("hk_tech", ["港股", "恒生", "恒生科技", "腾讯", "阿里", "美团", "小米", "南向"]),
+        ("notice_order", ["公告", "订单", "合同", "中标", "回购", "增持", "减持", "业绩", "财报"]),
+        ("energy_power", ["电网", "储能", "特高压", "核电", "电力", "光伏", "风电", "锂电", "电池"]),
+        ("policy_geo", ["政策", "监管", "关税", "制裁", "出口管制", "地缘", "贸易", "财政"]),
+    ]
+    for bucket, keywords in buckets:
+        if any(keyword in text for keyword in keywords):
+            return bucket
+    clean = re.sub(r"\W+", "", text)
+    return clean[:12] or "misc"
+
+
+def is_core_event_candidate(item: NewsItem) -> bool:
+    text = f"{item.title} {item.query_name} {item.source}".lower()
+    low_value_keywords = [
+        "世界杯",
+        "欧冠",
+        "nba",
+        "彩票",
+        "电影",
+        "明星",
+        "商家接受比特币",
+        "接受比特币支付",
+        "employee quits",
+        "stock trading app",
+        "pinduoduo",
+    ]
+    if any(keyword.lower() in text for keyword in low_value_keywords):
+        return False
+    stale_patterns = [r"3月cpi", r"3月份cpi", r"march cpi"]
+    if any(re.search(pattern, text) for pattern in stale_patterns):
+        return False
+    return score_news_v2(item) >= 45
 
 
 def news_rank_key_for_event(item: NewsItem) -> tuple[int, str]:
@@ -712,6 +780,13 @@ def extract_metrics_from_text(text: str) -> list[str]:
         r"(?:%|bp|BP|亿元|亿美元|万亿元|万亿美元|元|美元|人民币|GW|GWh|MW|MWh|万台|万辆|万套|家|个|只|点|倍|年|个月|天)"
     )
     metrics = [metric.strip() for metric in re.findall(pattern, text)]
+    extra_patterns = [
+        r"\d+(?:\.\d+)?\s*(?:万亿|亿元|亿美元|万股|亿股|万手|亿元人民币|亿港元|亿欧元)",
+        r"\d+(?:\.\d+)?\s*(?:GW|GWh|MW|MWh|bp|%)",
+        r"\d+(?:\.\d+)?\s*(?:倍|个基点|百分点)",
+    ]
+    for extra_pattern in extra_patterns:
+        metrics.extend(metric.strip() for metric in re.findall(extra_pattern, text))
     return deduplicate_texts([metric for metric in metrics if metric and not is_low_value_metric(metric)])
 
 
@@ -1105,13 +1180,15 @@ def build_analysis_sections(
     news_items: list[NewsItem],
     ideas: list[InvestmentIdea],
 ) -> list[AnalysisSection]:
-    categories = Counter(item.category for item in news_items)
+    useful_news_items = [item for item in news_items if is_core_event_candidate(item)]
+    source_items = useful_news_items or news_items
+    categories = Counter(item.category for item in source_items)
     strongest = strongest_signals(signals)
-    top_items = sorted(news_items, key=lambda item: score_news_v2(item), reverse=True)[:8]
+    top_items = sorted(source_items, key=lambda item: score_news_v2(item), reverse=True)[:8]
     top_facts = deduplicate_texts([extract_concrete_facts(item.title) for item in top_items])[:5]
     top_metrics = extract_metrics_from_text(" ".join(item.title for item in top_items))[:8]
-    industry_facts = facts_by_focus_category(news_items)
-    policy_facts = policy_and_notice_facts(news_items)
+    industry_facts = facts_by_focus_category(source_items)
+    policy_facts = policy_and_notice_facts(source_items)
     metric_text = "、".join(top_metrics) if top_metrics else "新闻标题层面缺少明确数值，需回看原文、公告和行情确认"
 
     return [

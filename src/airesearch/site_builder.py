@@ -36,12 +36,43 @@ def load_reports(reports_root: Path) -> list[dict]:
     if reports_root.exists():
         for json_file in sorted(reports_root.glob("*/*.json"), reverse=True):
             reports.append(json.loads(json_file.read_text(encoding="utf-8")))
-    return sorted(reports, key=report_sort_key, reverse=True)
+    return sorted(reports, key=history_sort_key)
 
 
-def report_sort_key(report: dict) -> tuple[str, int]:
-    type_order = {"close": 3, "noon": 2, "morning": 1}
-    return (report.get("date", ""), type_order.get(report.get("report_type", ""), 0))
+def history_sort_key(report: dict) -> tuple[str, int, str]:
+    type_order = {"morning": 0, "noon": 1, "close": 2}
+    return (
+        reverse_date_text(report.get("date", "")),
+        type_order.get(report.get("report_type", ""), 9),
+        reverse_datetime_text(report.get("generated_at", "")),
+    )
+
+
+def latest_sort_key(report: dict) -> tuple[str, str, int]:
+    return (
+        normalize_datetime_text(report.get("generated_at", "")),
+        report.get("date", ""),
+        {"morning": 1, "noon": 2, "close": 3}.get(report.get("report_type", ""), 0),
+    )
+
+
+def latest_report(reports: list[dict]) -> dict:
+    return max(reports, key=latest_sort_key) if reports else {}
+
+
+def reverse_date_text(value: object) -> str:
+    text = str(value or "")
+    return "".join(chr(255 - ord(char)) for char in text)
+
+
+def reverse_datetime_text(value: object) -> str:
+    text = normalize_datetime_text(value)
+    return "".join(chr(255 - ord(char)) for char in text)
+
+
+def normalize_datetime_text(value: object) -> str:
+    text = str(value or "")
+    return text.replace("+08:00", "").replace("Z", "")
 
 
 def report_filename(report: dict) -> str:
@@ -56,7 +87,7 @@ def safe_slug(value: str) -> str:
 
 
 def render_index(reports: list[dict], access_token: str) -> str:
-    latest = reports[0] if reports else {}
+    latest = latest_report(reports)
     report_cards = "\n".join(render_report_card(report).strip() for report in reports)
     latest_panel = render_latest_panel(latest) if latest else "<p class=\"empty\">暂无报告。首次运行 workflow 后会生成内容。</p>"
     market_panel = render_market_panel(latest)
@@ -125,6 +156,7 @@ def render_report_detail(report: dict, reports: list[dict], access_token: str) -
         <h1>{escape(report.get("title", "AI 投研报告"))}</h1>
         <p class="sub">{escape(report.get("market_view", ""))}</p>
         <p class="sub time-line">生成时间：{escape(format_generated_at(report.get("generated_at", "")))}</p>
+        {render_schedule_status(report)}
         <p class="ai-status">{escape(ai_status)}</p>
       </div>
       <a class="back-link" href="../index.html">返回首页</a>
@@ -176,6 +208,8 @@ def render_latest_panel(report: dict) -> str:
       <article class="panel hero-panel">
         <div class="meta">{escape(report.get("date", ""))} · {escape(label)}</div>
         <h2>{escape(report.get("title", "AI 投研报告"))}</h2>
+        <p class="generated-line">生成时间：{escape(format_generated_at(report.get("generated_at", "")))}</p>
+        {render_schedule_status(report, compact=True)}
         <p class="ai-status compact">{escape(ai_status)}</p>
         <p>{escape(report.get("executive_summary", ""))}</p>
         <a class="primary-link report-link" href="reports/{report_filename(report)}">查看完整报告</a>
@@ -245,6 +279,7 @@ def render_report_card(report: dict) -> str:
         <div class="meta">{escape(report.get("date", ""))} · {escape(label)}</div>
         <h3>{escape(report.get("title", "AI 投研报告"))}</h3>
         <p class="generated-line">生成时间：{escape(format_generated_at(report.get("generated_at", "")))}</p>
+        {render_schedule_status(report, compact=True)}
         <p class="ai-status compact">{escape(ai_status)}</p>
         <p>{escape(report.get("executive_summary", ""))}</p>
         <ul>{idea_html}</ul>
@@ -505,6 +540,38 @@ def ai_status_label(source_note: object) -> str:
     return f"AI增强：{detail}"
 
 
+def render_schedule_status(report: dict, compact: bool = False) -> str:
+    planned_time = str(report.get("planned_time", "") or "").strip()
+    status = str(report.get("schedule_status", "") or "").strip()
+    trigger = str(report.get("trigger", "") or "").strip()
+    if not planned_time and not status and not trigger:
+        return ""
+
+    parts = []
+    if planned_time:
+        parts.append(f"计划：{planned_time} 北京时间")
+    if status:
+        parts.append(status)
+    if trigger:
+        trigger_label = {
+            "scheduled": "定时触发",
+            "manual": "手动触发",
+            "local": "本地生成",
+        }.get(trigger, trigger)
+        parts.append(f"触发：{trigger_label}")
+
+    class_names = ["schedule-status"]
+    if compact:
+        class_names.append("compact")
+    if "偏离" in status:
+        class_names.append("warning")
+    elif "手动" in status or trigger in {"manual", "local"}:
+        class_names.append("manual")
+    else:
+        class_names.append("ok")
+    return f"<p class=\"{' '.join(class_names)}\">{escape('｜'.join(parts))}</p>"
+
+
 def detail_nav_link(label: str, report: dict | None) -> str:
     if not report:
         return f"<span class=\"muted-link\">{escape(label)}：无</span>"
@@ -528,6 +595,9 @@ def search_payload(reports: list[dict]) -> list[dict]:
             "title": report.get("title", ""),
             "type": report.get("report_type", ""),
             "date": report.get("date", ""),
+            "generated_at": report.get("generated_at", ""),
+            "planned_time": report.get("planned_time", ""),
+            "schedule_status": report.get("schedule_status", ""),
             "href": f"reports/{report_filename(report)}",
         }
         for report in reports
@@ -573,6 +643,10 @@ def render_page(title: str, body: str) -> str:
     .status-pill {{ color: #fff; background: var(--accent); padding: 8px 10px; border-radius: 6px; white-space: nowrap; }}
     .ai-status {{ display: inline-flex; width: fit-content; margin: 10px 0 0; padding: 7px 10px; border: 1px solid #b8d7d1; border-radius: 6px; background: #e7f5f1; color: #07594e; font-size: 14px; font-weight: 800; }}
     .ai-status.compact {{ margin: 8px 0; padding: 5px 8px; font-size: 12px; }}
+    .schedule-status {{ display: inline-flex; width: fit-content; max-width: 100%; margin: 8px 0 0; padding: 6px 9px; border: 1px solid #b8d7d1; border-radius: 6px; background: #e7f5f1; color: #07594e; font-size: 13px; font-weight: 800; line-height: 1.45; overflow-wrap: anywhere; }}
+    .schedule-status.compact {{ margin: 6px 0; padding: 4px 7px; font-size: 12px; }}
+    .schedule-status.warning {{ border-color: #e0a3a3; background: #fff1f1; color: #9a3412; }}
+    .schedule-status.manual {{ border-color: #c9d4e5; background: #f4f7fb; color: #4b647d; }}
     .dashboard {{ display: grid; grid-template-columns: 1.4fr 1fr; gap: 14px; margin-top: 20px; }}
     .panel, .report-card, .item-block {{ background: var(--panel); border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow); }}
     .panel {{ padding: 18px; }}

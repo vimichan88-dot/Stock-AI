@@ -23,9 +23,18 @@ def build_report(
     news_items: list[NewsItem] | None = None,
     news_source_note: str | None = None,
     generated_at: datetime | None = None,
+    planned_time: str = "",
+    schedule_status: str = "",
+    trigger: str = "",
 ) -> Report:
     if not market_signals and not news_items:
-        return build_sample_report(report_type, date_text)
+        report = build_sample_report(report_type, date_text)
+        if generated_at:
+            report.generated_at = generated_at
+        report.planned_time = planned_time
+        report.schedule_status = schedule_status
+        report.trigger = trigger
+        return report
 
     baseline = build_sample_report(report_type, date_text, market_signals, market_source_note)
     signals = market_signals or baseline.market_signals
@@ -57,6 +66,9 @@ def build_report(
         risk_warnings=build_risk_warnings(signals, news),
         source_note="\n\n".join(source_notes),
         analysis_sections=analysis_sections,
+        planned_time=planned_time,
+        schedule_status=schedule_status,
+        trigger=trigger,
     )
 
 

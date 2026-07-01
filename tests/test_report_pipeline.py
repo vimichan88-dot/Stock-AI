@@ -29,7 +29,7 @@ from src.airesearch.news_data import NewsItem
 from src.airesearch.quality import append_quality_note, validate_report
 from src.airesearch.report_builder import build_report
 from src.airesearch.report_writer import report_to_markdown
-from src.airesearch.rule_analysis import extract_metrics_from_text
+from src.airesearch.rule_analysis import extract_metrics_from_text, is_core_event_candidate
 from src.airesearch.site_builder import build_site
 
 
@@ -384,6 +384,84 @@ class ReportPipelineTests(unittest.TestCase):
     def test_invalid_timezone_falls_back_to_date_text(self) -> None:
         value = current_date_text("Invalid/Timezone")
         self.assertRegex(value, r"^\d{4}-\d{2}-\d{2}$")
+
+    def test_site_latest_uses_generated_time_and_history_uses_session_order(self) -> None:
+        morning_payload = {
+            "report_type": "morning",
+            "date": "2026-07-02",
+            "generated_at": "2026-07-02T02:30:00+08:00",
+            "title": "2026-07-02 盘前投研日报",
+            "executive_summary": "盘前摘要",
+            "market_view": "中性",
+            "market_signals": [],
+            "core_events": [],
+            "investment_ideas": [],
+            "action_checklist": [],
+            "risk_warnings": [],
+            "source_note": "",
+            "planned_time": "06:30",
+            "schedule_status": "定时生成正常，较计划时间偏差 +0 分钟",
+            "trigger": "scheduled",
+        }
+        close_payload = {
+            **morning_payload,
+            "report_type": "close",
+            "generated_at": "2026-07-02T01:25:00+08:00",
+            "title": "2026-07-02 收盘投研日报",
+            "executive_summary": "收盘摘要",
+            "planned_time": "17:30",
+        }
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            reports_root = root / "data" / "reports" / "2026-07-02"
+            reports_root.mkdir(parents=True)
+            (reports_root / "morning.json").write_text(json.dumps(morning_payload, ensure_ascii=False), encoding="utf-8")
+            (reports_root / "close.json").write_text(json.dumps(close_payload, ensure_ascii=False), encoding="utf-8")
+
+            site_dir = root / "site"
+            build_site(root / "data" / "reports", site_dir, "")
+            index_html = (site_dir / "index.html").read_text(encoding="utf-8")
+
+        hero_start = index_html.index("hero-panel")
+        history_start = index_html.index('id="reportGrid"')
+        self.assertLess(index_html.index("盘前投研日报", hero_start), index_html.index("收盘投研日报", hero_start))
+        self.assertLess(index_html.index("盘前投研日报", history_start), index_html.index("收盘投研日报", history_start))
+        self.assertIn("计划：06:30 北京时间", index_html)
+        self.assertIn("触发：定时触发", index_html)
+
+    def test_core_event_filter_rejects_low_value_and_stale_items(self) -> None:
+        low_value = NewsItem(
+            title="哪些商家接受比特币支付，世界杯周边消费升温",
+            link="https://example.com/noise",
+            source="Example",
+            published_at="2026-07-02T08:00:00+08:00",
+            category="宏观",
+            query_name="BTC",
+        )
+        stale = NewsItem(
+            title="美国3月CPI数据回顾：通胀压力缓和",
+            link="https://example.com/stale",
+            source="Example",
+            published_at="2026-07-02T08:10:00+08:00",
+            category="宏观",
+            query_name="CPI",
+        )
+        useful = NewsItem(
+            title="央行开展5000亿元逆回购操作，A股成交额突破1.2万亿元",
+            link="https://example.com/useful",
+            source="证券时报",
+            published_at="2026-07-02T08:20:00+08:00",
+            category="宏观",
+            query_name="央行流动性",
+        )
+
+        self.assertFalse(is_core_event_candidate(low_value))
+        self.assertFalse(is_core_event_candidate(stale))
+        self.assertTrue(is_core_event_candidate(useful))
+        metrics = extract_metrics_from_text(useful.title)
+        self.assertIn("5000亿元", metrics)
+        self.assertTrue(any("1.2万亿" in metric for metric in metrics))
 
 
 if __name__ == "__main__":

@@ -13,6 +13,10 @@ def report_to_markdown(report: Report) -> str:
     lines.append(f"# {report.title}")
     lines.append("")
     lines.append(f"生成时间：{report.generated_at.strftime('%Y-%m-%d %H:%M:%S')} 北京时间")
+    if report.planned_time:
+        lines.append(f"计划时间：{report.planned_time} 北京时间")
+    if report.schedule_status:
+        lines.append(f"调度状态：{report.schedule_status}")
     lines.append(ai_status_line(report.source_note))
     lines.append("")
     lines.append("## 今日核心结论")

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -43,6 +44,8 @@ def main() -> None:
     settings = Settings.from_env()
     generated_at = current_datetime(settings.timezone)
     date_text = args.date or generated_at.strftime("%Y-%m-%d")
+    trigger = report_trigger()
+    planned_time, schedule_status = schedule_metadata(args.report_type, generated_at, trigger)
 
     market_signals = None
     market_source_note = None
@@ -92,6 +95,9 @@ def main() -> None:
         news_items,
         news_source_note,
         generated_at=generated_at,
+        planned_time=planned_time,
+        schedule_status=schedule_status,
+        trigger=trigger,
     )
     ai_provider = configured_ai_provider(settings)
     ai_status_note = ""
@@ -176,6 +182,38 @@ def append_source_note(source_note: str, note: str) -> str:
     if not source_note:
         return note
     return f"{source_note}\n\n{note}"
+
+
+def report_trigger() -> str:
+    event_name = os.getenv("GITHUB_EVENT_NAME", "").strip()
+    if event_name == "schedule":
+        return "scheduled"
+    if event_name == "workflow_dispatch":
+        return "manual"
+    if event_name:
+        return event_name
+    return "local"
+
+
+def schedule_metadata(report_type: str, generated_at: datetime, trigger: str) -> tuple[str, str]:
+    planned_times = {
+        "morning": "06:30",
+        "noon": "12:00",
+        "close": "17:30",
+    }
+    planned_time = planned_times.get(report_type, "")
+    if not planned_time:
+        return "", "未知报告类型"
+    if trigger in {"manual", "local"}:
+        return planned_time, "手动/本地生成，未按定时任务校验"
+
+    planned_hour, planned_minute = [int(part) for part in planned_time.split(":", 1)]
+    planned_dt = generated_at.replace(hour=planned_hour, minute=planned_minute, second=0, microsecond=0)
+    diff_minutes = round((generated_at - planned_dt).total_seconds() / 60)
+    abs_diff = abs(diff_minutes)
+    if abs_diff <= 60:
+        return planned_time, f"定时生成正常，较计划时间偏差 {diff_minutes:+d} 分钟"
+    return planned_time, f"定时生成偏离计划，较计划时间偏差 {diff_minutes:+d} 分钟"
 
 
 def current_datetime(timezone_name: str) -> datetime:

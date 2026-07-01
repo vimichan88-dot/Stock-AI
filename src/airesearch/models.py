@@ -67,3 +67,6 @@ class Report:
     risk_warnings: list[str]
     source_note: str
     analysis_sections: list[AnalysisSection] = field(default_factory=list)
+    planned_time: str = ""
+    schedule_status: str = ""
+    trigger: str = ""

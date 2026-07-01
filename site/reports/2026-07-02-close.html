@@ -36,6 +36,10 @@
     .status-pill { color: #fff; background: var(--accent); padding: 8px 10px; border-radius: 6px; white-space: nowrap; }
     .ai-status { display: inline-flex; width: fit-content; margin: 10px 0 0; padding: 7px 10px; border: 1px solid #b8d7d1; border-radius: 6px; background: #e7f5f1; color: #07594e; font-size: 14px; font-weight: 800; }
     .ai-status.compact { margin: 8px 0; padding: 5px 8px; font-size: 12px; }
+    .schedule-status { display: inline-flex; width: fit-content; max-width: 100%; margin: 8px 0 0; padding: 6px 9px; border: 1px solid #b8d7d1; border-radius: 6px; background: #e7f5f1; color: #07594e; font-size: 13px; font-weight: 800; line-height: 1.45; overflow-wrap: anywhere; }
+    .schedule-status.compact { margin: 6px 0; padding: 4px 7px; font-size: 12px; }
+    .schedule-status.warning { border-color: #e0a3a3; background: #fff1f1; color: #9a3412; }
+    .schedule-status.manual { border-color: #c9d4e5; background: #f4f7fb; color: #4b647d; }
     .dashboard { display: grid; grid-template-columns: 1.4fr 1fr; gap: 14px; margin-top: 20px; }
     .panel, .report-card, .item-block { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow); }
     .panel { padding: 18px; }
@@ -122,6 +126,7 @@
         <h1>2026-07-02 收盘复盘与明日展望</h1>
         <p class="sub">全球资本今天交易的是美联储政策预期边际转鸽与AI硬件估值回调的拉锯。美债收益率上行压制成长股，但黄金和比特币上涨显示风险偏好未全面恶化。A股资金从高估值科技向低估值金融、医药、消费切换，港股科技反弹但成交未放量。</p>
         <p class="sub time-line">生成时间：2026-07-02 01:25:40 北京时间</p>
+
         <p class="ai-status">AI增强：deepseek / deepseek-chat 调用成功</p>
       </div>
       <a class="back-link" href="../index.html">返回首页</a>
@@ -766,7 +771,7 @@
         </div>
         <div class="rail-block">
           <h2>切换报告</h2>
-          <a class="report-link" href="2026-07-01-close.html">上一篇：2026-07-01 收盘复盘与明日展望</a>
+          <a class="report-link" href="2026-07-01-morning.html">上一篇：2026-07-01 盘前投研日报</a>
           <span class="muted-link">下一篇：无</span>
         </div>
       </aside>
