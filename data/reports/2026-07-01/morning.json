@@ -1,9 +1,9 @@
 {
   "report_type": "morning",
   "date": "2026-07-01",
-  "generated_at": "2026-07-01T19:28:43.710963+08:00",
+  "generated_at": "2026-07-01T18:57:58.289178+08:00",
   "title": "2026-07-01 盘前投研日报",
-  "executive_summary": "盘前重点是把昨夜全球风险偏好、政策线索和今日A/H股可能交易的主线先排出优先级。 当前市场总判断为：结构分化。资金没有形成单一方向，今天更重要的是识别哪些板块由真实催化驱动，哪些只是情绪轮动。 本次共纳入 64 条新闻线索和公告线索，最高优先级事件是“全球风险偏好与 A/H 股交易环境更新”。 投资上优先关注“AI算力与半导体链条：从题材热度切到订单验证”，但所有股票清单都应先作为研究和复核池，只有在订单、资金流、价格反应或政策细则继续验证后才适合提高仓位。",
+  "executive_summary": "盘前重点是把昨夜全球风险偏好、政策线索和今日A/H股可能交易的主线先排出优先级。 当前市场总判断为：结构分化。资金没有形成单一方向，今天更重要的是识别哪些板块由真实催化驱动，哪些只是情绪轮动。 本次共纳入 63 条新闻线索和公告线索，最高优先级事件是“全球风险偏好与 A/H 股交易环境更新”。 投资上优先关注“AI算力与半导体链条：从题材热度切到订单验证”，但所有股票清单都应先作为研究和复核池，只有在订单、资金流、价格反应或政策细则继续验证后才适合提高仓位。",
   "market_view": "结构分化。资金没有形成单一方向，今天更重要的是识别哪些板块由真实催化驱动，哪些只是情绪轮动。",
   "market_signals": [
     {
@@ -80,20 +80,20 @@
     },
     {
       "name": "欧洲STOXX 600",
-      "value": "639.96",
-      "change": "-0.28%",
+      "value": "639.89",
+      "change": "-0.29%",
       "interpretation": "欧洲市场基准，观察全球周期和欧洲风险偏好，最新日期 2026-07-01。"
     },
     {
       "name": "德国DAX",
-      "value": "25055.11",
-      "change": "+0.24%",
+      "value": "25064.59",
+      "change": "+0.28%",
       "interpretation": "欧洲制造业和出口链代理，观察全球工业周期，最新日期 2026-07-01。"
     },
     {
       "name": "英国富时100",
-      "value": "10463.42",
-      "change": "-0.32%",
+      "value": "10456.26",
+      "change": "-0.39%",
       "interpretation": "欧洲高股息和资源股代理，观察防守与商品链偏好，最新日期 2026-07-01。"
     },
     {
@@ -105,7 +105,7 @@
     {
       "name": "美元/离岸人民币",
       "value": "6.80",
-      "change": "+0.13%",
+      "change": "+0.10%",
       "interpretation": "观察人民币汇率和外资风险偏好，最新日期 2026-07-01。"
     },
     {
@@ -116,39 +116,39 @@
     },
     {
       "name": "VIX 波动率",
-      "value": "16.68",
-      "change": "+1.40%",
+      "value": "16.74",
+      "change": "+1.76%",
       "interpretation": "观察美股风险偏好和避险需求，最新日期 2026-07-01。"
     },
     {
       "name": "WTI 原油",
-      "value": "69.01",
-      "change": "-0.71%",
+      "value": "68.80",
+      "change": "-1.01%",
       "interpretation": "观察通胀预期、能源链和地缘风险，最新日期 2026-07-01。"
     },
     {
       "name": "COMEX 铜",
-      "value": "6.15",
-      "change": "-0.65%",
+      "value": "6.10",
+      "change": "-1.49%",
       "interpretation": "观察全球制造业需求和顺周期预期，最新日期 2026-07-01。"
     },
     {
       "name": "比特币",
-      "value": "58612.06",
-      "change": "+0.09%",
+      "value": "58606.00",
+      "change": "+0.08%",
       "interpretation": "观察全球流动性和高风险资产偏好，最新日期 2026-07-01。"
     },
     {
       "name": "以太坊",
-      "value": "1570.64",
-      "change": "+0.07%",
+      "value": "1572.54",
+      "change": "+0.19%",
       "interpretation": "观察加密资产风险偏好，最新日期 2026-07-01。"
     }
   ],
   "core_events": [
     {
       "title": "全球风险偏好与 A/H 股交易环境更新",
-      "summary": "跨市场行情显示，科创50波动居前；上涨领先指标包括恒生科技+1.90%、纳斯达克100+1.68%、VIX 波动率+1.40%、标普500+0.79%，下跌或承压指标包括科创50-2.48%、韩国KOSPI-2.04%、创业板指-1.89%、WTI 原油-0.71%。这不是单纯的行情记录，而是用来判断今天资金更偏向成长、顺周期、防守还是避险。",
+      "summary": "跨市场行情显示，科创50波动居前；上涨领先指标包括恒生科技+1.90%、VIX 波动率+1.76%、纳斯达克100+1.68%、标普500+0.79%，下跌或承压指标包括科创50-2.48%、韩国KOSPI-2.04%、创业板指-1.89%、COMEX 铜-1.49%。这不是单纯的行情记录，而是用来判断今天资金更偏向成长、顺周期、防守还是避险。",
       "reason": "市场影响分析：如果大陆、港股、美股科技和商品风险资产同步走强，说明资金风险偏好改善，A股更容易交易科技成长、券商和核心资产，港股更容易交易恒生科技和平台经济，美股则继续围绕AI盈利和利率预期定价。如果VIX、美元、美债收益率或黄金走强，同时成长指数回落，说明市场在交易避险或折现率上行，A/H高估值主题需要降低追高，资金可能转向高股息、黄金、能源和现金流稳定资产。后续验证重点是成交额是否放大、龙头股是否强于指数、人民币汇率是否稳定，以及海外科技股是否继续支撑A/H科技映射。",
       "beneficiaries": [
         "A股核心资产",
@@ -182,8 +182,8 @@
     },
     {
       "title": "宏观：最新调查：更多央行计划减持美元，增持黄金与储备货币多元化",
-      "summary": "可复核事实：最新调查；同时涉及更多央行计划减持美元；增持黄金与储备货币多元化；半年“市”点；同时涉及上半年涨逾3%难延续 人民币双向波动成下半年主基调，量化信息包括3%；金价创13年来最大季度跌幅；同时涉及牛市终结还是“黄金坑”？，量化信息包括13年。量化线索：3%、13年。投研解读：先判断它影响利率、美元、通胀、商品还是风险偏好，再映射到成长、资源、高股息和港股科技。",
-      "reason": "方向判断：结构分化，说明同一主题内部同时存在受益链条和承压链条，需要按环节拆开。 事件内容：最新调查；同时涉及更多央行计划减持美元；增持黄金与储备货币多元化；半年“市”点；同时涉及上半年涨逾3%难延续 人民币双向波动成下半年主基调，量化信息包括3%。量化跟踪：3%、13年。市场影响分析：宏观变量通过美元、美债、人民币、商品和风险偏好影响权益估值。利率下行通常利好成长股和港股科技；美元走强、油价或通胀压力上行，会压制高估值资产，并提高黄金、能源和高股息资产的配置价值。 对股票市场的关键不是消息本身，而是它是否能带来盈利预期、估值折现率或资金流方向的变化。观察指标：现货黄金价格、实际利率、美元指数、央行购金和ETF持仓。投资建议：先降低追高意愿，把相关股票清单作为风险排查池；只有龙头放量企稳且基本面未恶化时再考虑低吸。",
+      "summary": "财联社在2026-07-01 06:57给出的线索是：最新调查；同时提到更多央行计划减持美元; 增持黄金与储备货币多元化；财联社在2026-07-01 04:57给出的线索是：五穷六绝？“华尔街最准分析师”盘点6月全球市场“雷区”；东方财富在2026-07-01 08:09给出的线索是：半年“市”点；同时提到上半年涨逾3%难延续 人民币双向波动成下半年主基调，量化信息包括3%。这类信息要先判断它改变的是利率、美元、通胀、风险偏好还是避险需求。",
+      "reason": "方向判断：结构分化，说明同一主题内部同时存在受益链条和承压链条，需要按环节拆开。 市场影响分析：宏观变量通过美元、美债、人民币、商品和风险偏好影响权益估值。利率下行通常利好成长股和港股科技；美元走强、油价或通胀压力上行，会压制高估值资产，并提高黄金、能源和高股息资产的配置价值。 A股关注映射链条和成交确认，港股关注美元/南向资金，美股关注盈利和估值是否匹配。",
       "beneficiaries": [
         "黄金",
         "能源",
@@ -201,10 +201,10 @@
       "sources": [
         "消息来源：财联社；发布时间：2026-07-01T06:57:51+00:00；检索主题：上市公司公告线索；原始标题：最新调查：更多央行计划减持美元，增持黄金与储备货币多元化 - 财联社",
         "https://news.google.com/rss/articles/CBMiSEFVX3lxTE92eUdodlpRWWNSR1R6aC1EX2hnRFJycWNkZ0paVDJ1NDhLREZ1Mkc4NU9KeFR4NDExcmphVWZlVFQ3XzlGZ0R6VQ?oc=5",
+        "消息来源：财联社；发布时间：2026-07-01T04:57:35+00:00；检索主题：全球宏观与央行；原始标题：五穷六绝？“华尔街最准分析师”盘点6月全球市场“雷区” - 财联社",
+        "https://news.google.com/rss/articles/CBMiSEFVX3lxTFBkQ3JhOE1oanM5RFlIRlRLQzg0NDdNUk9WandkOEotb05LUDA4N2JoVWhRWFRwdEpKSFJ5QTJneVc4Wjc5aEdnZw?oc=5",
         "消息来源：东方财富；发布时间：2026-07-01T08:09:51+00:00；检索主题：全球宏观与央行；原始标题：半年“市”点 | 上半年涨逾3%难延续 人民币双向波动成下半年主基调 - 东方财富",
-        "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5PaUprNlEwSEduWlh4Q3pRYWJpdGJjTmVrRHJlTHpPa1NuQTNKS0wwWXhHWlpuZ0VqVGtqbS1LME96TzdtdEJrYkRHTzV5TTlqZGp4S1A1ZWgycHRFaUQ3X0hMQnU?oc=5",
-        "消息来源：21财经；发布时间：2026-07-01T09:00:00+00:00；检索主题：全球风险资产；原始标题：金价创13年来最大季度跌幅，牛市终结还是“黄金坑”？ - 21财经",
-        "https://news.google.com/rss/articles/CBMijAFBVV95cUxPWDc0eFQxR1g3Tkh2YVgwWFBldnZ2RVMzZkpFUGw5bXhkdkdMQ0pBNTJtRG1aOE9SNEdROF91c29DdGZWNXRSWlo5dFgxWS1GeHgxTEk3cjlrRmVwSWtneUJ1ajlIZlJsaGY1NG9ERi0tRHYwU1R1SXE5MW5ITUVzZ3BzWmRpekNJWFRidg?oc=5"
+        "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5PaUprNlEwSEduWlh4Q3pRYWJpdGJjTmVrRHJlTHpPa1NuQTNKS0wwWXhHWlpuZ0VqVGtqbS1LME96TzdtdEJrYkRHTzV5TTlqZGp4S1A1ZWgycHRFaUQ3X0hMQnU?oc=5"
       ],
       "bullish_stocks": [
         "黄金ETF",
@@ -220,46 +220,9 @@
       ]
     },
     {
-      "title": "公告：安乃达：宁波思辉拟减持不超3%股份",
-      "summary": "可复核事实：安乃达：宁波思辉拟减持不超3%股份，量化信息包括超3%；航民股份；同时涉及控股股东拟增持1000万股公司股份；铁流股份；同时涉及控股股东德萨集团拟减持不超过2%股份，量化信息包括2%。量化线索：超3%、2%。投研解读：公告只有改变未来收入、利润率、现金流或资本开支路径时才是实质催化，订单金额和履约周期比标题更重要。",
-      "reason": "方向判断：结构分化，说明同一主题内部同时存在受益链条和承压链条，需要按环节拆开。 事件内容：安乃达：宁波思辉拟减持不超3%股份，量化信息包括超3%；航民股份；同时涉及控股股东拟增持1000万股公司股份。量化跟踪：超3%、2%。市场影响分析：公司公告只有在改变未来收入、利润率、现金流或资本开支路径时才构成实质催化。重大合同、回购增持和业绩上修偏利好；减持、亏损扩大、订单取消和监管问询偏利空。 对股票市场的关键不是消息本身，而是它是否能带来盈利预期、估值折现率或资金流方向的变化。观察指标：订单金额占收入比例、毛利率指引、现金流、履约周期。投资建议：先降低追高意愿，把相关股票清单作为风险排查池；只有龙头放量企稳且基本面未恶化时再考虑低吸。",
-      "beneficiaries": [
-        "公告涉及公司",
-        "相关产业链",
-        "同业龙头"
-      ],
-      "risks": [
-        "公告细节不及预期",
-        "履约周期拉长",
-        "利润率低于市场预期",
-        "消息反转"
-      ],
-      "importance": 83,
-      "confidence": 88,
-      "sources": [
-        "消息来源：东方财富；发布时间：2026-07-01T10:40:29+00:00；检索主题：上市公司公告线索；原始标题：安乃达：宁波思辉拟减持不超3%股份 - 东方财富",
-        "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5ka2JPdXlvOWhfOTVQYmMzNzNYRk9hcVFZYW5VRGVrV0xwSE1WTFBPS1VRLXpfM3M2bjF3ZF9uWVpzYl9pX2htMHg4LVRQVHZ1MGFRQ1ZCcURhRktRWUMzaQ?oc=5",
-        "消息来源：东方财富；发布时间：2026-07-01T08:15:46+00:00；检索主题：上市公司公告线索；原始标题：航民股份：控股股东拟增持1000万股公司股份 - 东方财富",
-        "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBrbnF1dklndUM1NVUxamstb3l5QTl2YUFYLU5iUVlLS2lneUY5WlFMSDhjUVlqYUw5RlJRSnRpS0xuWGVJU3paOUd6SEZVdkJHeXRYOTVOMTZtcmJkTWtnZw?oc=5",
-        "消息来源：新京报；发布时间：2026-07-01T09:39:00+00:00；检索主题：上市公司公告线索；原始标题：铁流股份：控股股东德萨集团拟减持不超过2%股份 - 新京报",
-        "https://news.google.com/rss/articles/CBMiZEFVX3lxTFA3VVlLZ3ZxLXJBbEMxbXpBX3RPaXk2TTloZ3llX1lnOS13dEE2cG1PYmhscXdlRFV1QzhNcGJfcTIxSFhQUi1fMV9CVnRBUXViMDZOZ2FBMXozVEtPSlRCN1lkaXM?oc=5"
-      ],
-      "bullish_stocks": [
-        "同业替代受益公司",
-        "订单外溢产业链龙头",
-        "高股息防守资产",
-        "相关行业ETF"
-      ],
-      "bearish_stocks": [
-        "订单被替代公司",
-        "同业竞争弱势公司",
-        "减持或业绩下修公司"
-      ]
-    },
-    {
-      "title": "A股：科创板首只万亿市值股诞生！寒武纪大涨近9%创纪录",
-      "summary": "可复核事实：科创板首只万亿市值股诞生；同时涉及寒武纪大涨近9%创纪录，量化信息包括近9%；A股市场2026年上半年收官；同时涉及各大券商如何看待下半年市场趋势？；221家涨停；同时涉及高位股却扎堆“对子顶”；下半年第一天，量化信息包括221家。量化线索：近9%、221家。投研解读：需要拆成政策、成交额、行业主线、机构资金和权重股贡献，只有多项共振时才适合提高仓位。",
-      "reason": "方向判断：偏利好，但需要继续用订单、资金流、价格反应或政策细则验证。 事件内容：科创板首只万亿市值股诞生；同时涉及寒武纪大涨近9%创纪录，量化信息包括近9%；A股市场2026年上半年收官；同时涉及各大券商如何看待下半年市场趋势？。量化跟踪：近9%、221家。市场影响分析：A股事件最重要的是看成交额和主线集中度。政策和资金共振时，券商、核心资产、科技成长和主题龙头会受益；如果只有题材轮动而没有成交配合，高位主题股容易分化，低位防守和红利资产相对占优。 对股票市场的关键不是消息本身，而是它是否能带来盈利预期、估值折现率或资金流方向的变化。观察指标：沪深两市成交额、北向/ETF资金、主题龙头封单和换手、政策细则落地。投资建议：作为跟踪线索处理，等待价格、成交额和后续权威信息形成三重确认。",
+      "title": "A股：A股交投放量，互联网券商领衔大涨，东方财富涨超5%，银之杰涨超10%...",
+      "summary": "Jiemian.com在2026-07-01 07:13给出的线索是：A股交投放量；同时提到互联网券商领衔大涨; 东方财富涨超5%，量化信息包括超5%、超10%；证券时报在2026-07-01 07:28给出的线索是：科创板首只万亿市值股诞生；同时提到寒武纪大涨近9%创纪录，量化信息包括近9%；东方财富在2026-07-01 06:43给出的线索是：兆易创新A股成交额超400亿元，量化信息包括超400亿元。这类信息需要拆成政策预期、成交额、机构资金、行业主线和指数权重股五个变量。",
+      "reason": "方向判断：偏利好，但需要继续用订单、资金流、价格反应或政策细则验证。 市场影响分析：A股事件最重要的是看成交额和主线集中度。政策和资金共振时，券商、核心资产、科技成长和主题龙头会受益；如果只有题材轮动而没有成交配合，高位主题股容易分化，低位防守和红利资产相对占优。 A股关注映射链条和成交确认，港股关注美元/南向资金，美股关注盈利和估值是否匹配。",
       "beneficiaries": [
         "券商",
         "核心资产",
@@ -272,15 +235,15 @@
         "主题轮动过快",
         "消息反转"
       ],
-      "importance": 81,
-      "confidence": 88,
+      "importance": 84,
+      "confidence": 86,
       "sources": [
+        "消息来源：Jiemian.com；发布时间：2026-07-01T07:13:06+00:00；检索主题：A股政策与资金；原始标题：A股交投放量，互联网券商领衔大涨，东方财富涨超5%，银之杰涨超10%，“A股旗手”金融科技ETF汇添富(159103)强势涨超5%，三重催化共振 - Jiemian.com",
+        "https://news.google.com/rss/articles/CBMiVkFVX3lxTE8xT0lhbzJCSGtCeW55N1VPbk5NVnNtMTdPWnNXMGpmdlZtYk9CdEZ6eXVSeTZSY3dMVnNDajlkeGVKUzhQakJmUW9UUHljQzB0bWNGTWp3?oc=5",
         "消息来源：证券时报；发布时间：2026-07-01T07:28:36+00:00；检索主题：中国科技与硬科技；原始标题：科创板首只万亿市值股诞生！寒武纪大涨近9%创纪录 - 证券时报",
         "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBoT0FyWHdQZzRzODhxS1pBVUVWb2I2QVo3THRBSkltUlprYVNrc29MQlp1dkFLQTlQWDdHMmtKRjhLVzJkS0RIZm1FVFhYT3dFYWZfLUc3bXlneTla?oc=5",
-        "消息来源：证券之星；发布时间：2026-07-01T05:54:48+00:00；检索主题：A股政策与资金；原始标题：A股市场2026年上半年收官，各大券商如何看待下半年市场趋势？ - 证券之星",
-        "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1aMEh3amIxaGJmX1Y2ZmNVcm0tSmVDZ3dkZGtYNWxqTlZfdjlIZWhnb0Z1WHVhLVM4S0dhUk9wWHF6ZUkzLUpvZUpSOUxqZnd3MFlqNlNKay0yc1NFdjNSag?oc=5",
-        "消息来源：证券时报；发布时间：2026-07-01T08:51:47+00:00；检索主题：A股政策与资金；原始标题：221家涨停，高位股却扎堆“对子顶”！下半年第一天，A股画风突变 - 证券时报",
-        "https://news.google.com/rss/articles/CBMiXEFVX3lxTE8yUVZCdnFRZDFZa0ROSHpzNnFOWGtGMWV6TVlxNDRrQ1ByT0ZtS1l1VWZXdUk5aGNIMUNBV2k2NEhzRE5FemQ0ZFhyUWtoZUlnVmJBT0UwZW9VZVRF?oc=5"
+        "消息来源：东方财富；发布时间：2026-07-01T06:43:57+00:00；检索主题：A股政策与资金；原始标题：兆易创新A股成交额超400亿元 - 东方财富",
+        "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9lWlY2cXh5RkVLUzZxTkFpQk5LbU5SaENtb0Y4WUdPbWRVc2hYR1JVREpMV0ZHdk1tV21Sd2djUE5EVVJaUHV1VXdkaTRZZW9EZFJCYThCeGZ6aVQtMF8wMzVVVQ?oc=5"
       ],
       "bullish_stocks": [
         "东方财富(300059)",
@@ -296,9 +259,85 @@
       ]
     },
     {
+      "title": "公告：春秋航空：截至6月底累计出资4.66亿元回购股份",
+      "summary": "新京报在2026-07-01 09:20给出的线索是：春秋航空；同时提到截至6月底累计出资4.66亿元回购股份，量化信息包括4.66亿元；东方财富在2026-07-01 08:15给出的线索是：航民股份；同时提到控股股东拟增持1000万股公司股份；东方财富在2026-07-01 04:50给出的线索是：巨额回购股揭秘 最高股息率接近11%（附名单），量化信息包括近11%。公告类线索要重点看订单金额、利润率、现金流、履约周期和是否会改变公司未来几个季度的盈利预期。",
+      "reason": "方向判断：偏利好，但需要继续用订单、资金流、价格反应或政策细则验证。 市场影响分析：公司公告只有在改变未来收入、利润率、现金流或资本开支路径时才构成实质催化。重大合同、回购增持和业绩上修偏利好；减持、亏损扩大、订单取消和监管问询偏利空。 A股关注映射链条和成交确认，港股关注美元/南向资金，美股关注盈利和估值是否匹配。",
+      "beneficiaries": [
+        "公告涉及公司",
+        "相关产业链",
+        "同业龙头"
+      ],
+      "risks": [
+        "公告细节不及预期",
+        "履约周期拉长",
+        "利润率低于市场预期",
+        "消息反转"
+      ],
+      "importance": 80,
+      "confidence": 88,
+      "sources": [
+        "消息来源：新京报；发布时间：2026-07-01T09:20:47+00:00；检索主题：上市公司公告线索；原始标题：春秋航空：截至6月底累计出资4.66亿元回购股份 - 新京报",
+        "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5aNTMxTWVHamtiNUVFTWdFdjcyUlN5NzA3UXppQ2FoQnBZZVIwQjdmQTdFakFBTi1NTGFWZUdhVkJ6LVNOckk4aVBXbGY5bmRLbng4S3dLNWtnZnZKSWhXNDE1ZFY?oc=5",
+        "消息来源：东方财富；发布时间：2026-07-01T08:15:46+00:00；检索主题：上市公司公告线索；原始标题：航民股份：控股股东拟增持1000万股公司股份 - 东方财富",
+        "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBrbnF1dklndUM1NVUxamstb3l5QTl2YUFYLU5iUVlLS2lneUY5WlFMSDhjUVlqYUw5RlJRSnRpS0xuWGVJU3paOUd6SEZVdkJHeXRYOTVOMTZtcmJkTWtnZw?oc=5",
+        "消息来源：东方财富；发布时间：2026-07-01T04:50:50+00:00；检索主题：上市公司公告线索；原始标题：巨额回购股揭秘 最高股息率接近11%（附名单） - 东方财富",
+        "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBRNkNVMjU4VHpBTDVUTkhNck5XQzJNM2JIdlR0aHg1cXFZdHZpQW9QT3E4b1Y4MGIxUURZaVZBcTl5QXhQd3pVTHlyWXpSVjBjZ1F6QzE0a3pLZ09CWHZCVQ?oc=5"
+      ],
+      "bullish_stocks": [
+        "公告涉及公司",
+        "同产业链龙头",
+        "相关行业ETF"
+      ],
+      "bearish_stocks": [
+        "订单被替代公司",
+        "同业竞争弱势公司",
+        "减持或业绩下修公司"
+      ]
+    },
+    {
+      "title": "宏观：金价创13年来最大季度跌幅，牛市终结还是“黄金坑”？",
+      "summary": "21财经在2026-07-01 09:00给出的线索是：金价创13年来最大季度跌幅；同时提到牛市终结还是“黄金坑”？；eeo.com.cn在2026-07-01 07:52给出的线索是：【环球财经】日元兑美元汇率又新低；财联社在2026-07-01 01:03给出的线索是：技术面风险不断积聚；同时提到金价或下探至3800美元？分析师这么解释……。这类信息要先判断它改变的是利率、美元、通胀、风险偏好还是避险需求。",
+      "reason": "方向判断：偏中性，更适合作为观察线索，不宜直接当成交易信号。 市场影响分析：宏观变量通过美元、美债、人民币、商品和风险偏好影响权益估值。利率下行通常利好成长股和港股科技；美元走强、油价或通胀压力上行，会压制高估值资产，并提高黄金、能源和高股息资产的配置价值。 A股关注映射链条和成交确认，港股关注美元/南向资金，美股关注盈利和估值是否匹配。",
+      "beneficiaries": [
+        "黄金",
+        "能源",
+        "红利资产",
+        "出口链"
+      ],
+      "risks": [
+        "利率反向波动",
+        "汇率压力",
+        "地缘风险扩散",
+        "消息反转"
+      ],
+      "importance": 79,
+      "confidence": 88,
+      "sources": [
+        "消息来源：21财经；发布时间：2026-07-01T09:00:00+00:00；检索主题：全球风险资产；原始标题：金价创13年来最大季度跌幅，牛市终结还是“黄金坑”？ - 21财经",
+        "https://news.google.com/rss/articles/CBMijAFBVV95cUxPWDc0eFQxR1g3Tkh2YVgwWFBldnZ2RVMzZkpFUGw5bXhkdkdMQ0pBNTJtRG1aOE9SNEdROF91c29DdGZWNXRSWlo5dFgxWS1GeHgxTEk3cjlrRmVwSWtneUJ1ajlIZlJsaGY1NG9ERi0tRHYwU1R1SXE5MW5ITUVzZ3BzWmRpekNJWFRidg?oc=5",
+        "消息来源：eeo.com.cn；发布时间：2026-07-01T07:52:00+00:00；检索主题：全球宏观与央行；原始标题：【环球财经】日元兑美元汇率又新低 - eeo.com.cn",
+        "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1RV3E0aHdCcFliV1NuVGhDM0JCcnp4YUYweXI5UkZIN1BvaEtoWi1pbi1MeUUyWEtKTnpkMjU3MFJLNVVGY0FEV3BSZ0MzV0g5T3BBS29nMA?oc=5",
+        "消息来源：财联社；发布时间：2026-07-01T01:03:33+00:00；检索主题：大宗商品与资源；原始标题：技术面风险不断积聚，金价或下探至3800美元？分析师这么解释…… - 财联社",
+        "https://news.google.com/rss/articles/CBMiSEFVX3lxTE05dFUtekhQLXVVdEVZNm1KYWwtQkdMUGJEY2ZVUUoxaW1TMkhUZWVzNEZ1Yjd1N1NHTHNoRTg2bXJiMXluWC1xeg?oc=5"
+      ],
+      "bullish_stocks": [
+        "紫金矿业(601899/02899.HK)",
+        "山东黄金(600547)",
+        "中国海油(600938/00883.HK)",
+        "红利ETF(515180)",
+        "黄金ETF(518880)"
+      ],
+      "bearish_stocks": [
+        "航空股",
+        "高外债房企",
+        "高估值成长股",
+        "进口成本敏感公司"
+      ]
+    },
+    {
       "title": "AI：2008金融危机班底重聚辛特拉! 美联储加息预期升温撞上“AI泡沫压...",
-      "summary": "可复核事实：2008金融危机班底重聚辛特拉；同时涉及美联储加息预期升温撞上“AI泡沫压力测试” 沃什海外首秀会否“一鹰到底”?；运营商年报悉数出炉 中国移动称Token市场正快速打开 资本开支下降倒逼产业链转型；康宁（ GLW ）；同时涉及三层价值拆解；100 倍 PE 到底在为什么买单？，量化信息包括100 倍。量化线索：100 倍。投研解读：重点不是题材热度，而是算力需求、云厂商资本开支、服务器/光模块订单和应用付费能否互相验证；只有订单和业绩跟上，估值扩张才有持续性。",
-      "reason": "方向判断：偏中性，更适合作为观察线索，不宜直接当成交易信号。 事件内容：2008金融危机班底重聚辛特拉；同时涉及美联储加息预期升温撞上“AI泡沫压力测试” 沃什海外首秀会否“一鹰到底”?；运营商年报悉数出炉 中国移动称Token市场正快速打开 资本开支下降倒逼产业链转型。量化跟踪：100 倍。市场影响分析：如果线索指向资本开支上修、订单兑现或AI应用加速，股票市场通常先交易光模块、服务器、PCB、液冷、IDC和半导体设备。如果线索指向指数大跌、估值拥挤或订单低于预期，则利空高估值、缺少真实订单的AI题材，资金会转向已有业绩兑现的龙头。 对股票市场的关键不是消息本身，而是它是否能带来盈利预期、估值折现率或资金流方向的变化。观察指标：云厂商资本开支指引、GPU/服务器出货、光模块订单与价格、龙头成交额和相对强弱。投资建议：作为跟踪线索处理，等待价格、成交额和后续权威信息形成三重确认。",
+      "summary": "新浪财经在2026-07-01 09:00给出的线索是：2008金融危机班底重聚辛特拉；同时提到美联储加息预期升温撞上“AI泡沫压力测试” 沃什海外首秀会否“一鹰到底”?；新浪财经在2026-07-01 09:12给出的线索是：重估全球算力版图；同时提到为何先进晶圆代工与HBM存储是AI半导体投资的关键枢纽？；财联社在2026-07-01 02:30给出的线索是：运营商年报悉数出炉 中国移动称Token市场正快速打开 资本开支下降倒逼产业链转型。这类信息需要重点判断云厂商资本开支、GPU/服务器/光模块订单、算力租赁需求和应用落地是否互相验证。",
+      "reason": "方向判断：偏中性，更适合作为观察线索，不宜直接当成交易信号。 市场影响分析：如果线索指向资本开支上修、订单兑现或AI应用加速，股票市场通常先交易光模块、服务器、PCB、液冷、IDC和半导体设备。如果线索指向指数大跌、估值拥挤或订单低于预期，则利空高估值、缺少真实订单的AI题材，资金会转向已有业绩兑现的龙头。 A股关注映射链条和成交确认，港股关注美元/南向资金，美股关注盈利和估值是否匹配。",
       "beneficiaries": [
         "光模块",
         "服务器",
@@ -317,10 +356,10 @@
       "sources": [
         "消息来源：新浪财经；发布时间：2026-07-01T09:00:00+00:00；检索主题：全球宏观与央行；原始标题：2008金融危机班底重聚辛特拉! 美联储加息预期升温撞上“AI泡沫压力测试” 沃什海外首秀会否“一鹰到底”? - 新浪财经",
         "https://news.google.com/rss/articles/CBMijgFBVV95cUxQV1FLY0taT1FjdnJ3TTJreW1URTBuY2RBb0FZT1dsLVNibVV4UHFRNDZIdTJ1SWZLby0wSE9TeVZzMzUtWnUteURKa0Q3c2dyeTdqcUhybW1XNVRCX3Y0X2xJSmdRTGMwOWVrT1FtRnRlZGUzUV8yWnVrOTl5SUtMSGV4YmxORFJkS3FQVVNn?oc=5",
+        "消息来源：新浪财经；发布时间：2026-07-01T09:12:45+00:00；检索主题：AI算力产业链；原始标题：重估全球算力版图：为何先进晶圆代工与HBM存储是AI半导体投资的关键枢纽？ - 新浪财经",
+        "https://news.google.com/rss/articles/CBMib0FVX3lxTE11YjdIQi1PUGhsS2J4VUdDMTZXZHdVRFRia1NJdnFTQURGd0lqYmZRUUNRZHJ3am1obm94eVF3cnJORjIwVlJLRTZ6Y3FOS2lPMTNsbVNkcW9XWmJtVG9VNzkzMUctRmZFOHR0bjBrZw?oc=5",
         "消息来源：财联社；发布时间：2026-07-01T02:30:18+00:00；检索主题：AI算力产业链；原始标题：运营商年报悉数出炉 中国移动称Token市场正快速打开 资本开支下降倒逼产业链转型 - 财联社",
-        "https://news.google.com/rss/articles/CBMiSEFVX3lxTE5DRURod2hKa1E0OXc5ZG9YcnBoRDlOUDRCYnNMX3gyaXRObHFka3ZHQXZGdDJYVm1TeGpjYjRLR0UybEFSUEl5UA?oc=5",
-        "消息来源：odaily.news；发布时间：2026-06-30T18:46:05+00:00；检索主题：美股AI与云资本开支；原始标题：康宁（ GLW ）：三层价值拆解， 100 倍 PE 到底在为什么买单？ - odaily.news",
-        "https://news.google.com/rss/articles/CBMiUEFVX3lxTE83NnV6czJIdmVVQ2ZIa0JmZFdvMlJrS3hfdmFlZzF1aFp2NHRFSW1RRGFTdmpiY2NFZUp4SHQ0XzFsNHQ0TE9odXJ0UFBGUkFs?oc=5"
+        "https://news.google.com/rss/articles/CBMiSEFVX3lxTE5DRURod2hKa1E0OXc5ZG9YcnBoRDlOUDRCYnNMX3gyaXRObHFka3ZHQXZGdDJYVm1TeGpjYjRLR0UybEFSUEl5UA?oc=5"
       ],
       "bullish_stocks": [
         "中际旭创(300308)",
@@ -337,8 +376,8 @@
     },
     {
       "title": "港股：港股三重约束与解禁潮来袭 机构建议关注盈利拐点三大方向",
-      "summary": "可复核事实：港股三重约束与解禁潮来袭 机构建议关注盈利拐点三大方向；ETF今日收评；同时涉及恒生医疗ETF大成、创新药ETF富国、创新药ETF国泰涨停；A股医药生物板块掀涨停潮；同时涉及美团、百度、阿里等集体大涨。量化线索：暂无明确数值，先按可复核事件本身跟踪。投研解读：港股机会通常需要美元走弱、南向资金和平台经济预期共振；单条新闻只能作为触发，持续性要看恒生科技成交和龙头回购。",
-      "reason": "方向判断：偏利好，但需要继续用订单、资金流、价格反应或政策细则验证。 事件内容：港股三重约束与解禁潮来袭 机构建议关注盈利拐点三大方向；ETF今日收评；同时涉及恒生医疗ETF大成、创新药ETF富国、创新药ETF国泰涨停。量化跟踪：暂无直接数值，需用后续价格、订单、成交额或资金流验证。市场影响分析：港股对美元、美债和南向资金很敏感。若南向持续流入且美元走弱，平台经济、恒生科技和高股息资产更容易修复；若只是单日反弹而成交没有放大，港股科技的持续性不足，容易回到震荡。 对股票市场的关键不是消息本身，而是它是否能带来盈利预期、估值折现率或资金流方向的变化。观察指标：恒生科技成交额、南向资金净流入、美元指数、平台龙头回购。投资建议：作为跟踪线索处理，等待价格、成交额和后续权威信息形成三重确认。",
+      "summary": "财联社在2026-07-01 06:21给出的线索是：港股三重约束与解禁潮来袭 机构建议关注盈利拐点三大方向；东方财富在2026-07-01 09:25给出的线索是：ETF今日收评；同时提到恒生医疗ETF大成、创新药ETF富国、创新药ETF国泰涨停；证券时报在2026-07-01 03:48给出的线索是：A股医药生物板块掀涨停潮；同时提到美团、百度、阿里等集体大涨。这类信息需要同时看美元流动性、南向资金、平台经济预期和恒生科技成交能否形成共振。",
+      "reason": "方向判断：偏利好，但需要继续用订单、资金流、价格反应或政策细则验证。 市场影响分析：港股对美元、美债和南向资金很敏感。若南向持续流入且美元走弱，平台经济、恒生科技和高股息资产更容易修复；若只是单日反弹而成交没有放大，港股科技的持续性不足，容易回到震荡。 A股关注映射链条和成交确认，港股关注美元/南向资金，美股关注盈利和估值是否匹配。",
       "beneficiaries": [
         "港股科技",
         "互联网平台",
@@ -375,9 +414,48 @@
       ]
     },
     {
-      "title": "A股：兆易创新A股成交额超400亿元",
-      "summary": "可复核事实：兆易创新A股成交额超400亿元，量化信息包括超400亿元；“天量成交”、千亿市值俱乐部扩容、百元股大爆发......A股上半年行情收官!；A股重大调整；同时涉及7月6日起施行。量化线索：超400亿元。投研解读：需要拆成政策、成交额、行业主线、机构资金和权重股贡献，只有多项共振时才适合提高仓位。",
-      "reason": "方向判断：偏中性，更适合作为观察线索，不宜直接当成交易信号。 事件内容：兆易创新A股成交额超400亿元，量化信息包括超400亿元；“天量成交”、千亿市值俱乐部扩容、百元股大爆发......A股上半年行情收官!。量化跟踪：超400亿元。市场影响分析：A股事件最重要的是看成交额和主线集中度。政策和资金共振时，券商、核心资产、科技成长和主题龙头会受益；如果只有题材轮动而没有成交配合，高位主题股容易分化，低位防守和红利资产相对占优。 对股票市场的关键不是消息本身，而是它是否能带来盈利预期、估值折现率或资金流方向的变化。观察指标：沪深两市成交额、北向/ETF资金、主题龙头封单和换手、政策细则落地。投资建议：作为跟踪线索处理，等待价格、成交额和后续权威信息形成三重确认。",
+      "title": "AI：康宁（ GLW ）：三层价值拆解， 100 倍 PE 到底在为什么买...",
+      "summary": "odaily.news在2026-06-30 18:46给出的线索是：康宁（ GLW ）；同时提到三层价值拆解; 100 倍 PE 到底在为什么买单？；新华网客户端在2026-07-01 06:43给出的线索是：人保财险签发全国首单“算力保”专属产品；华尔街见闻在2026-07-01 07:42给出的线索是：韩国半导体基板厂商；同时提到三星、SK海力士拟要求下半年降价; 年初3%~4%涨幅或将撤回，量化信息包括3%、4%。这类信息需要重点判断云厂商资本开支、GPU/服务器/光模块订单、算力租赁需求和应用落地是否互相验证。",
+      "reason": "方向判断：偏利空或风险释放，短线先看相关板块是否继续放量承压。 市场影响分析：如果线索指向资本开支上修、订单兑现或AI应用加速，股票市场通常先交易光模块、服务器、PCB、液冷、IDC和半导体设备。如果线索指向指数大跌、估值拥挤或订单低于预期，则利空高估值、缺少真实订单的AI题材，资金会转向已有业绩兑现的龙头。 A股关注映射链条和成交确认，港股关注美元/南向资金，美股关注盈利和估值是否匹配。",
+      "beneficiaries": [
+        "光模块",
+        "服务器",
+        "AI芯片",
+        "IDC",
+        "云计算"
+      ],
+      "risks": [
+        "云厂商资本开支低于预期",
+        "订单无法兑现到利润",
+        "估值拥挤",
+        "消息反转"
+      ],
+      "importance": 78,
+      "confidence": 87,
+      "sources": [
+        "消息来源：odaily.news；发布时间：2026-06-30T18:46:05+00:00；检索主题：美股AI与云资本开支；原始标题：康宁（ GLW ）：三层价值拆解， 100 倍 PE 到底在为什么买单？ - odaily.news",
+        "https://news.google.com/rss/articles/CBMiUEFVX3lxTE83NnV6czJIdmVVQ2ZIa0JmZFdvMlJrS3hfdmFlZzF1aFp2NHRFSW1RRGFTdmpiY2NFZUp4SHQ0XzFsNHQ0TE9odXJ0UFBGUkFs?oc=5",
+        "消息来源：新华网客户端；发布时间：2026-07-01T06:43:48+00:00；检索主题：中国科技与硬科技；原始标题：人保财险签发全国首单“算力保”专属产品 - 新华网客户端",
+        "https://news.google.com/rss/articles/CBMimgFBVV95cUxPYTFHVHVkUzdzekpGWXpCZlBkUVJkVkx6aXlXREJvQWp4SXdDMnpLZnFyZENlUVZvd1RzeGVtQk04aURualZNMm95Uml4MHVNNmJjcGE5c0hJWmE4X1hvaGhMRWdGZXgteXVucEcyYkJCVkVwVjBYVjYwTkk3NFV3VndNRk9fTno1UTFhRjJpMEJ3elE0bHZKRUl3?oc=5",
+        "消息来源：华尔街见闻；发布时间：2026-07-01T07:42:18+00:00；检索主题：中国科技与硬科技；原始标题：韩国半导体基板厂商：三星、SK海力士拟要求下半年降价，年初3%~4%涨幅或将撤回 - 华尔街见闻",
+        "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9fWXQzQXpoNUwzdXQzY0liVmFhcGl1ZEJ5WU5kZkk2WVFCOEt1bU5jZmNFdXJCUENFRHdoclJyN21NSklVNXVramVCMm9NNlpvQUxZ?oc=5"
+      ],
+      "bullish_stocks": [
+        "已有订单和利润兑现的AI龙头",
+        "现金流稳健的服务器/光模块龙头",
+        "半导体设备国产替代龙头",
+        "科技宽基ETF"
+      ],
+      "bearish_stocks": [
+        "高估值无订单AI题材股",
+        "算力租赁弱现金流公司",
+        "低端服务器代工企业"
+      ]
+    },
+    {
+      "title": "A股：“天量成交”、千亿市值俱乐部扩容、百元股大爆发......A股上半年...",
+      "summary": "新浪财经在2026-07-01 10:14给出的线索是：“天量成交”、千亿市值俱乐部扩容、百元股大爆发......A股上半年行情收官!；金融界在2026-07-01 06:10给出的线索是：A股创新药概念集体走强；同时提到三生国健涨超12%; 智飞生物涨超5%，量化信息包括超12%、超5%；证券时报在2026-07-01 07:41给出的线索是：A股市场风格再度切换；同时提到券商、保险板块拉升; 科技股跳水。这类信息需要拆成政策预期、成交额、机构资金、行业主线和指数权重股五个变量。",
+      "reason": "方向判断：偏中性，更适合作为观察线索，不宜直接当成交易信号。 市场影响分析：A股事件最重要的是看成交额和主线集中度。政策和资金共振时，券商、核心资产、科技成长和主题龙头会受益；如果只有题材轮动而没有成交配合，高位主题股容易分化，低位防守和红利资产相对占优。 A股关注映射链条和成交确认，港股关注美元/南向资金，美股关注盈利和估值是否匹配。",
       "beneficiaries": [
         "券商",
         "核心资产",
@@ -390,15 +468,15 @@
         "主题轮动过快",
         "消息反转"
       ],
-      "importance": 79,
-      "confidence": 85,
+      "importance": 77,
+      "confidence": 88,
       "sources": [
-        "消息来源：东方财富；发布时间：2026-07-01T06:43:57+00:00；检索主题：A股政策与资金；原始标题：兆易创新A股成交额超400亿元 - 东方财富",
-        "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9lWlY2cXh5RkVLUzZxTkFpQk5LbU5SaENtb0Y4WUdPbWRVc2hYR1JVREpMV0ZHdk1tV21Sd2djUE5EVVJaUHV1VXdkaTRZZW9EZFJCYThCeGZ6aVQtMF8wMzVVVQ?oc=5",
         "消息来源：新浪财经；发布时间：2026-07-01T10:14:49+00:00；检索主题：A股政策与资金；原始标题：“天量成交”、千亿市值俱乐部扩容、百元股大爆发......A股上半年行情收官! - 新浪财经",
         "https://news.google.com/rss/articles/CBMiiAJBVV95cUxPWVhwQ0h3bHo0YVEtOU1PQjBDaGl5OUNrM1Itc3laSXhLekZLYXR3UUNTemdVOU9WNzdaQWNvZVM5VEpKZnh3TGRfZlVLOElCcThwelhTOHAxY2FlVmw5QVM5MlVlVmwzU1BwU2IwSVQ1cjIzMlg3dVZGMkc0UzB6T0RONlktX0g3cFdwZWJnMDk0andVc2U1Z3hXcTFxdEJUbTIxdGJIdWVUNlplR0RZNzVGbDFSeW4xQ21vVmYxZXVDNkZBSklaclh5MEIyWElZckI4V3daejcwZ2Fxa3ZabW9xdms5QXQ1UktUSUJQd2xFWVNaV196Vm5rdTMyd1BaOFh4MHc4TEM?oc=5",
-        "消息来源：21财经；发布时间：2026-07-01T08:52:00+00:00；检索主题：A股政策与资金；原始标题：A股重大调整，7月6日起施行 - 21财经",
-        "https://news.google.com/rss/articles/CBMijAFBVV95cUxQY3MteUNTYjR6dGxYSlZsYXVHNXdmeTl4N1RfeWpJSllyX2FmeFJ1OXRVMDEtT2ZZTmpkWG5GRnZYM1BVcFBkdkRHdDlBTmt4YlI0SzZlVTJwQmJIZGxoVk8wVHdsLTJhdWVJTU5iYzJ0VHViMmFMWGItSHNMNjR1ZEN1X2FaTjEtSS10SQ?oc=5"
+        "消息来源：金融界；发布时间：2026-07-01T06:10:31+00:00；检索主题：创新药与医疗；原始标题：A股创新药概念集体走强，三生国健涨超12%，智飞生物涨超5% - 金融界",
+        "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5SVWc1bURBMDJwcW1jeElqNGpXcWxlNG82U1V2bEtwYmNDYmlfN0wzaFlpdEs0MWs5U2lYdGlESGdtWjlQWkNjbU5MeDJfamc0MVhzRzZvTUdmdEhxZzZOUXd6bw?oc=5",
+        "消息来源：证券时报；发布时间：2026-07-01T07:41:00+00:00；检索主题：A股政策与资金；原始标题：A股市场风格再度切换，券商、保险板块拉升！科技股跳水 - 证券时报",
+        "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5WRWtKQVQ1M2h6OHJGMVpYandUemRDRjBWeC02cmU0R3B6OWd5QWUyVnRRM2pfTHRqTnNkcm5NWWIxeG85S1JTaTJJYUJPRHdGVWM1RHVNNnFiTmJP?oc=5"
       ],
       "bullish_stocks": [
         "东方财富(300059)",
@@ -414,89 +492,9 @@
       ]
     },
     {
-      "title": "宏观：现货黄金日内转涨",
-      "summary": "可复核事实：现货黄金日内转涨；【环球财经】日元兑美元汇率又新低；海外研选；同时涉及自动化3.0时代开启 人形机器人市场10年后或达2000亿美元，量化信息包括10年、达2000亿美元。量化线索：10年、达2000亿美元。投研解读：先判断它影响利率、美元、通胀、商品还是风险偏好，再映射到成长、资源、高股息和港股科技。",
-      "reason": "方向判断：偏中性，更适合作为观察线索，不宜直接当成交易信号。 事件内容：现货黄金日内转涨；【环球财经】日元兑美元汇率又新低。量化跟踪：10年、达2000亿美元。市场影响分析：宏观变量通过美元、美债、人民币、商品和风险偏好影响权益估值。利率下行通常利好成长股和港股科技；美元走强、油价或通胀压力上行，会压制高估值资产，并提高黄金、能源和高股息资产的配置价值。 对股票市场的关键不是消息本身，而是它是否能带来盈利预期、估值折现率或资金流方向的变化。观察指标：现货黄金价格、实际利率、美元指数、央行购金和ETF持仓。投资建议：不直接据此买入，先观察利率、美元和商品价格是否同步确认，再决定成长、资源或高股息的配置倾斜。",
-      "beneficiaries": [
-        "黄金",
-        "能源",
-        "红利资产",
-        "出口链"
-      ],
-      "risks": [
-        "利率反向波动",
-        "汇率压力",
-        "地缘风险扩散",
-        "消息反转"
-      ],
-      "importance": 77,
-      "confidence": 88,
-      "sources": [
-        "消息来源：东方财富；发布时间：2026-07-01T11:05:31+00:00；检索主题：全球风险资产；原始标题：现货黄金日内转涨 - 东方财富",
-        "https://news.google.com/rss/articles/CBMiY0FVX3lxTE12MVBqZHVYT25EQUFGUkVWSnBWNTV2WHM0UnNpUjM4TWxFQ0I3VHVyWDJUVXFTRkdFWWU0MWdXUTVyR194bzQzTGFMTzZVbmVxMVNmeTRQaWcyRjRPQmxuUldfZw?oc=5",
-        "消息来源：eeo.com.cn；发布时间：2026-07-01T07:52:00+00:00；检索主题：全球宏观与央行；原始标题：【环球财经】日元兑美元汇率又新低 - eeo.com.cn",
-        "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1RV3E0aHdCcFliV1NuVGhDM0JCcnp4YUYweXI5UkZIN1BvaEtoWi1pbi1MeUUyWEtKTnpkMjU3MFJLNVVGY0FEV3BSZ0MzV0g5T3BBS29nMA?oc=5",
-        "消息来源：财联社；发布时间：2026-07-01T02:34:21+00:00；检索主题：机器人与智能制造；原始标题：海外研选 | 巴克莱：自动化3.0时代开启 人形机器人市场10年后或达2000亿美元 - 财联社",
-        "https://news.google.com/rss/articles/CBMiSEFVX3lxTE12ZjBIMXNiQVEtUTZXbHRaMTFFNGtGVjdUM1hLY3RwSm9lcS15Z1k4WkgzdW9LT3Y4ZUJyN3hjUjhDTHNaOWhzcg?oc=5"
-      ],
-      "bullish_stocks": [
-        "紫金矿业(601899/02899.HK)",
-        "山东黄金(600547)",
-        "中国海油(600938/00883.HK)",
-        "红利ETF(515180)",
-        "黄金ETF(518880)"
-      ],
-      "bearish_stocks": [
-        "航空股",
-        "高外债房企",
-        "高估值成长股",
-        "进口成本敏感公司"
-      ]
-    },
-    {
-      "title": "宏观：技术面风险不断积聚，金价或下探至3800美元？分析师这么解释……",
-      "summary": "可复核事实：技术面风险不断积聚；同时涉及金价或下探至3800美元？分析师这么解释……，量化信息包括3800美元；地缘冲突冲击 中资美元债高收益债指数年内涨幅归零；上半年人民币对美元即期汇率升值2.9%；同时涉及后续如何走，量化信息包括2.9%。量化线索：3800美元、2.9%。投研解读：先判断它影响利率、美元、通胀、商品还是风险偏好，再映射到成长、资源、高股息和港股科技。",
-      "reason": "方向判断：偏中性，更适合作为观察线索，不宜直接当成交易信号。 事件内容：技术面风险不断积聚；同时涉及金价或下探至3800美元？分析师这么解释……，量化信息包括3800美元；地缘冲突冲击 中资美元债高收益债指数年内涨幅归零。量化跟踪：3800美元、2.9%。市场影响分析：宏观变量通过美元、美债、人民币、商品和风险偏好影响权益估值。利率下行通常利好成长股和港股科技；美元走强、油价或通胀压力上行，会压制高估值资产，并提高黄金、能源和高股息资产的配置价值。 对股票市场的关键不是消息本身，而是它是否能带来盈利预期、估值折现率或资金流方向的变化。观察指标：美元指数、美债10年收益率、人民币汇率、黄金/原油价格。投资建议：先降低追高意愿，把相关股票清单作为风险排查池；只有龙头放量企稳且基本面未恶化时再考虑低吸。",
-      "beneficiaries": [
-        "黄金",
-        "能源",
-        "红利资产",
-        "出口链"
-      ],
-      "risks": [
-        "利率反向波动",
-        "汇率压力",
-        "地缘风险扩散",
-        "消息反转"
-      ],
-      "importance": 77,
-      "confidence": 88,
-      "sources": [
-        "消息来源：财联社；发布时间：2026-07-01T01:03:33+00:00；检索主题：大宗商品与资源；原始标题：技术面风险不断积聚，金价或下探至3800美元？分析师这么解释…… - 财联社",
-        "https://news.google.com/rss/articles/CBMiSEFVX3lxTE05dFUtekhQLXVVdEVZNm1KYWwtQkdMUGJEY2ZVUUoxaW1TMkhUZWVzNEZ1Yjd1N1NHTHNoRTg2bXJiMXluWC1xeg?oc=5",
-        "消息来源：财联社；发布时间：2026-07-01T10:39:06+00:00；检索主题：全球宏观与央行；原始标题：地缘冲突冲击 中资美元债高收益债指数年内涨幅归零 - 财联社",
-        "https://news.google.com/rss/articles/CBMiSEFVX3lxTE9OQkRKX0lzTVpKOXhNeHdkS1ZDazNYbGxQQXJHMWpnTE1yTXhYdnJTWWx4bENGMnFJUUFTMTV0V2pRVGQyTmVnMA?oc=5",
-        "消息来源：新浪财经；发布时间：2026-07-01T10:11:44+00:00；检索主题：全球宏观与央行；原始标题：上半年人民币对美元即期汇率升值2.9%，后续如何走 - 新浪财经",
-        "https://news.google.com/rss/articles/CBMimAFBVV95cUxONjk2dFdvWnFGVGRJWDFyNDRUNTVrRjUtYXA3V3pLWmJRZ3pScllrSC1TbmNDVnlRTmtvTHRpUzFlWV83OFBWa0lvR0JqY25oUHFQV2Z0aEVjSmwtRzQ2Q01MVWNUM1RoMzVHd2lXdEt2TEhNbzJjcExVZHlxTFpSMFdaNjA1LXVkMlItZkZNVWpVSWtCcGdLag?oc=5"
-      ],
-      "bullish_stocks": [
-        "紫金矿业(601899/02899.HK)",
-        "山东黄金(600547)",
-        "中国海油(600938/00883.HK)",
-        "红利ETF(515180)",
-        "黄金ETF(518880)"
-      ],
-      "bearish_stocks": [
-        "航空股",
-        "高外债房企",
-        "高估值成长股",
-        "进口成本敏感公司"
-      ]
-    },
-    {
       "title": "能源电力：央企标准，中汽新能用1300℃烧出储能安全新边界",
-      "summary": "可复核事实：央企标准；同时涉及中汽新能用1300℃烧出储能安全新边界；巴西东北部特高压直流输电项目全线开工；固态电池产业园“绿能谷”动工。量化线索：暂无明确数值，先按可复核事件本身跟踪。投研解读：若线索指向电网投资、储能招标、核电审批或电力市场化，优先看订单确定性和招标价格，避免只买概念不看利润率。",
-      "reason": "方向判断：偏中性，更适合作为观察线索，不宜直接当成交易信号。 事件内容：央企标准；同时涉及中汽新能用1300℃烧出储能安全新边界；巴西东北部特高压直流输电项目全线开工。量化跟踪：暂无直接数值，需用后续价格、订单、成交额或资金流验证。市场影响分析：能源电力的核心机会来自电网投资、储能招标、核电审批和电力市场化。利好通常集中在电网设备、储能系统、变压器、逆变器和运营商；若招标价格继续下行或产能过剩，低毛利设备商和高负债扩产公司会承压。 对股票市场的关键不是消息本身，而是它是否能带来盈利预期、估值折现率或资金流方向的变化。观察指标：电网投资计划、储能/特高压招标价格、核电审批节奏、设备龙头订单。投资建议：作为跟踪线索处理，等待价格、成交额和后续权威信息形成三重确认。",
+      "summary": "新浪新闻_手机新浪网在2026-07-01 09:30给出的线索是：央企标准；同时提到中汽新能用1300℃烧出储能安全新边界；sasac.gov.cn在2026-07-01 01:31给出的线索是：巴西东北部特高压直流输电项目全线开工；证券时报在2026-07-01 04:33给出的线索是：复产信号增强；同时提到3家合作企业称收到宁德时代复产通知，量化信息包括3家。这类信息需要区分储能、电网、特高压、核电和风光设备，核心是订单规模、招标价格和盈利质量。",
+      "reason": "方向判断：偏中性，更适合作为观察线索，不宜直接当成交易信号。 市场影响分析：能源电力的核心机会来自电网投资、储能招标、核电审批和电力市场化。利好通常集中在电网设备、储能系统、变压器、逆变器和运营商；若招标价格继续下行或产能过剩，低毛利设备商和高负债扩产公司会承压。 A股关注映射链条和成交确认，港股关注美元/南向资金，美股关注盈利和估值是否匹配。",
       "beneficiaries": [
         "电网设备",
         "储能",
@@ -517,8 +515,8 @@
         "https://news.google.com/rss/articles/CBMidkFVX3lxTE5pYWFfV3pLMzlUdGVETUF6RnFiNGRoeHFiVFBZY2paM3g3eFFEZEFwRUFlT3RabHd5and6d0NlRXlleEpqQ1lWLXZKbDNCdVJOZUE4aDZBVXFSMGFSUFk1VUxrV084ekRfbTFjTEVGNkZNbWJYeFE?oc=5",
         "消息来源：sasac.gov.cn；发布时间：2026-07-01T01:31:28+00:00；检索主题：能源电力与储能；原始标题：巴西东北部特高压直流输电项目全线开工 - sasac.gov.cn",
         "https://news.google.com/rss/articles/CBMickFVX3lxTFBoYzdGRVlrRXdNcEszdy1WYUxSMFhwXzk4bGU0bGl5ZWc5RHpidnVRY3FqeGZjbXB1b2tXUFlyWDM3RUsyRVloT2U0QkdyTHBCZWZ5WWlGT2tpMkhZbEhzLTUxeHBuWnFCcXFQU2t4NTZDQQ?oc=5",
-        "消息来源：广州市人民政府；发布时间：2026-07-01T02:15:43+00:00；检索主题：新能源车与电池；原始标题：固态电池产业园“绿能谷”动工 - 广州市人民政府",
-        "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNalB5bDlwSXBhRmVLb21tZ0xBMmdGVUZYUnJ3UTNDSVFaQmxpcTAxUFZVWEwweFlERFhqSHVWMzdta1ZUNUZ3VjQwQWlRMkl1djluOVpXbHFXdFp6MXZObEEteENKRjZGSEc5LVI5OHFhajdWLUVtZURoUmFCX2pwTEpkVmt5c3pu?oc=5"
+        "消息来源：证券时报；发布时间：2026-07-01T04:33:00+00:00；检索主题：新能源车与电池；原始标题：复产信号增强，3家合作企业称收到宁德时代复产通知 - 证券时报",
+        "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1TRnR2OVV6R2JIcFp4bGZxelVObk1EOVhlMGMwOEd6OFlra2hzY1gtRGhZcko5cTZySnF3djg4clJSVE10dTV4eWMzejd2MVllQUF4c1JiRDdwQ2c4?oc=5"
       ],
       "bullish_stocks": [
         "国电南瑞(600406)",
@@ -679,32 +677,32 @@
     "部分资产单日跌幅较大，说明风险偏好可能低于新闻标题呈现的乐观程度。",
     "负面线索密度上升，需警惕政策、盈利或外部流动性风险扩散。"
   ],
-  "source_note": "中国大陆指数优先来自新浪行情接口，海外市场、商品、汇率等来自 Yahoo Finance chart 免费接口，可能存在延迟、缺口或临时不可用；投资判断仍需结合交易所、公司公告和券商数据复核。\n\n宏观代理指标来自 Yahoo Finance 免费接口，覆盖美债、波动率、商品和加密资产；这些是资金环境代理变量，不等同于官方宏观统计。\n\n新闻证据包来自 Google News RSS 的多主题检索矩阵，覆盖全球宏观、A股、港股、美股科技、AI算力、半导体、能源电力、资源品、公告和未来事件日历。报告会把标题、来源、发布时间、检索主题作为可复核证据；涉及投资结论时仍需回看原文和公司公告。\n\n公告线索来自 Google News 对巨潮资讯、交易所、港交所披露易和 SEC 的公开索引；当前阶段只用于发现线索，正式判断必须打开公告原文复核。\n\nAI 模型调用状态：未调用 AI 模型。未配置可用的 OPENAI_API_KEY 或 DEEPSEEK_API_KEY，本报告使用行情、新闻、公告和规则引擎生成。\n\n质量检查：通过基础完整性检查。",
+  "source_note": "中国大陆指数优先来自新浪行情接口，海外市场、商品、汇率等来自 Yahoo Finance chart 免费接口，可能存在延迟、缺口或临时不可用；投资判断仍需结合交易所、公司公告和券商数据复核。\n\n宏观代理指标来自 Yahoo Finance 免费接口，覆盖美债、波动率、商品和加密资产；这些是资金环境代理变量，不等同于官方宏观统计。\n\n新闻证据包来自 Google News RSS 的多主题检索矩阵，覆盖全球宏观、A股、港股、美股科技、AI算力、半导体、能源电力、资源品、公告和未来事件日历。报告会把标题、来源、发布时间、检索主题作为可复核证据；涉及投资结论时仍需回看原文和公司公告。\n\nAI 模型调用状态：调用 deepseek / deepseek-chat 失败，已自动退回规则版报告。失败原因：DeepSeek returned invalid JSON and repair also failed. Original error: Expecting ',' delimiter: line 100 column 6 (char 13168); repair error: Expecting ',' delimiter: line 100 column 6 (char 13168)\n\n质量检查：通过基础完整性检查。",
   "analysis_sections": [
     {
       "title": "今日十大核心事件筛选逻辑",
-      "view": "本次筛选不是按媒体标题排序，而是把 64 条线索拆成宏观、资金、产业、公告和日历，再按可验证性、量化信息和资产映射排序。当前市场判断：结构分化。资金没有形成单一方向，今天更重要的是识别哪些板块由真实催化驱动，哪些只是情绪轮动。 今日靠前的可复核事实包括：最新调查；同时涉及更多央行计划减持美元；增持黄金与储备货币多元化；安乃达：宁波思辉拟减持不超3%股份，量化信息包括超3%；科创板首只万亿市值股诞生；同时涉及寒武纪大涨近9%创纪录，量化信息包括近9%。可直接跟踪的量化线索：超3%、近9%、3%、221家。",
+      "view": "本次筛选重点不是罗列新闻，而是把 63 条线索按宏观、资金、产业、公告和日历归类，再按可验证性排序。当前市场判断：结构分化。资金没有形成单一方向，今天更重要的是识别哪些板块由真实催化驱动，哪些只是情绪轮动。",
       "opportunities": [
-        "优先研究同时具备具体事件、量化指标、价格反应和公司/产业链验证的主题。",
-        "同一主题内区分真正受益者与情绪扩散对象，只有订单、价格、资金流或政策细则能继续验证时才提高仓位。"
+        "优先研究同时具备新闻催化、市场价格反应和公司/产业链验证的主题。",
+        "同一主题内区分真正受益者与情绪扩散对象，避免把板块上涨简单等同于基本面改善。"
       ],
       "risks": [
         "单一标题可能遗漏关键上下文。",
         "免费聚合源可能延迟，需回看原文和公告。"
       ],
       "watch": [
-        "最新调查；同时涉及更多央行计划减持美元；增持黄金与储备货币多元化",
-        "安乃达：宁波思辉拟减持不超3%股份，量化信息包括超3%",
-        "科创板首只万亿市值股诞生；同时涉及寒武纪大涨近9%创纪录，量化信息包括近9%",
-        "A股市场2026年上半年收官；同时涉及各大券商如何看待下半年市场趋势？"
+        "最新调查：更多央行计划减持美元，增持黄金与储备货币多元化",
+        "2008金融危机班底重聚辛特拉! 美联储加息预期升温撞上“AI泡沫压力测试” 沃什海外首秀会否“一鹰到底”?",
+        "A股交投放量，互联网券商领衔大涨，东方财富涨超5%，银之杰涨超10%，“A股旗手”金融科技ETF汇添富(159103)强势涨超5%，三重催化共振",
+        "上半年人民币对美元即期汇率升值2.9%，后续如何走"
       ]
     },
     {
       "title": "全球资本市场复盘",
-      "view": "全球市场复盘要把指数涨跌和消息线索合并看：若美股科技、港股科技和A股成长同步走强，资金通常在交易AI盈利和流动性改善；若黄金、美元或能源强于权益，则说明避险、通胀或地缘变量仍在定价。今日市场信号中波动较大的指标是：科创50, 韩国KOSPI, 恒生科技, 创业板指, 纳斯达克100。",
+      "view": "观察美国、中国、欧洲、日本和港股时，重点回答资金到底在交易利率、AI盈利、政策预期、汇率，还是避险需求。",
       "opportunities": [
-        "若强势指标集中在美股科技和恒生科技，可优先看AI算力、半导体和互联网平台的跨市场映射。",
-        "若强势指标集中在资源、能源或欧洲日本顺周期，则把有价格弹性和出口订单的公司放入观察池。"
+        "若美股科技与A/H科技同时走强，AI和半导体链条的跨市场映射价值提高。",
+        "若欧洲、日本和资源品同步偏强，顺周期和出口链可以进入观察池。"
       ],
       "risks": [
         "单日指数涨跌可能只是情绪修复。",
@@ -715,12 +713,12 @@
         "韩国KOSPI",
         "恒生科技",
         "创业板指",
-        "纳斯达克100"
+        "VIX 波动率"
       ]
     },
     {
       "title": "今日最重要产业趋势",
-      "view": "今日产业线索分布：AI 10 条、半导体 3 条、能源电力 4 条、新能源 7 条。需要优先研究的不是行业名称，而是具体催化：2008金融危机班底重聚辛特拉；同时涉及美联储加息预期升温撞上“AI泡沫压力测试” 沃什海外首秀会否“一鹰到底”?; 运营商年报悉数出炉 中国移动称Token市场正快速打开 资本开支下降倒逼产业链转型; 康宁（ GLW ）；同时涉及三层价值拆解；100 倍 PE 到底在为什么买单？，量化信息包括100 倍; AI进入下半场；同时涉及模型不再稀缺；真正稀缺的是算力、场景和信任。",
+      "view": "新闻主题分布显示：AI 10 条、半导体 3 条、能源电力 4 条、新能源 7 条。重点看产业链哪一环真的能赚钱。",
       "opportunities": [
         "AI算力与半导体链条：从题材热度切到订单验证",
         "能源电力：优先电网、储能和盈利质量较稳的环节",
@@ -740,7 +738,7 @@
     },
     {
       "title": "全球资金流向",
-      "view": "资金流向必须用美元、人民币、黄金、原油、美债、纳斯达克、恒生科技、沪深300和创业板交叉验证。如果权益和商品同涨，可能是增长预期；如果黄金和美元同强，往往是风险对冲。当前可观察指标：科创50, 韩国KOSPI, 恒生科技, 创业板指, 纳斯达克100, VIX 波动率。",
+      "view": "资金流向用美元、人民币、黄金、原油、美债、纳斯达克、恒生科技、沪深300和创业板来交叉验证。单一资产上涨不能说明全部风险偏好改善。",
       "opportunities": [
         "美元走弱且美债收益率下行时，港股科技、A股成长和黄金更容易同时受益。",
         "商品走强且股市不弱时，资源品和顺周期资产的胜率提高。"
@@ -759,7 +757,7 @@
     },
     {
       "title": "政策与公告解读",
-      "view": "政策和公告要看真实目的：稳增长、促消费、扩投资、科技自主、能源安全或资本市场活跃。今日政策/公告可复核线索：最新调查；同时涉及更多央行计划减持美元；增持黄金与储备货币多元化; 安乃达：宁波思辉拟减持不超3%股份，量化信息包括超3%; 科创板首只万亿市值股诞生；同时涉及寒武纪大涨近9%创纪录，量化信息包括近9%; A股市场2026年上半年收官；同时涉及各大券商如何看待下半年市场趋势？。不同目的对应完全不同的受益公司，不能只按标题判断利好。",
+      "view": "政策和公告要看真实目的：稳增长、促消费、扩投资、科技自主、能源安全或资本市场活跃。不同目的对应完全不同的受益公司。",
       "opportunities": [
         "稳增长偏利好基建、电网、央国企和高股息。",
         "科技自主偏利好半导体设备材料、国产算力和工业软件。"
