@@ -4,6 +4,7 @@ import json
 import sys
 import tempfile
 import unittest
+from datetime import datetime, timezone
 from pathlib import Path
 from unittest.mock import patch
 
@@ -23,7 +24,7 @@ from src.airesearch.ai_analysis import (
     parse_json_object_with_deepseek_repair,
 )
 from src.airesearch.config import Settings
-from src.airesearch.main import append_source_note, current_date_text
+from src.airesearch.main import append_source_note, current_date_text, default_report_date_text
 from src.airesearch.market_data import INSTRUMENTS, validate_signal_value
 from src.airesearch.news_data import NewsItem
 from src.airesearch.quality import append_quality_note, validate_report
@@ -385,6 +386,12 @@ class ReportPipelineTests(unittest.TestCase):
         value = current_date_text("Invalid/Timezone")
         self.assertRegex(value, r"^\d{4}-\d{2}-\d{2}$")
 
+    def test_close_report_after_midnight_belongs_to_previous_day(self) -> None:
+        generated_at = datetime(2026, 7, 3, 0, 21, tzinfo=timezone.utc)
+
+        self.assertEqual(default_report_date_text("close", generated_at), "2026-07-02")
+        self.assertEqual(default_report_date_text("morning", generated_at), "2026-07-03")
+
     def test_site_latest_uses_generated_time_and_history_uses_session_order(self) -> None:
         morning_payload = {
             "report_type": "morning",
@@ -429,6 +436,36 @@ class ReportPipelineTests(unittest.TestCase):
         self.assertLess(index_html.index("盘前投研日报", history_start), index_html.index("收盘投研日报", history_start))
         self.assertIn("计划：06:30 北京时间", index_html)
         self.assertIn("触发：定时触发", index_html)
+
+    def test_site_backfills_legacy_schedule_metadata(self) -> None:
+        legacy_payload = {
+            "report_type": "morning",
+            "date": "2026-07-03",
+            "generated_at": "2026-07-03T17:47:09+08:00",
+            "title": "2026-07-03 盘前投研日报",
+            "executive_summary": "测试摘要",
+            "market_view": "中性",
+            "market_signals": [],
+            "core_events": [],
+            "investment_ideas": [],
+            "action_checklist": [],
+            "risk_warnings": [],
+            "source_note": "",
+        }
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            reports_root = root / "data" / "reports" / "2026-07-03"
+            reports_root.mkdir(parents=True)
+            (reports_root / "morning.json").write_text(json.dumps(legacy_payload, ensure_ascii=False), encoding="utf-8")
+
+            site_dir = root / "site"
+            build_site(root / "data" / "reports", site_dir, "")
+            index_html = (site_dir / "index.html").read_text(encoding="utf-8")
+
+        self.assertIn("计划：06:30 北京时间", index_html)
+        self.assertIn("历史报告缺少调度记录，按生成时间回算偏差 +677 分钟", index_html)
+        self.assertIn("触发：历史回填", index_html)
 
     def test_core_event_filter_rejects_low_value_and_stale_items(self) -> None:
         low_value = NewsItem(

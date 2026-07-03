@@ -35,8 +35,46 @@ def load_reports(reports_root: Path) -> list[dict]:
     reports = []
     if reports_root.exists():
         for json_file in sorted(reports_root.glob("*/*.json"), reverse=True):
-            reports.append(json.loads(json_file.read_text(encoding="utf-8")))
+            reports.append(with_schedule_metadata(json.loads(json_file.read_text(encoding="utf-8"))))
     return sorted(reports, key=history_sort_key)
+
+
+def with_schedule_metadata(report: dict) -> dict:
+    if report.get("planned_time") or report.get("schedule_status") or report.get("trigger"):
+        return report
+
+    planned_time = {
+        "morning": "06:30",
+        "noon": "12:00",
+        "close": "17:30",
+    }.get(str(report.get("report_type", "")), "")
+    if not planned_time:
+        return report
+
+    generated_at = parse_generated_at(report.get("generated_at", ""))
+    if generated_at is None:
+        report["planned_time"] = planned_time
+        report["schedule_status"] = "历史报告缺少调度记录，无法回算偏差"
+        report["trigger"] = "legacy"
+        return report
+
+    planned_hour, planned_minute = [int(part) for part in planned_time.split(":", 1)]
+    planned_dt = generated_at.replace(hour=planned_hour, minute=planned_minute, second=0, microsecond=0)
+    diff_minutes = round((generated_at - planned_dt).total_seconds() / 60)
+    report["planned_time"] = planned_time
+    report["schedule_status"] = f"历史报告缺少调度记录，按生成时间回算偏差 {diff_minutes:+d} 分钟"
+    report["trigger"] = "legacy"
+    return report
+
+
+def parse_generated_at(value: object) -> datetime | None:
+    text = str(value or "").strip()
+    if not text:
+        return None
+    try:
+        return datetime.fromisoformat(text)
+    except ValueError:
+        return None
 
 
 def history_sort_key(report: dict) -> tuple[str, int, str]:
@@ -557,13 +595,14 @@ def render_schedule_status(report: dict, compact: bool = False) -> str:
             "scheduled": "定时触发",
             "manual": "手动触发",
             "local": "本地生成",
+            "legacy": "历史回填",
         }.get(trigger, trigger)
         parts.append(f"触发：{trigger_label}")
 
     class_names = ["schedule-status"]
     if compact:
         class_names.append("compact")
-    if "偏离" in status:
+    if "偏离" in status or "回算偏差" in status:
         class_names.append("warning")
     elif "手动" in status or trigger in {"manual", "local"}:
         class_names.append("manual")
@@ -598,6 +637,7 @@ def search_payload(reports: list[dict]) -> list[dict]:
             "generated_at": report.get("generated_at", ""),
             "planned_time": report.get("planned_time", ""),
             "schedule_status": report.get("schedule_status", ""),
+            "trigger": report.get("trigger", ""),
             "href": f"reports/{report_filename(report)}",
         }
         for report in reports

@@ -43,7 +43,7 @@ def main() -> None:
     args = parse_args()
     settings = Settings.from_env()
     generated_at = current_datetime(settings.timezone)
-    date_text = args.date or generated_at.strftime("%Y-%m-%d")
+    date_text = args.date or default_report_date_text(args.report_type, generated_at)
     trigger = report_trigger()
     planned_time, schedule_status = schedule_metadata(args.report_type, generated_at, trigger)
 
@@ -174,6 +174,12 @@ def main() -> None:
 
 def current_date_text(timezone_name: str) -> str:
     return current_datetime(timezone_name).strftime("%Y-%m-%d")
+
+
+def default_report_date_text(report_type: str, generated_at: datetime) -> str:
+    if report_type == "close" and generated_at.hour < 6:
+        return (generated_at - timedelta(days=1)).strftime("%Y-%m-%d")
+    return generated_at.strftime("%Y-%m-%d")
 
 
 def append_source_note(source_note: str, note: str) -> str:
