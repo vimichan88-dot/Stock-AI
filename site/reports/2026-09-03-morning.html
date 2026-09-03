@@ -1,0 +1,780 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-09-03 盘前投研日报</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fa;
+      --panel: #ffffff;
+      --text: #1f2933;
+      --muted: #64748b;
+      --line: #d8dee8;
+      --accent: #0f766e;
+      --accent-weak: #e5f3f1;
+      --warn: #b45309;
+      --danger: #b42318;
+      --shadow: 0 10px 28px rgba(15, 23, 42, 0.07);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    body { margin: 0; background: var(--bg); color: var(--text); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .shell { width: 100%; max-width: 1180px; margin: 0 auto; padding: 28px 18px 64px; }
+    .topbar { display: flex; justify-content: space-between; gap: 24px; align-items: flex-end; padding: 18px 0 24px; border-bottom: 1px solid var(--line); }
+    .eyebrow { margin: 0 0 8px; color: var(--warn); font-size: 13px; font-weight: 800; letter-spacing: 0; }
+    h1 { margin: 0; font-size: 30px; line-height: 1.2; letter-spacing: 0; }
+    h2 { margin: 0 0 12px; font-size: 18px; line-height: 1.35; letter-spacing: 0; }
+    h3 { margin: 8px 0 10px; font-size: 17px; line-height: 1.35; letter-spacing: 0; }
+    p { line-height: 1.75; }
+    .sub { margin: 8px 0 0; color: var(--muted); }
+    .status-pill, .meta { color: var(--warn); font-size: 14px; font-weight: 800; }
+    .status-pill { color: #fff; background: var(--accent); padding: 8px 10px; border-radius: 6px; white-space: nowrap; }
+    .ai-status { display: inline-flex; width: fit-content; margin: 10px 0 0; padding: 7px 10px; border: 1px solid #b8d7d1; border-radius: 6px; background: #e7f5f1; color: #07594e; font-size: 14px; font-weight: 800; }
+    .ai-status.compact { margin: 8px 0; padding: 5px 8px; font-size: 12px; }
+    .schedule-status { display: inline-flex; width: fit-content; max-width: 100%; margin: 8px 0 0; padding: 6px 9px; border: 1px solid #b8d7d1; border-radius: 6px; background: #e7f5f1; color: #07594e; font-size: 13px; font-weight: 800; line-height: 1.45; overflow-wrap: anywhere; }
+    .schedule-status.compact { margin: 6px 0; padding: 4px 7px; font-size: 12px; }
+    .schedule-status.warning { border-color: #e0a3a3; background: #fff1f1; color: #9a3412; }
+    .schedule-status.manual { border-color: #c9d4e5; background: #f4f7fb; color: #4b647d; }
+    .dashboard { display: grid; grid-template-columns: 1.4fr 1fr; gap: 14px; margin-top: 20px; }
+    .panel, .report-card, .item-block { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow); }
+    .panel { padding: 18px; }
+    .hero-panel { grid-row: span 2; }
+    .hero-panel h2 { font-size: 23px; }
+    .primary-link, .report-link, .back-link { display: inline-flex; align-items: center; min-height: 36px; font-weight: 800; }
+    .signal-list, .plain-list { list-style: none; padding: 0; margin: 0; }
+    .signal-list li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+    .signal-list li:last-child { border-bottom: 0; }
+    .signal-list strong { color: var(--accent); white-space: nowrap; }
+    .plain-list li { padding: 7px 0; line-height: 1.55; }
+    .plain-list strong { color: var(--accent); margin-right: 6px; }
+    .history-head { display: flex; justify-content: space-between; gap: 18px; align-items: flex-end; margin-top: 30px; padding-top: 24px; border-top: 1px solid var(--line); }
+    .tools { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+    .tabs { display: flex; gap: 6px; }
+    .tab { height: 38px; border: 1px solid var(--line); background: #fff; color: var(--text); border-radius: 6px; padding: 0 12px; cursor: pointer; font-weight: 700; }
+    .tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .search { width: 220px; height: 38px; border: 1px solid var(--line); border-radius: 6px; padding: 0 10px; font-size: 15px; }
+    .report-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 14px; margin-top: 16px; }
+    .report-card { padding: 18px; display: flex; flex-direction: column; min-height: 260px; }
+    .generated-line { margin: 6px 0 0; color: var(--muted); font-size: 13px; }
+    .report-card p { color: var(--muted); }
+    .report-card ul { padding-left: 18px; margin: 8px 0 12px; }
+    .report-card .report-link { margin-top: auto; }
+    .detail-layout { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 18px; margin-top: 20px; align-items: start; }
+    .report-body { display: grid; gap: 18px; min-width: 0; }
+    .report-body > section { background: transparent; border-bottom: 1px solid var(--line); padding-bottom: 18px; }
+    .item-block { padding: 16px; margin: 12px 0; box-shadow: none; min-width: 0; overflow-wrap: anywhere; }
+    .score-line { display: flex; gap: 8px; flex-wrap: wrap; color: var(--warn); font-size: 13px; font-weight: 800; }
+    .event-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
+    .event-grid div { border-left: 4px solid var(--accent); background: #fff; padding: 10px 12px; }
+    .event-grid strong { color: var(--warn); }
+    .event-grid p { margin: 6px 0 0; }
+    .market-block { margin: 12px 0 18px; }
+    .market-block h3 { margin: 0 0 8px; color: var(--warn); }
+    .stock-impact { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
+    .stock-impact div { border: 1px solid var(--line); border-radius: 8px; background: #fff; padding: 10px; }
+    .stock-impact strong { display: block; color: var(--warn); margin-bottom: 6px; }
+    .stock-impact span { line-height: 1.55; }
+    .read-block { margin: 12px 0; padding: 12px 14px; border-left: 5px solid var(--line); background: #fff; color: var(--text); }
+    .read-block h3 { margin-top: 0; }
+    .table-wrap { max-width: 100%; overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+    table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    th, td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; line-height: 1.55; overflow-wrap: anywhere; word-break: break-word; }
+    th { background: var(--accent-weak); color: #134e4a; font-size: 14px; }
+    .idea-facts { display: grid; gap: 8px; margin: 12px 0 0; }
+    .idea-facts div { display: grid; grid-template-columns: 130px 1fr; gap: 10px; }
+    dt { color: var(--muted); font-weight: 800; }
+    dd { margin: 0; line-height: 1.55; }
+    .side-rail { position: sticky; top: 16px; display: grid; gap: 12px; }
+    .rail-block { border: 1px solid var(--line); border-radius: 8px; background: #fff; padding: 14px; }
+    .rail-block a, .muted-link { display: block; padding: 8px 0; line-height: 1.4; }
+    .muted-link { color: var(--muted); }
+    .empty { color: var(--muted); }
+    .source-line { overflow-wrap: anywhere; }
+    @media (max-width: 860px) {
+      .topbar, .history-head { display: block; }
+      .status-pill { display: inline-flex; margin-top: 14px; }
+      .dashboard, .detail-layout { grid-template-columns: 1fr; }
+      .side-rail { position: static; }
+      .tools { justify-content: flex-start; margin-top: 14px; }
+      .search { width: min(100%, 320px); }
+    }
+    @media (max-width: 560px) {
+      .shell { padding: 20px 14px 48px; }
+      h1 { font-size: 24px; }
+      .tabs { width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); }
+      .tab { padding: 0 6px; }
+      .search { width: 100%; }
+      .idea-facts div { grid-template-columns: 1fr; gap: 3px; }
+      .event-grid { grid-template-columns: 1fr; }
+      .stock-impact { grid-template-columns: 1fr; }
+      th, td { padding: 8px 7px; font-size: 13px; }
+      .score-line span { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <main id="app" class="shell detail-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">2026-09-03 · 盘前</p>
+        <h1>2026-09-03 盘前投研日报</h1>
+        <p class="sub">全球资本今日交易的核心是“AI资本开支上修”与“宏观流动性预期”的博弈。美股科技巨头业绩超预期（戴尔、博通）强化AI算力需求，但美债收益率高位（4.8%）和美元流动性隐忧压制估值。亚洲市场（日韩）因日元、韩元波动及半导体出口担忧而大跌，A股受海外情绪拖累缩量调整，但港股科技分化，南向资金偏好AI标的。整体风险偏好中性偏谨慎，资金在成长与防御间再平衡。</p>
+        <p class="sub time-line">生成时间：2026-09-03 08:24:23 北京时间</p>
+        <p class="schedule-status warning">计划：06:30 北京时间｜历史报告缺少调度记录，按生成时间回算偏差 +114 分钟｜触发：历史回填</p>
+        <p class="ai-status">AI增强：deepseek / deepseek-chat 调用成功</p>
+      </div>
+      <a class="back-link" href="../index.html">返回首页</a>
+    </header>
+
+    <section class="detail-layout">
+      <article class="report-body">
+        <section>
+          <h2>今日核心结论</h2>
+          <p>盘前核心结论：全球市场呈现分化，美股科技因AI业绩上修而走强，但亚洲市场（日韩）大幅下跌，A股昨日缩量回调，港股科技分化。宏观层面，美国财政部“影子央行”角色引发对美联储独立性的担忧，但美联储官员表态偏中性，美元与美债收益率回落，黄金反弹。产业层面，AI算力链条获得戴尔、博通等业绩验证，国产算力（华为昇腾）订单落地，但需警惕高位分化。今日A/H股预计延续震荡，结构性机会在AI算力、半导体国产替代、创新药及高股息防御。操作上，建议降低追高，优先关注有业绩验证的龙头，等待成交额与资金流确认。</p>
+        </section>
+        <section><h2>全球市场速览</h2>
+        <div class="market-block">
+          <h3>中国大陆</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>指标</th><th>数值</th><th>变化</th></tr></thead>
+              <tbody>
+          <tr>
+            <td>上证指数</td>
+            <td>3941.39</td>
+            <td>-0.97%</td>
+          </tr>
+
+
+          <tr>
+            <td>深成指数</td>
+            <td>13611.55</td>
+            <td>-1.88%</td>
+          </tr>
+
+
+          <tr>
+            <td>沪深300</td>
+            <td>4547.96</td>
+            <td>-1.38%</td>
+          </tr>
+
+
+          <tr>
+            <td>创业板指</td>
+            <td>3312.24</td>
+            <td>-2.39%</td>
+          </tr>
+
+
+          <tr>
+            <td>科创50</td>
+            <td>1617.60</td>
+            <td>-1.82%</td>
+          </tr>
+        </tbody>
+            </table>
+          </div>
+        </div>
+
+
+        <div class="market-block">
+          <h3>香港市场</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>指标</th><th>数值</th><th>变化</th></tr></thead>
+              <tbody>
+          <tr>
+            <td>恒生指数</td>
+            <td>25311.21</td>
+            <td>-0.07%</td>
+          </tr>
+
+
+          <tr>
+            <td>恒生科技</td>
+            <td>4517.16</td>
+            <td>-0.74%</td>
+          </tr>
+        </tbody>
+            </table>
+          </div>
+        </div>
+
+
+        <div class="market-block">
+          <h3>美国市场</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>指标</th><th>数值</th><th>变化</th></tr></thead>
+              <tbody>
+          <tr>
+            <td>标普500</td>
+            <td>7666.60</td>
+            <td>+0.46%</td>
+          </tr>
+
+
+          <tr>
+            <td>纳斯达克100</td>
+            <td>29143.33</td>
+            <td>+0.23%</td>
+          </tr>
+
+
+          <tr>
+            <td>道琼斯工业指数</td>
+            <td>53061.95</td>
+            <td>+0.56%</td>
+          </tr>
+        </tbody>
+            </table>
+          </div>
+        </div>
+
+
+        <div class="market-block">
+          <h3>日韩市场</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>指标</th><th>数值</th><th>变化</th></tr></thead>
+              <tbody>
+          <tr>
+            <td>日经225</td>
+            <td>64323.92</td>
+            <td>-2.86%</td>
+          </tr>
+
+
+          <tr>
+            <td>韩国KOSPI</td>
+            <td>6634.61</td>
+            <td>-2.94%</td>
+          </tr>
+        </tbody>
+            </table>
+          </div>
+        </div>
+
+
+        <div class="market-block">
+          <h3>欧洲市场</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>指标</th><th>数值</th><th>变化</th></tr></thead>
+              <tbody>
+          <tr>
+            <td>欧洲STOXX 600</td>
+            <td>647.46</td>
+            <td>-0.56%</td>
+          </tr>
+
+
+          <tr>
+            <td>德国DAX</td>
+            <td>25970.11</td>
+            <td>-1.10%</td>
+          </tr>
+
+
+          <tr>
+            <td>英国富时100</td>
+            <td>10789.30</td>
+            <td>-0.32%</td>
+          </tr>
+        </tbody>
+            </table>
+          </div>
+        </div>
+
+
+        <div class="market-block">
+          <h3>大宗商品与外汇</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>指标</th><th>数值</th><th>变化</th></tr></thead>
+              <tbody>
+          <tr>
+            <td>黄金 ETF</td>
+            <td>396.75</td>
+            <td>-2.86%</td>
+          </tr>
+
+
+          <tr>
+            <td>美元/离岸人民币</td>
+            <td>6.72</td>
+            <td>+0.02%</td>
+          </tr>
+
+
+          <tr>
+            <td>WTI 原油</td>
+            <td>90.70</td>
+            <td>+0.53%</td>
+          </tr>
+
+
+          <tr>
+            <td>COMEX 铜</td>
+            <td>6.60</td>
+            <td>+1.42%</td>
+          </tr>
+
+
+          <tr>
+            <td>比特币</td>
+            <td>77050.38</td>
+            <td>-0.46%</td>
+          </tr>
+
+
+          <tr>
+            <td>以太坊</td>
+            <td>2382.70</td>
+            <td>-1.45%</td>
+          </tr>
+        </tbody>
+            </table>
+          </div>
+        </div>
+
+
+        <div class="market-block">
+          <h3>债券与风险偏好</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>指标</th><th>数值</th><th>变化</th></tr></thead>
+              <tbody>
+          <tr>
+            <td>美债 10 年收益率</td>
+            <td>4.80</td>
+            <td>+0.00%</td>
+          </tr>
+
+
+          <tr>
+            <td>VIX 波动率</td>
+            <td>15.20</td>
+            <td>-6.98%</td>
+          </tr>
+        </tbody>
+            </table>
+          </div>
+        </div>
+    </section>
+        <section id="events"><h2>今日核心事件</h2><article class="item-block">
+            <div class="score-line"><span>重要程度 92 / 100</span><span>置信度 85 / 100</span></div>
+            <h3>1. 美国财政部“影子央行”与美联储独立性担忧，但官员表态中性</h3>
+            <div class="event-grid">
+              <div>
+                <strong>最新动态</strong>
+                <p>美国财政部正成为“影子央行”，引发对美联储货币政策独立性侵蚀的讨论。美联储“三把手”威廉姆斯表示通胀缓慢下行、利率处于良好水平。日元逼近危险区间，空头与日本当局拉锯。荷兰央行将约120亿美元黄金储备从美加转移至伦敦，地缘风险升温。</p>
+              </div>
+              <div>
+                <strong>市场影响</strong>
+                <p>该事件影响美元、美债和全球流动性预期。若财政部主导利率曲线，可能压低长端利率，利好成长股和黄金；但若引发通胀预期回升，则利空债券和成长股。威廉姆斯表态偏中性，市场解读为降息预期仍存。日元贬值压力可能引发套息交易逆转，冲击全球风险资产。A股映射：关注黄金、高股息防御；港股科技对美元流动性敏感。量化观察：美债10年期收益率、美元指数、日元汇率、黄金价格。投资建议：维持黄金和高股息配置，等待利率方向明确。</p>
+              </div>
+            </div>
+            <p><strong>受益方向：</strong>黄金、高股息红利、美元资产</p>
+            <p><strong>风险观察：</strong>利率上行、美元走强、日元套息逆转</p>
+            <div class="stock-impact">
+              <div><strong>利好股票清单</strong><span>紫金矿业(601899)、山东黄金(600547)、红利ETF(510880)、中国海油(600938)</span></div>
+              <div><strong>利空股票清单</strong><span>高估值成长股、航空股、高外债房企</span></div>
+            </div>
+            <p class="source-line"><strong>来源：</strong>华尔街见闻 2026-09-02 美国财政部正成为&quot;影子央行&quot;、东方财富 2026-09-02 美联储威廉姆斯讲话、财联社 2026-09-02 日元逼近危险区间、华尔街见闻 2026-09-02 荷兰央行转移黄金储备</p>
+          </article>
+<article class="item-block">
+            <div class="score-line"><span>重要程度 90 / 100</span><span>置信度 90 / 100</span></div>
+            <h3>2. AI算力需求再获验证：戴尔上调业绩、博通上调AI营收指引、国产昇腾订单落地</h3>
+            <div class="event-grid">
+              <div>
+                <strong>最新动态</strong>
+                <p>戴尔大幅上调营收和利润预期，称AI服务器需求加速；博通CEO将2026财年AI业务营收指引从560亿上调至580亿美元，预计Anthropic 2027年部署5GW TPU；范式智能超10亿元采购华为昇腾950芯片，国产算力进入头部AI企业生产环境。</p>
+              </div>
+              <div>
+                <strong>市场影响</strong>
+                <p>海外云厂商和AI巨头资本开支上修，直接利好AI服务器、光模块、PCB、半导体设备等产业链。国产昇腾订单落地，验证国产算力替代逻辑，利好华为产业链。A股映射：中际旭创、新易盛、工业富联、寒武纪等。港股映射：联想、中兴通讯。量化观察：云厂商资本开支、光模块订单、服务器出货量。投资建议：可分批关注有业绩支撑的龙头，但需警惕高位分化。</p>
+              </div>
+            </div>
+            <p><strong>受益方向：</strong>AI服务器、光模块、PCB、国产算力芯片</p>
+            <p><strong>风险观察：</strong>资本开支不及预期、估值过高、订单执行风险</p>
+            <div class="stock-impact">
+              <div><strong>利好股票清单</strong><span>中际旭创(300308)、新易盛(300502)、工业富联(601138)、寒武纪(688256)、沪电股份(002463)</span></div>
+              <div><strong>利空股票清单</strong><span>无业绩纯概念AI股、低端服务器代工</span></div>
+            </div>
+            <p class="source-line"><strong>来源：</strong>金十数据 2026-09-02 戴尔上调业绩、华尔街见闻 2026-09-02 博通电话会、电子工程专辑 2026-09-02 范式智能采购昇腾</p>
+          </article>
+<article class="item-block">
+            <div class="score-line"><span>重要程度 85 / 100</span><span>置信度 88 / 100</span></div>
+            <h3>3. A股成交额缩量至1.79万亿，年内第十一次不足2万亿，海外情绪主导回调</h3>
+            <div class="event-grid">
+              <div>
+                <strong>最新动态</strong>
+                <p>A股昨日三大指数下跌，沪深两市成交额1.79万亿，年内第十一次不足2万亿。ETF日报认为回调动能主要来自海外情绪，中期维持“情绪性普跌、分批布局核心资产”判断。QFII二季度现身1727只A股，生益科技市值第一，新进宁德时代。</p>
+              </div>
+              <div>
+                <strong>市场影响</strong>
+                <p>成交额萎缩显示市场观望情绪浓厚，增量资金不足。海外情绪（美股波动、地缘风险）传导至A股，但基本面未恶化，核心资产回调提供布局机会。QFII持仓显示外资偏好科技制造（生益科技、宁德时代）。A股映射：关注核心资产（沪深300）和外资重仓股。量化观察：成交额、北向资金、ETF申赎。投资建议：等待企稳信号，分批布局核心资产。</p>
+              </div>
+            </div>
+            <p><strong>受益方向：</strong>核心资产、外资重仓股、ETF</p>
+            <p><strong>风险观察：</strong>成交额持续萎缩、海外风险扩散</p>
+            <div class="stock-impact">
+              <div><strong>利好股票清单</strong><span>贵州茅台(600519)、宁德时代(300750)、生益科技(600183)、沪深300ETF(510300)</span></div>
+              <div><strong>利空股票清单</strong><span>高位题材股、小盘绩差股</span></div>
+            </div>
+            <p class="source-line"><strong>来源：</strong>同花顺 2026-09-02 成交额不足2万亿、新浪财经 2026-09-02 ETF日报、东方财富 2026-09-02 QFII持仓</p>
+          </article>
+<article class="item-block">
+            <div class="score-line"><span>重要程度 80 / 100</span><span>置信度 85 / 100</span></div>
+            <h3>4. 港股科技分化，南向资金偏好AI标的，创新药BD落地</h3>
+            <div class="event-grid">
+              <div>
+                <strong>最新动态</strong>
+                <p>港股恒指、恒科齐跌，但美团、小米上涨。港股通买入Minimax规模超越阿里巴巴和腾讯，显示南向资金对AI应用偏好。又一国产创新药BD落地，港股通创新药ETF标的指数上涨0.9%。</p>
+              </div>
+              <div>
+                <strong>市场影响</strong>
+                <p>港股科技分化，互联网平台（美团、小米）有业绩支撑，AI标的受资金追捧。创新药BD持续，提升板块估值。港股映射：关注恒生科技、创新药ETF。量化观察：南向资金流向、恒生科技成交额。投资建议：持有观察，关注资金持续性。</p>
+              </div>
+            </div>
+            <p><strong>受益方向：</strong>港股互联网、AI应用、创新药</p>
+            <p><strong>风险观察：</strong>美元走强、南向资金流出</p>
+            <div class="stock-impact">
+              <div><strong>利好股票清单</strong><span>美团-W(03690.HK)、小米集团-W(01810.HK)、腾讯控股(00700.HK)、创新药ETF(159316)</span></div>
+              <div><strong>利空股票清单</strong><span>高杠杆地产、小市值港股</span></div>
+            </div>
+            <p class="source-line"><strong>来源：</strong>凤凰网财经 2026-09-02 港股收评、TradingView 2026-09-02 港股通买入Minimax、财联社 2026-09-02 创新药BD</p>
+          </article>
+<article class="item-block">
+            <div class="score-line"><span>重要程度 78 / 100</span><span>置信度 80 / 100</span></div>
+            <h3>5. 黄金高位调整，现货金价失守4300美元，但美元美债回落支撑反弹</h3>
+            <div class="event-grid">
+              <div>
+                <strong>最新动态</strong>
+                <p>现货黄金盘中失守4300美元，金饰克价一周跌百元，进入调整窗口期。但随后金价反弹逾1%，因美元与美债收益率回落。巴里克考虑将北美黄金业务IPO推迟至2027年。</p>
+              </div>
+              <div>
+                <strong>市场影响</strong>
+                <p>黄金短期调整受获利了结和实际利率上行影响，但央行购金和地缘风险提供支撑。美元美债回落利好黄金反弹。A股映射：黄金股（紫金矿业、山东黄金）波动加大。量化观察：实际利率、美元指数、ETF持仓。投资建议：持有观察，等待企稳。</p>
+              </div>
+            </div>
+            <p><strong>受益方向：</strong>黄金股、黄金ETF</p>
+            <p><strong>风险观察：</strong>实际利率上行、美元走强</p>
+            <div class="stock-impact">
+              <div><strong>利好股票清单</strong><span>紫金矿业(601899)、山东黄金(600547)、黄金ETF(518880)</span></div>
+              <div><strong>利空股票清单</strong><span>高估值成长股</span></div>
+            </div>
+            <p class="source-line"><strong>来源：</strong>新浪财经 2026-09-02 黄金反弹、澎湃 2026-09-02 金价失守4300、东方财富 2026-09-02 巴里克IPO推迟</p>
+          </article>
+<article class="item-block">
+            <div class="score-line"><span>重要程度 75 / 100</span><span>置信度 80 / 100</span></div>
+            <h3>6. 半导体国产替代加速：知芯传感发布MEMS微镜阵列芯片，台湾加码200亿美元在美投资</h3>
+            <div class="event-grid">
+              <div>
+                <strong>最新动态</strong>
+                <p>知芯传感发布公版MEMS微镜阵列芯片，打破全光交换核心器件国外垄断。台湾加码200亿美元在美投资半导体产业，共同打造安全供应链。燧原科技网上发行中签率0.0246%。</p>
+              </div>
+              <div>
+                <strong>市场影响</strong>
+                <p>国产替代逻辑强化，MEMS芯片突破利好光通信和传感产业链。台湾对美投资可能影响全球半导体格局，但短期对A股半导体设备材料影响中性。燧原科技上市受关注。A股映射：半导体设备、材料、光通信。量化观察：国产替代订单、设备招标。投资建议：关注有技术突破的公司。</p>
+              </div>
+            </div>
+            <p><strong>受益方向：</strong>半导体设备、材料、光通信</p>
+            <p><strong>风险观察：</strong>海外限制升级、技术迭代风险</p>
+            <div class="stock-impact">
+              <div><strong>利好股票清单</strong><span>北方华创(002371)、中微公司(688012)、光迅科技(002281)</span></div>
+              <div><strong>利空股票清单</strong><span>依赖海外技术的公司</span></div>
+            </div>
+            <p class="source-line"><strong>来源：</strong>电子工程专辑 2026-09-02 知芯传感、美国之音 2026-09-02 台湾对美投资、新浪 2026-09-02 燧原科技中签率</p>
+          </article>
+<article class="item-block">
+            <div class="score-line"><span>重要程度 72 / 100</span><span>置信度 82 / 100</span></div>
+            <h3>7. 能源电力：光伏装机超煤电，新型电网建设加大，但负电价问题显现</h3>
+            <div class="event-grid">
+              <div>
+                <strong>最新动态</strong>
+                <p>我国光伏发电装机历史性超过煤电，但需适应负电价。“十五五”时期将加大新型电网建设力度。中国华电在欧洲投资的首个光伏电站开工。</p>
+              </div>
+              <div>
+                <strong>市场影响</strong>
+                <p>光伏装机超煤电标志能源结构转型里程碑，但消纳问题突出，负电价利空光伏运营，利好电网投资和储能。新型电网建设加大利好电网设备。A股映射：电网设备、储能、光伏龙头。量化观察：电网投资额、储能招标。投资建议：关注电网和储能环节。</p>
+              </div>
+            </div>
+            <p><strong>受益方向：</strong>电网设备、储能、特高压</p>
+            <p><strong>风险观察：</strong>光伏价格战、消纳不足</p>
+            <div class="stock-impact">
+              <div><strong>利好股票清单</strong><span>国电南瑞(600406)、许继电气(000400)、阳光电源(300274)</span></div>
+              <div><strong>利空股票清单</strong><span>光伏运营、组件厂</span></div>
+            </div>
+            <p class="source-line"><strong>来源：</strong>中国经济网 2026-09-02 新型电网、xzxw 2026-09-02 光伏超煤电、观察者 2026-09-02 负电价</p>
+          </article>
+<article class="item-block">
+            <div class="score-line"><span>重要程度 70 / 100</span><span>置信度 75 / 100</span></div>
+            <h3>8. 创新药出海持续：恒瑞杀入战局，9月多款创新药有望获FDA批准</h3>
+            <div class="event-grid">
+              <div>
+                <strong>最新动态</strong>
+                <p>恒瑞医药在创新药领域有新动作，9月有9款创新药有望获FDA批准。翰宇药业坪山分公司通过美国FDA现场检查。第六届创新药峰会召开，聚焦全球化。</p>
+              </div>
+              <div>
+                <strong>市场影响</strong>
+                <p>创新药出海逻辑持续，FDA批准预期提升板块估值。恒瑞等龙头布局全球市场。A股/港股映射：创新药企、CXO。量化观察：FDA审批结果、BD交易金额。投资建议：关注有出海潜力的创新药企。</p>
+              </div>
+            </div>
+            <p><strong>受益方向：</strong>创新药企、CXO</p>
+            <p><strong>风险观察：</strong>审批失败、竞争加剧</p>
+            <div class="stock-impact">
+              <div><strong>利好股票清单</strong><span>恒瑞医药(600276)、百济神州(688235)、药明康德(603259)</span></div>
+              <div><strong>利空股票清单</strong><span>无研发管线公司</span></div>
+            </div>
+            <p class="source-line"><strong>来源：</strong>新浪 2026-09-02 9款创新药、东方财富 2026-09-02 翰宇药业、phirda 2026-09-02 恒瑞</p>
+          </article>
+<article class="item-block">
+            <div class="score-line"><span>重要程度 68 / 100</span><span>置信度 70 / 100</span></div>
+            <h3>9. 机器人产业催化：马斯克称AI+人形机器人可扩大经济十倍，巴克莱预测市场2000亿美元</h3>
+            <div class="event-grid">
+              <div>
+                <strong>最新动态</strong>
+                <p>马斯克表示AI或让全球经济规模扩大20%-30%，若算上人形机器人有望扩大十倍。巴克莱报告称自动化3.0时代开启，人形机器人市场10年后或达2000亿美元。粤港澳大湾区举办人形机器人点球大战。</p>
+              </div>
+              <div>
+                <strong>市场影响</strong>
+                <p>机器人产业预期升温，但当前仍处于主题投资阶段，需关注订单和业绩兑现。A股映射：机器人概念、减速器、伺服系统。量化观察：机器人销量、订单。投资建议：谨慎追高，等待业绩验证。</p>
+              </div>
+            </div>
+            <p><strong>受益方向：</strong>机器人整机、核心零部件</p>
+            <p><strong>风险观察：</strong>技术不成熟、商业化缓慢</p>
+            <div class="stock-impact">
+              <div><strong>利好股票清单</strong><span>绿的谐波(688017)、汇川技术(300124)、埃斯顿(002747)</span></div>
+              <div><strong>利空股票清单</strong><span>纯概念股</span></div>
+            </div>
+            <p class="source-line"><strong>来源：</strong>新蓝网 2026-09-02 马斯克、财联社 2026-09-02 巴克莱、新华网 2026-09-02 人形机器人比赛</p>
+          </article>
+<article class="item-block">
+            <div class="score-line"><span>重要程度 65 / 100</span><span>置信度 80 / 100</span></div>
+            <h3>10. 公告增减持与定增动态：8月增持总额同比增九成，优刻得定增终止</h3>
+            <div class="event-grid">
+              <div>
+                <strong>最新动态</strong>
+                <p>8月董监高增持总额同比增加九成，九州一轨、百润股份增持金额居前。奥浦迈股东上海磐信完成减持1.63%。优刻得15亿定增终止。天顺风能定增获深交所审核通过。</p>
+              </div>
+              <div>
+                <strong>市场影响</strong>
+                <p>增持增加显示产业资本信心，但个股减持和定增终止需警惕。天顺风能定增通过利好风电。A股映射：关注增持个股、定增通过公司。量化观察：增减持公告、定增进度。投资建议：增持个股可关注，但需结合基本面。</p>
+              </div>
+            </div>
+            <p><strong>受益方向：</strong>增持个股、定增通过公司</p>
+            <p><strong>风险观察：</strong>减持压力、定增失败</p>
+            <div class="stock-impact">
+              <div><strong>利好股票清单</strong><span>百润股份(002568)、天顺风能(002531)</span></div>
+              <div><strong>利空股票清单</strong><span>奥浦迈(688293)、优刻得(688158)</span></div>
+            </div>
+            <p class="source-line"><strong>来源：</strong>中国金融信息网 2026-09-02 增减持、东方财富 2026-09-02 奥浦迈、财联社 2026-09-02 优刻得、guandian 2026-09-02 天顺风能</p>
+          </article></section>
+        <section id="analysis"><h2>分主题研究框架</h2><article class="item-block analysis-block">
+            <h3>今日核心事件逻辑</h3>
+            <p>今日事件围绕AI算力验证、宏观流动性、A股缩量、港股分化、黄金调整、半导体国产替代、能源转型、创新药出海、机器人主题和公告增减持。AI算力是产业主线，宏观是背景，A股缩量显示观望。</p>
+            <dl class="idea-facts">
+              <div><dt>机会观察</dt><dd>AI算力业绩验证、国产替代、创新药出海</dd></div>
+              <div><dt>风险约束</dt><dd>海外情绪波动、成交额不足</dd></div>
+              <div><dt>跟踪指标</dt><dd>戴尔/博通业绩、美债收益率、A股成交额</dd></div>
+            </dl>
+          </article>
+<article class="item-block analysis-block">
+            <h3>全球市场复盘</h3>
+            <p>美股科技因AI业绩走强，但亚洲市场（日韩）大跌，欧洲微跌。黄金反弹，原油上涨，铜价上涨。VIX下降，风险偏好有所修复。</p>
+            <dl class="idea-facts">
+              <div><dt>机会观察</dt><dd>美股科技映射、商品反弹</dd></div>
+              <div><dt>风险约束</dt><dd>亚洲市场拖累、日元波动</dd></div>
+              <div><dt>跟踪指标</dt><dd>纳斯达克、日经225、韩国KOSPI</dd></div>
+            </dl>
+          </article>
+<article class="item-block analysis-block">
+            <h3>产业趋势</h3>
+            <p>AI算力需求加速，国产昇腾订单落地；光伏超煤电但负电价凸显，电网储能受益；创新药出海持续；机器人主题活跃。</p>
+            <dl class="idea-facts">
+              <div><dt>机会观察</dt><dd>AI算力硬件、电网储能、创新药</dd></div>
+              <div><dt>风险约束</dt><dd>AI估值过高、光伏消纳</dd></div>
+              <div><dt>跟踪指标</dt><dd>云厂商资本开支、电网投资、FDA审批</dd></div>
+            </dl>
+          </article>
+<article class="item-block analysis-block">
+            <h3>资金流向</h3>
+            <p>A股成交额缩量，北向资金未明确；港股南向资金偏好AI和创新药；黄金ETF持仓波动。</p>
+            <dl class="idea-facts">
+              <div><dt>机会观察</dt><dd>南向资金流入标的</dd></div>
+              <div><dt>风险约束</dt><dd>外资流出</dd></div>
+              <div><dt>跟踪指标</dt><dd>北向资金、南向资金、ETF申赎</dd></div>
+            </dl>
+          </article>
+<article class="item-block analysis-block">
+            <h3>政策与公告</h3>
+            <p>美联储官员中性表态，美国财政部影子央行引发关注；国内新型电网建设政策；公司公告增减持和定增动态。</p>
+            <dl class="idea-facts">
+              <div><dt>机会观察</dt><dd>电网政策、增持个股</dd></div>
+              <div><dt>风险约束</dt><dd>政策不确定性</dd></div>
+              <div><dt>跟踪指标</dt><dd>美联储讲话、电网政策细则</dd></div>
+            </dl>
+          </article>
+<article class="item-block analysis-block">
+            <h3>未来7天事件</h3>
+            <p>关注9月9款创新药FDA审批、低空经济大会、经济数据发布。</p>
+            <dl class="idea-facts">
+              <div><dt>机会观察</dt><dd>创新药审批、低空经济</dd></div>
+              <div><dt>风险约束</dt><dd>数据不及预期</dd></div>
+              <div><dt>跟踪指标</dt><dd>FDA审批、经济数据</dd></div>
+            </dl>
+          </article>
+<article class="item-block analysis-block">
+            <h3>投资机会与行动清单</h3>
+            <p>今日操作建议：降低追高，关注AI算力、黄金防御、创新药事件驱动，等待电网储能确认。</p>
+            <dl class="idea-facts">
+              <div><dt>机会观察</dt><dd>AI算力、黄金、创新药</dd></div>
+              <div><dt>风险约束</dt><dd>市场波动</dd></div>
+              <div><dt>跟踪指标</dt><dd>成交额、龙头走势</dd></div>
+            </dl>
+          </article></section>
+        <section id="ideas"><h2>投资机会</h2>
+          <article class="item-block">
+            <div class="score-line"><span>可分批关注</span><span>70%</span><span>置信度 85 / 100</span></div>
+            <h3>AI算力硬件：业绩验证的龙头</h3>
+            <p>戴尔、博通上调业绩指引，AI服务器需求加速，产业链景气持续。国产昇腾订单落地，国产算力逻辑强化。</p>
+            <dl class="idea-facts">
+              <div><dt>周期</dt><dd>1-3个月</dd></div>
+              <div><dt>风险等级</dt><dd>中</dd></div>
+              <div><dt>核心催化剂</dt><dd>云厂商财报、国产算力政策</dd></div>
+              <div><dt>代表行业/ETF/公司</dt><dd>中际旭创、工业富联、寒武纪</dd></div>
+              <div><dt>定价状态</dt><dd>部分已定价，但业绩上修带来预期差</dd></div>
+              <div><dt>适合仓位</dt><dd>标准仓</dd></div>
+              <div><dt>失效条件</dt><dd>海外云厂商资本开支下修，或龙头业绩不及预期。</dd></div>
+              <div><dt>观察指标</dt><dd>英伟达股价、光模块订单、服务器出货量</dd></div>
+            </dl>
+          </article>
+
+
+          <article class="item-block">
+            <div class="score-line"><span>持有观察</span><span>60%</span><span>置信度 75 / 100</span></div>
+            <h3>黄金与高股息防御</h3>
+            <p>宏观不确定性（美联储独立性、地缘风险）支撑黄金，高股息提供防御。</p>
+            <dl class="idea-facts">
+              <div><dt>周期</dt><dd>1-6个月</dd></div>
+              <div><dt>风险等级</dt><dd>中低</dd></div>
+              <div><dt>核心催化剂</dt><dd>降息预期、地缘冲突</dd></div>
+              <div><dt>代表行业/ETF/公司</dt><dd>黄金ETF、紫金矿业、红利ETF</dd></div>
+              <div><dt>定价状态</dt><dd>黄金调整后估值合理，高股息仍具配置价值</dd></div>
+              <div><dt>适合仓位</dt><dd>标准仓</dd></div>
+              <div><dt>失效条件</dt><dd>实际利率大幅上行，或黄金跌破关键支撑。</dd></div>
+              <div><dt>观察指标</dt><dd>美债收益率、美元指数、黄金价格</dd></div>
+            </dl>
+          </article>
+
+
+          <article class="item-block">
+            <div class="score-line"><span>事件驱动可参与</span><span>55%</span><span>置信度 70 / 100</span></div>
+            <h3>创新药出海</h3>
+            <p>9月多款创新药FDA审批，BD交易持续，板块有催化。</p>
+            <dl class="idea-facts">
+              <div><dt>周期</dt><dd>1-3个月</dd></div>
+              <div><dt>风险等级</dt><dd>中高</dd></div>
+              <div><dt>核心催化剂</dt><dd>FDA批准、海外授权</dd></div>
+              <div><dt>代表行业/ETF/公司</dt><dd>恒瑞医药、百济神州</dd></div>
+              <div><dt>定价状态</dt><dd>预期已部分定价，需事件落地</dd></div>
+              <div><dt>适合仓位</dt><dd>轻仓</dd></div>
+              <div><dt>失效条件</dt><dd>审批失败或BD不及预期。</dd></div>
+              <div><dt>观察指标</dt><dd>FDA审批结果、BD交易公告</dd></div>
+            </dl>
+          </article>
+
+
+          <article class="item-block">
+            <div class="score-line"><span>等待确认</span><span>65%</span><span>置信度 75 / 100</span></div>
+            <h3>电网与储能</h3>
+            <p>光伏装机超煤电，消纳问题凸显，电网投资和储能需求确定性高。</p>
+            <dl class="idea-facts">
+              <div><dt>周期</dt><dd>3-12个月</dd></div>
+              <div><dt>风险等级</dt><dd>中低</dd></div>
+              <div><dt>核心催化剂</dt><dd>十五五规划、特高压项目</dd></div>
+              <div><dt>代表行业/ETF/公司</dt><dd>国电南瑞、阳光电源</dd></div>
+              <div><dt>定价状态</dt><dd>尚未充分定价，有预期差</dd></div>
+              <div><dt>适合仓位</dt><dd>轻仓</dd></div>
+              <div><dt>失效条件</dt><dd>电网投资不及预期，或储能价格战。</dd></div>
+              <div><dt>观察指标</dt><dd>电网投资额、储能招标量</dd></div>
+            </dl>
+          </article>
+        </section>
+
+        <section>
+          <h2>机构视角摘要</h2>
+          <p>全球资本今日交易的核心是“AI资本开支上修”与“宏观流动性预期”的博弈。美股科技巨头业绩超预期（戴尔、博通）强化AI算力需求，但美债收益率高位（4.8%）和美元流动性隐忧压制估值。亚洲市场（日韩）因日元、韩元波动及半导体出口担忧而大跌，A股受海外情绪拖累缩量调整，但港股科技分化，南向资金偏好AI标的。整体风险偏好中性偏谨慎，资金在成长与防御间再平衡。</p>
+          <blockquote class="read-block">
+            <h3>AI算力硬件：业绩验证的龙头</h3>
+            <p>戴尔、博通上调业绩指引，AI服务器需求加速，产业链景气持续。国产昇腾订单落地，国产算力逻辑强化。</p>
+            <p><strong>配置倾向：</strong>可分批关注；标准仓</p>
+          </blockquote>
+<blockquote class="read-block">
+            <h3>黄金与高股息防御</h3>
+            <p>宏观不确定性（美联储独立性、地缘风险）支撑黄金，高股息提供防御。</p>
+            <p><strong>配置倾向：</strong>持有观察；标准仓</p>
+          </blockquote>
+<blockquote class="read-block">
+            <h3>创新药出海</h3>
+            <p>9月多款创新药FDA审批，BD交易持续，板块有催化。</p>
+            <p><strong>配置倾向：</strong>事件驱动可参与；轻仓</p>
+          </blockquote>
+<blockquote class="read-block">
+            <h3>电网与储能</h3>
+            <p>光伏装机超煤电，消纳问题凸显，电网投资和储能需求确定性高。</p>
+            <p><strong>配置倾向：</strong>等待确认；轻仓</p>
+          </blockquote>
+        </section>
+
+        <section id=""><h2>我的行动清单</h2><ul class="plain-list detail-list"><li>关注A股成交额是否回升至2万亿以上，否则维持谨慎。</li>
+<li>跟踪美股AI巨头（英伟达、博通）股价，若回调则影响A股AI板块。</li>
+<li>关注美元指数和美债收益率，若上行则减仓成长。</li>
+<li>关注黄金价格能否站稳4300美元，决定黄金股去留。</li>
+<li>关注创新药FDA审批进展，事件驱动机会。</li>
+<li>关注电网投资政策落地，等待确认。</li></ul></section>
+        <section id="risks"><h2>风险提示</h2><ul class="plain-list detail-list"><li>海外市场波动可能传导至A股。</li>
+<li>AI板块估值过高，回调风险。</li>
+<li>黄金价格波动加大。</li>
+<li>政策不确定性。</li>
+<li>数据来源可能延迟，需复核。</li></ul></section>
+        <section>
+          <h2>数据来源与可信度说明</h2>
+          <p>中国大陆指数优先来自新浪行情接口，海外市场、商品、汇率等来自 Yahoo Finance chart 免费接口，可能存在延迟、缺口或临时不可用；投资判断仍需结合交易所、公司公告和券商数据复核。</p>
+<p>宏观代理指标来自 Yahoo Finance 免费接口，覆盖美债、波动率、商品和加密资产；这些是资金环境代理变量，不等同于官方宏观统计。</p>
+<p>新闻证据包来自 Google News RSS 的多主题检索矩阵，覆盖全球宏观、A股、港股、美股科技、AI算力、半导体、能源电力、资源品、公告和未来事件日历。报告会把标题、来源、发布时间、检索主题作为可复核证据；涉及投资结论时仍需回看原文和公司公告。</p>
+<p>公告线索来自 Google News 对巨潮资讯、交易所、港交所披露易和 SEC 的公开索引；当前阶段只用于发现线索，正式判断必须打开公告原文复核。</p>
+<p>AI 分析说明：本报告基于公开信息整理，不构成投资建议。数据来源包括华尔街见闻、东方财富、财联社等，可能存在延迟，请以官方公告为准。</p>
+<p>AI 模型调用状态：成功调用 deepseek / deepseek-chat，已对规则版报告进行投研增强。</p>
+<p>质量检查：通过基础完整性检查。</p>
+        </section>
+      </article>
+      <aside class="side-rail">
+        <div class="rail-block">
+          <h2>报告导航</h2>
+          <a href="#events">核心事件</a>
+          <a href="#ideas">投资机会</a>
+          <a href="#risks">风险提示</a>
+        </div>
+        <div class="rail-block">
+          <h2>切换报告</h2>
+          <a class="report-link" href="2026-09-02-morning.html">上一篇：2026-09-02 盘前投研日报</a>
+          <span class="muted-link">下一篇：无</span>
+        </div>
+      </aside>
+    </section>
+  </main>
+  <script>
+  </script>
+
+</body>
+</html>
