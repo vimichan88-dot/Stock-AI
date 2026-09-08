@@ -1,0 +1,717 @@
+{
+  "report_type": "close",
+  "date": "2026-09-08",
+  "generated_at": "2026-09-08T21:47:12.965827+08:00",
+  "title": "2026-09-08 收盘复盘与明日展望",
+  "executive_summary": "今日A股呈现结构分化，上证微涨0.20%而创业板指跌1.15%，科创50跌1.52%，资金明显从高估值成长流向资源与政策受益板块。港股恒生科技跌1.61%，AI双雄大跌，但CXO与创新药逆势反弹。海外市场，美股三大指数小幅下跌，但铜价创历史新高、油价大涨，反映通胀与地缘风险升温。政策面上，证监会召开座谈会、两大央企宣布增持，释放维稳信号。宏观上，美联储加息概率升至60%，油价逼近100美元，对全球风险资产形成压制。投资主线仍聚焦AI算力与半导体，但需从题材炒作转向订单验证；同时关注能源、黄金等防御性资产。短期建议控制仓位，等待政策细则与业绩确认。",
+  "market_view": "全球资本今日主要交易通胀与地缘风险，同时博弈政策维稳与AI产业趋势。铜价、油价大涨，美债收益率高位，压制成长股估值；A股资金转向石油石化、黄金等资源板块，以及政策受益的券商与央企。港股科技受AI双雄大跌拖累，但CXO与创新药因AIDD逻辑反弹。美股科技小幅下跌，但AI基础设施长期需求叙事仍在。整体呈现避险与结构性机会并存的格局。",
+  "market_signals": [
+    {
+      "name": "上证指数",
+      "value": "3940.55",
+      "change": "+0.20%",
+      "interpretation": "中国大陆市场基准，观察 A 股整体风险偏好和成交主线，数据源新浪行情。"
+    },
+    {
+      "name": "深成指数",
+      "value": "13703.21",
+      "change": "-0.52%",
+      "interpretation": "中国大陆深市基准，观察成长制造、科技和消费电子主线，数据源新浪行情。"
+    },
+    {
+      "name": "沪深300",
+      "value": "4558.74",
+      "change": "-0.36%",
+      "interpretation": "中国大陆核心资产基准，观察权重股和北向/机构风险偏好，数据源新浪行情。"
+    },
+    {
+      "name": "创业板指",
+      "value": "3359.72",
+      "change": "-1.15%",
+      "interpretation": "中国大陆成长股基准，观察新能源、医药和科技成长方向，数据源新浪行情。"
+    },
+    {
+      "name": "科创50",
+      "value": "1591.00",
+      "change": "-1.52%",
+      "interpretation": "中国大陆科创板代表指数，观察硬科技、半导体和高端制造成长风格，数据源新浪行情。"
+    },
+    {
+      "name": "恒生指数",
+      "value": "25317.18",
+      "change": "-0.38%",
+      "interpretation": "香港市场基准，观察港股风险偏好、南向资金和美元流动性压力，最新时间 2026/09/08 16:09:00，数据源新浪港股行情。"
+    },
+    {
+      "name": "恒生科技",
+      "value": "4454.85",
+      "change": "-1.61%",
+      "interpretation": "香港科技资产代理，观察平台经济和港股成长风格，最新时间 2026/09/08 16:09:00，数据源新浪港股行情。"
+    },
+    {
+      "name": "标普500",
+      "value": "7689.36",
+      "change": "-0.38%",
+      "interpretation": "美国大盘基准，观察全球风险资产定价，最新日期 2026-09-08。"
+    },
+    {
+      "name": "纳斯达克100",
+      "value": "29470.69",
+      "change": "-0.25%",
+      "interpretation": "美国科技基准，观察 AI、半导体和高估值成长股映射，最新日期 2026-09-08。"
+    },
+    {
+      "name": "道琼斯工业指数",
+      "value": "52959.49",
+      "change": "-0.85%",
+      "interpretation": "美国蓝筹基准，观察传统周期和防守资产表现，最新日期 2026-09-08。"
+    },
+    {
+      "name": "日经225",
+      "value": "65269.33",
+      "change": "-1.70%",
+      "interpretation": "日本市场基准，观察亚洲风险偏好和日元相关交易，最新日期 2026-09-08。"
+    },
+    {
+      "name": "韩国KOSPI",
+      "value": "6954.52",
+      "change": "-0.58%",
+      "interpretation": "韩国市场基准，观察半导体、出口链和亚洲科技风险偏好，最新日期 2026-09-08。"
+    },
+    {
+      "name": "欧洲STOXX 600",
+      "value": "650.22",
+      "change": "+0.05%",
+      "interpretation": "欧洲市场基准，观察全球周期和欧洲风险偏好，最新日期 2026-09-08。"
+    },
+    {
+      "name": "德国DAX",
+      "value": "25989.63",
+      "change": "-0.06%",
+      "interpretation": "欧洲制造业和出口链代理，观察全球工业周期，最新日期 2026-09-08。"
+    },
+    {
+      "name": "英国富时100",
+      "value": "10840.15",
+      "change": "+0.17%",
+      "interpretation": "欧洲高股息和资源股代理，观察防守与商品链偏好，最新日期 2026-09-08。"
+    },
+    {
+      "name": "黄金 ETF",
+      "value": "403.50",
+      "change": "-0.80%",
+      "interpretation": "观察避险情绪和实际利率变化，最新日期 2026-09-08。"
+    },
+    {
+      "name": "美元/离岸人民币",
+      "value": "6.71",
+      "change": "-0.02%",
+      "interpretation": "观察人民币汇率和外资风险偏好，最新日期 2026-09-08。"
+    },
+    {
+      "name": "美债 10 年收益率",
+      "value": "4.78",
+      "change": "-0.13%",
+      "interpretation": "观察全球折现率和成长股估值压力，最新日期 2026-09-08。"
+    },
+    {
+      "name": "VIX 波动率",
+      "value": "15.37",
+      "change": "+0.46%",
+      "interpretation": "观察美股风险偏好和避险需求，最新日期 2026-09-08。"
+    },
+    {
+      "name": "WTI 原油",
+      "value": "93.40",
+      "change": "+2.10%",
+      "interpretation": "观察通胀预期、能源链和地缘风险，最新日期 2026-09-08。"
+    },
+    {
+      "name": "COMEX 铜",
+      "value": "6.83",
+      "change": "+3.50%",
+      "interpretation": "观察全球制造业需求和顺周期预期，最新日期 2026-09-08。"
+    },
+    {
+      "name": "比特币",
+      "value": "77794.15",
+      "change": "-1.67%",
+      "interpretation": "观察全球流动性和高风险资产偏好，最新日期 2026-09-08。"
+    },
+    {
+      "name": "以太坊",
+      "value": "2448.98",
+      "change": "-1.69%",
+      "interpretation": "观察加密资产风险偏好，最新日期 2026-09-08。"
+    }
+  ],
+  "core_events": [
+    {
+      "title": "证监会召开座谈会，两大央企宣布增持A股",
+      "summary": "证监会今日召开座谈会，旨在促进市场稳定健康发展；同时两大央企宣布增持A股股票资产。此外，新易盛、天孚通信等发布上半年业绩预告。",
+      "reason": "政策面释放维稳信号，央企增持直接带来增量资金，利好市场情绪与券商、核心资产。A股方面，券商、央企及高股息板块受益；港股与美股映射有限，但中概股或受情绪提振。短期看，政策落地与资金流入规模是关键；中期需观察经济基本面与盈利改善。量化观察指标包括沪深两市成交额、北向资金流向、央企增持金额。投资建议可关注券商ETF、央企ETF，但需等待政策细则。",
+      "beneficiaries": [
+        "券商",
+        "央企",
+        "高股息板块"
+      ],
+      "risks": [
+        "政策效果不及预期",
+        "增持规模有限",
+        "市场情绪反复"
+      ],
+      "importance": 95,
+      "confidence": 90,
+      "sources": [
+        "财联社 2026-09-07 23:47:36",
+        "https://news.google.com/rss/articles/CBMiSEFVX3lxTE9VQjRRUnZJbFdvSWtOLVVMX0dhc2hFVTNEUUtyTjJIanVmbEgtU0dZZjZxU1BpZVQ5emM1OTR5dnM4RUxwU3RDZQ?oc=5"
+      ],
+      "bullish_stocks": [
+        "中信证券(600030)",
+        "东方财富(300059)",
+        "中国石油(601857)",
+        "中国神华(601088)",
+        "沪深300ETF(510300)"
+      ],
+      "bearish_stocks": [
+        "高估值成长股",
+        "无业绩支撑的题材股"
+      ]
+    },
+    {
+      "title": "美联储加息概率升至60%，油价逼近100美元",
+      "summary": "8月CPI数据即将公布，市场对美联储加息预期升温，概率升至60%；同时国际油价逼近100美元，伊朗地缘风险加剧，金价逆势反弹。",
+      "reason": "加息预期与油价上涨推升通胀预期，美债收益率高位，压制全球成长股估值。A股方面，高估值科技股承压，但石油、黄金、煤炭等资源股受益；港股科技与美股科技均面临调整压力。短期看，CPI数据与美联储表态是关键；中期若通胀持续，加息周期延长，对全球流动性不利。量化观察指标包括美债10年期收益率、美元指数、WTI油价。投资建议可配置黄金ETF、能源股，但需警惕利率风险。",
+      "beneficiaries": [
+        "黄金",
+        "石油",
+        "煤炭",
+        "红利资产"
+      ],
+      "risks": [
+        "加息超预期",
+        "油价大幅波动",
+        "地缘风险升级"
+      ],
+      "importance": 92,
+      "confidence": 88,
+      "sources": [
+        "21财经 2026-09-08 09:01:00",
+        "华尔街见闻 2026-09-08 06:03:55",
+        "https://news.google.com/rss/articles/CBMijAFBVV95cUxPQWZ1ai1IOEJzb2FGRGdFdGl3cl8xbHhVQUZGRnBqWXphaFRNYjl5MVNxYUdKUHhuV29namRIOXJ4Tjk5dDJtVWoxQkJZeG9BRW92WDN4V3N4cGVrcklUcVpGN1NNdjF5bzlraHloakRYaUI4c0Z3blBHLWZJbW9iaUs2dGw0em0xc0NORQ?oc=5"
+      ],
+      "bullish_stocks": [
+        "紫金矿业(601899)",
+        "山东黄金(600547)",
+        "中国海油(600938)",
+        "中国神华(601088)",
+        "黄金ETF(518880)"
+      ],
+      "bearish_stocks": [
+        "高估值成长股",
+        "航空股",
+        "高负债企业"
+      ]
+    },
+    {
+      "title": "铜价创历史新高，超百万吨铜流向美国",
+      "summary": "LME铜价突破14700美元/吨，创历史新高，因关税不确定性导致超百万吨铜流向美国，全球铜供应紧张。",
+      "reason": "铜价上涨反映全球制造业需求与供应链重构，利好铜矿企业，如紫金矿业、洛阳钼业；同时带动有色板块整体走强。A股有色资源股受益，港股与美股相关矿业公司亦受益。但铜价高位可能挤压下游加工企业利润。短期看，关税政策与库存变化是关键；中期铜供需缺口或支撑价格。量化观察指标包括LME铜库存、美元指数、全球PMI。投资建议可关注铜矿龙头，但需注意回调风险。",
+      "beneficiaries": [
+        "铜矿企业",
+        "有色板块"
+      ],
+      "risks": [
+        "铜价回调",
+        "需求不及预期",
+        "关税政策变化"
+      ],
+      "importance": 88,
+      "confidence": 90,
+      "sources": [
+        "华尔街见闻 2026-09-08 13:17:59",
+        "东方财富 2026-09-08 12:34:39",
+        "https://news.google.com/rss/articles/CBMiU0FVX3lxTE04TGlvaUdzR2JlT3h1YzFqNktpNWZnNnZNR2hkY05KRjlDRWVKbFVXdW9qZTlFTzBjWWhqeGRXZndZa1FOdHZ6ZE10Zk9Nc3dDekJN?oc=5"
+      ],
+      "bullish_stocks": [
+        "紫金矿业(601899)",
+        "洛阳钼业(603993)",
+        "江西铜业(600362)",
+        "铜陵有色(000630)"
+      ],
+      "bearish_stocks": [
+        "下游加工企业",
+        "高成本制造商"
+      ]
+    },
+    {
+      "title": "港股科技大跌，AI双雄跳水，CXO逆势反弹",
+      "summary": "恒生科技指数跌1.61%，AI双雄智谱跌超10%、MiniMax跌超5%；但CXO板块反弹，金斯瑞涨12%，AIDD逻辑受关注。",
+      "reason": "港股科技受美股AI回调及估值压力影响，短期调整；但CXO受益于AI药物研发逻辑，资金流入。A股映射下，AI算力与半导体可能承压，但创新药与CXO板块或受提振。港股科技中期仍取决于盈利与流动性。量化观察指标包括恒生科技指数、南向资金、AI龙头业绩。投资建议可关注CXO龙头，但需警惕AI板块波动。",
+      "beneficiaries": [
+        "CXO",
+        "创新药"
+      ],
+      "risks": [
+        "AI板块继续下跌",
+        "市场情绪低迷"
+      ],
+      "importance": 85,
+      "confidence": 85,
+      "sources": [
+        "每日经济新闻 2026-09-08 09:31:00",
+        "新浪财经 2026-09-08 11:38:49",
+        "https://news.google.com/rss/articles/CBMiZkFVX3lxTFAyNjZKaEVIa25qaU9HMC1qM0xjY0E5Z2ZyQU90WU83ZFllQk5vSURFZkJvTFEwYnZEV01fNVluMW1vRXc2aVJUQkluNFcxdG5UX1hReU0zTGd6dWhyRFZ0ZlU4VTVEZw?oc=5"
+      ],
+      "bullish_stocks": [
+        "金斯瑞生物科技(01548.HK)",
+        "药明康德(603259)",
+        "泰格医药(300347)",
+        "恒生医疗ETF(513060)"
+      ],
+      "bearish_stocks": [
+        "智谱概念股",
+        "MiniMax概念股",
+        "高估值AI股"
+      ]
+    },
+    {
+      "title": "AI基础设施投资将达数万亿美元，国产GPU进入兑现期",
+      "summary": "WSJ报道AI基础设施将耗资数万亿美元；国产算力芯片进入上市兑现期，CSP资本开支上修，燧原科技科创板发行结果揭晓。",
+      "reason": "AI基础设施长期需求确定，利好光模块、服务器、PCB等环节；国产GPU企业如寒武纪、燧原科技受益于国产替代。A股AI算力板块有望获得支撑，但需警惕估值过高。港股与美股相关公司亦受益。短期看，CSP资本开支指引是关键；中期订单兑现决定持续性。量化观察指标包括云厂商资本开支、光模块订单、国产GPU出货量。投资建议可关注有订单的龙头，但需等待业绩验证。",
+      "beneficiaries": [
+        "光模块",
+        "服务器",
+        "国产GPU",
+        "IDC"
+      ],
+      "risks": [
+        "资本开支不及预期",
+        "技术迭代风险",
+        "估值泡沫"
+      ],
+      "importance": 90,
+      "confidence": 85,
+      "sources": [
+        "富途牛牛 2026-09-08 13:15:13",
+        "发现报告 2026-09-08 09:25:49",
+        "新浪网 2026-09-08 13:34:53",
+        "https://news.google.com/rss/articles/CBMijAFBVV95cUxPRU96TTVIOGltaXc4WU9XaXNfM2xOdWo4ZlNDTlU2Q2NINHBnWVZtelJ3UFJ1dEl4MEVkUEYtb1BxUHV0OVo3Y2h2VnA2Uy1XQVdMTkotXzlnYzNoejJyTWZjLVRBVmd3MTd3c2dQZ2phakVJUTdoakdmQ0xCczM3VGNkOUpQRzd2RC1VaQ?oc=5"
+      ],
+      "bullish_stocks": [
+        "中际旭创(300308)",
+        "新易盛(300502)",
+        "工业富联(601138)",
+        "寒武纪(688256)",
+        "燧原科技(未上市)"
+      ],
+      "bearish_stocks": [
+        "无订单的AI概念股",
+        "低端代工企业"
+      ]
+    },
+    {
+      "title": "多家公司股东减持，海鸥股份控股股东减持3%",
+      "summary": "海鸥股份控股股东减持1295.83万股，占总股本3%；挖金客实控人减持约9100万元；富岭股份、华翔股份等也发布减持公告。",
+      "reason": "减持潮对个股及市场情绪形成压力，尤其高估值小盘股。A股相关个股短期承压，但若基本面良好，减持影响有限。港股与美股映射较小。量化观察指标包括减持比例、公司业绩。投资建议回避减持个股，关注基本面。",
+      "beneficiaries": [
+        "无特定受益者"
+      ],
+      "risks": [
+        "股价下跌",
+        "市场信心受挫"
+      ],
+      "importance": 70,
+      "confidence": 90,
+      "sources": [
+        "guandian.cn 2026-09-08 11:39:11",
+        "同花顺财经 2026-09-08 12:46:29",
+        "东方财富 2026-09-08 13:29:52",
+        "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBpY0VTNHpJd2UwcUhka0JrQXNReEdxeTkzVkFXZ2FObXRDSzRMU3BJWnZES3QyU3dSLTBiYTJPZm45Wm9CWng3UWVzRjZEMFVZOVFWR2N4VE8yVUNkR0tPd0lB?oc=5"
+      ],
+      "bullish_stocks": [
+        "无"
+      ],
+      "bearish_stocks": [
+        "海鸥股份(603269)",
+        "挖金客(301380)",
+        "富岭股份(001356)",
+        "华翔股份(603112)"
+      ]
+    },
+    {
+      "title": "国际油价大涨，伊朗威胁切断海湾能源流动",
+      "summary": "国际原油价格大幅上涨，伊朗放话可能切断霍尔木兹海峡，地缘风险推升油价，WTI原油涨2.1%至93.4美元。",
+      "reason": "地缘风险推升油价，利好石油、油服板块，但利空航空、化工等下游。A股石油股大涨，港股三桶油亦走强。短期油价波动加大，中期取决于地缘局势。量化观察指标包括油价、库存、地缘事件。投资建议可关注石油龙头，但需注意回调风险。",
+      "beneficiaries": [
+        "石油开采",
+        "油服"
+      ],
+      "risks": [
+        "地缘缓和",
+        "需求下滑"
+      ],
+      "importance": 87,
+      "confidence": 85,
+      "sources": [
+        "财联社 2026-09-08 10:50:57",
+        "https://news.google.com/rss/articles/CBMiSEFVX3lxTE5ZUVhGT2JYWmVmOEVkQXA2T2owbVh0SHpfWVdSZFFvY2ZIN0tyNWVuV0hqRFlLNnBUNlo5T1J4TWI5MzhBX1FwNA?oc=5"
+      ],
+      "bullish_stocks": [
+        "中国石油(601857)",
+        "中国海油(600938)",
+        "中海油服(601808)",
+        "杰瑞股份(002353)"
+      ],
+      "bearish_stocks": [
+        "航空股",
+        "化工下游"
+      ]
+    },
+    {
+      "title": "百度正式纳入港股通，南向资金持续流入",
+      "summary": "百度正式纳入港股通，恒生科技ETF近10日净流入近6500万元，南向资金持续布局港股科技。",
+      "reason": "百度纳入港股通带来增量资金，利好百度及港股科技板块。A股相关概念股可能受益。短期看，南向资金流向是关键；中期港股科技估值修复需盈利支撑。量化观察指标包括南向资金净流入、恒生科技指数。投资建议可关注百度、腾讯等龙头。",
+      "beneficiaries": [
+        "百度",
+        "港股科技"
+      ],
+      "risks": [
+        "南向资金流出",
+        "市场波动"
+      ],
+      "importance": 75,
+      "confidence": 80,
+      "sources": [
+        "新浪网 2026-09-08 05:28:39",
+        "https://news.google.com/rss/articles/CBMigwFBVV95cUxQY1JBeWJrVXk0RUxkd1ZuLWR4NUFEVnhzMlI2SlpWYlpSTXR1Nlc0QnZhWFczZngyQnNvSklaYnZKc2d0eW0xZmF4S29yUGlSR043UTgtbDF4cFR2WkNZSFlzT2t4TkRSbW5FWkFTZHVWQlJHNnQ4Q0dxaVNKdldxT3Jmaw?oc=5"
+      ],
+      "bullish_stocks": [
+        "百度集团-SW(09888.HK)",
+        "腾讯控股(00700.HK)",
+        "恒生科技ETF(513180)"
+      ],
+      "bearish_stocks": [
+        "无"
+      ]
+    },
+    {
+      "title": "摩根士丹利重申比亚迪H股增持评级，目标价121港元",
+      "summary": "摩根士丹利重申比亚迪H股增持评级，目标价121港元，看好其新能源车销量与盈利能力。",
+      "reason": "机构看好比亚迪，利好新能源汽车板块。A股比亚迪及相关产业链可能受益。短期看，销量数据是关键；中期行业竞争加剧。量化观察指标包括月度销量、毛利率。投资建议可关注比亚迪，但需注意估值。",
+      "beneficiaries": [
+        "比亚迪",
+        "新能源汽车产业链"
+      ],
+      "risks": [
+        "销量不及预期",
+        "价格战"
+      ],
+      "importance": 72,
+      "confidence": 80,
+      "sources": [
+        "guandian.cn 2026-09-08 10:39:13",
+        "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9TdFhiVVlZUlc5U3VncVZKYVJuU3U4V3RNUlR3Y2t1OF9sMmRDRGpuYUNlRTVuRUNYWkkzM2NMakxSZnZJN3JsZFdQZTlOUQ?oc=5"
+      ],
+      "bullish_stocks": [
+        "比亚迪(002594)",
+        "宁德时代(300750)",
+        "汇川技术(300124)"
+      ],
+      "bearish_stocks": [
+        "传统燃油车"
+      ]
+    },
+    {
+      "title": "A股成交额近1.98万亿元，石油石化板块涨3.68%",
+      "summary": "A股今日成交额近1.98万亿元，石油石化板块上涨3.68%，资金明显流入资源板块。",
+      "reason": "成交额维持高位，显示市场活跃，但板块分化。石油石化受油价上涨驱动，资金流入。A股资源股受益，但成长股承压。短期看，油价与政策是核心；中期关注经济复苏。量化观察指标包括成交额、板块资金流向。投资建议可关注资源ETF，但需注意追高风险。",
+      "beneficiaries": [
+        "石油石化",
+        "煤炭"
+      ],
+      "risks": [
+        "油价回调",
+        "市场风格切换"
+      ],
+      "importance": 80,
+      "confidence": 85,
+      "sources": [
+        "新浪财经 2026-09-08 12:05:00",
+        "https://news.google.com/rss/articles/CBMimAFBVV95cUxOeFc1Y1Q2UndxWjRNaU1SN1o2NjFVUlN2elBKZVlYWHdMTjZzUE8xYUtuNDI5UVBDbExvY3dhYklzZ2NxNVhITW44VVhlUmhFcnZNdnVmY2x4Zkd3eFI1dV90d0l5cnlhWnBfNWd4aTlFc0ZzalRRQ25GYlNOTGNPSjBUN3BsMTRHeHRqdFlyNE5JUXRnMXZzVA?oc=5"
+      ],
+      "bullish_stocks": [
+        "中国石油(601857)",
+        "中国石化(600028)",
+        "中国神华(601088)",
+        "陕西煤业(601225)"
+      ],
+      "bearish_stocks": [
+        "高估值成长股"
+      ]
+    }
+  ],
+  "investment_ideas": [
+    {
+      "title": "AI算力与半导体：聚焦订单验证",
+      "action": "可分批关注",
+      "horizon": "1-3个月",
+      "success_probability": "60%",
+      "confidence": 70,
+      "risk_level": "中",
+      "logic": "AI基础设施投资长期增长，国产GPU进入兑现期，但需订单和业绩验证。",
+      "invalidation": "云厂商资本开支下修，或订单不及预期。",
+      "watch_indicators": [
+        "云厂商资本开支",
+        "光模块订单",
+        "国产GPU出货量",
+        "半导体设备销售额"
+      ],
+      "catalysts": [
+        "CSP资本开支上修",
+        "国产替代政策",
+        "AI应用爆发"
+      ],
+      "representative_assets": [
+        "中际旭创(300308)",
+        "新易盛(300502)",
+        "工业富联(601138)",
+        "寒武纪(688256)",
+        "半导体ETF(512480)"
+      ],
+      "pricing_status": "部分环节已充分定价，需业绩兑现",
+      "position_size": "轻仓"
+    },
+    {
+      "title": "资源品与黄金：对冲通胀与地缘风险",
+      "action": "持有观察",
+      "horizon": "1-6个月",
+      "success_probability": "65%",
+      "confidence": 75,
+      "risk_level": "中低",
+      "logic": "油价、铜价上涨，通胀预期升温，黄金避险需求增加。",
+      "invalidation": "地缘缓和，油价回落，实际利率上升。",
+      "watch_indicators": [
+        "WTI油价",
+        "LME铜价",
+        "美债收益率",
+        "美元指数"
+      ],
+      "catalysts": [
+        "地缘冲突升级",
+        "OPEC+减产",
+        "通胀超预期"
+      ],
+      "representative_assets": [
+        "紫金矿业(601899)",
+        "中国海油(600938)",
+        "山东黄金(600547)",
+        "黄金ETF(518880)"
+      ],
+      "pricing_status": "部分已定价，仍有上行空间",
+      "position_size": "标准仓"
+    },
+    {
+      "title": "港股科技：等待南向资金持续流入",
+      "action": "等待确认",
+      "horizon": "1-3个月",
+      "success_probability": "55%",
+      "confidence": 60,
+      "risk_level": "中",
+      "logic": "南向资金流入，百度纳入港股通，但需盈利改善。",
+      "invalidation": "南向资金流出，或业绩不及预期。",
+      "watch_indicators": [
+        "南向资金净流入",
+        "恒生科技指数",
+        "腾讯/阿里业绩"
+      ],
+      "catalysts": [
+        "盈利超预期",
+        "监管政策放松",
+        "美元走弱"
+      ],
+      "representative_assets": [
+        "腾讯控股(00700.HK)",
+        "阿里巴巴-W(09988.HK)",
+        "百度集团-SW(09888.HK)",
+        "恒生科技ETF(513180)"
+      ],
+      "pricing_status": "估值低位，等待催化",
+      "position_size": "轻仓"
+    },
+    {
+      "title": "创新药与CXO：AIDD驱动反弹",
+      "action": "事件驱动可参与",
+      "horizon": "1-2个月",
+      "success_probability": "50%",
+      "confidence": 55,
+      "risk_level": "中高",
+      "logic": "AI药物研发逻辑，CXO板块反弹，但持续性待观察。",
+      "invalidation": "反弹乏力，或行业利空。",
+      "watch_indicators": [
+        "金斯瑞股价",
+        "CXO板块成交额",
+        "创新药政策"
+      ],
+      "catalysts": [
+        "AI制药突破",
+        "海外订单",
+        "政策支持"
+      ],
+      "representative_assets": [
+        "金斯瑞生物科技(01548.HK)",
+        "药明康德(603259)",
+        "泰格医药(300347)",
+        "恒生医疗ETF(513060)"
+      ],
+      "pricing_status": "短期反弹，需确认趋势",
+      "position_size": "轻仓"
+    }
+  ],
+  "action_checklist": [
+    "关注证监会座谈会后续政策与央企增持进展。",
+    "跟踪美国CPI数据与美联储表态，评估加息影响。",
+    "监控油价与铜价走势，调整资源股配置。",
+    "等待AI算力订单与业绩验证，精选龙头。",
+    "观察南向资金流向，决定港股科技仓位。",
+    "注意减持公告，规避相关个股。"
+  ],
+  "risk_warnings": [
+    "美联储加息超预期可能引发全球市场调整。",
+    "地缘政治冲突升级可能导致油价飙升。",
+    "AI板块估值过高，回调风险大。",
+    "减持潮可能影响市场情绪。",
+    "数据来源可能存在延迟，需以官方为准。"
+  ],
+  "source_note": "中国大陆指数优先来自新浪行情接口，海外市场、商品、汇率等来自 Yahoo Finance chart 免费接口，可能存在延迟、缺口或临时不可用；投资判断仍需结合交易所、公司公告和券商数据复核。\n\n宏观代理指标来自 Yahoo Finance 免费接口，覆盖美债、波动率、商品和加密资产；这些是资金环境代理变量，不等同于官方宏观统计。\n\n新闻证据包来自 Google News RSS 的多主题检索矩阵，覆盖全球宏观、A股、港股、美股科技、AI算力、半导体、能源电力、资源品、公告和未来事件日历。报告会把标题、来源、发布时间、检索主题作为可复核证据；涉及投资结论时仍需回看原文和公司公告。\n\nAI 分析说明：本报告基于公开信息与市场数据，不构成投资建议。\n\nAI 模型调用状态：成功调用 deepseek / deepseek-chat，已对规则版报告进行投研增强。\n\n质量检查：通过基础完整性检查。",
+  "analysis_sections": [
+    {
+      "title": "今日十大核心事件筛选逻辑",
+      "view": "今日事件中，政策维稳、通胀与地缘风险、AI产业趋势是三大主线。证监会座谈会与央企增持直接利好市场情绪；美联储加息预期与油价上涨压制成长股；AI基础设施投资长期利好算力板块。铜价新高反映供需紧张。减持潮与港股科技下跌带来风险。",
+      "opportunities": [
+        "政策维稳下的券商与央企",
+        "通胀与地缘风险下的资源股",
+        "AI算力订单验证的龙头"
+      ],
+      "risks": [
+        "加息超预期",
+        "地缘冲突升级",
+        "AI估值泡沫"
+      ],
+      "watch": [
+        "证监会后续政策",
+        "CPI数据",
+        "油价走势",
+        "AI订单"
+      ]
+    },
+    {
+      "title": "全球资本市场复盘",
+      "view": "全球股市涨跌互现，A股分化，港股科技下跌，美股小幅调整。商品市场大涨，铜价创新高，油价上涨，反映通胀与地缘风险。美债收益率高位，压制成长股。",
+      "opportunities": [
+        "资源股",
+        "黄金",
+        "能源"
+      ],
+      "risks": [
+        "利率上行",
+        "地缘风险"
+      ],
+      "watch": [
+        "美债收益率",
+        "美元指数",
+        "油价",
+        "铜价"
+      ]
+    },
+    {
+      "title": "今日最重要产业趋势",
+      "view": "AI基础设施投资长期增长，国产GPU进入兑现期，光模块、服务器等环节受益。CXO板块因AIDD逻辑反弹。新能源汽车获机构看好。",
+      "opportunities": [
+        "AI算力",
+        "CXO",
+        "新能源汽车"
+      ],
+      "risks": [
+        "技术迭代",
+        "竞争加剧"
+      ],
+      "watch": [
+        "云厂商资本开支",
+        "AI订单",
+        "CXO业绩"
+      ]
+    },
+    {
+      "title": "全球资金流向",
+      "view": "资金从成长股流向资源股与防御板块。南向资金流入港股科技，但港股科技仍下跌，显示外资流出。A股成交额维持高位，但板块分化。",
+      "opportunities": [
+        "资源板块",
+        "高股息"
+      ],
+      "risks": [
+        "资金流出成长股"
+      ],
+      "watch": [
+        "北向资金",
+        "南向资金",
+        "板块资金流向"
+      ]
+    },
+    {
+      "title": "政策与公告解读",
+      "view": "证监会座谈会与央企增持释放维稳信号，利好市场。减持潮对个股形成压力。南方航空定增获批，利好航空业。",
+      "opportunities": [
+        "券商",
+        "央企",
+        "航空"
+      ],
+      "risks": [
+        "减持潮",
+        "政策效果不确定"
+      ],
+      "watch": [
+        "政策细则",
+        "减持公告"
+      ]
+    },
+    {
+      "title": "未来7天重要事件",
+      "view": "关注美国CPI数据、美联储议息会议、中国8月经济数据、OPEC+会议等。这些事件将影响全球利率、汇率与商品价格。",
+      "opportunities": [
+        "数据超预期带来的交易机会"
+      ],
+      "risks": [
+        "数据不及预期"
+      ],
+      "watch": [
+        "CPI",
+        "美联储",
+        "中国经济数据",
+        "OPEC+"
+      ]
+    },
+    {
+      "title": "投资机会与行动清单",
+      "view": "短期关注政策维稳与资源股，中期关注AI算力与港股科技，长期关注创新药与新能源。",
+      "opportunities": [
+        "AI算力",
+        "资源股",
+        "港股科技",
+        "创新药"
+      ],
+      "risks": [
+        "市场波动",
+        "政策变化"
+      ],
+      "watch": [
+        "成交额",
+        "资金流向",
+        "业绩预告"
+      ]
+    }
+  ],
+  "planned_time": "",
+  "schedule_status": "",
+  "trigger": ""
+}
