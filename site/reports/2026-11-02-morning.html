@@ -1,0 +1,785 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-11-02 盘前投研日报</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fa;
+      --panel: #ffffff;
+      --text: #1f2933;
+      --muted: #64748b;
+      --line: #d8dee8;
+      --accent: #0f766e;
+      --accent-weak: #e5f3f1;
+      --warn: #b45309;
+      --danger: #b42318;
+      --shadow: 0 10px 28px rgba(15, 23, 42, 0.07);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    body { margin: 0; background: var(--bg); color: var(--text); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .shell { width: 100%; max-width: 1180px; margin: 0 auto; padding: 28px 18px 64px; }
+    .topbar { display: flex; justify-content: space-between; gap: 24px; align-items: flex-end; padding: 18px 0 24px; border-bottom: 1px solid var(--line); }
+    .eyebrow { margin: 0 0 8px; color: var(--warn); font-size: 13px; font-weight: 800; letter-spacing: 0; }
+    h1 { margin: 0; font-size: 30px; line-height: 1.2; letter-spacing: 0; }
+    h2 { margin: 0 0 12px; font-size: 18px; line-height: 1.35; letter-spacing: 0; }
+    h3 { margin: 8px 0 10px; font-size: 17px; line-height: 1.35; letter-spacing: 0; }
+    p { line-height: 1.75; }
+    .sub { margin: 8px 0 0; color: var(--muted); }
+    .status-pill, .meta { color: var(--warn); font-size: 14px; font-weight: 800; }
+    .status-pill { color: #fff; background: var(--accent); padding: 8px 10px; border-radius: 6px; white-space: nowrap; }
+    .ai-status { display: inline-flex; width: fit-content; margin: 10px 0 0; padding: 7px 10px; border: 1px solid #b8d7d1; border-radius: 6px; background: #e7f5f1; color: #07594e; font-size: 14px; font-weight: 800; }
+    .ai-status.compact { margin: 8px 0; padding: 5px 8px; font-size: 12px; }
+    .schedule-status { display: inline-flex; width: fit-content; max-width: 100%; margin: 8px 0 0; padding: 6px 9px; border: 1px solid #b8d7d1; border-radius: 6px; background: #e7f5f1; color: #07594e; font-size: 13px; font-weight: 800; line-height: 1.45; overflow-wrap: anywhere; }
+    .schedule-status.compact { margin: 6px 0; padding: 4px 7px; font-size: 12px; }
+    .schedule-status.warning { border-color: #e0a3a3; background: #fff1f1; color: #9a3412; }
+    .schedule-status.manual { border-color: #c9d4e5; background: #f4f7fb; color: #4b647d; }
+    .dashboard { display: grid; grid-template-columns: 1.4fr 1fr; gap: 14px; margin-top: 20px; }
+    .panel, .report-card, .item-block { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow); }
+    .panel { padding: 18px; }
+    .hero-panel { grid-row: span 2; }
+    .hero-panel h2 { font-size: 23px; }
+    .primary-link, .report-link, .back-link { display: inline-flex; align-items: center; min-height: 36px; font-weight: 800; }
+    .signal-list, .plain-list { list-style: none; padding: 0; margin: 0; }
+    .signal-list li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+    .signal-list li:last-child { border-bottom: 0; }
+    .signal-list strong { color: var(--accent); white-space: nowrap; }
+    .plain-list li { padding: 7px 0; line-height: 1.55; }
+    .plain-list strong { color: var(--accent); margin-right: 6px; }
+    .history-head { display: flex; justify-content: space-between; gap: 18px; align-items: flex-end; margin-top: 30px; padding-top: 24px; border-top: 1px solid var(--line); }
+    .tools { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+    .tabs { display: flex; gap: 6px; }
+    .tab { height: 38px; border: 1px solid var(--line); background: #fff; color: var(--text); border-radius: 6px; padding: 0 12px; cursor: pointer; font-weight: 700; }
+    .tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .search { width: 220px; height: 38px; border: 1px solid var(--line); border-radius: 6px; padding: 0 10px; font-size: 15px; }
+    .report-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 14px; margin-top: 16px; }
+    .report-card { padding: 18px; display: flex; flex-direction: column; min-height: 260px; }
+    .generated-line { margin: 6px 0 0; color: var(--muted); font-size: 13px; }
+    .report-card p { color: var(--muted); }
+    .report-card ul { padding-left: 18px; margin: 8px 0 12px; }
+    .report-card .report-link { margin-top: auto; }
+    .detail-layout { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 18px; margin-top: 20px; align-items: start; }
+    .report-body { display: grid; gap: 18px; min-width: 0; }
+    .report-body > section { background: transparent; border-bottom: 1px solid var(--line); padding-bottom: 18px; }
+    .item-block { padding: 16px; margin: 12px 0; box-shadow: none; min-width: 0; overflow-wrap: anywhere; }
+    .score-line { display: flex; gap: 8px; flex-wrap: wrap; color: var(--warn); font-size: 13px; font-weight: 800; }
+    .event-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
+    .event-grid div { border-left: 4px solid var(--accent); background: #fff; padding: 10px 12px; }
+    .event-grid strong { color: var(--warn); }
+    .event-grid p { margin: 6px 0 0; }
+    .market-block { margin: 12px 0 18px; }
+    .market-block h3 { margin: 0 0 8px; color: var(--warn); }
+    .stock-impact { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
+    .stock-impact div { border: 1px solid var(--line); border-radius: 8px; background: #fff; padding: 10px; }
+    .stock-impact strong { display: block; color: var(--warn); margin-bottom: 6px; }
+    .stock-impact span { line-height: 1.55; }
+    .read-block { margin: 12px 0; padding: 12px 14px; border-left: 5px solid var(--line); background: #fff; color: var(--text); }
+    .read-block h3 { margin-top: 0; }
+    .table-wrap { max-width: 100%; overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+    table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    th, td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; line-height: 1.55; overflow-wrap: anywhere; word-break: break-word; }
+    th { background: var(--accent-weak); color: #134e4a; font-size: 14px; }
+    .idea-facts { display: grid; gap: 8px; margin: 12px 0 0; }
+    .idea-facts div { display: grid; grid-template-columns: 130px 1fr; gap: 10px; }
+    dt { color: var(--muted); font-weight: 800; }
+    dd { margin: 0; line-height: 1.55; }
+    .side-rail { position: sticky; top: 16px; display: grid; gap: 12px; }
+    .rail-block { border: 1px solid var(--line); border-radius: 8px; background: #fff; padding: 14px; }
+    .rail-block a, .muted-link { display: block; padding: 8px 0; line-height: 1.4; }
+    .muted-link { color: var(--muted); }
+    .empty { color: var(--muted); }
+    .source-line { overflow-wrap: anywhere; }
+    @media (max-width: 860px) {
+      .topbar, .history-head { display: block; }
+      .status-pill { display: inline-flex; margin-top: 14px; }
+      .dashboard, .detail-layout { grid-template-columns: 1fr; }
+      .side-rail { position: static; }
+      .tools { justify-content: flex-start; margin-top: 14px; }
+      .search { width: min(100%, 320px); }
+    }
+    @media (max-width: 560px) {
+      .shell { padding: 20px 14px 48px; }
+      h1 { font-size: 24px; }
+      .tabs { width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); }
+      .tab { padding: 0 6px; }
+      .search { width: 100%; }
+      .idea-facts div { grid-template-columns: 1fr; gap: 3px; }
+      .event-grid { grid-template-columns: 1fr; }
+      .stock-impact { grid-template-columns: 1fr; }
+      th, td { padding: 8px 7px; font-size: 13px; }
+      .score-line span { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <main id="app" class="shell detail-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">2026-11-02 · 盘前</p>
+        <h1>2026-11-02 盘前投研日报</h1>
+        <p class="sub">今天全球资本真正交易的不是单一增长故事，而是“美债收益率回落但科技股仍被抛售”的估值重定价，以及“黄金、原油同跌+VIX跳升”的流动性边际收紧信号。美股科技跌幅远大于道指，说明资金在削减高久期资产；黄金ETF跌3.47%与美债收益率回落方向背离，提示可能有实际利率之外的头寸平仓或美元流动性因素，需等待确认。亚洲市场内部，韩国KOSPI涨1.34%与纳指大跌形成反差，半导体出口链的区域轮动值得跟踪；A股和港股早盘小幅走强，但涨幅温和，尚不足以证明外部冲击已被完全消化。今日A/H股更可能交易“内需政策预期+南向承接+低位红利防守”，而非简单跟随美股科技反弹。</p>
+        <p class="sub time-line">生成时间：2026-11-02 09:39:27 北京时间</p>
+        <p class="schedule-status warning">计划：06:30 北京时间｜历史报告缺少调度记录，按生成时间回算偏差 +189 分钟｜触发：历史回填</p>
+        <p class="ai-status">AI增强：deepseek / deepseek-chat 调用成功</p>
+      </div>
+      <a class="back-link" href="../index.html">返回首页</a>
+    </header>
+
+    <section class="detail-layout">
+      <article class="report-body">
+        <section>
+          <h2>今日核心结论</h2>
+          <p>隔夜全球市场呈现明显的风险偏好收缩：美股三大指数集体下跌，纳斯达克100单日跌3.46%，标普500跌1.82%，道指跌1.09%；VIX跳升12.91%至19.42，黄金ETF跌3.47%，WTI原油跌2.35%至101.67美元，美债10年收益率回落至4.93%。这组信号组合更接近“高估值成长股杀估值+避险与流动性再定价”，而非单纯的增长衰退交易。与之形成对比的是，亚洲早盘韩国KOSPI涨1.34%、日经225基本持平，A股主要指数小幅收涨、港股恒指与恒生科技分别涨0.46%和0.55%，说明资金并未全面撤离权益，而是在做区域和风格再平衡。今日A/H股的核心矛盾是：外部科技股估值压力能否被内部政策预期和南向资金承接。由于本次证据包未提供任何可复核的新闻、公告或政策线索，所有事件层面的判断都必须标注为等待确认，不能把“AI算力链”“新能源分化”等示例性表述当作已发生事实。策略上，今日优先做防守型确认而非追涨：一是观察恒生科技能否在美股科技大跌背景下放量收红，二是观察A股创业板和科创50的相对强弱是否延续，三是观察黄金大跌后是否出现实际利率与美元的反向确认。仓位建议整体控制在标准仓以下，对高估值无订单的AI题材股保持回避，对黄金、红利、能源等对冲资产从“追高”转为“回调后观察”。</p>
+        </section>
+        <section><h2>全球市场速览</h2>
+        <div class="market-block">
+          <h3>中国大陆</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>指标</th><th>数值</th><th>变化</th></tr></thead>
+              <tbody>
+          <tr>
+            <td>上证指数</td>
+            <td>3602.91</td>
+            <td>+0.11%</td>
+          </tr>
+
+
+          <tr>
+            <td>深成指数</td>
+            <td>10882.49</td>
+            <td>+0.45%</td>
+          </tr>
+
+
+          <tr>
+            <td>沪深300</td>
+            <td>3998.01</td>
+            <td>+0.31%</td>
+          </tr>
+
+
+          <tr>
+            <td>创业板指</td>
+            <td>2432.14</td>
+            <td>+0.77%</td>
+          </tr>
+
+
+          <tr>
+            <td>科创50</td>
+            <td>1164.98</td>
+            <td>+0.36%</td>
+          </tr>
+        </tbody>
+            </table>
+          </div>
+        </div>
+
+
+        <div class="market-block">
+          <h3>香港市场</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>指标</th><th>数值</th><th>变化</th></tr></thead>
+              <tbody>
+          <tr>
+            <td>恒生指数</td>
+            <td>23401.09</td>
+            <td>+0.46%</td>
+          </tr>
+
+
+          <tr>
+            <td>恒生科技</td>
+            <td>3775.56</td>
+            <td>+0.55%</td>
+          </tr>
+        </tbody>
+            </table>
+          </div>
+        </div>
+
+
+        <div class="market-block">
+          <h3>美国市场</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>指标</th><th>数值</th><th>变化</th></tr></thead>
+              <tbody>
+          <tr>
+            <td>标普500</td>
+            <td>7580.07</td>
+            <td>-1.82%</td>
+          </tr>
+
+
+          <tr>
+            <td>纳斯达克100</td>
+            <td>28384.85</td>
+            <td>-3.46%</td>
+          </tr>
+
+
+          <tr>
+            <td>道琼斯工业指数</td>
+            <td>51770.31</td>
+            <td>-1.09%</td>
+          </tr>
+        </tbody>
+            </table>
+          </div>
+        </div>
+
+
+        <div class="market-block">
+          <h3>日韩市场</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>指标</th><th>数值</th><th>变化</th></tr></thead>
+              <tbody>
+          <tr>
+            <td>日经225</td>
+            <td>63311.92</td>
+            <td>+0.03%</td>
+          </tr>
+
+
+          <tr>
+            <td>韩国KOSPI</td>
+            <td>5807.48</td>
+            <td>+1.34%</td>
+          </tr>
+        </tbody>
+            </table>
+          </div>
+        </div>
+
+
+        <div class="market-block">
+          <h3>欧洲市场</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>指标</th><th>数值</th><th>变化</th></tr></thead>
+              <tbody>
+          <tr>
+            <td>欧洲STOXX 600</td>
+            <td>646.75</td>
+            <td>-0.36%</td>
+          </tr>
+
+
+          <tr>
+            <td>德国DAX</td>
+            <td>25818.21</td>
+            <td>-0.85%</td>
+          </tr>
+
+
+          <tr>
+            <td>英国富时100</td>
+            <td>10729.80</td>
+            <td>+0.07%</td>
+          </tr>
+        </tbody>
+            </table>
+          </div>
+        </div>
+
+
+        <div class="market-block">
+          <h3>大宗商品与外汇</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>指标</th><th>数值</th><th>变化</th></tr></thead>
+              <tbody>
+          <tr>
+            <td>黄金 ETF</td>
+            <td>355.78</td>
+            <td>-3.47%</td>
+          </tr>
+
+
+          <tr>
+            <td>美元/离岸人民币</td>
+            <td>6.65</td>
+            <td>+0.03%</td>
+          </tr>
+
+
+          <tr>
+            <td>WTI 原油</td>
+            <td>101.67</td>
+            <td>-2.35%</td>
+          </tr>
+
+
+          <tr>
+            <td>COMEX 铜</td>
+            <td>6.52</td>
+            <td>+0.91%</td>
+          </tr>
+
+
+          <tr>
+            <td>比特币</td>
+            <td>78475.96</td>
+            <td>+1.34%</td>
+          </tr>
+
+
+          <tr>
+            <td>以太坊</td>
+            <td>2294.95</td>
+            <td>+1.87%</td>
+          </tr>
+        </tbody>
+            </table>
+          </div>
+        </div>
+
+
+        <div class="market-block">
+          <h3>债券与风险偏好</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>指标</th><th>数值</th><th>变化</th></tr></thead>
+              <tbody>
+          <tr>
+            <td>美债 10 年收益率</td>
+            <td>4.93</td>
+            <td>-1.20%</td>
+          </tr>
+
+
+          <tr>
+            <td>VIX 波动率</td>
+            <td>19.42</td>
+            <td>+12.91%</td>
+          </tr>
+        </tbody>
+            </table>
+          </div>
+        </div>
+    </section>
+        <section id="events"><h2>今日核心事件</h2><article class="item-block">
+            <div class="score-line"><span>重要程度 95 / 100</span><span>置信度 85 / 100</span></div>
+            <h3>1. 美股科技股大幅回撤，纳指100单日跌3.46%</h3>
+            <div class="event-grid">
+              <div>
+                <strong>最新动态</strong>
+                <p>可复核事实：纳斯达克100最新报28384.85，单日下跌3.46%；标普500报7580.07，跌1.82%；道琼斯工业指数报51770.31，跌1.09%。科技指数跌幅显著大于蓝筹指数，显示高估值成长股是主要抛售对象。同期VIX升至19.42，单日涨12.91%，美债10年收益率回落至4.93%。投研解读：收益率回落并未托住科技股，说明本轮下跌更可能来自AI/半导体板块的拥挤度释放和盈利预期再定价，而非单纯的利率冲击。</p>
+              </div>
+              <div>
+                <strong>市场影响</strong>
+                <p>利空方向明确：高久期、高估值的AI与半导体资产首当其冲，传导链条为“美股科技杀估值→全球科技风险偏好下降→A股/港股科技映射承压”。A股映射：科创50、创业板中的算力、光模块、半导体设计等高位品种今日可能面临开盘情绪压力；港股映射：恒生科技虽早盘涨0.55%，但若成交额不能放大，修复持续性存疑；美股映射：纳指100成分中AI权重股是主要受损方向。量化观察指标：纳指100能否守住28000附近、VIX是否回落至18以下、美债10年收益率是否稳定在4.9%附近、A股科创50相对沪深300的强弱。投资动作：对高估值无订单AI题材股回避或降低关注；对真有订单和业绩的算力龙头等待开盘半小时价格确认后再评估，不急于抄底。</p>
+              </div>
+            </div>
+            <p><strong>受益方向：</strong>黄金以外的防御性红利资产、低估值央国企、公用事业、必需消费</p>
+            <p><strong>风险观察：</strong>AI资本开支预期下修、科技股拥挤度继续释放、VIX上行引发被动减仓</p>
+            <div class="stock-impact">
+              <div><strong>利好股票清单</strong><span>红利ETF、长江电力(600900)、中国神华(601088)、高股息央国企组合</span></div>
+              <div><strong>利空股票清单</strong><span>高估值无订单AI题材股、算力租赁弱现金流公司、纳斯达克100高权重科技ETF</span></div>
+            </div>
+            <p class="source-line"><strong>来源：</strong>证据包 market_snapshot：纳斯达克100、标普500、道琼斯工业指数、VIX、美债10年收益率，最新日期2026-10-30</p>
+          </article>
+<article class="item-block">
+            <div class="score-line"><span>重要程度 88 / 100</span><span>置信度 80 / 100</span></div>
+            <h3>2. 黄金ETF单日跌3.47%，避险资产与风险资产同向走弱</h3>
+            <div class="event-grid">
+              <div>
+                <strong>最新动态</strong>
+                <p>可复核事实：黄金ETF报355.78，单日下跌3.47%；同期VIX涨12.91%至19.42，WTI原油跌2.35%至101.67美元，美债10年收益率回落1.20%至4.93%。投研解读：黄金在VIX上行时反而大跌，与“避险买黄金”的常规框架背离，更可能反映实际利率之外的头寸平仓、美元流动性边际收紧或前期多头拥挤后的获利了结。这一信号对判断全球流动性环境非常关键，需等待美元指数和实际利率数据进一步确认。</p>
+              </div>
+              <div>
+                <strong>市场影响</strong>
+                <p>方向偏利空黄金短期交易，但中期避险逻辑未被证伪。传导链条：黄金大跌→若伴随美元走强，则压制新兴市场和高估值成长股；若美元未同步走强，则更可能是黄金自身拥挤度释放。A股映射：黄金股如紫金矿业、山东黄金今日可能承压，但若金价企稳，回调后仍是组合对冲选项；港股映射：黄金及资源股短期情绪受挫；美股映射：黄金ETF和矿业股承压。量化观察指标：黄金ETF能否守住350附近、美元/离岸人民币是否升破6.68、美债10年实际收益率、COMEX铜是否维持6.5以上。投资动作：黄金从“追高”转为“回调后观察”，不因单日大跌直接看空中期逻辑，但也不在下跌初期加仓。</p>
+              </div>
+            </div>
+            <p><strong>受益方向：</strong>美元现金类资产、短久期债券、黄金矿业中的低成本龙头（回调后）</p>
+            <p><strong>风险观察：</strong>黄金多头拥挤度继续释放、美元走强压制新兴市场、实际利率超预期上行</p>
+            <div class="stock-impact">
+              <div><strong>利好股票清单</strong><span>黄金ETF（回调企稳后）、紫金矿业(601899)（观察）、山东黄金(600547)（观察）</span></div>
+              <div><strong>利空股票清单</strong><span>高杠杆黄金矿业小票、黄金主题高溢价ETF、追高黄金的短线资金</span></div>
+            </div>
+            <p class="source-line"><strong>来源：</strong>证据包 market_snapshot：黄金ETF、VIX、WTI原油、美债10年收益率，最新日期2026-10-30</p>
+          </article>
+<article class="item-block">
+            <div class="score-line"><span>重要程度 82 / 100</span><span>置信度 78 / 100</span></div>
+            <h3>3. WTI原油跌2.35%至101.67美元，能源通胀交易降温</h3>
+            <div class="event-grid">
+              <div>
+                <strong>最新动态</strong>
+                <p>可复核事实：WTI原油报101.67美元，单日下跌2.35%；同期COMEX铜涨0.91%至6.52，比特币涨1.34%，以太坊涨1.87%。投研解读：原油在100美元上方回落，而铜和加密资产上涨，说明商品内部出现分化——能源通胀交易降温，但制造业需求和风险偏好并未全面恶化。这对通胀预期是边际利好，但对能源股短期盈利预期形成压力。</p>
+              </div>
+              <div>
+                <strong>市场影响</strong>
+                <p>方向：原油下跌利空能源开采和油服短期情绪，但利好航空、化工中下游和消费成本敏感型行业。传导链条：油价回落→通胀预期降温→美债收益率下行→成长股估值压力边际缓解，但需注意本次美股科技并未因收益率回落而反弹，说明估值压力主因不是利率。A股映射：中国海油、中国石油等能源权重短期承压，航空、化工中下游成本改善；港股映射：能源股承压，航空股边际受益；美股映射：能源板块跑输，航空与消费股相对受益。量化观察指标：WTI能否守住100美元、COMEX铜能否站稳6.5、布伦特与WTI价差、能源股相对强弱。投资动作：能源股从进攻转为持有观察，不追高；航空和化工中下游可放入观察池，等待油价企稳确认。</p>
+              </div>
+            </div>
+            <p><strong>受益方向：</strong>航空、化工中下游、消费成本敏感型行业</p>
+            <p><strong>风险观察：</strong>地缘风险推升油价、能源股高股息逻辑受盈利下修冲击、通胀预期反复</p>
+            <div class="stock-impact">
+              <div><strong>利好股票清单</strong><span>中国国航(601111)、南方航空(600029)、万华化学(600309)、化工ETF</span></div>
+              <div><strong>利空股票清单</strong><span>中国海油(600938)（短期）、中国石油(601857)（短期）、油服高杠杆小票</span></div>
+            </div>
+            <p class="source-line"><strong>来源：</strong>证据包 market_snapshot：WTI原油、COMEX铜、比特币、以太坊，最新日期2026-11-02</p>
+          </article>
+<article class="item-block">
+            <div class="score-line"><span>重要程度 78 / 100</span><span>置信度 72 / 100</span></div>
+            <h3>4. 亚洲市场分化：韩国KOSPI涨1.34%，A/H股小幅走强</h3>
+            <div class="event-grid">
+              <div>
+                <strong>最新动态</strong>
+                <p>可复核事实：韩国KOSPI报5807.48，涨1.34%；日经225报63311.92，涨0.03%；上证指数涨0.11%，深成指涨0.45%，沪深300涨0.31%，创业板指涨0.77%，科创50涨0.36%；恒生指数涨0.46%，恒生科技涨0.55%。投研解读：在美股科技大跌背景下，亚洲科技出口链和A/H股并未同步下挫，韩国KOSPI的强势尤其值得关注，可能反映半导体出口链的区域轮动或存储/芯片价格预期。但A/H股涨幅温和，尚不能确认外部冲击已被完全消化。</p>
+              </div>
+              <div>
+                <strong>市场影响</strong>
+                <p>方向偏中性偏多，但需成交额确认。传导链条：韩国半导体出口链走强→若持续，可能对A股半导体设备和材料形成情绪映射；A股创业板和科创50小幅收涨→成长风格未崩，但涨幅不足以证明资金大举回流。A股映射：半导体设备、存储链、创业板成长股；港股映射：恒生科技平台龙头；美股映射：费城半导体指数后续表现是关键验证。量化观察指标：韩国KOSPI能否连续两日走强、A股成交额是否放大、恒生科技成交额、科创50相对沪深300强弱、北向和南向资金流向。投资动作：对半导体设备和存储链保持观察，不因单日区域强势追高；恒生科技用成交额和南向资金确认修复持续性。</p>
+              </div>
+            </div>
+            <p><strong>受益方向：</strong>半导体设备、存储链、创业板成长龙头、恒生科技平台龙头</p>
+            <p><strong>风险观察：</strong>美股科技跌势传导、亚洲强势仅为单日轮动、成交额不足导致冲高回落</p>
+            <div class="stock-impact">
+              <div><strong>利好股票清单</strong><span>北方华创(002371)、中微公司(688012)、腾讯控股(00700)、恒生科技ETF</span></div>
+              <div><strong>利空股票清单</strong><span>高估值无业绩科技小票、成交额萎缩的题材股、跟风上涨的弱资质半导体概念</span></div>
+            </div>
+            <p class="source-line"><strong>来源：</strong>证据包 market_snapshot：韩国KOSPI、日经225、上证指数、深成指、沪深300、创业板指、科创50、恒生指数、恒生科技，最新日期2026-11-02</p>
+          </article>
+<article class="item-block">
+            <div class="score-line"><span>重要程度 75 / 100</span><span>置信度 76 / 100</span></div>
+            <h3>5. 美债10年收益率回落至4.93%，但未能托住成长股</h3>
+            <div class="event-grid">
+              <div>
+                <strong>最新动态</strong>
+                <p>可复核事实：美债10年收益率报4.93，单日回落1.20%。投研解读：长端利率回落通常利好高久期成长股，但本次纳指100仍跌3.46%，说明科技股下跌的主因不是利率，而是AI/半导体板块自身的拥挤度、盈利预期或风险偏好收缩。这一背离是今日最重要的宏观信号之一，需等待更多数据确认是短期头寸调整还是趋势性去杠杆。</p>
+              </div>
+              <div>
+                <strong>市场影响</strong>
+                <p>方向：利率回落对成长股估值是边际利好，但本次被科技股自身抛售抵消。传导链条：若收益率继续回落且科技股企稳，则成长股可能迎来修复；若收益率回落但科技股继续跌，则说明风险偏好收缩主导，需防守。A股映射：利率敏感型成长股如创新药、长久期科技资产；港股映射：恒生科技对美元流动性敏感；美股映射：纳指100与美债的负相关是否恢复。量化观察指标：美债10年收益率能否跌破4.8%、纳指100与美债10年的相关性、VIX是否回落、美元/离岸人民币走势。投资动作：不因单一利率回落加仓成长股，等待科技股价格企稳和VIX回落双重确认。</p>
+              </div>
+            </div>
+            <p><strong>受益方向：</strong>创新药、长久期成长资产（等待确认）、黄金（若实际利率下行）</p>
+            <p><strong>风险观察：</strong>利率回落反映衰退担忧而非宽松、科技股去杠杆延续、期限利差变化</p>
+            <div class="stock-impact">
+              <div><strong>利好股票清单</strong><span>恒瑞医药(600276)、百济神州(688235)、创业板成长ETF（观察）</span></div>
+              <div><strong>利空股票清单</strong><span>高杠杆成长股、利率敏感型高估值小票、依赖再融资的科技公司</span></div>
+            </div>
+            <p class="source-line"><strong>来源：</strong>证据包 market_snapshot：美债10年收益率、纳斯达克100、VIX，最新日期2026-10-30</p>
+          </article>
+<article class="item-block">
+            <div class="score-line"><span>重要程度 65 / 100</span><span>置信度 68 / 100</span></div>
+            <h3>6. 比特币与以太坊逆势上涨，风险偏好内部出现分层</h3>
+            <div class="event-grid">
+              <div>
+                <strong>最新动态</strong>
+                <p>可复核事实：比特币报78475.96，涨1.34%；以太坊报2294.95，涨1.87%。在美股科技大跌、VIX上行的背景下，加密资产逆势走强。投研解读：这说明高风险偏好并未全面消失，资金可能在科技股和加密资产之间再分配，也可能是对美元流动性预期的独立定价。该信号对判断全球风险偏好有参考价值，但加密资产波动大，不宜直接映射到A股题材。</p>
+              </div>
+              <div>
+                <strong>市场影响</strong>
+                <p>方向偏中性，对A股直接映射有限。传导链条：加密上涨→若持续，说明流动性并未全面收紧，对成长股情绪有边际支撑；若加密随后补跌，则确认风险偏好全面收缩。A股映射：区块链、数字货币概念可能受情绪带动，但缺乏基本面支撑，不建议追高；港股映射：金融科技和交易所相关标的；美股映射：加密相关股票和ETF。量化观察指标：比特币能否守住78000、以太坊能否站稳2300、加密与纳指的相关性、美元流动性指标。投资动作：加密相关A股概念仅作情绪观察，不作为基本面推荐；对区块链题材股保持谨慎追高。</p>
+              </div>
+            </div>
+            <p><strong>受益方向：</strong>加密资产交易平台、金融科技、区块链基础设施</p>
+            <p><strong>风险观察：</strong>加密资产高波动、监管不确定性、流动性收紧时补跌</p>
+            <div class="stock-impact">
+              <div><strong>利好股票清单</strong><span>金融科技ETF、区块链基础设施相关标的（观察）</span></div>
+              <div><strong>利空股票清单</strong><span>无基本面区块链概念股、高杠杆加密概念小票、跟风炒作的数字货币题材</span></div>
+            </div>
+            <p class="source-line"><strong>来源：</strong>证据包 market_snapshot：比特币、以太坊、VIX、纳斯达克100，最新日期2026-11-02</p>
+          </article>
+<article class="item-block">
+            <div class="score-line"><span>重要程度 62 / 100</span><span>置信度 70 / 100</span></div>
+            <h3>7. COMEX铜涨0.91%，制造业需求信号未恶化</h3>
+            <div class="event-grid">
+              <div>
+                <strong>最新动态</strong>
+                <p>可复核事实：COMEX铜报6.52，单日涨0.91%。在原油下跌、黄金大跌的背景下，铜逆势上涨。投研解读：铜价走强通常反映制造业需求和顺周期预期，与原油下跌形成分化，说明商品内部并非全面通缩交易。这对A股有色金属和顺周期板块是边际正面信号，但需结合库存和下游订单确认。</p>
+              </div>
+              <div>
+                <strong>市场影响</strong>
+                <p>方向偏多铜和顺周期。传导链条：铜价上涨→制造业需求预期改善→有色金属和电力设备受益；若铜价持续走强而油价走弱，则中下游制造成本压力分化。A股映射：铜矿、有色金属、电网设备；港股映射：资源股；美股映射：铜矿商和工业金属ETF。量化观察指标：COMEX铜能否站稳6.5、LME库存、中国电网招标数据、铜金比。投资动作：铜和电网设备可放入观察池，等待价格和订单双重确认后分批关注。</p>
+              </div>
+            </div>
+            <p><strong>受益方向：</strong>铜矿、有色金属、电网设备、工业金属ETF</p>
+            <p><strong>风险观察：</strong>全球制造业需求不及预期、铜库存累积、美元走强压制商品</p>
+            <div class="stock-impact">
+              <div><strong>利好股票清单</strong><span>紫金矿业(601899)、洛阳钼业(603993)、国电南瑞(600406)、有色金属ETF</span></div>
+              <div><strong>利空股票清单</strong><span>高成本铜冶炼小票、库存高企的金属贸易商、需求证伪的顺周期概念股</span></div>
+            </div>
+            <p class="source-line"><strong>来源：</strong>证据包 market_snapshot：COMEX铜、WTI原油、黄金ETF，最新日期2026-11-02</p>
+          </article>
+<article class="item-block">
+            <div class="score-line"><span>重要程度 55 / 100</span><span>置信度 72 / 100</span></div>
+            <h3>8. 欧洲股市走弱，德国DAX跌0.85%</h3>
+            <div class="event-grid">
+              <div>
+                <strong>最新动态</strong>
+                <p>可复核事实：欧洲STOXX 600报646.75，跌0.36%；德国DAX报25818.21，跌0.85%；英国富时100报10729.80，涨0.07%。投研解读：欧洲制造业和出口链代理的德国DAX跌幅较大，英国富时100基本持平，说明资金在欧洲内部偏向高股息和资源防守，而非制造业周期。这与全球风险偏好收缩的方向一致。</p>
+              </div>
+              <div>
+                <strong>市场影响</strong>
+                <p>方向偏空欧洲周期股。传导链条：德国DAX走弱→全球制造业出口链情绪承压→A股出口链和机械板块可能受情绪影响；英国富时100持平→高股息和资源防守逻辑仍有效。A股映射：出口链、机械、汽车零部件；港股映射：欧洲业务占比较高的出口股；美股映射：跨国工业公司。量化观察指标：德国DAX能否守住25500、欧洲PMI、欧元/美元、中国出口数据。投资动作：出口链保持观察，不因单日欧洲下跌直接看空，但需等待汇率和订单数据确认。</p>
+              </div>
+            </div>
+            <p><strong>受益方向：</strong>高股息资源股、英国富时100相关资产、内需型防守板块</p>
+            <p><strong>风险观察：</strong>欧洲制造业衰退、欧元波动、出口订单下滑</p>
+            <div class="stock-impact">
+              <div><strong>利好股票清单</strong><span>红利ETF、中国神华(601088)、内需消费龙头</span></div>
+              <div><strong>利空股票清单</strong><span>欧洲出口链高敞口公司、机械出口小票、汽车零部件出口概念</span></div>
+            </div>
+            <p class="source-line"><strong>来源：</strong>证据包 market_snapshot：欧洲STOXX 600、德国DAX、英国富时100，最新日期2026-10-30</p>
+          </article>
+<article class="item-block">
+            <div class="score-line"><span>重要程度 50 / 100</span><span>置信度 74 / 100</span></div>
+            <h3>9. 美元/离岸人民币报6.65，汇率环境相对稳定</h3>
+            <div class="event-grid">
+              <div>
+                <strong>最新动态</strong>
+                <p>可复核事实：美元/离岸人民币报6.65，单日涨0.03%，波动极小。投研解读：在美股科技大跌、VIX上行的背景下，人民币汇率保持稳定，说明外资对中国的风险偏好尚未出现明显恶化，这对A股和港股是边际支撑。但单日数据不足以确认趋势，需结合北向和南向资金流观察。</p>
+              </div>
+              <div>
+                <strong>市场影响</strong>
+                <p>方向中性偏多人民币资产。传导链条：汇率稳定→外资流出压力有限→A股和港股风险偏好有支撑；若后续美元走强、人民币贬值，则压制外资流入。A股映射：外资偏好的核心资产和成长龙头；港股映射：恒生科技和南向资金敏感标的；美股映射：中概股。量化观察指标：美元/离岸人民币能否守住6.70、北向资金净流入、南向资金净买入、恒生科技成交额。投资动作：汇率稳定是持有港股科技和A股核心资产的前提之一，但需资金流确认后才提高仓位。</p>
+              </div>
+            </div>
+            <p><strong>受益方向：</strong>A股核心资产、恒生科技、中概股、外资偏好的成长龙头</p>
+            <p><strong>风险观察：</strong>美元突然走强、人民币贬值压力、外资流出</p>
+            <div class="stock-impact">
+              <div><strong>利好股票清单</strong><span>沪深300ETF、恒生科技ETF、腾讯控股(00700)、贵州茅台(600519)</span></div>
+              <div><strong>利空股票清单</strong><span>高外债行业、航空外债敞口（若人民币贬值）、外资重仓高估值品种（若流出）</span></div>
+            </div>
+            <p class="source-line"><strong>来源：</strong>证据包 market_snapshot：美元/离岸人民币，最新日期2026-11-02</p>
+          </article></section>
+        <section id="analysis"><h2>分主题研究框架</h2><article class="item-block analysis-block">
+            <h3>今日十大核心事件筛选逻辑</h3>
+            <p>本次证据包未提供任何可复核的新闻、公告或政策线索，news_items为空，因此核心事件全部来自market_snapshot的量化信号。筛选逻辑是按“对全球风险偏好和A/H股映射的传导强度”排序：美股科技大跌和黄金大跌是最高优先级，因为它们直接决定今日A/H股科技和资源板块的开盘情绪；原油下跌和亚洲市场分化是第二优先级，影响能源和半导体链；美债收益率、加密资产、铜、欧洲股市和人民币汇率是第三优先级，提供宏观背景和交叉验证。所有事件均标注为基于行情数据的投研解读，事件层面的新闻催化等待确认。</p>
+            <dl class="idea-facts">
+              <div><dt>机会观察</dt><dd>美股科技大跌但亚洲市场未同步下挫，若A/H股成交额放大，可能存在区域轮动的预期差。、黄金和原油同跌后，若企稳信号出现，资源股回调后可能提供更好的风险收益比。</dd></div>
+              <div><dt>风险约束</dt><dd>证据包缺少新闻和公告，事件驱动判断的置信度整体偏低。、美股科技跌势若在今日亚洲时段延续，A/H股科技开盘可能补跌。</dd></div>
+              <div><dt>跟踪指标</dt><dd>A股成交额、恒生科技成交额、VIX期货、纳指期货亚洲时段表现</dd></div>
+            </dl>
+          </article>
+<article class="item-block analysis-block">
+            <h3>全球市场复盘</h3>
+            <p>昨夜全球市场的核心特征是“科技杀估值+避险资产同跌+VIX跳升”。纳斯达克100跌3.46%，标普500跌1.82%，道指跌1.09%，科技跌幅远大于蓝筹；VIX涨12.91%至19.42；黄金ETF跌3.47%，WTI原油跌2.35%；美债10年收益率回落至4.93%。这组信号中，收益率回落但科技股大跌是最重要的背离，说明本轮下跌主因不是利率，而是AI/半导体拥挤度和风险偏好收缩。亚洲早盘韩国KOSPI涨1.34%、A/H股小幅走强，与美股形成反差，但涨幅温和，尚不能确认外部冲击已被消化。</p>
+            <dl class="idea-facts">
+              <div><dt>机会观察</dt><dd>韩国KOSPI和A股创业板相对强势，半导体设备和成长风格可能存在区域轮动机会。、红利和公用事业在风险偏好收缩时相对抗跌，适合作为底仓。</dd></div>
+              <div><dt>风险约束</dt><dd>黄金和原油同跌可能反映流动性边际收紧，若持续，风险资产会全面承压。、VIX升至19.42，若突破20，主题交易容易快速降温。</dd></div>
+              <div><dt>跟踪指标</dt><dd>VIX能否回落至18以下、纳指100能否守住28000、黄金ETF能否守住350、WTI能否守住100</dd></div>
+            </dl>
+          </article>
+<article class="item-block analysis-block">
+            <h3>今日最重要产业趋势</h3>
+            <p>证据包未提供产业新闻，产业趋势只能从行情信号推断。最值得跟踪的是半导体链的区域分化：韩国KOSPI涨1.34%与美股纳指大跌3.46%形成反差，可能反映半导体出口链的独立景气或区域资金轮动。其次是能源链降温：WTI跌2.35%，能源通胀交易边际退潮。第三是铜的逆势上涨：COMEX铜涨0.91%，制造业需求信号未恶化。以上均为行情推断，产业订单、价格和库存数据等待确认。</p>
+            <dl class="idea-facts">
+              <div><dt>机会观察</dt><dd>半导体设备和存储链若获成交额确认，可事件驱动参与。、铜和电网设备在制造业需求未恶化背景下可放入观察池。</dd></div>
+              <div><dt>风险约束</dt><dd>产业趋势缺乏新闻验证，行情推断可能被后续数据证伪。、能源链降温若延续，能源股盈利预期下修。</dd></div>
+              <div><dt>跟踪指标</dt><dd>费城半导体指数、韩国出口数据、LME铜库存、中国电网招标</dd></div>
+            </dl>
+          </article>
+<article class="item-block analysis-block">
+            <h3>全球资金流向</h3>
+            <p>资金流向信号出现分层：美股科技被抛售，VIX上行，黄金和原油同跌，但比特币和以太坊逆势上涨，铜走强，亚洲股市分化。这说明资金并未全面撤离风险资产，而是在做风格和区域再平衡——削减高估值科技，保留加密和工业金属，向亚洲半导体出口链和A/H股低估值资产轮动。美元/离岸人民币报6.65，波动极小，人民币资产的外资流出压力有限。</p>
+            <dl class="idea-facts">
+              <div><dt>机会观察</dt><dd>若美元稳定、人民币不贬值，A/H股核心资产和恒生科技有承接基础。、铜和加密走强说明部分风险偏好仍在，成长风格未全面崩塌。</dd></div>
+              <div><dt>风险约束</dt><dd>黄金和原油同跌若持续，可能演变为全面流动性收紧。、VIX上行若引发被动基金减仓，亚洲市场难以独善其身。</dd></div>
+              <div><dt>跟踪指标</dt><dd>美元/离岸人民币、北向资金、南向资金、比特币能否守住78000、COMEX铜能否站稳6.5</dd></div>
+            </dl>
+          </article>
+<article class="item-block analysis-block">
+            <h3>政策与公告解读</h3>
+            <p>证据包未提供任何政策文件、交易所公告或公司披露，因此今日政策与公告层面全部等待确认。在缺少政策线索的情况下，A股和港股早盘的小幅走强更可能是技术性修复或区域轮动，而非政策驱动。投资者不应把指数微涨解读为政策利好，需等待央行、财政部、证监会或交易所的正式文件。</p>
+            <dl class="idea-facts">
+              <div><dt>机会观察</dt><dd>若后续出现稳增长或科技自主政策细则，电网、半导体设备和国产算力可能受益。、若出现资本市场活跃政策，券商和港股科技可能受益。</dd></div>
+              <div><dt>风险约束</dt><dd>政策预期落空导致冲高回落。、把技术性反弹误判为政策驱动，追高被套。</dd></div>
+              <div><dt>跟踪指标</dt><dd>央行公开市场操作、证监会文件、交易所公告、公司回购增持、业绩预告</dd></div>
+            </dl>
+          </article>
+<article class="item-block analysis-block">
+            <h3>未来7天重要事件</h3>
+            <p>证据包未提供未来7天事件日历，以下为需要等待确认的观察方向：美国经济数据（就业、通胀）、美联储官员表态、美股科技财报、中国PMI和出口数据、半导体行业大会和存储价格数据。这些事件将通过预期差影响市场，而非事件本身机械利好利空。在当前VIX上行和科技股大跌背景下，任何低于预期的数据都可能放大波动。</p>
+            <dl class="idea-facts">
+              <div><dt>机会观察</dt><dd>若美国通胀数据低于预期，降息预期升温，成长股和黄金可能修复。、若中国PMI或出口数据超预期，A股顺周期和出口链可能受益。</dd></div>
+              <div><dt>风险约束</dt><dd>数据超预期引发利率上行，压制成长股。、美股科技财报指引下修，继续杀估值。</dd></div>
+              <div><dt>跟踪指标</dt><dd>美国就业和通胀数据、美联储表态、中国PMI、美股科技财报、存储价格</dd></div>
+            </dl>
+          </article>
+<article class="item-block analysis-block">
+            <h3>投资机会与行动清单</h3>
+            <p>从基金经理视角，当前环境适合把机会分为三层：1个月事件交易（半导体设备区域轮动、航空化工成本改善）、3个月产业验证（港股科技修复、铜和电网设备）、1年主线配置（红利公用事业、AI算力国产化等待回调）。今日行动优先级是防守确认高于进攻追涨：先看A/H股成交额和恒生科技资金流，再决定是否提高仓位。所有股票清单仅为研究池，不是买卖指令。</p>
+            <dl class="idea-facts">
+              <div><dt>机会观察</dt><dd>红利和公用事业作为底仓，标准仓配置。、港股科技轻仓持有观察，等待成交额和南向资金确认。、半导体设备轻仓事件驱动，等待韩国KOSPI连续性和A股成交额确认。</dd></div>
+              <div><dt>风险约束</dt><dd>证据包缺少新闻和公告，所有事件驱动判断置信度偏低。、美股科技跌势若延续，A/H股科技可能补跌。、黄金和原油同跌若演变为流动性收紧，全面风险资产承压。</dd></div>
+              <div><dt>跟踪指标</dt><dd>今日A股成交额、恒生科技成交额、南向资金、VIX、纳指期货</dd></div>
+            </dl>
+          </article></section>
+        <section id="ideas"><h2>投资机会</h2>
+          <article class="item-block">
+            <div class="score-line"><span>持有观察</span><span>约50%-60%</span><span>置信度 58 / 100</span></div>
+            <h3>港股科技：用成交额和南向资金确认修复持续性</h3>
+            <p>恒生科技早盘涨0.55%，在美股纳指大跌3.46%的背景下未同步下挫，说明港股科技有一定承接力。但涨幅温和，且证据包未提供南向资金和成交额数据，修复持续性必须等待确认。若南向资金净买入放大且恒生科技成交额回升，则修复交易可延续；若只有指数微涨而成交萎缩，则更可能是超跌反弹而非趋势反转。</p>
+            <dl class="idea-facts">
+              <div><dt>周期</dt><dd>1个月</dd></div>
+              <div><dt>风险等级</dt><dd>中</dd></div>
+              <div><dt>核心催化剂</dt><dd>南向资金回流、平台经济业绩修复、回购增持、美元走弱</dd></div>
+              <div><dt>代表行业/ETF/公司</dt><dd>腾讯控股(00700)、阿里巴巴-W(09988)、美团-W(03690)、恒生科技ETF</dd></div>
+              <div><dt>定价状态</dt><dd>超跌修复预期已部分定价，但成交额和资金流尚未确认，存在预期差。</dd></div>
+              <div><dt>适合仓位</dt><dd>轻仓</dd></div>
+              <div><dt>失效条件</dt><dd>恒生科技放量下破3700，或南向资金转为净卖出，或美元/离岸人民币升破6.70。</dd></div>
+              <div><dt>观察指标</dt><dd>恒生科技成交额、南向资金净买入、美元/离岸人民币、腾讯控股和阿里巴巴-W相对强弱</dd></div>
+            </dl>
+          </article>
+
+
+          <article class="item-block">
+            <div class="score-line"><span>持有观察</span><span>约60%-70%</span><span>置信度 65 / 100</span></div>
+            <h3>红利与公用事业：外部波动下的防守底仓</h3>
+            <p>美股科技大跌、VIX上行、黄金和原油同跌的环境下，低估值高股息资产是组合稳定器。英国富时100基本持平、A股上证指数小幅收涨，均说明资金在向防守资产倾斜。红利和公用事业现金流稳定，受外部科技股估值冲击小，适合作为标准仓以下的底仓。</p>
+            <dl class="idea-facts">
+              <div><dt>周期</dt><dd>1-3个月</dd></div>
+              <div><dt>风险等级</dt><dd>中低</dd></div>
+              <div><dt>核心催化剂</dt><dd>避险资金流入、央国企分红提升、利率下行</dd></div>
+              <div><dt>代表行业/ETF/公司</dt><dd>红利ETF、长江电力(600900)、中国神华(601088)、高股息央国企组合</dd></div>
+              <div><dt>定价状态</dt><dd>防守逻辑已被部分定价，但尚未出现拥挤，仍有配置价值。</dd></div>
+              <div><dt>适合仓位</dt><dd>标准仓</dd></div>
+              <div><dt>失效条件</dt><dd>红利资产成交额过度放大导致拥挤，或美债收益率快速上行压制高股息相对吸引力。</dd></div>
+              <div><dt>观察指标</dt><dd>红利ETF成交额、美债10年收益率、中国10年国债收益率、高股息板块相对沪深300强弱</dd></div>
+            </dl>
+          </article>
+
+
+          <article class="item-block">
+            <div class="score-line"><span>等待确认</span><span>约50%-60%</span><span>置信度 55 / 100</span></div>
+            <h3>黄金：从追高转为回调后观察</h3>
+            <p>黄金ETF单日跌3.47%，与VIX上行背离，说明短期多头拥挤度释放或流动性因素主导。中期避险和实际利率逻辑未被证伪，但下跌初期不宜加仓。等待黄金ETF在350附近企稳、美元未同步走强、美债实际利率回落三者确认后，再评估回调后的配置机会。</p>
+            <dl class="idea-facts">
+              <div><dt>周期</dt><dd>1-3个月</dd></div>
+              <div><dt>风险等级</dt><dd>中</dd></div>
+              <div><dt>核心催化剂</dt><dd>降息预期升温、地缘风险、实际利率下行、央行购金</dd></div>
+              <div><dt>代表行业/ETF/公司</dt><dd>黄金ETF、紫金矿业(601899)、山东黄金(600547)</dd></div>
+              <div><dt>定价状态</dt><dd>短期下跌风险已部分释放，但企稳信号未出现，存在等待确认的预期差。</dd></div>
+              <div><dt>适合仓位</dt><dd>观察</dd></div>
+              <div><dt>失效条件</dt><dd>黄金ETF跌破340且美元同步走强，或实际利率快速上行。</dd></div>
+              <div><dt>观察指标</dt><dd>黄金ETF能否守住350、美元/离岸人民币、美债10年实际收益率、COMEX铜金比</dd></div>
+            </dl>
+          </article>
+
+
+          <article class="item-block">
+            <div class="score-line"><span>事件驱动可参与</span><span>约50%-60%</span><span>置信度 55 / 100</span></div>
+            <h3>半导体设备与存储链：区域强势需成交额确认</h3>
+            <p>韩国KOSPI涨1.34%，在美股科技大跌背景下逆势走强，可能反映半导体出口链的区域轮动。A股科创50涨0.36%、创业板指涨0.77%，成长风格未崩。但证据包未提供半导体订单、存储价格或费城半导体指数数据，区域强势能否传导至A股半导体设备仍需成交额和龙头相对强弱确认。</p>
+            <dl class="idea-facts">
+              <div><dt>周期</dt><dd>1个月</dd></div>
+              <div><dt>风险等级</dt><dd>中高</dd></div>
+              <div><dt>核心催化剂</dt><dd>存储价格回升、半导体设备招标、国产替代政策、韩国出口数据</dd></div>
+              <div><dt>代表行业/ETF/公司</dt><dd>北方华创(002371)、中微公司(688012)、半导体设备ETF、存储链相关标的</dd></div>
+              <div><dt>定价状态</dt><dd>区域强势尚未在A股半导体设备上充分定价，存在预期差但需确认。</dd></div>
+              <div><dt>适合仓位</dt><dd>轻仓</dd></div>
+              <div><dt>失效条件</dt><dd>韩国KOSPI次日转跌，或A股半导体设备龙头放量下破，或费城半导体指数继续大跌。</dd></div>
+              <div><dt>观察指标</dt><dd>韩国KOSPI连续性、费城半导体指数、A股半导体设备成交额、北方华创和中微公司相对强弱</dd></div>
+            </dl>
+          </article>
+
+
+          <article class="item-block">
+            <div class="score-line"><span>降低关注</span><span>约45%-55%</span><span>置信度 60 / 100</span></div>
+            <h3>能源股：油价回落，从进攻转为持有观察</h3>
+            <p>WTI原油跌2.35%至101.67美元，能源通胀交易降温，能源开采和油服短期盈利预期承压。但油价仍在100美元上方，高股息逻辑未完全破坏。短期降低关注，等待油价在100美元附近企稳后再评估。</p>
+            <dl class="idea-facts">
+              <div><dt>周期</dt><dd>1个月</dd></div>
+              <div><dt>风险等级</dt><dd>中</dd></div>
+              <div><dt>核心催化剂</dt><dd>地缘风险、OPEC+减产、冬季需求、油价企稳</dd></div>
+              <div><dt>代表行业/ETF/公司</dt><dd>中国海油(600938)、中国石油(601857)、能源ETF</dd></div>
+              <div><dt>定价状态</dt><dd>油价下跌已部分定价，但企稳信号未出现。</dd></div>
+              <div><dt>适合仓位</dt><dd>观察</dd></div>
+              <div><dt>失效条件</dt><dd>WTI跌破95美元，或能源股高股息逻辑因盈利下修被破坏。</dd></div>
+              <div><dt>观察指标</dt><dd>WTI能否守住100、布伦特与WTI价差、中国海油相对强弱、原油库存</dd></div>
+            </dl>
+          </article>
+
+
+          <article class="item-block">
+            <div class="score-line"><span>等待确认</span><span>约50%-60%</span><span>置信度 52 / 100</span></div>
+            <h3>航空与化工中下游：油价回落的成本改善交易</h3>
+            <p>WTI原油跌2.35%，航空和化工中下游成本压力边际改善。但证据包未提供航空客座率、票价或化工品价差数据，成本改善能否转化为盈利仍需需求端确认。等待油价企稳和行业数据验证后再参与。</p>
+            <dl class="idea-facts">
+              <div><dt>周期</dt><dd>1-3个月</dd></div>
+              <div><dt>风险等级</dt><dd>中</dd></div>
+              <div><dt>核心催化剂</dt><dd>油价回落、出行需求恢复、化工品涨价、人民币稳定</dd></div>
+              <div><dt>代表行业/ETF/公司</dt><dd>中国国航(601111)、南方航空(600029)、万华化学(600309)、化工ETF</dd></div>
+              <div><dt>定价状态</dt><dd>成本改善预期尚未充分定价，但需求端不确定，存在预期差。</dd></div>
+              <div><dt>适合仓位</dt><dd>观察</dd></div>
+              <div><dt>失效条件</dt><dd>油价重新升破105美元，或航空客座率下滑、化工品价差收窄。</dd></div>
+              <div><dt>观察指标</dt><dd>WTI原油、航空客座率、化工品价差、人民币汇率</dd></div>
+            </dl>
+          </article>
+        </section>
+
+        <section>
+          <h2>机构视角摘要</h2>
+          <p>今天全球资本真正交易的不是单一增长故事，而是“美债收益率回落但科技股仍被抛售”的估值重定价，以及“黄金、原油同跌+VIX跳升”的流动性边际收紧信号。美股科技跌幅远大于道指，说明资金在削减高久期资产；黄金ETF跌3.47%与美债收益率回落方向背离，提示可能有实际利率之外的头寸平仓或美元流动性因素，需等待确认。亚洲市场内部，韩国KOSPI涨1.34%与纳指大跌形成反差，半导体出口链的区域轮动值得跟踪；A股和港股早盘小幅走强，但涨幅温和，尚不足以证明外部冲击已被完全消化。今日A/H股更可能交易“内需政策预期+南向承接+低位红利防守”，而非简单跟随美股科技反弹。</p>
+          <blockquote class="read-block">
+            <h3>港股科技：用成交额和南向资金确认修复持续性</h3>
+            <p>恒生科技早盘涨0.55%，在美股纳指大跌3.46%的背景下未同步下挫，说明港股科技有一定承接力。但涨幅温和，且证据包未提供南向资金和成交额数据，修复持续性必须等待确认。若南向资金净买入放大且恒生科技成交额回升，则修复交易可延续；若只有指数微涨而成交萎缩，则更可能是超跌反弹而非趋势反转。</p>
+            <p><strong>配置倾向：</strong>持有观察；轻仓</p>
+          </blockquote>
+<blockquote class="read-block">
+            <h3>红利与公用事业：外部波动下的防守底仓</h3>
+            <p>美股科技大跌、VIX上行、黄金和原油同跌的环境下，低估值高股息资产是组合稳定器。英国富时100基本持平、A股上证指数小幅收涨，均说明资金在向防守资产倾斜。红利和公用事业现金流稳定，受外部科技股估值冲击小，适合作为标准仓以下的底仓。</p>
+            <p><strong>配置倾向：</strong>持有观察；标准仓</p>
+          </blockquote>
+<blockquote class="read-block">
+            <h3>黄金：从追高转为回调后观察</h3>
+            <p>黄金ETF单日跌3.47%，与VIX上行背离，说明短期多头拥挤度释放或流动性因素主导。中期避险和实际利率逻辑未被证伪，但下跌初期不宜加仓。等待黄金ETF在350附近企稳、美元未同步走强、美债实际利率回落三者确认后，再评估回调后的配置机会。</p>
+            <p><strong>配置倾向：</strong>等待确认；观察</p>
+          </blockquote>
+<blockquote class="read-block">
+            <h3>半导体设备与存储链：区域强势需成交额确认</h3>
+            <p>韩国KOSPI涨1.34%，在美股科技大跌背景下逆势走强，可能反映半导体出口链的区域轮动。A股科创50涨0.36%、创业板指涨0.77%，成长风格未崩。但证据包未提供半导体订单、存储价格或费城半导体指数数据，区域强势能否传导至A股半导体设备仍需成交额和龙头相对强弱确认。</p>
+            <p><strong>配置倾向：</strong>事件驱动可参与；轻仓</p>
+          </blockquote>
+        </section>
+
+        <section id=""><h2>我的行动清单</h2><ul class="plain-list detail-list"><li>开盘前先看纳指期货和VIX期货亚洲时段表现，判断美股科技跌势是否延续。</li>
+<li>观察恒生科技开盘半小时成交额，</li></ul></section>
+        <section id="risks"><h2>风险提示</h2><ul class="plain-list detail-list"><li>免费行情和RSS聚合源可能延迟或缺失，关键结论需要回看原始来源、交易所公告和公司披露。</li>
+<li>AI或规则生成观点不能替代独立判断，所有建议都必须结合仓位、止损和失效条件。</li>
+<li>股票清单代表受益/受损方向，不等同于买卖指令。</li>
+<li>部分资产单日跌幅较大，说明风险偏好可能低于新闻标题呈现的乐观程度。</li></ul></section>
+        <section>
+          <h2>数据来源与可信度说明</h2>
+          <p>中国大陆指数优先来自新浪行情接口，海外市场、商品、汇率等来自 Yahoo Finance chart 免费接口，可能存在延迟、缺口或临时不可用；投资判断仍需结合交易所、公司公告和券商数据复核。</p>
+<p>宏观代理指标来自 Yahoo Finance 免费接口，覆盖美债、波动率、商品和加密资产；这些是资金环境代理变量，不等同于官方宏观统计。</p>
+<p>AI 模型调用状态：成功调用 deepseek / deepseek-chat，已对规则版报告进行投研增强。</p>
+<p>质量检查：通过基础完整性检查。</p>
+        </section>
+      </article>
+      <aside class="side-rail">
+        <div class="rail-block">
+          <h2>报告导航</h2>
+          <a href="#events">核心事件</a>
+          <a href="#ideas">投资机会</a>
+          <a href="#risks">风险提示</a>
+        </div>
+        <div class="rail-block">
+          <h2>切换报告</h2>
+          <a class="report-link" href="2026-10-30-morning.html">上一篇：2026-10-30 盘前投研日报</a>
+          <span class="muted-link">下一篇：无</span>
+        </div>
+      </aside>
+    </section>
+  </main>
+  <script>
+  </script>
+
+</body>
+</html>
